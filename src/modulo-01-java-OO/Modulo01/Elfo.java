@@ -5,18 +5,14 @@ public class Elfo {
     private int flechas;
     private int experiencia;
 
-    public Elfo(String n, int flech) {
-        inicializarElfo(n, flech);
+    public Elfo(String nome, int flechas) {
+        this.nome = nome;
+        this.flechas = flechas;
+        this.experiencia = 0;
     }
 
-    public Elfo(String n) {
-        inicializarElfo(n, 42);
-    }
-
-    private void inicializarElfo(String n, int flech) {
-        nome = n;
-        flechas = flech;
-        experiencia = 0;
+    public Elfo(String nome) {
+        this(nome, 42);
     }
 
     public void atirarFlechaRefactory() {
