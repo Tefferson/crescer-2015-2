@@ -1,12 +1,12 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
+----------------------------------------------------------------------------
+Este é o arquivo README do projeto. Você deve descrever aqui o seu projeto.
+Informe ao usuário (alguém que não sabe nada sobre este projeto!) tudo que
+ele/ela precisa saber. Os comentários devem incluir, pelo menos:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+TITULO DO PROJETO:
+OBJETIVO DO PROJETO:
+VERSÃO ou DATA:
+COMO INICIAR O PROJETO:
+AUTORES:
+INSTRUÇÕES PARA O USUÁRIO:
