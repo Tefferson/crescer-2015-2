@@ -28,10 +28,23 @@ public class Elfo {
         this(nome, 42);
     }
 
+<<<<<<< HEAD
     public void atirarFlecha(Dwarf alvo) {
         flechas--;
         experiencia++;
         alvo.receberFlechada();
+=======
+    /* PascalCase (C#, VB.NET)
+     *      public void AtirarFlechaDeFogo
+     * camelCase (Java, JavaScript)
+     *      public void atirarFlechaDeFogo
+    */
+   
+    public void atirarFlecha(Dwarf dwarf) {
+        flechas--;
+        experiencia++;
+        dwarf.receberFlechada();
+>>>>>>> 365f58ceeb9aa13772ec7cca7564d807fa7efa6e
         //experiencia += 1;
         //experiencia = experiencia + 1;
     }
@@ -59,11 +72,15 @@ public class Elfo {
     public String getNome() {
         return this.nome;
     }
+<<<<<<< HEAD
     /*
     public void setNome(String novoNome){
         this.nome = novoNome;
     }
     */
+=======
+    
+>>>>>>> 365f58ceeb9aa13772ec7cca7564d807fa7efa6e
     public int getFlechas() {
         return this.flechas;
     }
