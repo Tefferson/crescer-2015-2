@@ -7,7 +7,14 @@ public class DwarfTest
 {
     @Test
     public void dwarfNasceCom110DeVida() {
-        Dwarf gimli = new Dwarf();
-        assertEquals(110, gimli.getVida());
+        Dwarf dwarf = new Dwarf();
+        assertEquals(110, dwarf.getVida());
+    }
+
+    @Test
+    public void dwarfRecebeFlechada() {
+        Dwarf dwarf = new Dwarf();
+        dwarf.receberFlechada();
+        assertEquals(100, dwarf.getVida());
     }
 }

@@ -5,7 +5,7 @@ public class Elfo {
 
     private String nome;
     private int flechas, experiencia;
-   
+
     public Elfo(String nome, int flechas) {
         this.nome = nome;
         this.flechas = flechas;
@@ -27,21 +27,21 @@ public class Elfo {
         experiencia++;
         alvo.receberFlechada();
     }
-    
+
     public void atirarFlechaRefactory(){
-        boolean acertar = true;
-        if (acertar) {
-            experiencia++;
-        }
+        experiencia++;
         flechas--;
     }
 
     public String getNome() {
         return this.nome;
     }
-    
+
     public int getFlechas() {
         return this.flechas;
     }
-    
+
+    public int getExperiencia(){
+        return this.experiencia;
+    }
 }
