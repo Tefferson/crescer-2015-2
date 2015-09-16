@@ -28,13 +28,6 @@ public class Elfo {
         this(nome, 42);
     }
 
-    public void atirarFlecha() {
-        flechas--;
-        experiencia++;
-        //experiencia += 1;
-        //experiencia = experiencia + 1;
-    }
-
     public void atirarFlecha(Dwarf alvo) {
         flechas--;
         experiencia++;
