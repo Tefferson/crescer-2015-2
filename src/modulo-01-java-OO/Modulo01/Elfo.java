@@ -16,7 +16,7 @@ public class Elfo {
     }
 
     public void atirarFlechaRefactory() {
-        if(acertarFlecha() == true) {
+        if(acertarFlecha()) {
             experiencia++;
         }
         flechas--;
