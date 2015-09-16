@@ -8,13 +8,15 @@
 public class Dwarf
 {
     private int vida;
-    private String nome;
-    public Dwarf(String nome){
+    public Dwarf(){
         this.vida = 110;
-        this.nome = nome;
     }
-    
+
     public void receberFlechada(){
         vida -= 10;
+    }
+
+    public int getVida(){
+        return this.vida;
     }
 }
