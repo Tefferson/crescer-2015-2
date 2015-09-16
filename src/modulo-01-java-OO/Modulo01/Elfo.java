@@ -68,7 +68,29 @@ public class Elfo {
         }
         flechas--;
     }
+<<<<<<< HEAD
     private boolean acertarFlecha() {
         return ((int)(Math.random() * 100 % 2)) == 0;
     }
+=======
+    
+    public String getNome() {
+        return nome;
+    }
+    
+    public void setNome(String novoNome) {
+        this.nome = novoNome;
+    }
+    
+    public int getFlechas() {
+        return this.flechas;
+    }
+    
+    /* 
+    public void setFlechas(int flechas) {
+        if (flechas > this.flechas)
+            this.flechas = flechas;
+    }
+    */
+>>>>>>> 7fda5221f8cd249b0cfc4b2a83358c5b9bef622b
 }
