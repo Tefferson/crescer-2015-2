@@ -27,6 +27,6 @@ public class Elfo {
     }
 
     private boolean acertarFlecha() {
-        return (Math.random() * 100 % 2) == 0;
+        return ((int)(Math.random() * 100 % 2)) == 0;
     }
 }
