@@ -99,8 +99,8 @@ public class ElfoTest
         assertFalse(3 != elfo2.getExperiencia());
         
         flechas = elfo.getFlechas();
-        elfo.atirarFlecha(dwarf);
-        elfo.atirarFlecha(dwarf);
+        elfo.atirarFlecha(dwarf2);
+        elfo.atirarFlecha(dwarf2);
         elfo.atirarFlecha(dwarf);
 
         assertEquals(flechas-3, elfo.getFlechas());
