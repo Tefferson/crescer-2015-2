@@ -50,4 +50,24 @@ public class Dwarf
     public int getExperiencia(){
         return this.experiencia;
     }
-}
+
+    public DataTerceiraEra getDataNascimento(){
+        return this.dataNascimento;
+    }
+
+    public double getNumeroSorte(){
+        double valorInicial = 101.0;
+
+        if(this.dataNascimento.ehBissexto()){
+            if(this.vida >= 80 && this.vida <=90){
+                return valorInicial*-33;
+            }
+        }else{
+            if(this.nome.equals("Seixas") || this.nome.equals("Meireles")){
+                return (valorInicial*33)%100; 
+            }
+        }
+
+        return valorInicial;
+    }
+}    

@@ -84,20 +84,43 @@ public class DwarfTest
         dwarf.receberFlechada();
         assertEquals(Status.MORTO, dwarf.getStatus());
     }
-    
+
     @Test
     public void dwarfNasceVivo(){
         Dwarf dwarf = new Dwarf();
         assertEquals(Status.VIVO, dwarf.getStatus());
-        
+
     }
-    
+
     @Test 
     public void dwarfNasceComNomeEExperiencia0(){
         Dwarf dwarf = new Dwarf("Dwarf");
         assertEquals("Dwarf", dwarf.getNome());
         assertEquals(0, dwarf.getExperiencia());
     }
-    
-    
+
+    @Test
+    public void dwarfNasceSemNomeNaDataDefault(){
+        Dwarf dwarf = new Dwarf();
+        DataTerceiraEra dataNascimento = dwarf.getDataNascimento();
+        assertEquals(1, dataNascimento.getDia());
+        assertEquals(1, dataNascimento.getMes());
+        assertEquals(1, dataNascimento.getAno());
+    }
+
+    @Test
+    public void dwarfNasceComNomeDia2Do6DeMenos23(){
+        Dwarf dwarf = new Dwarf("Anão Genérico", new DataTerceiraEra(2,6,-23));
+        DataTerceiraEra dataNascimento = dwarf.getDataNascimento();
+        assertEquals(2, dataNascimento.getDia());
+        assertEquals(6, dataNascimento.getMes());
+        assertEquals(-23, dataNascimento.getAno());
+    }
+
+    @Test
+    public void dwarfNasceEmAnoNaoBissextoGetNumeroSorte(){
+        Dwarf dwarf = new Dwarf("Dwarf");
+        assertEquals(101.0, dwarf.getNumeroSorte(), 0.5);
+    }
+
 }
