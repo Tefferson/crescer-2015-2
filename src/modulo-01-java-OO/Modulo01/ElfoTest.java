@@ -22,38 +22,6 @@ public class ElfoTest
     }
 
     @Test
-    public void elfoNasceComFlechasIntegerENomeNaoNulo(){
-        Integer flechas = 23;
-        String nome = "elfo";
-        Elfo elfo = new Elfo(nome, flechas);
-
-        assertEquals(nome, elfo.getNome());
-        assertNotNull(elfo.getNome());
-        assertEquals(flechas, new Integer(elfo.getFlechas()));
-        assertFalse(flechas != elfo.getFlechas());
-        assertNotNull(elfo.getFlechas());
-        assertEquals(0, elfo.getExperiencia());
-        assertFalse(0 != elfo.getExperiencia());
-
-    }
-
-    @Test
-    public void elfoNasceComFlechasNulasENomeNaoNulo(){
-        Integer flechas = null;
-        String nome = "elfo";
-        Elfo elfo = new Elfo(nome, flechas);
-
-        assertEquals(nome, elfo.getNome());
-        assertNotNull(elfo.getNome());
-        assertEquals(42, elfo.getFlechas());
-        assertFalse(42 != elfo.getFlechas());
-        assertNotNull(elfo.getFlechas());
-        assertEquals(0, elfo.getExperiencia());
-        assertFalse(0 != elfo.getExperiencia());
-
-    }
-
-    @Test
     public void elfoNasceApenasComNome(){
         String nome = "elfo";
         Elfo elfo = new Elfo(nome);
