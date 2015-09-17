@@ -84,4 +84,20 @@ public class DwarfTest
         dwarf.receberFlechada();
         assertEquals(Status.MORTO, dwarf.getStatus());
     }
+    
+    @Test
+    public void dwarfNasceVivo(){
+        Dwarf dwarf = new Dwarf();
+        assertEquals(Status.VIVO, dwarf.getStatus());
+        
+    }
+    
+    @Test 
+    public void dwarfNasceComNomeEExperiencia0(){
+        Dwarf dwarf = new Dwarf("Dwarf");
+        assertEquals("Dwarf", dwarf.getNome());
+        assertEquals(0, dwarf.getExperiencia());
+    }
+    
+    
 }

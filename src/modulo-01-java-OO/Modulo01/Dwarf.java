@@ -6,11 +6,18 @@
  */
 public class Dwarf
 {
-    private int vida;
+    private String nome;
+    private int vida, experiencia;
     private Status status;
     public Dwarf(){
         this.vida = 110;
-        this.status = Status.MORTO;
+        this.status = Status.VIVO;
+        this.experiencia = 0;
+    }
+
+    public Dwarf(String nome){
+        this();
+        this.nome = nome;
     }
 
     public void receberFlechada(){
@@ -23,8 +30,16 @@ public class Dwarf
     public int getVida(){
         return this.vida;
     }
-    
+
     public Status getStatus(){
         return this.status;
+    }
+    
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public int getExperiencia(){
+        return this.experiencia;
     }
 }
