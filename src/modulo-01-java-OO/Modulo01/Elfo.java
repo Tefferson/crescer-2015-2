@@ -28,11 +28,6 @@ public class Elfo {
         alvo.receberFlechada();
     }
 
-    public void atirarFlechaRefactory(){
-        experiencia++;
-        flechas--;
-    }
-
     public String getNome() {
         return this.nome;
     }

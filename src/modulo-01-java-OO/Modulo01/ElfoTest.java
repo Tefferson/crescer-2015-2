@@ -53,17 +53,6 @@ public class ElfoTest
 
     }
 
-    @Test
-    public void elfoAtiraFlechaRefactory(){
-        int flechas = 23;
-        String nome = "elfo";
-        Elfo elfo = new Elfo(nome, flechas);
-        elfo.atirarFlechaRefactory();
-
-        assertEquals(flechas-1, elfo.getFlechas());
-        assertEquals(1, elfo.getExperiencia());
-
-    }
 
     @Test
     public void elfoAtiraFlechaNoDwarf(){
