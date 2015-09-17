@@ -13,7 +13,7 @@ public class DwarfTest
     }
 
     @Test
-    public void dwarfRecebeFlechadaEPerdeVida() {
+    public void dwarfRecebeFlechadaEPerde10DeVida() {
         Dwarf dwarf = new Dwarf();
         dwarf.receberFlechada();
         assertEquals(100, dwarf.getVida());
