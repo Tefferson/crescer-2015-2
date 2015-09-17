@@ -109,4 +109,33 @@ public class ElfoTest
         assertEquals(vidaEsperada, filhoDeBalin.getVida());
     }
 
+    @Test
+    public void elfoComNomeEFlechasInformadasToString() {
+        Elfo elfo1 = new Elfo("Acabaram os nomes", 1000);
+        String textoEsperado = "Acabaram os nomes possui 1000 flechas e 0 níveis de experiência.";
+        
+        assertEquals(textoEsperado, elfo1.toString());
+    }
+    
+    @Test
+    public void elfoComUmaFlechaInformadaToString() {
+        Elfo elfo1 = new Elfo("Monoflecha", 1);
+        String textoEsperado = "Monoflecha possui 1 flecha e 0 níveis de experiência.";
+        assertEquals(textoEsperado, elfo1.toString());
+    }
+    
+    @Test
+    public void elfoComUmDeExperienciaToString() {
+        Elfo elfo1 = new Elfo(null);
+        elfo1.atirarFlecha(new Dwarf());
+        String textoEsperado = "null possui 41 flechas e 1 nível de experiência.";
+        assertEquals(textoEsperado, elfo1.toString());
+    }
+    
+    
+    
+    
+    
+    
+    
 }
