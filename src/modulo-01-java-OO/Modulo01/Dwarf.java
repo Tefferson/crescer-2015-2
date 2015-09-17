@@ -10,6 +10,7 @@ public class Dwarf
     private int vida, experiencia;
     private Status status;
     private DataTerceiraEra dataNascimento;
+
     public Dwarf(){
         this.vida = 110;
         this.status = Status.VIVO;
@@ -23,15 +24,16 @@ public class Dwarf
     }
 
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
-        this();
-        this.nome = nome;
+        this(nome);
         this.dataNascimento = dataNascimento;
     }
 
     public void receberFlechada(){
-        vida -= 10;
-        if(vida==0){
-            this.status = Status.MORTO;
+        if(this.status==Status.VIVO){
+            vida -= 10;
+            if(vida==0){
+                this.status = Status.MORTO;
+            }
         }
     }
 

@@ -118,9 +118,62 @@ public class DwarfTest
     }
 
     @Test
-    public void dwarfNasceEmAnoNaoBissextoGetNumeroSorte(){
+    public void dwarfNasceComNomeEmAnoNaoBissextoGetNumeroSorte(){
         Dwarf dwarf = new Dwarf("Dwarf");
         assertEquals(101.0, dwarf.getNumeroSorte(), 0.5);
     }
 
+    @Test
+    public void dwarfNasceComNomeSeixasEmAnoNaoBissextoGetNumeroSorte(){
+        Dwarf dwarf = new Dwarf("Seixas");
+        assertEquals(33.0, dwarf.getNumeroSorte(), 0.5);
+    }
+
+    @Test
+    public void dwarfNasceComNomeEmAnoBissextoGetNumeroSorte(){
+        Dwarf dwarf = new Dwarf("Dwarf");
+        assertEquals(101.0, dwarf.getNumeroSorte(), 0.5);
+    }
+
+    @Test
+    public void dwarfNasceComNomeEmAnoBissextoERecebe3FlechadasGetNumeroSorte(){
+        Dwarf dwarf = new Dwarf("Dwarf", new DataTerceiraEra(1,1,2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(-3333.0, dwarf.getNumeroSorte(), 0.5);
+    }
+
+    @Test
+    public void dwarfNasceComNomeEmAnoBissextoERecebe7FlechadasGetNumeroSorte(){
+        Dwarf dwarf = new Dwarf("Dwarf", new DataTerceiraEra(1,1,2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(101.0, dwarf.getNumeroSorte(), 0.5);
+    }
+
+    @Test
+    public void dwarfMortoNãoDeveVida(){
+        Dwarf dwarf = new Dwarf();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(0, dwarf.getVida());
+    }
 }
