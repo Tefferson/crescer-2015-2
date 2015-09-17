@@ -68,4 +68,20 @@ public class DwarfTest
         assertEquals(vidaEsperada, gimli.getVida());
     }
 
+    @Test
+    public void dwarfMorre(){
+        Dwarf dwarf = new Dwarf();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(Status.MORTO, dwarf.getStatus());
+    }
 }
