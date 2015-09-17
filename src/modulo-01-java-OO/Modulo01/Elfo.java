@@ -41,7 +41,7 @@ public class Elfo {
     }
 
     public String toString() {
-        return "Legolas possui "+this.flechas+
+        return this.nome+" possui "+this.flechas+
         " flechas e "+this.experiencia+
         " níveis de experiência.";
     }

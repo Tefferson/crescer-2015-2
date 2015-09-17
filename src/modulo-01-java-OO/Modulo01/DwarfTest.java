@@ -9,12 +9,14 @@ public class DwarfTest
     public void dwarfNasceCom110DeVida() {
         Dwarf dwarf = new Dwarf();
         assertEquals(110, dwarf.getVida());
+        assertNotSame(120, dwarf.getVida());
     }
 
     @Test
-    public void dwarfRecebeFlechada() {
+    public void dwarfRecebeFlechadaEPerdeVida() {
         Dwarf dwarf = new Dwarf();
         dwarf.receberFlechada();
         assertEquals(100, dwarf.getVida());
+        assertNotSame(110, dwarf.getVida());
     }
 }
