@@ -66,7 +66,7 @@ public class Dwarf
                 return valorInicial*-33;
             }
         }else{
-            if(this.nome.equals("Seixas") || this.nome.equals("Meireles")){
+            if(this.nome=="Seixas" || this.nome=="Meireles"){
                 return (valorInicial*33)%100; 
             }
         }
