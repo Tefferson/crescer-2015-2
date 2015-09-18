@@ -29,8 +29,7 @@ public class Dwarf
             double numeroSorte = this.getNumeroSorte();
             if(numeroSorte<0){
                 this.experiencia += 2;
-            }else if(numeroSorte>=0 && numeroSorte <= 100){
-            }else{
+            }else if(!(numeroSorte>=0 && numeroSorte <= 100)){
                 vida -= 10;
                 if(vida==0){
                     this.status = Status.MORTO;
