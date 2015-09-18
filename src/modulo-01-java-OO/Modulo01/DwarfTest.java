@@ -7,14 +7,14 @@ public class DwarfTest
 {
     @Test
     public void dwarfNasceCom110DeVida() {
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Dwarf");
         assertEquals(110, dwarf.getVida());
         assertNotSame(120, dwarf.getVida());
     }
 
     @Test
     public void dwarfRecebeFlechadaEPerde10DeVida() {
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Dwarf");
         dwarf.receberFlechada();
         assertEquals(100, dwarf.getVida());
         assertNotSame(110, dwarf.getVida());
@@ -24,7 +24,7 @@ public class DwarfTest
     public void dwarfRecebeFlechaEPerde10Vida() {
         // AAA
         // Arrange
-        Dwarf gimli = new Dwarf();
+        Dwarf gimli = new Dwarf("Dwarf");
         int vidaEsperada = 100;
         // Act
         gimli.receberFlechada();
@@ -34,7 +34,7 @@ public class DwarfTest
 
     @Test
     public void dwarfRecebeFlecha11VezesEVidaÉ0() {
-        Dwarf gimli = new Dwarf();
+        Dwarf gimli = new Dwarf("Dwarf");
         int vidaEsperada = 0;
         // Act
         gimli.receberFlechada();
@@ -54,7 +54,7 @@ public class DwarfTest
 
     @Test
     public void dwarfRecebeFlecha7VezesEVidaÉ40() {
-        Dwarf gimli = new Dwarf();
+        Dwarf gimli = new Dwarf("Gimli");
         int vidaEsperada = 40;
         // Act
         gimli.receberFlechada();
@@ -70,7 +70,7 @@ public class DwarfTest
 
     @Test
     public void dwarfMorre(){
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Dwarf");
         dwarf.receberFlechada();
         dwarf.receberFlechada();
         dwarf.receberFlechada();
@@ -87,7 +87,7 @@ public class DwarfTest
 
     @Test
     public void dwarfNasceVivo(){
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Dwarf");
         assertEquals(Status.VIVO, dwarf.getStatus());
 
     }
@@ -101,7 +101,7 @@ public class DwarfTest
 
     @Test
     public void dwarfNasceSemNomeNaDataDefault(){
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Dwarf");
         DataTerceiraEra dataNascimento = dwarf.getDataNascimento();
         assertEquals(1, dataNascimento.getDia());
         assertEquals(1, dataNascimento.getMes());
@@ -154,12 +154,12 @@ public class DwarfTest
         dwarf.receberFlechada();
         dwarf.receberFlechada();
         dwarf.receberFlechada();
-        assertEquals(101.0, dwarf.getNumeroSorte(), 0.5);
+        assertEquals(-3333, dwarf.getNumeroSorte(), 0.5);
     }
 
     @Test
     public void dwarfMortoNãoDeveVida(){
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Dwarf");
         dwarf.receberFlechada();
         dwarf.receberFlechada();
         dwarf.receberFlechada();
