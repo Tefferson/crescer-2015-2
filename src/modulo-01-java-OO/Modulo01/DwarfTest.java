@@ -176,4 +176,28 @@ public class DwarfTest
         dwarf.receberFlechada();
         assertEquals(0, dwarf.getVida());
     }
+
+    @Test
+    public void dwarfNasceEmAnoBissextoRecebe2FlechadasEDepoisNãoPerdeMaisVidaPorFlechada(){
+        Dwarf dwarf = new Dwarf("Dwarf", new DataTerceiraEra(1,1,2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(90, dwarf.getVida());        
+    }
+
+    @Test
+    public void dwarfNasceEmAnoBissextoEGanha8DeExperiência(){
+        Dwarf dwarf = new Dwarf("Dwarf", new DataTerceiraEra(1,1,2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(8, dwarf.getExperiencia());        
+    }
 }
