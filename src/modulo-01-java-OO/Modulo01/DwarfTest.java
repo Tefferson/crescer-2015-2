@@ -145,7 +145,7 @@ public class DwarfTest
     }
 
     @Test
-    public void dwarfNasceComNomeEmAnoBissextoERecebe7FlechadasGetNumeroSorte(){
+    public void dwarfNasceComNomeEmAnoBissextoERecebe7FlechadasGetNumeroSorteEGanha10Experiência(){
         Dwarf dwarf = new Dwarf("Dwarf", new DataTerceiraEra(1,1,2000));
         dwarf.receberFlechada();
         dwarf.receberFlechada();
@@ -155,6 +155,21 @@ public class DwarfTest
         dwarf.receberFlechada();
         dwarf.receberFlechada();
         assertEquals(-3333, dwarf.getNumeroSorte(), 0.5);
+        assertEquals(10, dwarf.getExperiencia());
+    }
+
+    @Test
+    public void dwarfNasceComNomeMeirelesEmAnoNãoBissextoRecebe7FlechadasENãoGanhaExperiência(){
+        Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(1,1,200000001));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(33, dwarf.getNumeroSorte(), 0.5);
+        assertEquals(0, dwarf.getExperiencia());
     }
 
     @Test
@@ -199,5 +214,14 @@ public class DwarfTest
         dwarf.receberFlechada();
         dwarf.receberFlechada();
         assertEquals(8, dwarf.getExperiencia());        
+    }
+
+    @Test
+    public void dwarfNasceComNomeNuloEmAnoBissextoERecebe3FlechadasGetNumeroSorte(){
+        Dwarf dwarf = new Dwarf(null, new DataTerceiraEra(1,1,2000));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(-3333.0, dwarf.getNumeroSorte(), 0.5);
     }
 }
