@@ -75,4 +75,14 @@ public class Dwarf
 
         return valorInicial;
     }
+
+    public void tentarSorte(){
+        if(this.getNumeroSorte()==-3333.0){
+            this.inventario.adicionarMilDeCadaItem();
+        }
+    }
+
+    public Inventario getInventario(){
+        return this.inventario;
+    }
 }    

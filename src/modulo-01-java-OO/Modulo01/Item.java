@@ -20,4 +20,8 @@ public class Item
     public String getDescricao(){
         return this.descricao;
     }
+
+    public void adicionar1000(){
+        this.quantidade += 1000;
+    }
 }

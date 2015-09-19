@@ -27,4 +27,11 @@ public class Inventario
         }
         return nomes.replaceFirst(",","");
     }
+
+    public void adicionarMilDeCadaItem(){
+        int size = this.itens.size();
+        for(int i=0;i<size;i++){
+            itens.get(i).adicionar1000();
+        }
+    }
 }

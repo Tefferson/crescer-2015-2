@@ -224,4 +224,44 @@ public class DwarfTest
         dwarf.receberFlechada();
         assertEquals(-3333.0, dwarf.getNumeroSorte(), 0.5);
     }
+
+    @Test
+    public void dwarfTentaSorteEGanhaItens(){
+        Dwarf dwarf = new Dwarf(null, new DataTerceiraEra(1,1,2000));
+        Item bala = new Item("bala", 3);
+        Item bolo = new Item("bolo", 2);
+        Item salada = new Item("salada", 1);
+        Inventario inventario = dwarf.getInventario();
+        inventario.adicionarItem(bala);
+        inventario.adicionarItem(bolo);
+        inventario.adicionarItem(salada); 
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+
+        dwarf.tentarSorte();
+
+        assertEquals(1003,bala.getQuantidade());
+        assertEquals(1002,bolo.getQuantidade());
+        assertEquals(1001,salada.getQuantidade());
+    }
+
+    @Test
+    public void dwarfTentaSorteENãoGanhaItens(){
+        Dwarf dwarf = new Dwarf(null, new DataTerceiraEra(1,1,2001));
+        Item bala = new Item("bala", 3);
+        Item bolo = new Item("bolo", 2);
+        Item salada = new Item("salada", 1);
+        Inventario inventario = dwarf.getInventario();
+        inventario.adicionarItem(bala);
+        inventario.adicionarItem(bolo);
+        inventario.adicionarItem(salada); 
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+
+        dwarf.tentarSorte();
+
+        assertEquals(3,bala.getQuantidade());
+        assertEquals(2,bolo.getQuantidade());
+        assertEquals(1,salada.getQuantidade());
+    }
 }

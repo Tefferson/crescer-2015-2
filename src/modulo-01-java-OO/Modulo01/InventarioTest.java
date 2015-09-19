@@ -42,4 +42,6 @@ public class InventarioTest
 
         assertEquals(esperado, inventario.getDescricoesItens());
     }
+    
+    
 }
