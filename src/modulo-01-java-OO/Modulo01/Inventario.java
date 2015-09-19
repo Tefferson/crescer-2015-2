@@ -45,4 +45,13 @@ public class Inventario
         }
         return itens.get(indice);
     }
+
+    public void ordenarItens(){
+        ArrayList<Item> listaOrdenada = new ArrayList<>();
+        int size = this.itens.size();
+        for(int i=0;i<size;i++){
+            listaOrdenada.add(0,this.itens.remove(this.itens.indexOf(this.getItemComMaiorQuantidade())));
+        }
+        this.itens = listaOrdenada;
+    }
 }
