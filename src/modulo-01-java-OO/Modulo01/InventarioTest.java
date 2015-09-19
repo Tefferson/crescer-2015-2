@@ -42,6 +42,17 @@ public class InventarioTest
 
         assertEquals(esperado, inventario.getDescricoesItens());
     }
-    
-    
+
+    @Test
+    public void balaÉOItemComMaiorQuantidade(){
+        Inventario inventario = new Inventario();        
+        Item bala = new Item("bala", 3);
+        Item bolo = new Item("bolo", 2);
+        Item salada = new Item("salada", 1);
+        inventario.adicionarItem(bala);
+        inventario.adicionarItem(bolo);
+        inventario.adicionarItem(salada); 
+
+        assertEquals(bala, inventario.getItemComMaiorQuantidade());
+    }
 }
