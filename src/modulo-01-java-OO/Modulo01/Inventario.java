@@ -18,4 +18,13 @@ public class Inventario
     public ArrayList<Item> getItens(){
         return this.itens;
     }
+
+    public String getDescricoesItens(){
+        int size = this.itens.size();
+        String nomes = "";
+        for(int i=0;i<size;i++){
+            nomes += ","+itens.get(i).getDescricao();
+        }
+        return nomes.replaceFirst(",","");
+    }
 }

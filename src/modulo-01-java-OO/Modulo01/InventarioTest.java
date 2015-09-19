@@ -30,4 +30,16 @@ public class InventarioTest
 
         assertNotSame(bala, inventario.getItens().get(1));
     }
+
+    @Test
+    public void nomesDosItensSeparadosPorVírgula(){
+        Inventario inventario = new Inventario();
+        String esperado = "bolo,bala,salada";
+
+        inventario.adicionarItem(new Item("bolo", 2));
+        inventario.adicionarItem(new Item("bala", 3));
+        inventario.adicionarItem(new Item("salada", 1));
+
+        assertEquals(esperado, inventario.getDescricoesItens());
+    }
 }
