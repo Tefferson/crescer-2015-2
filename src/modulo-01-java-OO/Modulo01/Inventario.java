@@ -50,7 +50,9 @@ public class Inventario
         ArrayList<Item> listaOrdenada = new ArrayList<>();
         int size = this.itens.size();
         for(int i=0;i<size;i++){
-            listaOrdenada.add(0,this.itens.remove(this.itens.indexOf(this.getItemComMaiorQuantidade())));
+            Item item = this.getItemComMaiorQuantidade();
+            listaOrdenada.add(0,item);
+            this.itens.remove(item);
         }
         this.itens = listaOrdenada;
     }
