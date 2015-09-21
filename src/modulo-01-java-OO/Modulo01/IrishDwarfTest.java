@@ -28,8 +28,8 @@ public class IrishDwarfTest
         dwarf.tentarSorte();
 
         assertEquals(1009,bala.getQuantidade());
-        assertEquals(1006,bolo.getQuantidade());
-        assertEquals(1003,salada.getQuantidade());
+        assertEquals(1005,bolo.getQuantidade());
+        assertEquals(1002,salada.getQuantidade());
     }
 
     @Test
