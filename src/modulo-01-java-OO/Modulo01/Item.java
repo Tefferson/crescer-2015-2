@@ -25,7 +25,7 @@ public class Item
         this.quantidade += 1000;
     }
 
-    public void adicionarMilVezesMaisASomaDeCadaItem(){
-        this.quantidade += 1000+(1+quantidade)*quantidade/2;
+    public void adicionarMilVezesMaisASomaDaQuantidadeDeCadaItem(){
+        this.quantidade += 1000*(quantidade+(quantidade>0?1:-1))*Math.abs(quantidade)/2;
     }
 }

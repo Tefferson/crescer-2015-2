@@ -15,40 +15,75 @@ public class IrishDwarfTest
     @Test
     public void dwarfTentaSorteEGanhaItens(){
         IrishDwarf dwarf = new IrishDwarf(null, new DataTerceiraEra(1,1,2000));
-        Item bala = new Item("bala", 3);
-        Item bolo = new Item("bolo", 2);
-        Item salada = new Item("salada", 1);
         Inventario inventario = dwarf.getInventario();
-        inventario.adicionarItem(bala);
-        inventario.adicionarItem(bolo);
-        inventario.adicionarItem(salada); 
+        inventario.adicionarItem(new Item("bala", 4));
+        inventario.adicionarItem(new Item("bolo", 5));
+        inventario.adicionarItem(new Item("salada", 1));         
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("bala", 10004));
+        esperado.adicionarItem(new Item("bolo", 15005));
+        esperado.adicionarItem(new Item("salada", 1001));
         dwarf.receberFlechada();
         dwarf.receberFlechada();
 
         dwarf.tentarSorte();
 
-        assertEquals(1009,bala.getQuantidade());
-        assertEquals(1005,bolo.getQuantidade());
-        assertEquals(1002,salada.getQuantidade());
+        assertEquals(esperado, inventario);
+    }
+    
+    @Test
+    public void dwarfTentaSorteEGanhaItensNegativos(){
+        IrishDwarf dwarf = new IrishDwarf(null, new DataTerceiraEra(1,1,2000));
+        Inventario inventario = dwarf.getInventario();
+        inventario.adicionarItem(new Item("bala", 4));
+        inventario.adicionarItem(new Item("bolo", -5));
+        inventario.adicionarItem(new Item("salada", 1));         
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("bala", 10004));
+        esperado.adicionarItem(new Item("bolo", -15005));
+        esperado.adicionarItem(new Item("salada", 1001));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+
+        dwarf.tentarSorte();
+
+        assertEquals(esperado, inventario);
     }
 
     @Test
-    public void dwarfTentaSorteENãoGanhaItens(){
-        IrishDwarf dwarf = new IrishDwarf(null, new DataTerceiraEra(1,1,2001));
-        Item bala = new Item("bala", 3);
-        Item bolo = new Item("bolo", 2);
-        Item salada = new Item("salada", 1);
+    public void dwarfTentaSorteEGanhaItensZerados(){
+        IrishDwarf dwarf = new IrishDwarf(null, new DataTerceiraEra(1,1,2000));
         Inventario inventario = dwarf.getInventario();
-        inventario.adicionarItem(bala);
-        inventario.adicionarItem(bolo);
-        inventario.adicionarItem(salada); 
+        inventario.adicionarItem(new Item("bala", 0));
+        inventario.adicionarItem(new Item("bolo", 0));
+        inventario.adicionarItem(new Item("salada", -0));         
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("bala", 0));
+        esperado.adicionarItem(new Item("bolo", -0));
+        esperado.adicionarItem(new Item("salada", 0));
         dwarf.receberFlechada();
         dwarf.receberFlechada();
 
         dwarf.tentarSorte();
 
-        assertEquals(3,bala.getQuantidade());
-        assertEquals(2,bolo.getQuantidade());
-        assertEquals(1,salada.getQuantidade());
+        assertEquals(esperado, inventario);
+    }
+    
+    public void dwarfTentaSorteENãoGanhaItens(){
+        IrishDwarf dwarf = new IrishDwarf(null, new DataTerceiraEra(1,1,2001));
+        Inventario inventario = dwarf.getInventario();
+        inventario.adicionarItem(new Item("bala", 3));
+        inventario.adicionarItem(new Item("bolo", 2));
+        inventario.adicionarItem(new Item("salada", 1));         
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("bala", 3));
+        esperado.adicionarItem(new Item("bolo", 2));
+        esperado.adicionarItem(new Item("salada", 1)); 
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+
+        dwarf.tentarSorte();
+
+        assertEquals(esperado, inventario);
     }
 }
