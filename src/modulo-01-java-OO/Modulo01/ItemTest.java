@@ -18,4 +18,13 @@ public class ItemTest
         Item pocao = new Item("poção",5);
         assertEquals(itemEsperado, pocao);
     }
+    
+    @Test
+    public void shimbalaieCorrigido(){
+        Item item = new Item("gravata", 2);
+        
+        item.shimbalaie();
+        
+        assertEquals(new Item("gravata", 3002), item);
+    }
 }

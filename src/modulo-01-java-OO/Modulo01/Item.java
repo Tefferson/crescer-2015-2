@@ -28,4 +28,9 @@ public class Item
     public void adicionarMilVezesMaisASomaDaQuantidadeDeCadaItem(){
         this.quantidade += 1000*(quantidade+(quantidade>0?1:-1))*Math.abs(quantidade)/2;
     }
+
+    public void shimbalaie() {
+        int pa = this.quantidade * (this.quantidade + 1) / 2;
+        this.quantidade += (1000 * pa);
+    }
 }

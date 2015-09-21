@@ -30,7 +30,7 @@ public class IrishDwarfTest
 
         assertEquals(esperado, inventario);
     }
-    
+
     @Test
     public void dwarfTentaSorteEGanhaItensNegativos(){
         IrishDwarf dwarf = new IrishDwarf(null, new DataTerceiraEra(1,1,2000));
@@ -68,7 +68,8 @@ public class IrishDwarfTest
 
         assertEquals(esperado, inventario);
     }
-    
+
+    @Test
     public void dwarfTentaSorteENãoGanhaItens(){
         IrishDwarf dwarf = new IrishDwarf(null, new DataTerceiraEra(1,1,2001));
         Inventario inventario = dwarf.getInventario();
