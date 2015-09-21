@@ -34,11 +34,11 @@ public class Inventario
             itens.get(i).adicionar1000();
         }
     }
-    
+
     public void adicionarMilVezesMaisASomaDeCadaItem(){
         int size = this.itens.size();
         for(int i=0;i<size;i++){
-            itens.get(i).adicionarMilVezesMaisASomaDeCadaItem();
+            itens.get(i).adicionarMilVezesMaisASomaDaQuantidadeDeCadaItem();
         }
     }
 
@@ -62,5 +62,9 @@ public class Inventario
             this.itens.remove(item);
         }
         this.itens = listaOrdenada;
+    }
+
+    public boolean equals(Object obj){
+        return ((Inventario)obj).getItens().equals(this.itens);
     }
 }
