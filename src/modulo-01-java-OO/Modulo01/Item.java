@@ -24,4 +24,8 @@ public class Item
     public void adicionar1000(){
         this.quantidade += 1000;
     }
+
+    public void adicionarMilVezesMaisASomaDeCadaItem(){
+        this.quantidade = quantidade * 3 + 1000;
+    }
 }

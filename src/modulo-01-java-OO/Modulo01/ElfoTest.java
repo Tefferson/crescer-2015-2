@@ -131,11 +131,4 @@ public class ElfoTest
         String textoEsperado = "null possui 41 flechas e 1 nível de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
-    
-    
-    
-    
-    
-    
 }

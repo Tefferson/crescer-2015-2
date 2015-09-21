@@ -34,6 +34,13 @@ public class Inventario
             itens.get(i).adicionar1000();
         }
     }
+    
+    public void adicionarMilVezesMaisASomaDeCadaItem(){
+        int size = this.itens.size();
+        for(int i=0;i<size;i++){
+            itens.get(i).adicionarMilVezesMaisASomaDeCadaItem();
+        }
+    }
 
     public Item getItemComMaiorQuantidade(){
         int maiorQuantidade=Integer.MIN_VALUE, indice=0, size = itens.size();
