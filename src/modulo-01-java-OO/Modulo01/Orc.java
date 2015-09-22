@@ -11,9 +11,8 @@ public class Orc
     private Inventario inventario;
     private Status status;
 
-    public Orc()
-    {
-        this.vida = 20+(int)(Math.random()*100.0);
+    public Orc() {
+        this.vida = (int)(100 / 10 * 2.5);;
         this.inventario = new Inventario();
         this.status = Status.VIVO;
     }
@@ -48,7 +47,7 @@ public class Orc
     public void atacar(Dwarf dwarf) {
         dwarf.receberDano(this);
     }
-    
+
     public void atacar(Elfo elfo) {
         elfo.receberDano(this);
     }

@@ -22,12 +22,11 @@ public class OrcTest
     @Test
     public void orcRecebe1FlechadaDeDwarf(){
         Orc orc = new Orc();
-        int esperado = orc.getVida()-10;
 
         orc.receberFlechada(new Dwarf("dwarf"));
 
         assertEquals(Status.VIVO, orc.getStatus());
-        assertEquals(esperado, orc.getVida());
+        assertEquals(15, orc.getVida());
     }
 
     @Test
@@ -43,26 +42,24 @@ public class OrcTest
     @Test
     public void orcComEscudoRecebe2FlechadasDeDwarf(){
         Orc orc = new Orc();
-        int esperado = orc.getVida()-10;
         orc.adicionarItem(new Item("Escudo Uruk-Hai", 1));
 
         orc.receberFlechada(new Dwarf("dwarf"));
         orc.receberFlechada(new Dwarf("dwarf"));
 
         assertEquals(Status.VIVO, orc.getStatus());
-        assertEquals(esperado, orc.getVida());
+        assertEquals(15, orc.getVida());
     }
 
     @Test
     public void orcRecebe2FlechadasDeElfo(){
         Orc orc = new Orc();
-        int esperado = orc.getVida()-16;
 
         orc.receberFlechada(new Elfo("dwarf"));
         orc.receberFlechada(new Elfo("dwarf"));
 
         assertEquals(Status.VIVO, orc.getStatus());
-        assertEquals(esperado, orc.getVida());
+        assertEquals(9, orc.getVida());
     }
 
     @Test
