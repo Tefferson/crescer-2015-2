@@ -18,6 +18,6 @@ public class UrukHaiTest
         Orc orc = new UrukHai();
         
         assertEquals(150, orc.getVida());
-        assertEquals(12, orc.getDano());
+        assertEquals(12, orc.agirNoAtaque());
     }
 }

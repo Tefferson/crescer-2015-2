@@ -96,6 +96,6 @@ public class Dwarf
     }
 
     public void receberDano(Orc orc){
-        this.receberDano(orc.getDano());
+        this.receberDano(orc.agirNoAtaque());
     }
 }    

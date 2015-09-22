@@ -18,7 +18,7 @@ public class Orc
     }
 
     public void gerarDano(int dano) {
-        if(this.status==Status.VIVO){
+        if(this.status!=Status.MORTO){
             if(dano<vida){
                 this.vida -= dano;
             }else{
@@ -52,17 +52,20 @@ public class Orc
         elfo.receberDano(this);
     }
 
-    public int getDano(){
+    public int agirNoAtaque(){
         if(inventario.existeDescricaoItem("Espada")){
+            this.status = Status.VIVO;
             return 12;
         }else if(inventario.existeDescricaoItem("Arco")){
             int id = inventario.getIdByDescricao("Flecha");
             if(id>-1){
                 if(this.inventario.decrementarQuantidade(id)){
+                    this.status = Status.VIVO;
                     return 8;
                 }
             }
         }
+        this.status = Status.FUGITIVO;
         return 0;
     }
 

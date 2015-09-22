@@ -65,6 +65,6 @@ public class Elfo {
     }
 
     public void receberDano(Orc orc){
-        this.receberDano(orc.getDano());
+        this.receberDano(orc.agirNoAtaque());
     }
 }

@@ -67,7 +67,7 @@ public class OrcTest
         Orc orc = new Orc();
         orc.adicionarItem(new Item("Espada", 1));
 
-        assertEquals(12, orc.getDano());
+        assertEquals(12, orc.agirNoAtaque());
     }
 
     @Test
@@ -76,18 +76,18 @@ public class OrcTest
         orc.adicionarItem(new Item("Arco", 1));
         orc.adicionarItem(new Item("Flecha", 2));
 
-        assertEquals(8, orc.getDano());
+        assertEquals(8, orc.agirNoAtaque());
     }
-    
+
     @Test
     public void orcSemDano(){
         Orc orc = new Orc();
         orc.adicionarItem(new Item("Gravata", 1));
         orc.adicionarItem(new Item("Chapéu", 2));
 
-        assertEquals(0, orc.getDano());
+        assertEquals(0, orc.agirNoAtaque());
     }
-    
+
     @Test
     public void orcSemDanoAtaca3VezesDwarf(){
         Orc orc = new Orc();
@@ -98,10 +98,10 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
         orc.atacar(dwarf);
-        
+
         assertEquals(110, dwarf.getVida());
     }
-    
+
     @Test
     public void orcComEspadaAtaca3VezesDwarf(){
         Orc orc = new Orc();
@@ -112,10 +112,10 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
         orc.atacar(dwarf);
-        
+
         assertEquals(74, dwarf.getVida());
     }
-    
+
     @Test
     public void orcComArcoE4FlechasAtaca3VezesDwarf(){
         Orc orc = new Orc();
@@ -126,10 +126,10 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
         orc.atacar(dwarf);
-        
+
         assertEquals(86, dwarf.getVida());
     }
-    
+
     @Test
     public void orcComArcoE2FlechasAtaca4VezesElfo(){
         Orc orc = new Orc();
@@ -141,10 +141,10 @@ public class OrcTest
         orc.atacar(elfo);
         orc.atacar(elfo);
         orc.atacar(elfo);
-        
+
         assertEquals(64, elfo.getVida());
     }
-    
+
     @Test
     public void orcComArcoE4FlechasAtaca4VezesElfoEDwarf(){
         Orc orc = new Orc();
@@ -158,11 +158,11 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
         orc.atacar(elfo);
-        
+
         assertEquals(64, elfo.getVida());
         assertEquals(94, dwarf.getVida());
     }
-    
+
     @Test
     public void orcComEspadaEArcoAtaca4VezesElfoEDwarf(){
         Orc orc = new Orc();
@@ -177,8 +177,19 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
         orc.atacar(elfo);
-        
+
         assertEquals(56, elfo.getVida());
         assertEquals(86, dwarf.getVida());
+    }
+
+    @Test
+    public void orcFoge(){
+        Orc orc = new Orc();
+        orc.adicionarItem(new Item("Arcos", 1));
+        orc.adicionarItem(new Item("Adaga", 2));
+
+        orc.atacar(new Elfo("elfo"));
+
+        assertEquals(Status.FUGITIVO, orc.getStatus());
     }
 }
