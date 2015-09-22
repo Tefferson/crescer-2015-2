@@ -8,11 +8,11 @@ public class Orc
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
     protected int vida;
-    private Inventario inventario;
+    protected Inventario inventario;
     private Status status;
 
     public Orc() {
-        this.vida = (int)(100 / 10 * 2.5);;
+        this.vida = (int)(100 / 10 * 2.5);
         this.inventario = new Inventario();
         this.status = Status.VIVO;
     }
@@ -20,6 +20,7 @@ public class Orc
     public void gerarDano(int dano) {
         if(this.status!=Status.MORTO){
             if(dano<vida){
+                this.status = Status.FERIDO;
                 this.vida -= dano;
             }else{
                 this.vida=0;
@@ -28,15 +29,15 @@ public class Orc
         }
     }
 
-    public void receberFlechada(Elfo elfo) {
-        this.gerarDano(8);
-    }
-
-    public void receberFlechada(Dwarf dwarf) {
-        if(this.inventario.existeDescricaoItem("Escudo Uruk-Hai")){
-            gerarDano(5);
-        }else{            
-            gerarDano(10);
+    public void receberFlechada(PersonagemDaTerraMedia personagem) {
+        if(personagem instanceof Dwarf){
+            if(this.inventario.getItem("Escudo Uruk-Hai")!=null){
+                gerarDano(5);
+            }else{            
+                gerarDano(10);
+            }
+        } else if(personagem instanceof Elfo){
+            this.gerarDano(8);
         }
     }
 
@@ -44,28 +45,34 @@ public class Orc
         this.inventario.adicionarItem(novoItem);
     }
 
-    public void atacar(Dwarf dwarf) {
-        dwarf.receberDano(this);
+    private boolean possuiEspada(){
+        return this.inventario.getItem("Espada") != null;
     }
 
-    public void atacar(Elfo elfo) {
-        elfo.receberDano(this);
+    private boolean possuiArcoEFlecha(){
+        return this.inventario.getItem("Arco") != null &&
+        this.inventario.getItem("Flecha") != null;
     }
 
-    public int agirNoAtaque(){
-        if(inventario.existeDescricaoItem("Espada")){
-            this.status = Status.VIVO;
-            return 12;
-        }else if(inventario.existeDescricaoItem("Arco")){
-            int id = inventario.getIdByDescricao("Flecha");
-            if(id>-1){
-                if(this.inventario.decrementarQuantidade(id)){
-                    this.status = Status.VIVO;
-                    return 8;
-                }
-            }
+    private boolean possuiItensDeAtaque(){
+        return this.possuiEspada() || this.possuiArcoEFlecha();
+    }
+
+    public void atacar(PersonagemDaTerraMedia personagem) {
+        if(possuiItensDeAtaque()){
+            personagem.receberDano(this);
+        }else{            
+            this.status = Status.FUGITIVO;
         }
-        this.status = Status.FUGITIVO;
+    }
+
+    public int getDano(){
+        if(this.possuiEspada()){
+            return 12;
+        }else if(this.possuiArcoEFlecha()){
+            this.inventario.debitarQuantidadeDoItem("Flecha");
+            return 8;
+        }
         return 0;
     }
 

@@ -4,21 +4,15 @@
  * @author (seu nome) 
  * @version (número de versão ou data)
  */
-public class Dwarf
+public class Dwarf extends PersonagemDaTerraMedia
 {
-    protected String nome;
-    protected int vida, experiencia;
-    protected Status status;
     protected DataTerceiraEra dataNascimento;
-    protected Inventario inventario;
 
     public Dwarf(String nome){
+        super(nome);
         this.vida = 110;
-        this.status = Status.VIVO;
-        this.experiencia = 0;
         this.dataNascimento = new DataTerceiraEra(1,1,1);
         this.nome = nome;
-        this.inventario = new Inventario();
     }
 
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
@@ -36,22 +30,6 @@ public class Dwarf
                 this.status = Status.MORTO;
             }
         }
-    }
-
-    public int getVida(){
-        return this.vida;
-    }
-
-    public Status getStatus(){
-        return this.status;
-    }
-
-    public String getNome(){
-        return this.nome;
-    }
-
-    public int getExperiencia(){
-        return this.experiencia;
     }
 
     public DataTerceiraEra getDataNascimento(){
@@ -80,10 +58,6 @@ public class Dwarf
         }
     }
 
-    public Inventario getInventario(){
-        return this.inventario;
-    }
-
     private void receberDano(int dano){
         if(this.status==Status.VIVO){
             if(dano<this.vida){
@@ -93,9 +67,5 @@ public class Dwarf
                 this.vida=0;
             }
         }
-    }
-
-    public void receberDano(Orc orc){
-        this.receberDano(orc.agirNoAtaque());
     }
 }    

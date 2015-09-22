@@ -25,7 +25,7 @@ public class OrcTest
 
         orc.receberFlechada(new Dwarf("dwarf"));
 
-        assertEquals(Status.VIVO, orc.getStatus());
+        assertEquals(Status.FERIDO, orc.getStatus());
         assertEquals(15, orc.getVida());
     }
 
@@ -47,7 +47,7 @@ public class OrcTest
         orc.receberFlechada(new Dwarf("dwarf"));
         orc.receberFlechada(new Dwarf("dwarf"));
 
-        assertEquals(Status.VIVO, orc.getStatus());
+        assertEquals(Status.FERIDO, orc.getStatus());
         assertEquals(15, orc.getVida());
     }
 
@@ -58,7 +58,7 @@ public class OrcTest
         orc.receberFlechada(new Elfo("dwarf"));
         orc.receberFlechada(new Elfo("dwarf"));
 
-        assertEquals(Status.VIVO, orc.getStatus());
+        assertEquals(Status.FERIDO, orc.getStatus());
         assertEquals(9, orc.getVida());
     }
 
@@ -67,7 +67,7 @@ public class OrcTest
         Orc orc = new Orc();
         orc.adicionarItem(new Item("Espada", 1));
 
-        assertEquals(12, orc.agirNoAtaque());
+        assertEquals(12, orc.getDano());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class OrcTest
         orc.adicionarItem(new Item("Arco", 1));
         orc.adicionarItem(new Item("Flecha", 2));
 
-        assertEquals(8, orc.agirNoAtaque());
+        assertEquals(8, orc.getDano());
     }
 
     @Test
@@ -85,7 +85,7 @@ public class OrcTest
         orc.adicionarItem(new Item("Gravata", 1));
         orc.adicionarItem(new Item("Chapéu", 2));
 
-        assertEquals(0, orc.agirNoAtaque());
+        assertEquals(0, orc.getDano());
     }
 
     @Test

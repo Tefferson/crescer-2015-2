@@ -18,6 +18,6 @@ public class SnagaTest
         Orc orc = new Snaga();
         
         assertEquals(70, orc.getVida());
-        assertEquals(8, orc.agirNoAtaque());
+        assertEquals(8, orc.getDano());
     }
 }

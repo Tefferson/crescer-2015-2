@@ -67,52 +67,29 @@ public class Inventario
         return ((Inventario)obj).getItens().equals(this.itens);
     }
 
-    public boolean existeDescricaoItem(String descricao){
+    public Item getItem(String descricao){
         for(Item item : this.itens){
             if(item.getDescricao()!=null){
                 if(item.getDescricao().equals(descricao)){
-                    return true;
+                    return item;
                 }
             }else{
                 if(descricao==null){            
-                    return true;
+                    return item;
                 }
             }
         }
-        return false;
+        return null;
     }
 
-    public int getIdByDescricao(String descricao){
-        int id=0;
-        if(descricao == null){
-            for(Item item:itens){
-                if(item.getDescricao()==null){
-                    return id;
-                }
-                id++;
-            }
-        }else{
-            for(Item item:itens){
-                if(descricao.equals(item.getDescricao())){
-                    return id;
-                }
-                id++;
-            }
-        }
-        return -1;
-    }
-
-    public boolean decrementarQuantidade(int id){
-        Item item = this.itens.get(id);
+    public void debitarQuantidadeDoItem(String descricao){
+        Item item = this.getItem(descricao);
         if(item.getQuantidade()==1){
             item.decrementarQuantidade();
             this.itens.remove(item);
-            return true;
         }else if(item.getQuantidade()>0){
             item.decrementarQuantidade();
-            return true;
         }
-        return false;
     }
 
 }
