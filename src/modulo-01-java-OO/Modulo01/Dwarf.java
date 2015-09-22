@@ -83,4 +83,19 @@ public class Dwarf
     public Inventario getInventario(){
         return this.inventario;
     }
+
+    private void receberDano(int dano){
+        if(this.status==Status.VIVO){
+            if(dano<this.vida){
+                this.vida-=dano;
+            }else{
+                this.status = Status.MORTO;
+                this.vida=0;
+            }
+        }
+    }
+
+    public void receberDano(Orc orc){
+        this.receberDano(orc.getDano());
+    }
 }    

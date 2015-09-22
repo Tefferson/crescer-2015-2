@@ -5,8 +5,10 @@ public class Elfo {
     private String nome;
     private int flechas, experiencia;
     private Status status;
-    
+    private int vida;
+
     public Elfo(String nome, int flechas) {
+        this.vida = 80;
         this.nome = nome;
         this.flechas = flechas;
         this.status = Status.VIVO;
@@ -15,11 +17,13 @@ public class Elfo {
     public Elfo(String nome) {
         this(nome, 42);
     }
+
     public void atirarFlecha(Dwarf dwarf) {
         flechas--;
         experiencia++;
         dwarf.receberFlechada();
     }
+
     public String getNome() {
         return nome;
     }
@@ -32,6 +36,10 @@ public class Elfo {
         return this.experiencia;
     }
 
+    public int getVida(){
+        return this.vida;
+    }
+    
     public String toString() {
 
         boolean flechaNoSingular = Math.abs(this.flechas) == 1;
@@ -43,5 +51,20 @@ public class Elfo {
             flechaNoSingular ? "flecha" : "flechas",
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
+    }
+    
+    private void receberDano(int dano){
+        if(this.status==Status.VIVO){
+            if(dano<this.vida){
+                this.vida-=dano;
+            }else{
+                this.status = Status.MORTO;
+                this.vida=0;
+            }
+        }
+    }
+
+    public void receberDano(Orc orc){
+        this.receberDano(orc.getDano());
     }
 }

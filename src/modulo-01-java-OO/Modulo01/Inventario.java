@@ -67,4 +67,53 @@ public class Inventario
     public boolean equals(Object obj){
         return ((Inventario)obj).getItens().equals(this.itens);
     }
+
+    public boolean existeDescricaoItem(String descricao){
+        for(Item item : this.itens){
+            if(item.getDescricao()!=null){
+                if(item.getDescricao().equals(descricao)){
+                    return true;
+                }
+            }else{
+                if(descricao==null){            
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int getIdByDescricao(String descricao){
+        int id=0;
+        if(descricao == null){
+            for(Item item:itens){
+                if(item.getDescricao()==null){
+                    return id;
+                }
+                id++;
+            }
+        }else{
+            for(Item item:itens){
+                if(descricao.equals(item.getDescricao())){
+                    return id;
+                }
+                id++;
+            }
+        }
+        return -1;
+    }
+
+    public boolean decrementarQuantidade(int id){
+        Item item = this.itens.get(id);
+        if(item.getQuantidade()==1){
+            item.decrementarQuantidade();
+            this.itens.remove(item);
+            return true;
+        }else if(item.getQuantidade()>0){
+            item.decrementarQuantidade();
+            return true;
+        }
+        return false;
+    }
+
 }
