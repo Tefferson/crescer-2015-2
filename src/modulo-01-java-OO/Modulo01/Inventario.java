@@ -20,10 +20,9 @@ public class Inventario
     }
 
     public String getDescricoesItens(){
-        int size = this.itens.size();
         String nomes = "";
-        for(int i=0;i<size;i++){
-            nomes += ","+itens.get(i).getDescricao();
+        for(Item item : this.itens){
+            nomes += ","+item.getDescricao();
         }
         return nomes.replaceFirst(",","");
     }
