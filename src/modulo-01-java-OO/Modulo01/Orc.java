@@ -29,7 +29,7 @@ public class Orc
         }
     }
 
-    public void receberFlechada(PersonagemDaTerraMedia personagem) {
+    public void receberAtaque(PersonagemDaTerraMedia personagem) {
         if(personagem instanceof Dwarf){
             if(this.inventario.getItem("Escudo Uruk-Hai")!=null){
                 gerarDano(5);

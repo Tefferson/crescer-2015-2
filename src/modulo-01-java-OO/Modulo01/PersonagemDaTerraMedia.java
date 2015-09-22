@@ -19,7 +19,7 @@ public class PersonagemDaTerraMedia
         this.status = Status.VIVO;
         this.experiencia = 0;
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -35,7 +35,7 @@ public class PersonagemDaTerraMedia
     public void receberDano(Orc orc){
         this.receberDano(orc.getDano());
     }
-    
+
     public Inventario getInventario(){
         return this.inventario;
     }
@@ -43,7 +43,7 @@ public class PersonagemDaTerraMedia
     public Status getStatus(){
         return this.status;
     }
-    
+
     private void receberDano(int dano){
         if(this.status!=Status.MORTO){
             if(dano<this.vida){
@@ -54,5 +54,17 @@ public class PersonagemDaTerraMedia
                 this.vida=0;
             }
         }
+    }
+
+    public void adicionarItem(Item item){
+        this.inventario.adicionarItem(item);
+    }
+
+    public void perderItem(Item item){
+        this.inventario.perderItem(item);
+    }
+
+    public void atacar(Orc orc){
+        orc.receberAtaque(this);
     }
 }

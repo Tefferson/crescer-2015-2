@@ -23,7 +23,7 @@ public class OrcTest
     public void orcRecebe1FlechadaDeDwarf(){
         Orc orc = new Orc();
 
-        orc.receberFlechada(new Dwarf("dwarf"));
+        orc.receberAtaque(new Dwarf("dwarf"));
 
         assertEquals(Status.FERIDO, orc.getStatus());
         assertEquals(15, orc.getVida());
@@ -33,7 +33,7 @@ public class OrcTest
     public void orcRecebe13FlechadasDeDwarf(){
         Orc orc = new Orc();
 
-        for(int i=0;i<13;i++){orc.receberFlechada(new Dwarf("dwarf"));}
+        for(int i=0;i<13;i++){orc.receberAtaque(new Dwarf("dwarf"));}
 
         assertEquals(Status.MORTO, orc.getStatus());
         assertEquals(0, orc.getVida());
@@ -44,8 +44,8 @@ public class OrcTest
         Orc orc = new Orc();
         orc.adicionarItem(new Item("Escudo Uruk-Hai", 1));
 
-        orc.receberFlechada(new Dwarf("dwarf"));
-        orc.receberFlechada(new Dwarf("dwarf"));
+        orc.receberAtaque(new Dwarf("dwarf"));
+        orc.receberAtaque(new Dwarf("dwarf"));
 
         assertEquals(Status.FERIDO, orc.getStatus());
         assertEquals(15, orc.getVida());
@@ -55,8 +55,8 @@ public class OrcTest
     public void orcRecebe2FlechadasDeElfo(){
         Orc orc = new Orc();
 
-        orc.receberFlechada(new Elfo("dwarf"));
-        orc.receberFlechada(new Elfo("dwarf"));
+        orc.receberAtaque(new Elfo("dwarf"));
+        orc.receberAtaque(new Elfo("dwarf"));
 
         assertEquals(Status.FERIDO, orc.getStatus());
         assertEquals(9, orc.getVida());
