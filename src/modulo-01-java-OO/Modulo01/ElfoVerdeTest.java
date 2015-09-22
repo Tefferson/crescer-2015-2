@@ -47,18 +47,40 @@ public class ElfoVerdeTest
     @Test
     public void elfoAdicionaItemArcoEFlechaDeVidro(){
         Elfo elfo = new ElfoVerde("elfo");
-
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("Arco e Flecha de Vidro",1));
         elfo.adicionarItem(new Item("Arco e Flecha de Vidro",1));
 
-        assertEquals(new Item("Arco e Flecha de Vidro",1), elfo.getInventario().getItem("Arco e Flecha de Vidro"));
+        assertEquals(esperado, elfo.getInventario());
     }
 
     @Test
-    public void elfoNãoConsegueAdicionaItem(){
+    public void elfoNãoConsegueAdicionarItem(){
         Elfo elfo = new ElfoVerde("elfo");
+        Inventario esperado = new Inventario();
 
         elfo.adicionarItem(new Item("Arco Simples",1));
 
-        assertNull(elfo.getInventario().getItem("Arco Simples"));
+        assertEquals(esperado, elfo.getInventario());
+    }
+
+    @Test
+    public void elfoNãoConsegueAdicionarItemComdescriçãoNula(){
+        Elfo elfo = new ElfoVerde("elfo");
+        Inventario esperado = new Inventario();
+        elfo.adicionarItem(new Item("Arco e Flecha de Vidro",1));
+        esperado.adicionarItem(new Item("Arco e Flecha de Vidro",1));
+
+        assertEquals(esperado, elfo.getInventario());
+    }
+
+    @Test
+    public void elfoNãoConsegueAdicionaItemNulo(){
+        Elfo elfo = new ElfoVerde("elfo");
+        Inventario esperado = new Inventario();
+        elfo.adicionarItem(null);
+
+        assertEquals(esperado, elfo.getInventario());
     }
 }
+
