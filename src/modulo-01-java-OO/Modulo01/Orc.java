@@ -6,8 +6,8 @@
  */
 public class Orc extends PersonagemDaTerraMedia
 {
-    public Orc(String nome) {
-        super(nome);
+    public Orc() {
+        super();
         this.vida = (int)(100 / 10 * 2.5);
     }
 

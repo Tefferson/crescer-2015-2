@@ -13,7 +13,7 @@ public class OrcTest
 {
     @Test
     public void orcNasceVivoEComVidaPositiva(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
 
         assertEquals(Status.VIVO, orc.getStatus());
         assertTrue(orc.getVida()>0);
@@ -21,7 +21,7 @@ public class OrcTest
 
     @Test
     public void orcRecebe1FlechadaDeDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
 
         orc.receberDano(new Dwarf("dwarf"));
 
@@ -31,7 +31,7 @@ public class OrcTest
 
     @Test
     public void orcRecebe13FlechadasDeDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
 
         for(int i=0;i<13;i++){orc.receberDano(new Dwarf("dwarf"));}
 
@@ -41,7 +41,7 @@ public class OrcTest
 
     @Test
     public void orcComEscudoRecebe2FlechadasDeDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         orc.adicionarItem(new Item("Escudo Uruk-Hai", 1));
 
         orc.receberDano(new Dwarf("dwarf"));
@@ -53,7 +53,7 @@ public class OrcTest
 
     @Test
     public void orcRecebe2FlechadasDeElfo(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
 
         orc.receberDano(new Elfo("dwarf"));
         orc.receberDano(new Elfo("dwarf"));
@@ -64,7 +64,7 @@ public class OrcTest
 
     @Test
     public void danoDeOrcÉ12ComEspada(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         orc.adicionarItem(new Item("Espada", 1));
 
         assertEquals(12, orc.getDano());
@@ -72,7 +72,7 @@ public class OrcTest
 
     @Test
     public void danoDeOrcÉ8ComArcoEFlecha(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         orc.adicionarItem(new Item("Arco", 1));
         orc.adicionarItem(new Item("Flecha", 2));
 
@@ -81,7 +81,7 @@ public class OrcTest
 
     @Test
     public void orcSemDano(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         orc.adicionarItem(new Item("Gravata", 1));
         orc.adicionarItem(new Item("Chapéu", 2));
 
@@ -90,7 +90,7 @@ public class OrcTest
 
     @Test
     public void orcSemDanoAtaca3VezesDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         Dwarf dwarf = new Dwarf("dwarf");
         orc.adicionarItem(new Item("Gravata", 1));
         orc.adicionarItem(new Item("Chapéu", 2));
@@ -104,7 +104,7 @@ public class OrcTest
 
     @Test
     public void orcComEspadaAtaca3VezesDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         Dwarf dwarf = new Dwarf("dwarf");
         orc.adicionarItem(new Item("Espada", 1));
         orc.adicionarItem(new Item("Chapéu", 2));
@@ -118,7 +118,7 @@ public class OrcTest
 
     @Test
     public void orcComArcoE4FlechasAtaca3VezesDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         Dwarf dwarf = new Dwarf("dwarf");
         orc.adicionarItem(new Item("Arco", 1));
         orc.adicionarItem(new Item("Flecha", 4));
@@ -132,7 +132,7 @@ public class OrcTest
 
     @Test
     public void orcComArcoE2FlechasAtaca4VezesElfo(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         Elfo elfo = new Elfo("elfo");
         orc.adicionarItem(new Item("Arco", 1));
         orc.adicionarItem(new Item("Flecha", 2));
@@ -147,7 +147,7 @@ public class OrcTest
 
     @Test
     public void orcComArcoE4FlechasAtaca4VezesElfoEDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         Dwarf dwarf = new Dwarf("dwarf");
         Elfo elfo = new Elfo("elfo");
         orc.adicionarItem(new Item("Arco", 1));
@@ -165,7 +165,7 @@ public class OrcTest
 
     @Test
     public void orcComEspadaEArcoAtaca4VezesElfoEDwarf(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         Dwarf dwarf = new Dwarf("dwarf");
         Elfo elfo = new Elfo("elfo");
         orc.adicionarItem(new Item("Arco", 1));
@@ -184,7 +184,7 @@ public class OrcTest
 
     @Test
     public void orcFoge(){
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
         orc.adicionarItem(new Item("Arcos", 1));
         orc.adicionarItem(new Item("Adaga", 2));
 
