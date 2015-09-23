@@ -17,7 +17,7 @@ public class SnagaTest
     public void snagaNasceCom70DeVidaArcoEFlechas(){
         Orc orc = new Snaga();
         
-        assertEquals(70, orc.getVida());
-        assertEquals(8, orc.getDano());
+        assertEquals(70, orc.getVida(), 0);
+        assertEquals(8, orc.getDano(), 0);
     }
 }
