@@ -3,9 +3,11 @@
  */
 public class Elfo extends PersonagemDaTerraMedia{
     private int flechas;
+    private static int contador = 0;
 
     public Elfo(String nome, int flechas) {
         super(nome);
+        this.contador++;
         this.vida = 100;
         this.nome = nome;
         this.flechas = flechas;
@@ -26,7 +28,6 @@ public class Elfo extends PersonagemDaTerraMedia{
     }
 
     public String toString() {
-
         boolean flechaNoSingular = Math.abs(this.flechas) == 1;
         boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
 
@@ -36,5 +37,17 @@ public class Elfo extends PersonagemDaTerraMedia{
             flechaNoSingular ? "flecha" : "flechas",
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
+    }
+
+    public int getContagem(){
+        return this.contador;
+    }
+
+    public static void resetContagem(){
+        Elfo.contador = 0;
+    }
+
+    public int hashCode(){
+        return (this.getClass().getName() + this.getNome()).hashCode();
     }
 }
