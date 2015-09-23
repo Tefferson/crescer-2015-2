@@ -25,7 +25,7 @@ public class ElfoVerdeTest
         // Assert
         assertEquals(qtdFlechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class ElfoVerdeTest
         // Assert
         assertEquals(qtdFlechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0);
     }
 
     @Test
