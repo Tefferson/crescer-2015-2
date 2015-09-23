@@ -8,16 +8,16 @@ public class DwarfTest
     @Test
     public void dwarfNasceCom110DeVida() {
         Dwarf dwarf = new Dwarf("Dwarf");
-        assertEquals(110, dwarf.getVida());
-        assertNotSame(120, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(), 0);
+        assertFalse(120 == dwarf.getVida());
     }
 
     @Test
     public void dwarfRecebeFlechadaEPerde10DeVida() {
         Dwarf dwarf = new Dwarf("Dwarf");
         dwarf.receberFlechada();
-        assertEquals(100, dwarf.getVida());
-        assertNotSame(110, dwarf.getVida());
+        assertEquals(100, dwarf.getVida(), 0);
+        assertFalse(110 == dwarf.getVida());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class DwarfTest
         // Act
         gimli.receberFlechada();
         // Assert
-        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(), 0);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class DwarfTest
         gimli.receberFlechada();
         gimli.receberFlechada();
         // Assert
-        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(), 0);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class DwarfTest
         gimli.receberFlechada();
         gimli.receberFlechada();
         // Assert
-        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(), 0);
     }
 
     @Test
@@ -189,7 +189,7 @@ public class DwarfTest
         dwarf.receberFlechada();
         dwarf.receberFlechada();
         dwarf.receberFlechada();
-        assertEquals(0, dwarf.getVida());
+        assertEquals(0, dwarf.getVida(), 0);
     }
 
     @Test
@@ -201,7 +201,7 @@ public class DwarfTest
         dwarf.receberFlechada();
         dwarf.receberFlechada();
         dwarf.receberFlechada();
-        assertEquals(90, dwarf.getVida());        
+        assertEquals(90, dwarf.getVida(), 0);        
     }
 
     @Test
