@@ -26,7 +26,7 @@ public class OrcTest
         orc.receberDano(new Dwarf("dwarf"));
 
         assertEquals(Status.FERIDO, orc.getStatus());
-        assertEquals(15, orc.getVida());
+        assertEquals(15, orc.getVida(), 0);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class OrcTest
         for(int i=0;i<13;i++){orc.receberDano(new Dwarf("dwarf"));}
 
         assertEquals(Status.MORTO, orc.getStatus());
-        assertEquals(0, orc.getVida());
+        assertEquals(0, orc.getVida(), 0);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class OrcTest
         orc.receberDano(new Dwarf("dwarf"));
 
         assertEquals(Status.FERIDO, orc.getStatus());
-        assertEquals(13, orc.getVida());
+        assertEquals(13, orc.getVida(), 0);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class OrcTest
         orc.receberDano(new Elfo("dwarf"));
 
         assertEquals(Status.FERIDO, orc.getStatus());
-        assertEquals(5, orc.getVida());
+        assertEquals(5, orc.getVida(), 0);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
 
-        assertEquals(110, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(), 0);
     }
 
     @Test
@@ -113,7 +113,7 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
 
-        assertEquals(74, dwarf.getVida());
+        assertEquals(74, dwarf.getVida(), 0);
     }
 
     @Test
@@ -127,7 +127,7 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(dwarf);
 
-        assertEquals(86, dwarf.getVida());
+        assertEquals(86, dwarf.getVida(), 0);
     }
 
     @Test
@@ -142,7 +142,7 @@ public class OrcTest
         orc.atacar(elfo);
         orc.atacar(elfo);
 
-        assertEquals(64, elfo.getVida());
+        assertEquals(84, elfo.getVida(), 0);
     }
 
     @Test
@@ -159,8 +159,8 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(elfo);
 
-        assertEquals(64, elfo.getVida());
-        assertEquals(94, dwarf.getVida());
+        assertEquals(84, elfo.getVida(), 0);
+        assertEquals(94, dwarf.getVida(), 0);
     }
 
     @Test
@@ -178,8 +178,8 @@ public class OrcTest
         orc.atacar(dwarf);
         orc.atacar(elfo);
 
-        assertEquals(56, elfo.getVida());
-        assertEquals(86, dwarf.getVida());
+        assertEquals(76, elfo.getVida(), 0);
+        assertEquals(86, dwarf.getVida(), 0);
     }
 
     @Test
@@ -202,7 +202,7 @@ public class OrcTest
 
         orc.atacar(orc2);
 
-        assertEquals(15, orc2.getVida());
+        assertEquals(15, orc2.getVida(), 0);
     }
 
     @Test
@@ -212,7 +212,7 @@ public class OrcTest
 
         snaga.atacar(urukhai);
 
-        assertEquals(144, urukhai.getVida());
+        assertEquals(144, urukhai.getVida(), 0);
     }
 
 }
