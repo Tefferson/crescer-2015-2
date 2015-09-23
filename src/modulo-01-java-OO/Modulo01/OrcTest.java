@@ -192,4 +192,27 @@ public class OrcTest
 
         assertEquals(Status.FUGITIVO, orc.getStatus());
     }
+
+    @Test
+    public void orcAtacaOrc(){
+        Orc orc = new Orc();
+        Orc orc2 = new Orc();
+        orc.adicionarItem(new Item("Espada", 1));
+        orc2.adicionarItem(new Item("Espada", 1));
+
+        orc.atacar(orc2);
+
+        assertEquals(15, orc2.getVida());
+    }
+
+    @Test
+    public void snagaAtacaUrukHai(){
+        Orc snaga = new Snaga();
+        Orc urukhai = new UrukHai();
+
+        snaga.atacar(urukhai);
+
+        assertEquals(144, urukhai.getVida());
+    }
+
 }
