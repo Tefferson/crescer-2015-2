@@ -57,15 +57,4 @@ public class Dwarf extends PersonagemDaTerraMedia
             this.inventario.adicionarMilDeCadaItem();
         }
     }
-
-    private void receberDano(int dano){
-        if(this.status==Status.VIVO){
-            if(dano<this.vida){
-                this.vida-=dano;
-            }else{
-                this.status = Status.MORTO;
-                this.vida=0;
-            }
-        }
-    }
 }    
