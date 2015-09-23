@@ -25,7 +25,7 @@ public class PersonagemDaTerraMediaTest
     @Test
     public void dwarfAtacaOrc(){
         PersonagemDaTerraMedia personagem = new Elfo("Personagem");
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
 
         personagem.atacar(orc);
 
@@ -35,7 +35,7 @@ public class PersonagemDaTerraMediaTest
     @Test
     public void elfoAtacaOrc(){
         PersonagemDaTerraMedia personagem = new Dwarf("Personagem");
-        Orc orc = new Orc("orc");
+        Orc orc = new Orc();
 
         personagem.atacar(orc);
 

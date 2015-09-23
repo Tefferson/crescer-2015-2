@@ -13,11 +13,15 @@ public class PersonagemDaTerraMedia
     protected Status status;
     protected Inventario inventario;
 
-    public PersonagemDaTerraMedia(String nome){
-        this.nome = nome;
+    public PersonagemDaTerraMedia(){
         this.inventario = new Inventario();
         this.status = Status.VIVO;
         this.experiencia = 0;
+    }
+
+    public PersonagemDaTerraMedia(String nome){
+        this();
+        this.nome = nome;
     }
 
     public String getNome() {
