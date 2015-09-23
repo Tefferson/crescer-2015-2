@@ -1,5 +1,4 @@
 
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -16,8 +15,8 @@ public class UrukHaiTest
     @Test
     public void urukHaiNasceCom150DeVidaEUmaEspada(){
         Orc orc = new UrukHai();
-        
-        assertEquals(150, orc.getVida());
-        assertEquals(12, orc.getDano());
+
+        assertEquals(150, orc.getVida(), 0);
+        assertEquals(12, orc.getDano(), 0);
     }
 }
