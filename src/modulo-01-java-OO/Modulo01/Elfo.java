@@ -6,7 +6,7 @@ public class Elfo extends PersonagemDaTerraMedia{
 
     public Elfo(String nome, int flechas) {
         super(nome);
-        this.vida = 80;
+        this.vida = 100;
         this.nome = nome;
         this.flechas = flechas;
     }
@@ -24,7 +24,7 @@ public class Elfo extends PersonagemDaTerraMedia{
     public int getFlechas() {
         return this.flechas;
     }
-    
+
     public String toString() {
 
         boolean flechaNoSingular = Math.abs(this.flechas) == 1;

@@ -63,7 +63,7 @@ public class ElfoTest
         // Assert
         assertEquals(qtdFlechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0);
     }
 
     @Test
@@ -81,8 +81,8 @@ public class ElfoTest
         // Assert
         assertEquals(qtdFlechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
-        assertEquals(vidaEsperada, filhoDeBalin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0);
+        assertEquals(vidaEsperada, filhoDeBalin.getVida(), 0);
     }
 
     @Test
@@ -105,25 +105,25 @@ public class ElfoTest
         assertEquals(experienciaEsperada, elfo1.getExperiencia());
         assertEquals(qtdFlechasEsperada, elfo2.getFlechas());
         assertEquals(experienciaEsperada, elfo2.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
-        assertEquals(vidaEsperada, filhoDeBalin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(), 0);
+        assertEquals(vidaEsperada, filhoDeBalin.getVida(), 0);
     }
 
     @Test
     public void elfoComNomeEFlechasInformadasToString() {
         Elfo elfo1 = new Elfo("Acabaram os nomes", 1000);
         String textoEsperado = "Acabaram os nomes possui 1000 flechas e 0 níveis de experiência.";
-        
+
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoComUmaFlechaInformadaToString() {
         Elfo elfo1 = new Elfo("Monoflecha", 1);
         String textoEsperado = "Monoflecha possui 1 flecha e 0 níveis de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }
-    
+
     @Test
     public void elfoComUmDeExperienciaToString() {
         Elfo elfo1 = new Elfo(null);
