@@ -15,7 +15,7 @@ public class UrukHaiTest
 {
     @Test
     public void urukHaiNasceCom150DeVidaEUmaEspada(){
-        Orc orc = new UrukHai();
+        Orc orc = new UrukHai("uruk-hai");
         
         assertEquals(150, orc.getVida());
         assertEquals(12, orc.getDano());
