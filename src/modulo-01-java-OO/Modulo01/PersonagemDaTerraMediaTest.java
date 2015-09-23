@@ -29,7 +29,7 @@ public class PersonagemDaTerraMediaTest
 
         personagem.atacar(orc);
 
-        assertEquals(15, orc.getVida());
+        assertEquals(15, orc.getVida(), 0);
     }
 
     @Test
@@ -39,6 +39,6 @@ public class PersonagemDaTerraMediaTest
 
         personagem.atacar(orc);
 
-        assertEquals(15, orc.getVida());
+        assertEquals(15, orc.getVida(), 0);
     }
 }

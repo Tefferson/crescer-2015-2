@@ -8,7 +8,7 @@
 public class PersonagemDaTerraMedia
 {
     protected String nome;
-    protected int vida;
+    protected double vida;
     protected int experiencia;
     protected Status status;
     protected Inventario inventario;
@@ -32,7 +32,7 @@ public class PersonagemDaTerraMedia
         return this.experiencia;
     }
 
-    public int getVida(){
+    public double getVida(){
         return this.vida;
     }
 
@@ -48,9 +48,9 @@ public class PersonagemDaTerraMedia
         return this.status;
     }
 
-    protected void receberDano(int dano){
+    protected void receberDano(double dano){
         if(this.status!=Status.MORTO){
-            if(dano<this.vida){
+            if(dano<this.vida && vida-dano > 1){
                 this.status = Status.FERIDO;
                 this.vida-=dano;
             }else{
