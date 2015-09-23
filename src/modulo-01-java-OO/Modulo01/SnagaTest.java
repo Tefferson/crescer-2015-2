@@ -15,7 +15,7 @@ public class SnagaTest
 {
    @Test
     public void snagaNasceCom70DeVidaArcoEFlechas(){
-        Orc orc = new Snaga("snaga");
+        Orc orc = new Snaga();
         
         assertEquals(70, orc.getVida());
         assertEquals(8, orc.getDano());
