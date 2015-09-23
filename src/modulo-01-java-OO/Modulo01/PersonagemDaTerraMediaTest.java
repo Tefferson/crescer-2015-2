@@ -25,17 +25,17 @@ public class PersonagemDaTerraMediaTest
     @Test
     public void dwarfAtacaOrc(){
         PersonagemDaTerraMedia personagem = new Elfo("Personagem");
-        Orc orc = new Orc();
+        Orc orc = new Orc("orc");
 
         personagem.atacar(orc);
 
-        assertEquals(17, orc.getVida());
+        assertEquals(15, orc.getVida());
     }
 
     @Test
     public void elfoAtacaOrc(){
         PersonagemDaTerraMedia personagem = new Dwarf("Personagem");
-        Orc orc = new Orc();
+        Orc orc = new Orc("orc");
 
         personagem.atacar(orc);
 

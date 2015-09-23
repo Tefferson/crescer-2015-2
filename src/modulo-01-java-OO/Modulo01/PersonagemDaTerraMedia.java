@@ -44,7 +44,7 @@ public class PersonagemDaTerraMedia
         return this.status;
     }
 
-    private void receberDano(int dano){
+    protected void receberDano(int dano){
         if(this.status!=Status.MORTO){
             if(dano<this.vida){
                 this.status = Status.FERIDO;
@@ -65,6 +65,6 @@ public class PersonagemDaTerraMedia
     }
 
     public void atacar(Orc orc){
-        orc.receberAtaque(this);
+        orc.receberDano(this);
     }
 }
