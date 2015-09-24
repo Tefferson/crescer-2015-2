@@ -3,10 +3,10 @@
  */
 public class Elfo extends PersonagemDaTerraMedia{
     private int flechas;
-
+    private static int contador = 0;
     public Elfo(String nome, int flechas) {
         super(nome);
-        NossoJogo.incrementarContadorDeElfos();
+        contador++;
         this.vida = 100;
         this.nome = nome;
         this.flechas = flechas;
@@ -40,5 +40,9 @@ public class Elfo extends PersonagemDaTerraMedia{
 
     public int hashCode(){
         return (this.getClass().getName() + this.getNome()).hashCode();
+    }
+
+    public static int getContador(){
+        return contador;
     }
 }
