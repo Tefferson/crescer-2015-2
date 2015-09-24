@@ -8,22 +8,17 @@ import java.util.*;
 public class ExercitoElfico
 {
     private HashMap<String, Elfo> exercito;
-    private HashMap<Status, HashMap<String, Elfo>> exercitoAgrupado;
+    private HashMap<Status, ArrayList<Elfo>> exercitoAgrupado;
     public ExercitoElfico(){
         exercito = new HashMap<>();
         exercitoAgrupado = new HashMap<>();
     }
 
-    public void alistarElfo(ElfoNoturno elfo){
-        alistar(elfo);
-    }
-
-    public void alistarElfo(ElfoVerde elfo){
-        alistar(elfo);
-    }
-
-    private void alistar(Elfo elfo){
-        exercito.put(elfo.getNome(), elfo);
+    public void alistar(Elfo elfo){
+        boolean podeAlistar = elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno; 
+        if(podeAlistar){
+            exercito.put(elfo.getNome(), elfo);
+        }
     }
 
     public Elfo getElfo(String nome){
@@ -35,20 +30,17 @@ public class ExercitoElfico
         for(Map.Entry<String, Elfo> entry : exercito.entrySet()){
             Elfo elfo = entry.getValue();
             Status status = elfo.getStatus();
-            HashMap<String, Elfo> innerMap = exercitoAgrupado.get(status);
+            ArrayList<Elfo> innerMap = exercitoAgrupado.get(status);
             if(innerMap==null){
-                innerMap = new HashMap<>();
+                innerMap = new ArrayList<>();
                 exercitoAgrupado.put(status, innerMap);
             }
-            innerMap.put(elfo.getNome(), elfo);
+            innerMap.add(elfo);
         }
     }
 
-    public ArrayList<Elfo> buscar(Status status){        
-        HashMap<String, Elfo> buscado = exercitoAgrupado.get(status);
-        if(buscado == null){
-            return null;
-        }
-        return new ArrayList<Elfo>(buscado.values());
+    public ArrayList<Elfo> buscar(Status status){     
+        ArrayList<Elfo> buscado = exercitoAgrupado.get(status);
+        return buscado;
     }
 }
