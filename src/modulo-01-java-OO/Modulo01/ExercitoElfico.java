@@ -33,14 +33,13 @@ public class ExercitoElfico
             ArrayList<Elfo> innerList = exercitoAgrupado.get(status);
             if(innerList==null){
                 innerList = new ArrayList<>();
-                exercitoAgrupado.put(status, innerMap);
+                exercitoAgrupado.put(status, innerList);
             }
-            innerMap.add(elfo);
+            innerList.add(elfo);
         }
     }
 
     public ArrayList<Elfo> buscar(Status status){     
-        ArrayList<Elfo> buscado = exercitoAgrupado.get(status);
-        return buscado;
+        return exercitoAgrupado.get(status);
     }
 }
