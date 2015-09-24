@@ -30,9 +30,9 @@ public class ExercitoElfico
         for(Map.Entry<String, Elfo> entry : exercito.entrySet()){
             Elfo elfo = entry.getValue();
             Status status = elfo.getStatus();
-            ArrayList<Elfo> innerMap = exercitoAgrupado.get(status);
-            if(innerMap==null){
-                innerMap = new ArrayList<>();
+            ArrayList<Elfo> innerList = exercitoAgrupado.get(status);
+            if(innerList==null){
+                innerList = new ArrayList<>();
                 exercitoAgrupado.put(status, innerMap);
             }
             innerMap.add(elfo);
