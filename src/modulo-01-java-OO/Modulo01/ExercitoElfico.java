@@ -9,9 +9,16 @@ public class ExercitoElfico
 {
     private HashMap<String, Elfo> exercito;
     private HashMap<Status, ArrayList<Elfo>> exercitoAgrupado;
+    private EstrategiaDeAtaque estrategia;
+
     public ExercitoElfico(){
         exercito = new HashMap<>();
         exercitoAgrupado = new HashMap<>();
+        estrategia = new EstrategiaNormal();
+    }
+
+    public void atacar(ArrayList<Dwarf> hordaDeDwarves){
+        estrategia.atacar(this, hordaDeDwarves);
     }
 
     public void alistar(Elfo elfo){
