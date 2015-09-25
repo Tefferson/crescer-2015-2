@@ -13,16 +13,6 @@ import org.junit.Test;
 public class PersonagemDaTerraMediaTest
 {
     @Test
-    public void personagemNasceNomeVivoSemExperienciaEUmInventarioVazio(){
-        PersonagemDaTerraMedia personagem = new PersonagemDaTerraMedia("Personagem");
-
-        assertEquals(Status.VIVO, personagem.getStatus());
-        assertEquals("Personagem", personagem.getNome());
-        assertEquals(0, personagem.getExperiencia());
-        assertEquals(0, personagem.getInventario().getItens().size());
-    }
-
-    @Test
     public void dwarfAtacaOrc(){
         PersonagemDaTerraMedia personagem = new Elfo("Personagem");
         Orc orc = new Orc();
