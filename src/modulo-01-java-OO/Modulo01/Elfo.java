@@ -45,4 +45,8 @@ public class Elfo extends PersonagemDaTerraMedia{
     public static int getContador(){
         return contador;
     }
+
+    public static void resetContador(){
+        contador = 0;
+    }
 }
