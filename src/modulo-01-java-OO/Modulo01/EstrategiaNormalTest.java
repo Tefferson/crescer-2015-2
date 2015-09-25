@@ -49,9 +49,9 @@ public class EstrategiaNormalTest
         exercito.alistar(soldado);
         exercito.atacar(alvos);
         // Assert
-        /*assertEquals(new ArrayList<Elfo>(
-        Arrays.asList(soldado)
-        ), exercito.getOrdemDoUltimoAtaque());*/
+        assertEquals(new ArrayList<Elfo>(
+                Arrays.asList(soldado)
+            ), exercito.getOrdemDoUltimoAtaque());
 
         assertEquals(vidaEsperada, d1.getVida(), .0);
         assertEquals(vidaEsperada, d2.getVida(), .0);
@@ -76,9 +76,9 @@ public class EstrategiaNormalTest
         exercito.alistar(soldado3);
         exercito.atacar(alvos);
         // Assert
-        /*assertEquals(new ArrayList<Elfo>(
-        Arrays.asList(soldado3, soldado2, soldado1)
-        ), exercito.getOrdemDoUltimoAtaque());*/
+        assertEquals(new ArrayList<Elfo>(
+                Arrays.asList(soldado3, soldado2, soldado1)
+            ), exercito.getOrdemDoUltimoAtaque());
 
         assertEquals(vidaEsperada, d1.getVida(), .0);
         assertEquals(vidaEsperada, d2.getVida(), .0);
@@ -104,11 +104,10 @@ public class EstrategiaNormalTest
         exercito.alistar(soldado3);
         exercito.atacar(alvos);
         exercito.atacar(alvos);
-        /*ArrayList<Elfo> historicoAtaque = exercito.getOrdemDoUltimoAtaque();*/
+        ArrayList<Elfo> historicoAtaque = exercito.getOrdemDoUltimoAtaque();
         // Assert
-        /*for (Elfo elfo : esperado) {
-        assertTrue(historicoAtaque.contains(elfo));
-        }*/
+        assertTrue(historicoAtaque.contains(soldado1));            
+        assertTrue(historicoAtaque.contains(soldado3));
 
         assertEquals(vidaEsperada, d1.getVida(), .0);
         assertEquals(vidaEsperada, d2.getVida(), .0);

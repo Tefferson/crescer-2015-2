@@ -1,12 +1,13 @@
 import java.util.*;
 public class EstrategiaNormal implements EstrategiaDeAtaque{
+    private ArrayList<Elfo> atacantes;
     public void atacar(ExercitoElfico exercito, ArrayList<Dwarf> dwarves){
         exercito.agruparPorStatus();
-        ArrayList<Elfo> elfos = exercito.buscar(Status.VIVO);
-        double intencoesDeAtaque = elfos.size() * dwarves.size();
+        atacantes = exercito.buscar(Status.VIVO);
+        double intencoesDeAtaque = atacantes.size() * dwarves.size();
         int limiteDeAtaqueNoturno = (int)(intencoesDeAtaque * .3);
         int ataques = 0;
-        for(Elfo elfo : elfos){
+        for(Elfo elfo : atacantes){
             for(Dwarf dwarf : dwarves){
                 if(!(elfo instanceof ElfoNoturno && ataques>limiteDeAtaqueNoturno)){
                     elfo.atirarFlecha(dwarf);
@@ -15,5 +16,9 @@ public class EstrategiaNormal implements EstrategiaDeAtaque{
                 }
             }
         }
+    }
+
+    public ArrayList<Elfo> getOrdemDoUltimoAtaque(){
+        return atacantes;
     }
 }

@@ -49,4 +49,8 @@ public class ExercitoElfico
     public ArrayList<Elfo> buscar(Status status){     
         return exercitoAgrupado.get(status);
     }
+
+    public ArrayList<Elfo> getOrdemDoUltimoAtaque(){
+        return estrategia.getOrdemDoUltimoAtaque();
+    }
 }
