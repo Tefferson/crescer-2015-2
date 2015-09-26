@@ -54,7 +54,7 @@ public class ExercitoElfico
         return estrategia.getOrdemDoUltimoAtaque();
     }
 
-    public void trocarEstrategia(EstrategiaDeAtaque estragia){
+    public void trocarEstrategia(EstrategiaDeAtaque estrategia){
         this.estrategia = estrategia;
     }
 }
