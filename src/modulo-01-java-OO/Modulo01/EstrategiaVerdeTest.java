@@ -21,7 +21,6 @@ public class EstrategiaVerdeTest
             exercito.alistar(new ElfoNoturno("elfoNoturno"+i, 1000));
         }
         exercito.agruparPorStatus();
-        ArrayList<Elfo> antes = exercito.buscar(Status.VIVO);
         ArrayList<Dwarf> hordaDeDwarves = new ArrayList<>();
 
         for(int i=0;i<qtdDwarves;i++){
@@ -30,6 +29,6 @@ public class EstrategiaVerdeTest
 
         exercito.atacar(hordaDeDwarves);
 
-        assertFalse(antes.get(0) instanceof ElfoVerde == exercito.getOrdemDoUltimoAtaque().get(0) instanceof ElfoNoturno);
+        assertFalse(exercito.getOrdemDoUltimoAtaque().get(0) instanceof ElfoNoturno);
     }
 }

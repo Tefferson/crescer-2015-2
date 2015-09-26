@@ -1,27 +1,21 @@
 import java.util.*;
 public class EstrategiaVerde implements EstrategiaDeAtaque {
-    private ArrayList<Elfo> atacantes;
+    private ArrayList<Elfo> atacantes = new ArrayList<>();
     public void atacar(ExercitoElfico exercito, ArrayList<Dwarf> dwarves){
         exercito.agruparPorStatus();
-        atacantes = new ArrayList<>();
-        ArrayList<Elfo> atacarao = exercito.buscar(Status.VIVO);
-        for(Elfo elfo : atacantes){
+        atacantes.clear();
+        ArrayList<Elfo> vivos = exercito.buscar(Status.VIVO);
+        for(Elfo elfo : vivos){
             if(elfo instanceof ElfoVerde){
+                atacantes.add(0, elfo);
+            }else if(elfo instanceof ElfoNoturno){            
                 atacantes.add(elfo);
-                atacarao.remove(elfo);
-                for(Dwarf dwarf : dwarves){
-                    elfo.atirarFlecha(dwarf);
-                }
             }
         }
 
-        for(Elfo elfo : atacantes){
-            if(elfo instanceof ElfoNoturno){
-                atacantes.add(elfo);
-                atacarao.remove(elfo);
-                for(Dwarf dwarf : dwarves){
-                    elfo.atirarFlecha(dwarf);
-                }
+        for(Elfo elfo:atacantes){
+            for(Dwarf dwarf:dwarves){
+                elfo.atirarFlecha(dwarf);
             }
         }
     }
