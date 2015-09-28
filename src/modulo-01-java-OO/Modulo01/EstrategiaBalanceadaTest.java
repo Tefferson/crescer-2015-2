@@ -19,9 +19,9 @@ public class EstrategiaBalanceadaTest
         exercito.trocarEstrategia(new EstrategiaBalanceada());
         ArrayList<Dwarf> hordaDeDwarves = new ArrayList<>();
         int qtdElfosNoturnos = 15;
-        int qtdElfosVerdes = 150;
+        int qtdElfosVerdes = 15;
         int qtdDwarves = 45;
-        int esperado = 2 * (qtdElfosNoturnos<qtdElfosVerdes?qtdElfosNoturnos:qtdElfosVerdes);
+        int esperado = 30;
 
         for(int i=0;i<qtdElfosVerdes;i++){
             exercito.alistar(new ElfoVerde("elfoVerde"+i, 1000));
@@ -49,7 +49,7 @@ public class EstrategiaBalanceadaTest
         int qtdElfosVerdes = 150;
         int qtdDwarves = 45;
         int menorQtd = qtdElfosNoturnos<qtdElfosVerdes?qtdElfosNoturnos:qtdElfosVerdes;
-        int esperado = 2 * menorQtd;
+        int esperado = 0;
 
         for(int i=0;i<qtdElfosNoturnos;i++){
             exercito.alistar(new ElfoNoturno("elfoNoturno"+i, 1000));
@@ -74,7 +74,7 @@ public class EstrategiaBalanceadaTest
             }
         }
 
-        assertEquals(menorQtd, elfosNoturnosAtacantes);
+        assertEquals(esperado, elfosNoturnosAtacantes);
         assertEquals(elfosVerdesAtacantes, elfosNoturnosAtacantes);
     }
 }

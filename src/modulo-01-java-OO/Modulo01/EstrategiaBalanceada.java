@@ -19,15 +19,17 @@ public class EstrategiaBalanceada implements EstrategiaDeAtaque
             }
         }
 
-        int menorQtd = noturnos<verdes?noturnos:verdes;
-        for(int i=0;i<menorQtd;i++){
-            atacantes.add(map.get("ElfoVerde"+i));
-            atacantes.add(map.get("ElfoNoturno"+i));
-        }
+        if(noturnos==verdes){
+            int qtd = noturnos;
+            for(int i=0;i<qtd;i++){
+                atacantes.add(map.get("ElfoVerde"+i));
+                atacantes.add(map.get("ElfoNoturno"+i));
+            }
 
-        for(Elfo elfo : atacantes){
-            for(Dwarf dwarf : dwarves){
-                elfo.atirarFlecha(dwarf);
+            for(Elfo elfo : atacantes){
+                for(Dwarf dwarf : dwarves){
+                    elfo.atirarFlecha(dwarf);
+                }
             }
         }
     }
