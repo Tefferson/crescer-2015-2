@@ -1,3 +1,7 @@
+function isFunction(fn){
+  return typeof fn === 'function';
+}
+
 function isNumber(number){
   return typeof number === 'number';
 }
@@ -20,7 +24,7 @@ function maiorTexto(arr) {
 };
 
 function imprime(arr, func) {
-  if(typeof func === 'function') arr.forEach(function(elem,i){func(elem);});
+  if(isFunction(func)) arr.forEach(function(elem,i){func(elem);});
 };
 
 function fiboSum(n){
