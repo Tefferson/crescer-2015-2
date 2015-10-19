@@ -12,17 +12,11 @@ function daisyGame(petals) {
 };
 
 function maiorTexto(arr) {
-  var idx;
   var maior = '';
-  for(prop in arr){
-    if(typeof arr[prop] === 'string'){
-      if(arr[prop].length>maior.length){
-        idx = prop;
-        maior = arr[idx];
-      }
-    }
+  for(var i=0, len = arr.length;i<len;i++){
+    if(arr[i].length>maior.length) maior = arr[i];
   }
-  return arr[idx];
+  return maior;
 };
 
 function imprime(arr, func) {
