@@ -20,7 +20,7 @@ function maiorTexto(arr) {
 };
 
 function imprime(arr, func) {
-  if(typeof func === 'function') for(prop in arr) func(arr[prop]);
+  if(typeof func === 'function') arr.forEach(function(elem,i){func(elem);});
 };
 
 function fiboSum(n){
