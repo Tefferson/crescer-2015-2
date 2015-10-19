@@ -1,7 +1,13 @@
+function isNumber(number){
+  return typeof number === 'number';
+}
+
 function daisyGame(petals) {
-  if(!isNaN(petals)){
+  if(isNumber(petals)){
     if(!(petals%2)) return 'Love me not';
     return 'Love me';
+  }else{
+    throw new Error('Not a number');
   }
 };
 
