@@ -3,7 +3,7 @@ function daisyGame(petals) {
     if(!(petals%2)) return 'Love me not';
     return 'Love me';
   }
-}
+};
 
 function maiorTexto(arr) {
   var idx;
@@ -17,11 +17,11 @@ function maiorTexto(arr) {
     }
   }
   return arr[idx];
-}
+};
 
 function imprime(arr, func) {
   if(typeof func === 'function') for(prop in arr) func(arr[prop]);
-}
+};
 
 function fiboSum(n){
   if(!isNaN(n)){
@@ -33,7 +33,7 @@ function fiboSum(n){
     }
   }
   return 0;
-}
+};
 
 function excelis(ref){
   if(typeof ref === 'string'){
@@ -46,7 +46,7 @@ function excelis(ref){
       return col;
     }
   }
-}
+};
 
 function queroCafe(mascada, precos){
   var lista="";
@@ -55,5 +55,4 @@ function queroCafe(mascada, precos){
     if(precos[i]>mascada) { return lista.substring(0,lista.length-1)};
     lista += precos[i]+',';
   }
-}
-
+};
