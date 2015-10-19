@@ -47,3 +47,13 @@ function excelis(ref){
     }
   }
 }
+
+function queroCafe(mascada, precos){
+  var lista="";
+  precos.sort(function(a,b){return a>b;});
+  for(var i=0; i<precos.length; i++){
+    if(precos[i]>mascada) { return lista.substring(0,lista.length-1)};
+    lista += precos[i]+',';
+  }
+}
+
