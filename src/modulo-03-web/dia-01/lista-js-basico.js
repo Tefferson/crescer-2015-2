@@ -38,11 +38,10 @@ function fiboSum(n){
 function excelis(ref){
   if(typeof ref === 'string'){
     if(!ref.search(/^[A-Z]+$/)){
-      var tam = ref.length;
       var col = 0;
-      for(var i=0;i<tam;i++){
+      for(var i=0;i<ref.length;i++){
         var charCode = ref.charCodeAt(i)-64;
-        col+=charCode*(Math.pow(26,(tam-i-1)));
+        col=col*26 + charCode;
       }
       return col;
     }
