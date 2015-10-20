@@ -14,8 +14,8 @@ function somarPorNacionais(clubes){
 function somarPorContinentais(clubes){
 	return somarTitulos(1,clubes);
 };
-function somarPorMundiais(clubes){
-	return somarTitulos(2,clubes);
+function somarPorTodosOsTitulos(clubes){
+	return somarTitulos(0,clubes)+somarTitulos(1,clubes)+somarTitulos(2,clubes);
 };
 
 function ordenarPorTitulo(tipoTitulo, clubes){
