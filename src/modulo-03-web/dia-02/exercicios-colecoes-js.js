@@ -37,6 +37,6 @@ function somarTitulos(tipoTitulo, clubes){
 
 function apenasOsMelhores(clubes){
 	return clubes.filter(function(clube){
-		return clube.titulos[0].qtd>=18;
+		return clube.titulos[0].qtd>18;
 	});
 }
