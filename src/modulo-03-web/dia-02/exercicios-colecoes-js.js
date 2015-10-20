@@ -23,9 +23,7 @@ function ordenarPorTitulo(tipoTitulo, clubes){
 };
 
 function somarTitulos(tipoTitulo, clubes){
-	var soma=0;
-	clubes.forEach(e=>soma+=e.titulos[tipoTitulo].qtd);
-	return soma;
+	return clubes.reduce((acumulador,elemento)=>acumulador+elemento.titulos[tipoTitulo].qtd, 0)
 };
 
 function apenasOsMelhores(clubes){
