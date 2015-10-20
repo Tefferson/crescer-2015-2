@@ -10,13 +10,13 @@ function ordenaPorContinentais(clubes){
 
 function somarPorNacionais(clubes){
 	return somarTitulos(0,clubes);
-}
+};
 function somarPorContinentais(clubes){
 	return somarTitulos(1,clubes);
-}
+};
 function somarPorMundiais(clubes){
 	return somarTitulos(2,clubes);
-}
+};
 
 function ordenarPorTitulo(tipoTitulo, clubes){
 	clubes.sort(
@@ -38,4 +38,4 @@ function apenasOsMelhores(clubes){
 	return clubes.filter(function(clube){
 		return clube.titulos[0].qtd>18;
 	});
-}
+};
