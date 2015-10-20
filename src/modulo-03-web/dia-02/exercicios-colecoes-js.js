@@ -1,11 +1,11 @@
 function ordenaPorNacionais(clubes){
-	ordenarPorTitulo(0,clubes);
+	return ordenarPorTitulo(0,clubes);
 };
 function ordenaPorContinentais(clubes){
-	ordenarPorTitulo(1,clubes);
+	return ordenarPorTitulo(1,clubes);
 };
 function ordenaPorMundiais(clubes){
-	ordenarPorTitulo(2,clubes);
+	return ordenarPorTitulo(2,clubes);
 };
 
 function somarPorNacionais(clubes){
@@ -19,7 +19,7 @@ function somarPorTodosOsTitulos(clubes){
 };
 
 function ordenarPorTitulo(tipoTitulo, clubes){
-	clubes.sort((a,b)=>a.titulos[tipoTitulo].qtd < b.titulos[tipoTitulo].qtd);
+	return clubes.sort((a,b)=>a.titulos[tipoTitulo].qtd < b.titulos[tipoTitulo].qtd);
 };
 
 function somarTitulos(tipoTitulo, clubes){
