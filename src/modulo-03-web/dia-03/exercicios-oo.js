@@ -14,7 +14,7 @@ function CarrinhoDeCompras(){
 };
 
 CarrinhoDeCompras.prototype.removerItem = function (sku) {
-  this.itens.slice(this.indexOfItem(sku),1);
+  return this.itens.splice(this.indexOfItem(sku), 1);
 };
 
 CarrinhoDeCompras.prototype.adicionarItem = function (item) {
@@ -46,12 +46,26 @@ Item.prototype.calcularSubTotal = function () {
   return this.quantidade * this.valorUnitario;
 };
 
-var c = new CarrinhoDeCompras();
-var item = new Item('sku','desc',2,5);
-var item2 = new Item('sku2','desc2',22,52);
-var item3 = new Item('sku3','desc3',2,5);
-var item4 = new Item('sku4','desc4',22,52);
-c.adicionarItem(item);
-c.adicionarItem(item2);
-c.adicionarItem(item3);
-c.adicionarItem(item4);
+var basket = new CarrinhoDeCompras();
+var item = new Item('sku','feijão',2,5);
+var item2 = new Item('sku2','arroz',3,2);
+var item3 = new Item('sku3','alface',1,0.5);
+var item4 = new Item('sku4','copos 10 unidades',1,6.49);
+basket.adicionarItem(item);
+basket.adicionarItem(item2);
+basket.adicionarItem(item3);
+basket.adicionarItem(item4);
+
+//carrinho tem 4 items
+console.assert(4 === basket.itens.length, 'Quantidade de itens incorretos!!!');
+
+//carrinho possui 3 itens após remoção
+basket.removerItem('sku3');
+console.assert(3 === basket.itens.length, 'Quantidade de itens incorretos!!!');
+
+//carrinho possui feijão, arroz e copo
+for(var i=0,len=basket.itens.length,esperado=['feijão','arroz','copos 10 unidades'];i<len;i++){
+  console.assert(esperado[i] === basket.itens[i].descricao, 'Descrição do item incorreta!!!');
+}
+
+//
