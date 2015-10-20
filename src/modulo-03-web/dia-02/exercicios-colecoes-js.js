@@ -21,16 +21,28 @@ function somarPorTodosOsTitulos(clubes){
 function ordenarPorTitulo(tipoTitulo, clubes){
 	return clubes.sort(function(a,b){
 		return a.titulos[tipoTitulo].qtd < b.titulos[tipoTitulo].qtd;
-	});
+	})
 };
 
 function somarTitulos(tipoTitulo, clubes){
 	return clubes.reduce(function(acumulador,elemento){
-		return acumulador+elemento.titulos[tipoTitulo].qtd}, 0);
-	};
+		return acumulador+elemento.titulos[tipoTitulo].qtd;
+	}, 0);
+};
+function apenasOsMelhores(clubes){
+	return clubes.filter(function(e){
+		return e.titulos[0].qtd>18;
+	});
+};
 
-	function apenasOsMelhores(clubes){
-		return clubes.filter(function(e){
-			return e.titulos[0].qtd>18;
-		});
-	};
+function calcularIdadeMedia(clubes){
+	var anoAtual = new Date().getFullYear();
+	var soma = clubes
+	.map(function(elem){
+		return anoAtual - elem.fundacao.getFullYear()
+	})
+	.reduce(function(acumulador, idade){
+		return acumulador+(idade);
+	},0);
+	return soma/clubes.length;
+};
