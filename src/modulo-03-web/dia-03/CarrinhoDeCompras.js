@@ -1,14 +1,3 @@
-function isItem(verificar){
-  return verificar.constructor===Item;
-}
-
-function Item(sku,descricao,quantidade,valorUnitario){
-  this.sku=sku;
-  this.descricao=descricao;
-  this.quantidade=quantidade;
-  this.valorUnitario=valorUnitario;
-};
-
 function CarrinhoDeCompras(){
   this.itens = [];
 };
@@ -39,7 +28,7 @@ CarrinhoDeCompras.prototype.calcularTotal = function () {
 };
 
 CarrinhoDeCompras.prototype.sortearDesconto = function () {
-  return Math.random()<=0.4;
+  return Math.random()<0.4;
 };
 
 Item.prototype.calcularSubTotal = function () {
@@ -75,7 +64,3 @@ var esperadoComDesconto = 20.69;
 var valorTotal = parseFloat((basket.calcularTotal()).toFixed(2));
 console.assert((esperadoComDesconto===valorTotal)||(esperadoSemDesconto===valorTotal)
 , 'Valor total incorreto: ',valorTotal);
-
-//Subtotal da alface é 0.5
-var subTotal = alface.calcularSubTotal();
-console.assert(subTotal===0.5, 'Subtotal incorreto: ',subTotal);
