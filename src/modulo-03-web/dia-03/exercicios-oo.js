@@ -24,11 +24,11 @@ CarrinhoDeCompras.prototype.adicionarItem = function (newItem) {
 };
 
 CarrinhoDeCompras.prototype.atualizarQuantidade = function (sku, quantidade) {
-  this.itens[this.indexOfItem(sku)].quantidade += quantidade;
+  this.itens[this.indexOfItem(sku)].quantidade = quantidade;
 };
 
 CarrinhoDeCompras.prototype.indexOfItem = function (sku) {
-  return this.itens.map(function(elem){return elem.sku}).indexOf(sku);
+  return this.itens.map(function(elem){return elem.sku;}).indexOf(sku);
 };
 
 CarrinhoDeCompras.prototype.calcularTotal = function () {
