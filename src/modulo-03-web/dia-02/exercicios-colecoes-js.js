@@ -1,8 +1,7 @@
-//var clubes = [ { nome: 'Arsenal', titulos: [ { desc: 'Nacionais', qtd: 13 }, { desc: 'Continentais', qtd: 0 }, { desc: 'Mundiais', qtd: 0 } ] }, { nome: 'Manchester United', titulos: [ { desc: 'Nacionais', qtd: 20 }, { desc: 'Continentais', qtd: 3 }, { desc: 'Mundiais', qtd: 2 } ] }, { nome: 'Liverpool', titulos: [ { desc: 'Nacionais', qtd: 18 }, { desc: 'Continentais', qtd: 5 }, { desc: 'Mundiais', qtd: 0 } ] }, { nome: 'Chelsea Football Club', titulos: [ { desc: 'Nacionais', qtd: 5 }, { desc: 'Continentais', qtd: 1 }, { desc: 'Mundiais', qtd: 0 } ] } ];
-function ordenaPorNacionais(teams){
+function ordenaPorNacionais(clubes){
 	ordenarPorTitulo(0,clubes);
 };
-function ordenaPorMundiais(teams){
+function ordenaPorMundiais(clubes){
 	ordenarPorTitulo(2,clubes);
 };
 function ordenaPorContinentais(clubes){
