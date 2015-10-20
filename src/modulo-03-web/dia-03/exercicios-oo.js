@@ -1,5 +1,5 @@
-function isItem(item){
-  return this.item.constructor===Item;
+function isItem(verificar){
+  return verificar.constructor===Item;
 }
 
 function Item(sku,descricao,quantidade,valorUnitario){
@@ -17,9 +17,9 @@ CarrinhoDeCompras.prototype.removerItem = function (sku) {
   return this.itens.splice(this.indexOfItem(sku), 1);
 };
 
-CarrinhoDeCompras.prototype.adicionarItem = function (item) {
-  if(isItem(item)){
-    this.itens.push(item);
+CarrinhoDeCompras.prototype.adicionarItem = function (newItem) {
+  if(isItem(newItem)){
+    this.itens.push(newItem);
   }
 };
 
@@ -47,25 +47,35 @@ Item.prototype.calcularSubTotal = function () {
 };
 
 var basket = new CarrinhoDeCompras();
-var item = new Item('sku','feijão',2,5);
-var item2 = new Item('sku2','arroz',3,2);
-var item3 = new Item('sku3','alface',1,0.5);
-var item4 = new Item('sku4','copos 10 unidades',1,6.49);
-basket.adicionarItem(item);
-basket.adicionarItem(item2);
-basket.adicionarItem(item3);
-basket.adicionarItem(item4);
+var feijao = new Item('sku','feijão',2,5);
+var arroz = new Item('sku2','arroz',3,2);
+var alface = new Item('sku3','alface',1,0.5);
+var copo10Unidades = new Item('sku4','copo 10 unidades',1,6.49);
+basket.adicionarItem(feijao);
+basket.adicionarItem(arroz);
+basket.adicionarItem(alface);
+basket.adicionarItem(copo10Unidades);
 
 //carrinho tem 4 items
-console.assert(4 === basket.itens.length, 'Quantidade de itens incorretos!!!');
+console.assert(4 === basket.itens.length, 'Quantidade de itens incorretos: ', basket.itens.length);
 
 //carrinho possui 3 itens após remoção
-basket.removerItem('sku3');
-console.assert(3 === basket.itens.length, 'Quantidade de itens incorretos!!!');
+basket.removerItem(alface.sku);
+console.assert(3 === basket.itens.length, 'Quantidade de itens incorretos: ',basket.itens.length);
 
 //carrinho possui feijão, arroz e copo
-for(var i=0,len=basket.itens.length,esperado=['feijão','arroz','copos 10 unidades'];i<len;i++){
-  console.assert(esperado[i] === basket.itens[i].descricao, 'Descrição do item incorreta!!!');
+for(var i=0,len=basket.itens.length,esperado=['feijão','arroz','copo 10 unidades'];i<len;i++){
+  console.assert(esperado[i] === basket.itens[i].descricao, 'Descrição do item incorreta: ',basket.itens[i].descricao);
 }
 
-//
+//valor total é 22.99 sem desconto ou 20.69 com desconto
+basket.adicionarItem(alface);
+var esperadoSemDesconto = 22.99;
+var esperadoComDesconto = 20.69;
+var valorTotal = parseFloat((basket.calcularTotal()).toFixed(2));
+console.assert((esperadoComDesconto===valorTotal)||(esperadoSemDesconto===valorTotal)
+, 'Valor total incorreto: ',valorTotal);
+
+//Subtotal da alface é 0.5
+var subTotal = alface.calcularSubTotal();
+console.assert(subTotal===0.5, 'Subtotal incorreto: ',subTotal);
