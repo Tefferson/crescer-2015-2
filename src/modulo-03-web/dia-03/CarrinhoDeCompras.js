@@ -9,7 +9,7 @@ CarrinhoDeCompras.prototype.removerItem = function (sku) {
 };
 
 CarrinhoDeCompras.prototype.adicionarItem = function (newItem) {
-  if(isItem(newItem)){
+  if(isItem(newItem) && this.indexOfItem(newItem.sku)<0){
     this.itens.push(newItem);
   }
 };
@@ -36,6 +36,13 @@ CarrinhoDeCompras.prototype.calcularTotal = function () {
 CarrinhoDeCompras.prototype.sortearDesconto = function () {
   return Math.random()<0.4;
 };
+
+CarrinhoDeCompras.prototype.forcarCompra = function(){
+  var t = this;
+  var intervalId = setInterval(function(){
+    t.itens.forEach(function(elem){elem.valorUnitario*=1.1;});
+  }, 5000);
+}
 
 var basket = new CarrinhoDeCompras();
 var feijao = new Item('sku','feijão',2,5);
