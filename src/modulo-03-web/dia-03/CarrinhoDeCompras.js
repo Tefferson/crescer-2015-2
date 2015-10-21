@@ -38,11 +38,10 @@ CarrinhoDeCompras.prototype.sortearDesconto = function () {
 };
 
 CarrinhoDeCompras.prototype.forcarCompra = function(){
-  var t = this;
   var intervalId = setInterval(function(){
-    t.itens.forEach(function(elem){elem.valorUnitario*=1.1;});
-  }, 5000);
-}
+    this.itens.forEach(function(elem){elem.valorUnitario*=1.1;});
+  }.bind(this), 5000);
+};
 
 var basket = new CarrinhoDeCompras();
 var feijao = new Item('sku','feijão',2,5);
