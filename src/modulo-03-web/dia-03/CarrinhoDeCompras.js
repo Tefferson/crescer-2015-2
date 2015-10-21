@@ -31,10 +31,6 @@ CarrinhoDeCompras.prototype.sortearDesconto = function () {
   return Math.random()<0.4;
 };
 
-Item.prototype.calcularSubTotal = function () {
-  return this.quantidade * this.valorUnitario;
-};
-
 var basket = new CarrinhoDeCompras();
 var feijao = new Item('sku','feijão',2,5);
 var arroz = new Item('sku2','arroz',3,2);

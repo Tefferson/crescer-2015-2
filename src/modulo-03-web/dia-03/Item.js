@@ -9,6 +9,11 @@ function Item(sku,descricao,quantidade,valorUnitario){
   this.valorUnitario=valorUnitario;
 };
 
+Item.prototype.calcularSubTotal = function () {
+  return this.quantidade * this.valorUnitario;
+};
+
 //Subtotal da alface é 0.5
+var alface = new Item('sku3','alface',1,0.5);
 var subTotal = alface.calcularSubTotal();
 console.assert(subTotal===0.5, 'Subtotal incorreto: ',subTotal);
