@@ -1,5 +1,3 @@
-$('body:eq(0)').css({'text-align':'center'});
-$('ul:eq(0)').css({'list-style':'none'});
 $('#submit').click(consultarArtista);
 $.ajaxSetup({
   error: function(xhr, status, error) {
