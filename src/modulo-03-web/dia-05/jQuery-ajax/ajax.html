@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <h2>Olá ajax!</h2>
+  <ul class="lista">
+
+  </ul>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript">
+  window.onload=()=>console.log('carregou no onload');
+  $(()=>console.log('CARREGOU DOM!!!'));
+  $(function() {
+    $.get('http://localhost:3000/pessoas')
+    .done(function(data) {
+      data.forEach(p=>{$('.lista')
+      .append($('<li>')
+      .text('Nome: '+p.nome)
+    )
+  )
+);
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "pessoas": [
+    {
+      "nome": "Bernardo",
+      "idade": 27,
+      "celulares": [
+        {
+          "modelo": "iPhone"
+        }
+      ]
+    },
+    {
+      "nome": "Ben Hur",
+      "idade": 27,
+      "celulares": [
+        {
+          "modelo": "iPhone"
+        }
+      ]
+    }
+  ]
+}

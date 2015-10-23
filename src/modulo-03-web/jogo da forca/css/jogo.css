@@ -1,0 +1,32 @@
+.botao {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.palavra {
+  font-size: 80px;
+  text-align: center;
+}
+
+.row {
+  text-align: center;
+}
+
+.formulario {
+  text-align: center;
+}
+
+.ocultar {
+  display: none;
+}
+
+.teclado {
+  display:none;
+}
+
+.form-container {
+  transition: transform 2s;
+  overflow: hidden;
+}
