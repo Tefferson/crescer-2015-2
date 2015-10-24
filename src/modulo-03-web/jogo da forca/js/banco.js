@@ -63,7 +63,7 @@ Banco.prototype.buscarPalavra = function(args){
   var randomId = parseInt(Math.random()*61);
   var tamanhoMinimo = args.self.tamanhoMinimoPalavra;
   var query = this.baseURL+ 'palavras' + '?nome.length_gte='+tamanhoMinimo
-  +'&idpalavra_gte='+randomId+'&idpalavra_lte='+randomId;
+  +'&id_gte='+randomId+'&id_lte='+randomId;
   args.selfBusca = this;
   $.get(query)
   .done(function(data) {

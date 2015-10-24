@@ -1,0 +1,590 @@
+{
+  "pessoas": [
+    {
+      "nome": "Teste",
+      "pontuacao": "999"
+    }
+  ],
+  "dificuldades": [
+    {
+      "id": 1,
+      "dificuldade": "normal"
+    },
+    {
+      "id": 2,
+      "dificuldade": "nunes"
+    }
+  ],
+  "palavras": [
+    {
+      "nome": "ARROZ",
+      "dica": "cereal",
+      "idDificuldade": 1,
+      "id": 1
+    },
+    {
+      "nome": "GARRAFA",
+      "dica": "objeto",
+      "idDificuldade": 1,
+      "id": 2
+    },
+    {
+      "nome": "NOTEBOOK",
+      "dica": "objeto",
+      "idDificuldade": 1,
+      "id": 3
+    },
+    {
+      "nome": "LETREIRO",
+      "dica": "objeto",
+      "idDificuldade": 1,
+      "id": 4
+    },
+    {
+      "nome": "REFRIGERANTE",
+      "dica": "bebida",
+      "idDificuldade": 2,
+      "id": 5
+    },
+    {
+      "nome": "COMPANHEIRISMO",
+      "dica": "começa com C",
+      "idDificuldade": 2,
+      "id": 6
+    },
+    {
+      "nome": "PERFECCIONISTA",
+      "dica": "adjetivo",
+      "idDificuldade": 2,
+      "id": 7
+    },
+    {
+      "nome": "CONTEXTUALIZAR",
+      "dica": "verbo",
+      "idDificuldade": 2,
+      "id": 8
+    },
+    {
+      "nome": "SUPERFICIALIDADE",
+      "dica": "você foi trollado",
+      "idDificuldade": 2,
+      "id": 9
+    },
+    {
+      "nome": "RESPONSABILIDADE",
+      "dica": "caracteristica importante no Crescer",
+      "idDificuldade": 2,
+      "id": 10
+    },
+    {
+      "nome": "PROFISSIONALISMO",
+      "dica": "caracteristica importante no Crescer",
+      "idDificuldade": 2,
+      "id": 11
+    },
+    {
+      "nome": "CONFRATERNIZAÇAO",
+      "dica": "palavra com 16 letras",
+      "idDificuldade": 2,
+      "id": 14
+    },
+    {
+      "nome": "SUSTENTABILIDADE",
+      "dica": "meio ambiente",
+      "idDificuldade": 2,
+      "id": 12
+    },
+    {
+      "nome": "COMUNICABILIDADE",
+      "dica": "termina com ...idade",
+      "idDificuldade": 2,
+      "id": 13
+    },
+    {
+      "nome": "ASSISTENCIALISMO",
+      "dica": "precisa de assistencia?",
+      "idDificuldade": 2,
+      "id": 15
+    },
+    {
+      "nome": "REAPROVEITAMENTO",
+      "dica": "... de código",
+      "idDificuldade": 2,
+      "id": 16
+    },
+    {
+      "nome": "COMPARTILHAMENTO",
+      "dica": "lembra redes sociais",
+      "idDificuldade": 2,
+      "id": 17
+    },
+    {
+      "nome": "FUNCIONABILIDADE",
+      "dica": "capacidade de fazer algo",
+      "idDificuldade": 2,
+      "id": 18
+    },
+    {
+      "nome": "CONSEQUENTEMENTE",
+      "dica": "ação e reação",
+      "idDificuldade": 2,
+      "id": 19
+    },
+    {
+      "nome": "INSTANTANEAMENTE",
+      "dica": "rápido",
+      "idDificuldade": 2,
+      "id": 20
+    },
+    {
+      "nome": "SUBESTIMAR",
+      "dica": "desqualificar sem motivos",
+      "idDificuldade": 1,
+      "id": 21
+    },
+    {
+      "nome": "CONCERTEZA",
+      "dica": "Forma incorreta de se escrever \"com certeza\"",
+      "idDificuldade": 1,
+      "id": 22
+    },
+    {
+      "nome": "RECORRENTE",
+      "dica": "ressurge após haver desaparecido",
+      "idDificuldade": 1,
+      "id": 23
+    },
+    {
+      "nome": "PRIORIDADE",
+      "dica": "importancia",
+      "idDificuldade": 1,
+      "id": 24
+    },
+    {
+      "nome": "COMUNIDADE",
+      "dica": "espaço onde vivemos",
+      "idDificuldade": 1,
+      "id": 25
+    },
+    {
+      "nome": "PRAGMATISMO",
+      "dica": "A valorização da prática (pela prática continuada)",
+      "idDificuldade": 1,
+      "id": 26
+    },
+    {
+      "nome": "CONTUNDENTE",
+      "dica": "Objetivo, marcante, determinante",
+      "idDificuldade": 1,
+      "id": 27
+    },
+    {
+      "nome": "PROSOPOPEIA",
+      "dica": "É uma figura de linguagem* que atribui características humanas",
+      "idDificuldade": 1,
+      "id": 28
+    },
+    {
+      "nome": "SUPRACITADO",
+      "dica": "Mencionado acima ou mencionado anteriormente",
+      "idDificuldade": 1,
+      "id": 29
+    },
+    {
+      "nome": "IRREVERENTE",
+      "dica": " é alguém que vai contra as normas da sociedade e da boa educação",
+      "idDificuldade": 1,
+      "id": 30
+    },
+    {
+      "nome": "ACURACIDADE",
+      "dica": "conferência de estoque",
+      "idDificuldade": 1,
+      "id": 31
+    },
+    {
+      "nome": "DEFERIMENTO",
+      "dica": "é quando o juiz considera a alegação do processo como procedente",
+      "idDificuldade": 1,
+      "id": 32
+    },
+    {
+      "nome": "ADVERSIDADE",
+      "dica": "desgraça",
+      "idDificuldade": 1,
+      "id": 33
+    },
+    {
+      "nome": "REINCIDENTE",
+      "dica": "praticar repetidamente a mesma conduta",
+      "idDificuldade": 1,
+      "id": 34
+    },
+    {
+      "nome": "GALANTEADOR",
+      "dica": "chavequeiro",
+      "idDificuldade": 1,
+      "id": 35
+    },
+    {
+      "nome": "AMBIGUIDADE",
+      "dica": "É a possibilidade de uma mensagem ter dois sentidos",
+      "idDificuldade": 1,
+      "id": 36
+    },
+    {
+      "nome": "FACULTATIVO",
+      "dica": "opcional",
+      "idDificuldade": 1,
+      "id": 37
+    },
+    {
+      "nome": "PIRANGUEIRO",
+      "dica": "pão duro",
+      "idDificuldade": 1,
+      "id": 38
+    },
+    {
+      "nome": "VIABILIDADE",
+      "dica": "quando há possibilidade de realização",
+      "idDificuldade": 1,
+      "id": 39
+    },
+    {
+      "nome": "CARISMATICO",
+      "dica": "Aquele que tem poder ou graça de seduzir as pessoas com sentimento de bondade",
+      "idDificuldade": 1,
+      "id": 40
+    },
+    {
+      "nome": "BALZAQUIANO",
+      "dica": "adjetivo que refere-se a alguém cuja ídade é próxima ou igual a trinta anos",
+      "idDificuldade": 1,
+      "id": 41
+    },
+    {
+      "nome": "PROSPECTIVO",
+      "dica": "Que faz ver adiante ou ao longe",
+      "idDificuldade": 1,
+      "id": 42
+    },
+    {
+      "nome": "GOOGLE",
+      "dica": "procura no 1º amigo",
+      "idDificuldade": 1,
+      "id": 43
+    },
+    {
+      "nome": "PELEGO",
+      "dica": "traidor",
+      "idDificuldade": 1,
+      "id": 44
+    },
+    {
+      "nome": "CURICA",
+      "dica": "Gíria para empregada doméstica",
+      "idDificuldade": 1,
+      "id": 45
+    },
+    {
+      "nome": "INSANO",
+      "dica": "Sem senso",
+      "idDificuldade": 1,
+      "id": 46
+    },
+    {
+      "nome": "PIEGAS",
+      "dica": "Que apela excessivamente para o sentimento",
+      "idDificuldade": 1,
+      "id": 47
+    },
+    {
+      "nome": "AVARIA",
+      "dica": "Produto estragado",
+      "idDificuldade": 1,
+      "id": 48
+    },
+    {
+      "nome": "BUGADO",
+      "dica": "problema que causa mal funcionamento",
+      "idDificuldade": 1,
+      "id": 49
+    },
+    {
+      "nome": "OSMOSE",
+      "dica": "processo físico em que a água se movimenta entre dois meios com concentrações diferentes de soluto",
+      "idDificuldade": 1,
+      "id": 50
+    },
+    {
+      "nome": "MAROLA",
+      "dica": "mar calmo, sem ondas ou com ondas muito fracas",
+      "idDificuldade": 1,
+      "id": 51
+    },
+    {
+      "nome": "ASPONE",
+      "dica": "assessor de porra nenhuma",
+      "idDificuldade": 1,
+      "id": 52
+    },
+    {
+      "nome": "COXINHA",
+      "dica": "alimento frito",
+      "idDificuldade": 1,
+      "id": 53
+    },
+    {
+      "nome": "SUCESSO",
+      "dica": "ter êxito em alguma coisa",
+      "idDificuldade": 1,
+      "id": 54
+    },
+    {
+      "nome": "SOCIOPATA",
+      "dica": "Alguém incapaz de se enquadrar nas normas da sociedade",
+      "idDificuldade": 1,
+      "id": 55
+    },
+    {
+      "nome": "SUBJETIVO",
+      "dica": "opinião pessoal de cada individuo à respeito de algo ou alguém",
+      "idDificuldade": 1,
+      "id": 56
+    },
+    {
+      "nome": "PALIATIVO",
+      "dica": "Tem eficácia momentâneo e incompleta",
+      "idDificuldade": 1,
+      "id": 57
+    },
+    {
+      "nome": "OUTROSSIM",
+      "dica": "Igualmente",
+      "idDificuldade": 1,
+      "id": 58
+    },
+    {
+      "nome": "MONOTONIA",
+      "dica": "rotina",
+      "idDificuldade": 1,
+      "id": 59
+    },
+    {
+      "nome": "INSOLENTE",
+      "dica": "impertinência",
+      "idDificuldade": 1,
+      "id": 60
+    },
+    {
+      "nome": "PORQUANTO",
+      "dica": "Visto que, porque",
+      "idDificuldade": 1,
+      "id": 61
+    },
+    {
+      "nome": "HUMILDADE",
+      "dica": "Característica de pessoas francas",
+      "idDificuldade": 1,
+      "id": 62
+    },
+    {
+      "nome": "PARADIGMA",
+      "dica": "padrões psicológicos",
+      "idDificuldade": 1,
+      "id": 63
+    },
+    {
+      "nome": "SALIENTAR",
+      "dica": "Deixar claro",
+      "idDificuldade": 1,
+      "id": 64
+    },
+    {
+      "nome": "SIGLA",
+      "dica": "abreviação",
+      "idDificuldade": 1,
+      "id": 65
+    },
+    {
+      "nome": "RACHA",
+      "dica": "Velozes e Furiosos",
+      "idDificuldade": 1,
+      "id": 66
+    },
+    {
+      "nome": "CEVAS",
+      "dica": "alimento com que se engordam animais",
+      "idDificuldade": 1,
+      "id": 67
+    },
+    {
+      "nome": "SUPER XUXA CONTRA O BAIXO ASTRAL",
+      "dica": "filme brasileiro",
+      "idDificuldade": 2,
+      "id": 68
+    },
+    {
+      "nome": "FREDDY X JASON",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 69
+    },
+    {
+      "nome": "ALIEN X PREDADOR",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 70
+    },
+    {
+      "nome": "UM LOBISOMEM MEXICANO NO TEXAS",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 71
+    },
+    {
+      "nome": "SHARKNADO",
+      "dica": "filme",
+      "idDificuldade": 1,
+      "id": 72
+    },
+    {
+      "nome": "ALLIGATOR",
+      "dica": "filme",
+      "idDificuldade": 1,
+      "id": 73
+    },
+    {
+      "nome": "ESTRADA MALDITA",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 74
+    },
+    {
+      "nome": "A LAGOA AZUL",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 75
+    },
+    {
+      "nome": "SURFISTAS NAZISTAS DEVEM MORRER",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 76
+    },
+    {
+      "nome": "FALLOUT",
+      "dica": "jogo",
+      "idDificuldade": 1,
+      "id": 77
+    },
+    {
+      "nome": "RESIDENT EVIL",
+      "dica": "jogo",
+      "idDificuldade": 2,
+      "id": 78
+    },
+    {
+      "nome": "METAL GEAR SOLID",
+      "dica": "jogo",
+      "idDificuldade": 2,
+      "id": 79
+    },
+    {
+      "nome": "MARIO KART",
+      "dica": "jogo",
+      "idDificuldade": 1,
+      "id": 80
+    },
+    {
+      "nome": "SEGA SATURN",
+      "dica": "console, video-game",
+      "idDificuldade": 1,
+      "id": 81
+    },
+    {
+      "nome": "COMMODORE",
+      "dica": "console, video-game",
+      "idDificuldade": 1,
+      "id": 82
+    },
+    {
+      "nome": "SEGA NOMAD",
+      "dica": "console, video-game",
+      "idDificuldade": 1,
+      "id": 83
+    },
+    {
+      "nome": "APPLE BANDAI PIPPIN",
+      "dica": "console, video-game",
+      "idDificuldade": 2,
+      "id": 84
+    },
+    {
+      "nome": "DETRIMENTO",
+      "dica": "Prejuízo",
+      "idDificuldade": 1,
+      "id": 85
+    },
+    {
+      "nome": "PATRICINHA",
+      "dica": "Garota mimada, consumista, protegida pelos pais e modista",
+      "idDificuldade": 1,
+      "id": 86
+    },
+    {
+      "nome": "COMPULSIVO",
+      "dica": "Sem controle",
+      "idDificuldade": 1,
+      "id": 87
+    },
+    {
+      "nome": "DIVERGENTE",
+      "dica": "oposto",
+      "idDificuldade": 1,
+      "id": 88
+    },
+    {
+      "nome": "EMPREITADA",
+      "dica": "obra",
+      "idDificuldade": 1,
+      "id": 89
+    },
+    {
+      "nome": "SINTETIZAR",
+      "dica": "resumir em poucas palavras",
+      "idDificuldade": 1,
+      "id": 90
+    },
+    {
+      "nome": "DIRETRIZES",
+      "dica": "Linha segundo a qual se traça um plano de qualquer caminho",
+      "idDificuldade": 1,
+      "id": 91
+    },
+    {
+      "nome": "PROVIMENTO",
+      "dica": "Ocupar, preencher",
+      "idDificuldade": 1,
+      "id": 92
+    },
+    {
+      "nome": "EMANCIPADO",
+      "dica": "Libertado",
+      "idDificuldade": 1,
+      "id": 93
+    },
+    {
+      "nome": "AUSPICIOSO",
+      "dica": "Sorte, bom agouro e esperançoso",
+      "idDificuldade": 1,
+      "id": 94
+    },
+    {
+      "nome": "IDONEIDADE",
+      "dica": "aptidão, capacidade, competência",
+      "idDificuldade": 1,
+      "id": 95
+    }
+  ]
+}
