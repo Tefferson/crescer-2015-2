@@ -14,10 +14,6 @@
   text-align: center;
 }
 
-.formulario {
-  text-align: center;
-}
-
 .ocultar {
   display: none;
 }
@@ -27,6 +23,7 @@
 }
 
 .form-container {
+  text-align: center;
   transition: transform 2s;
   overflow: hidden;
 }
