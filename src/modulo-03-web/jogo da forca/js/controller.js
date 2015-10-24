@@ -13,14 +13,21 @@ Controller.prototype.initGame = function(){
 
 Controller.prototype.initBanco = function(){
   this.banco = new Banco();
-}
+};
 
-Controller.prototype.init = function () {
+Controller.prototype.init = function() {
   this.initBanco();
   this.initGame();
+  this.loadRanking();
   $('.botao').click(function(e){this.verificarCompletude(e.toElement);}.bind(this));
   $('#btnPalpite').click(function(e){this.verificarCompletude($('#palpite').val().toUpperCase());});
-//  $('.iniciar').click(function(){this.banco.cadastro($('.nome'));}.bind(this));
+  $('.iniciar').click(function(e){
+    $('.form-container').toggleClass('ocultar');
+    $('body div:eq(1)').toggleClass('ocultar');
+    $('body div:eq(2)').toggleClass('teclado');
+    $('body div:eq(6)').toggleClass('ocultar');
+    //this.banco.cadastro($('.nome'));
+  }.bind(this));
 };
 
 Controller.prototype.verificarCompletude = function(elem){
@@ -45,16 +52,20 @@ Controller.prototype.postVitoria = function(){
   alert('vitoria!!!');
 };
 
+Controller.prototype.loadRanking = function(data){
+  if(!!data){
+    var rank = $('.rank ul');
+    rank.empty();
+    data.map(function(elem){
+      return elem.nome+' '+elem.pontuacao;
+    }).forEach(function(elem){
+      rank.append($('<li>'+elem+'</li>'));
+    }
+  );
+}else{
+  this.banco.topRanking({callback:this.loadRanking});
+}
+};
+
 var controller = new Controller();
 controller.init();
-
-function hideForm(){
-  var $toggle = $('.iniciar');
-  $toggle.click(function(e){
-    $('.form-container').toggleClass('ocultar');
-    $('body div:eq(1)').toggleClass('ocultar');
-    $('body div:eq(2)').toggleClass('teclado');
-    $('body div:eq(6)').toggleClass('ocultar');
-  });
-};
-hideForm();
