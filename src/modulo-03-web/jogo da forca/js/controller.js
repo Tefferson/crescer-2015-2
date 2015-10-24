@@ -41,17 +41,21 @@ Controller.prototype.updatePontos = function(pontos){
   $('.pontos:eq(0)').html(pontos+' pontos');
 }
 
+Controller.prototype.toogleVisible = function(elem){
+  return $(elem).toggleClass('ocultar');
+}
+
 Controller.prototype.buscarJogadorPrincipal = function(args){
   if(!!args.jogador){
-    $('.form-container').toggleClass('ocultar');
-    $('body div:eq(1)').toggleClass('ocultar');
-    $('body div:eq(2)').toggleClass('teclado');
-    $('body div:eq(6)').toggleClass('ocultar');
     var self = controller;
+    self.toogleVisible('.form-container');
+    self.toogleVisible('body div:eq(1)');
+    self.toogleVisible('body div:eq(2)');
+    self.toogleVisible('body div:eq(6)');
     self.jogador = args.jogador;
-    $('.jogador-info').toggleClass('ocultar').html(args.jogador.toString());
+    self.toogleVisible('.jogador-info').html(args.jogador.toString());
     self.initGame();
-    $('.pontos').toggleClass('ocultar');
+    self.toogleVisible('.pontos');
   }else{
     var self = this;
     self.banco.buscarOuCriarJogador({callback:self.buscarJogadorPrincipal
