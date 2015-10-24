@@ -122,6 +122,6 @@ Banco.prototype.verificarReincidencia = function(palavra, nomeDoUsuario){
 Banco.prototype.adicionarPalavraRepetida = function(nomeDoUsuario, palavraDeRetorno) {
   var indice = this.criarListaDePalavrasParaUsuario(nomeDoUsuario);
   var listaPalavras = JSON.parse(localStorage.palavraRepetidas);
-  listaPalavras[indice].palavrasRepetidas.push({'palavra': palavraDeRetorno});
+  listaPalavras[indice].palavrasRepetidas.push({'nome': palavraDeRetorno});
   localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
 };
