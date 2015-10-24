@@ -60,10 +60,10 @@ Banco.prototype.topRanking = function(args){
 };
 
 Banco.prototype.buscarPalavra = function(args){
-  var randomId = Math.random()*61;
+  var randomId = parseInt(Math.random()*61);
   var tamanhoMinimo = args.self.tamanhoMinimoPalavra;
   var query = this.baseURL+ 'palavras' + '?nome.length_gte='+tamanhoMinimo
-  +'&idpalavra_gte='+~~randomId+'&idpalavra_lte='+~~randomId;
+  +'&idpalavra_gte='+randomId+'&idpalavra_lte='+randomId;
   args.selfBusca = this;
   $.get(query)
   .done(function(data) {
