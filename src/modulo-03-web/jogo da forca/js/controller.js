@@ -37,8 +37,7 @@ Controller.prototype.buscarJogadorPrincipal = function(args){
     controller.initGame();
   }else{
     var self = this;
-    self.banco.buscarOuCriarJogador({cbSelf:self
-      ,callback:self.buscarJogadorPrincipal
+    self.banco.buscarOuCriarJogador({callback:self.buscarJogadorPrincipal
       ,nome:args.nome}
     );
   }

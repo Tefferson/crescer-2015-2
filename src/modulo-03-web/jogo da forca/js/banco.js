@@ -8,9 +8,8 @@ Banco.prototype.buscarJogadores = function(args){
     args.callback({data:data, nome:args.nome
       ,callback:args.cbCallback
       ,self:args.self}
-
-    }
-  );
+    );
+  });
 };
 
 Banco.prototype.buscarOuCriarJogador = function(args){
@@ -23,18 +22,17 @@ Banco.prototype.buscarOuCriarJogador = function(args){
       }
     );
   }else{
-    args.self.criarJogador({nome:args.nome
-      ,callback:self.buscarOuCriarJogador
-      ,cbCallback:args.callback}
+    args.self.criarJogador({callback:args.self.buscarOuCriarJogador
+      ,data:[{nome:args.nome,pontuacao:0}]
+      ,self:args.self,cbCallback:args.callback});
+    }
+  }else{
+    this.buscarJogadores({nome:args.nome
+      ,query:'?nome='+args.nome
+      ,callback:this.buscarOuCriarJogador
+      ,cbCallback:args.callback,self:this}
     );
   }
-}else{
-  this.buscarJogadores({nome:args.nome
-    ,query:'?nome='+args.nome
-    ,callback:this.buscarOuCriarJogador
-    ,cbCallback:args.callback,self:this}
-  );
-}
 };
 
 Banco.prototype.criarJogador = function(args){
@@ -42,7 +40,7 @@ Banco.prototype.criarJogador = function(args){
   .done(function(){
     args.callback(
       {callback:args.cbCallback
-        ,data:{nome:args.nome,pontuacao:0}
+        ,data:[{nome:args.nome,pontuacao:0}],self:args.self
       }
     );
   });
@@ -56,6 +54,6 @@ Banco.prototype.topRanking = function(args){
   }else if(!!args.callback){
     this.buscarJogadores({query:'?_sort=pontuacao&_order=DESC&_end=5'
     ,callback:this.topRanking
-    , cbCallback:args.callback});
+    ,cbCallback:args.callback});
   }
 };
