@@ -3,7 +3,7 @@ function Banco(options){
 };
 
 Banco.prototype.buscarJogadores = function(args){
-  $.get('http://localhost:3000/pessoas')
+  $.get('http://localhost:3000/pessoas'+(args.query || ''))
   .done(function(data) {
     args.callback({data:data, callback:args.cbCallback})
   });
@@ -11,14 +11,11 @@ Banco.prototype.buscarJogadores = function(args){
 
 Banco.prototype.topRanking = function(args){
   if(!!args.data){
-    args.callback(args.data.sort(
-      function(a,b){
-        return a.pontuacao<b.pontuacao;
-      }
-    ).map(function(elem){return new Jogador({pontuacao:elem.pontuacao,nome:elem.nome});})
-    .slice(0,5));
+    args.callback(args.data.map(function(elem){
+      return new Jogador({pontuacao:elem.pontuacao,nome:elem.nome});
+    }));
   }else if(!!args.callback){
-    this.buscarJogadores({callback:this.topRanking, cbCallback:args.callback});
+    this.buscarJogadores({query:'?_sort=pontuacao&_order=DESC&_end=5',callback:this.topRanking, cbCallback:args.callback});
   }
 };
 
