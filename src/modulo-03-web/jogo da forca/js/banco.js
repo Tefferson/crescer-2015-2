@@ -5,7 +5,46 @@ function Banco(options){
 Banco.prototype.buscarJogadores = function(args){
   $.get('http://localhost:3000/pessoas'+(args.query || ''))
   .done(function(data) {
-    args.callback({data:data, callback:args.cbCallback})
+    args.callback({data:data, nome:args.nome
+      ,callback:args.cbCallback
+      ,self:args.self}
+
+    }
+  );
+};
+
+Banco.prototype.buscarOuCriarJogador = function(args){
+  if(!!args.data){
+    if(args.data.length>0){
+      args.callback({jogador:new Jogador(
+        {nome:args.data[0].nome
+          ,pontuacao:args.data[0].pontuacao}
+        )
+      }
+    );
+  }else{
+    args.self.criarJogador({nome:args.nome
+      ,callback:self.buscarOuCriarJogador
+      ,cbCallback:args.callback}
+    );
+  }
+}else{
+  this.buscarJogadores({nome:args.nome
+    ,query:'?nome='+args.nome
+    ,callback:this.buscarOuCriarJogador
+    ,cbCallback:args.callback,self:this}
+  );
+}
+};
+
+Banco.prototype.criarJogador = function(args){
+  $.post('http://localhost:3000/pessoas',{ nome: args.nome, pontuacao: 0 })
+  .done(function(){
+    args.callback(
+      {callback:args.cbCallback
+        ,data:{nome:args.nome,pontuacao:0}
+      }
+    );
   });
 };
 
@@ -15,44 +54,8 @@ Banco.prototype.topRanking = function(args){
       return new Jogador({pontuacao:elem.pontuacao,nome:elem.nome});
     }));
   }else if(!!args.callback){
-    this.buscarJogadores({query:'?_sort=pontuacao&_order=DESC&_end=5',callback:this.topRanking, cbCallback:args.callback});
+    this.buscarJogadores({query:'?_sort=pontuacao&_order=DESC&_end=5'
+    ,callback:this.topRanking
+    , cbCallback:args.callback});
   }
-};
-
-Banco.prototype.cadastro = function(nome) {
-  var jogadores=[];
-  var sd='';
-  $.get('http://localhost:3000/pessoas')
-  .done(function(data) {
-    data.forEach(function(elem){
-      jogadores.push(elem);
-      if(elem.nome===nome){
-        sd=elem.nome;
-      }
-    });
-    if(sd===''){
-      $.post('http://localhost:3000/pessoas',
-      { nome: nome, pontuacao: 0 }
-    );
-  }else{
-    console.log("Nome já consta");
-  }
-});
-};
-
-Banco.prototype.ranking=function(){
-  var jogadores=[];
-  $.get('http://localhost:3000/pessoas')
-  .done(function(data){
-    data.forEach(function(elem){
-      jogadores.push(elem);
-    })
-    jogadores.sort(function(elem,elem2){
-      return elem.pontuacao < elem2.pontuacao;
-    });
-    //tenho dados aqui, inicialiar funcao;
-    jogadores.forEach(function(elem){
-      console.log(elem.nome);
-    });
-  });
 };
