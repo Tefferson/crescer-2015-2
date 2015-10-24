@@ -112,7 +112,7 @@ Banco.prototype.resetarPalavrasRepetidas = function() {
 Banco.prototype.verificarReincidencia = function(palavra, nomeDoUsuario){
   var lista = this.listarPalavrasRepetidas(nomeDoUsuario);
   for(var i=0,len=lista.length;i<len;i++){
-    if(palavra===lista[i].palavra) {
+    if(palavra===lista[i].nome) {
       return false;
     }
   }
