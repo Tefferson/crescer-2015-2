@@ -4,16 +4,23 @@ function Controller(options){
 
 Controller.prototype.initGame = function(){
   var maxErros = $('.dificuldade:eq(0)').val()==='normal'?5:2;
-  this.tamanhoMinimoPalavra = maxErros===2?0:12
+  this.tamanhoMinimoPalavra = maxErros===2?13:0;
   $('.botao').prop('disabled', true);
-  this.palavra='PALAVRA';
-  this.jogo = new Jogo({palavra:this.palavra
-    ,maxErros:maxErros
-    ,encerrarPartida:this.encerrarPartida}
+  this.banco.buscarPalavra(
+    {
+      callback:function(args){
+        args.self.palavra=args.palavra;
+        args.self.jogo = new Jogo({palavra:args.self.palavra
+          ,maxErros:maxErros
+          ,encerrarPartida:args.self.encerrarPartida}
+        );
+        args.self.jogo.init();
+        $('.palavra')[0].innerHTML=args.self.jogo.getPalavra();
+        $('.botao').prop('disabled', false);
+      }
+      , self:this
+    }
   );
-  this.jogo.init();
-  $('.palavra')[0].innerHTML=this.jogo.getPalavra();
-  $('.botao').prop('disabled', false);
 };
 
 Controller.prototype.initBanco = function(){

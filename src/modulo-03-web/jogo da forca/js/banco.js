@@ -59,11 +59,18 @@ Banco.prototype.topRanking = function(args){
   }
 };
 
-Banco.prototype.buscarPalavra = function(tamanhoMinimo){
+Banco.prototype.buscarPalavra = function(args){
   var randomId = Math.random()*61;
-  var query = this.baseURL+ 'palavras' + '?idpalavra_gte='+~~randomId+'&idpalavra_lte='+~~randomId;
+  var tamanhoMinimo = args.self.tamanhoMinimoPalavra;
+  var query = this.baseURL+ 'palavras' + '?nome.length_gte='+tamanhoMinimo
+  +'&idpalavra_gte='+~~randomId+'&idpalavra_lte='+~~randomId;
+  console.log(query);
   $.get(query)
   .done(function(data) {
-    console.log(data);
+    if(data.length){
+      args.callback({palavra:data[0].nome,self:args.self});
+    }else{
+      this.buscarPalavra(args);
+    }
   });
 }
