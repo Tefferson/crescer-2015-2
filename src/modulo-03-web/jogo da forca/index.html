@@ -9,12 +9,12 @@
 
   <div class="form-container">
     <form class="formulario" action="" method="get">
-      <input type="text" placeholder="Digite seu nome" name="name" value="">
+      <input class="nome" type="text" placeholder="Digite seu nome" name="name" value="">
       <select class="" name="">
         <option value"normal">normal</option>
         <option value"nunez">nunez</option>
       </select>
-      <input class="btnid" type="button" name="name" value="Iniciar jogo">
+      <input class="iniciar" type="button" name="name" value="Iniciar jogo">
     </form>
   </div>
   <div class="palavra ocultar"></div>
@@ -53,11 +53,16 @@
       <input id="M" type="button" class="botao" value="M">
     </div>
   </div>
-</div>
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="Utils/String.js"></script>
-<script type="text/javascript" src="js/jogo.js"></script>
-<script type="text/javascript" src="js/controller.js"></script>
+  <div class="row ocultar">
+    <input type="text" id="palpite"name="name" value="" placeholder="Palpite">
+    <button type="button" id="btnPalpite" name="button">Palpitar</button>
+  </div>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="Utils/String.js"></script>
+  <script type="text/javascript" src="js/jogador.js"></script>
+  <script type="text/javascript" src="js/banco.js"></script>
+  <script type="text/javascript" src="js/jogo.js"></script>
+  <script type="text/javascript" src="js/controller.js"></script>
 </body>
 </body>
 </html>
