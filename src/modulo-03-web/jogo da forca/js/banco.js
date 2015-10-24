@@ -75,4 +75,45 @@ Banco.prototype.buscarPalavra = function(args){
       args.selfBusca.buscarPalavra(args);
     }
   });
-}
+};
+
+Banco.prototype.localStorageContainsUsuario = function(usuarios,nomeDoUsuario){
+  for (var i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].nome === nomeDoUsuario) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+Banco.prototype.listarPalavrasRepetidas = function(nomeDoUsuario) {
+  var indice = this.criarListaDePalavrasParaUsuario(nomeDoUsuario);
+  var listaPalavras = JSON.parse(localStorage.palavraRepetidas);
+  localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
+  return listaPalavras[indice].palavrasRepetidas;
+};
+
+Banco.prototype.criarListaDePalavrasParaUsuario = function(nomeDoUsuario) {
+  if (localStorage.palavraRepetidas === undefined) {
+    this.resetarPalavrasRepetidas();
+  }
+  var usuarios = JSON.parse(localStorage.palavraRepetidas);
+  var indice = this.localStorageContainsUsuario(usuarios);
+  if (indice === -1) {
+    usuarios.push({'nome': nomeDoUsuario, 'palavrasRepetidas': []});
+    indice = usuarios.length - 1;
+  }
+  localStorage.setItem('palavraRepetidas', JSON.stringify(usuarios));
+  return indice;
+};
+
+Banco.prototype.resetarPalavrasRepetidas = function() {
+  localStorage.setItem('palavraRepetidas', '[]');
+};
+
+Banco.prototype.adicionarPalavraRepetida = function(nomeDoUsuario, palavraDeRetorno) {
+  var indice = this.criarListaDePalavrasParaUsuario(nomeDoUsuario);
+  var listaPalavras = JSON.parse(localStorage.palavraRepetidas);
+  listaPalavras[indice].palavrasRepetidas.push({'palavra': palavraDeRetorno});
+  localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
+};
