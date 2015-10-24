@@ -1,9 +1,10 @@
 function Banco(options){
   options = options || {};
+  this.baseURL = 'http://localhost:3000/';
 };
 
 Banco.prototype.buscarJogadores = function(args){
-  $.get('http://localhost:3000/pessoas'+(args.query || ''))
+  $.get(this.baseURL+'pessoas'+(args.query || ''))
   .done(function(data) {
     args.callback({data:data, nome:args.nome
       ,callback:args.cbCallback
@@ -36,11 +37,11 @@ Banco.prototype.buscarOuCriarJogador = function(args){
 };
 
 Banco.prototype.criarJogador = function(args){
-  $.post('http://localhost:3000/pessoas',{ nome: args.nome, pontuacao: 0 })
+  $.post('http://localhost:3000/pessoas',{ nome: args.data[0].nome, pontuacao: 0 })
   .done(function(){
     args.callback(
       {callback:args.cbCallback
-        ,data:[{nome:args.nome,pontuacao:0}],self:args.self
+        ,data:[{nome:args.data[0].nome,pontuacao:0}],self:args.self
       }
     );
   });
@@ -57,3 +58,12 @@ Banco.prototype.topRanking = function(args){
     ,cbCallback:args.callback});
   }
 };
+
+Banco.prototype.buscarPalavra = function(tamanhoMinimo){
+  var randomId = Math.random()*61;
+  var query = this.baseURL+ 'palavras' + '?idpalavra_gte='+~~randomId+'&idpalavra_lte='+~~randomId;
+  $.get(query)
+  .done(function(data) {
+    console.log(data);
+  });
+}

@@ -4,6 +4,7 @@ function Controller(options){
 
 Controller.prototype.initGame = function(){
   var maxErros = $('.dificuldade:eq(0)').val()==='normal'?5:2;
+  this.tamanhoMinimoPalavra = maxErros===2?0:12
   $('.botao').prop('disabled', true);
   this.palavra='PALAVRA';
   this.jogo = new Jogo({palavra:this.palavra
