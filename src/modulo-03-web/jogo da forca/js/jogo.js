@@ -9,7 +9,7 @@ function Jogo(options){
 Jogo.prototype.init = function(){
   this.letras = this.palavra.split('').map(
     function(elem){
-      return {letra:elem, visivel:false};
+      return {letra:elem, visivel:elem===' '};
     }
   );
 };

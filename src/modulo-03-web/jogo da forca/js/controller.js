@@ -15,7 +15,7 @@ Controller.prototype.initGame = function(){
           ,encerrarPartida:args.self.encerrarPartida}
         );
         args.self.jogo.init();
-        $('.palavra')[0].innerHTML=args.self.jogo.getPalavra();
+        $('.palavra:eq(0)').html(args.self.jogo.getPalavra());
         $('.botao').prop('disabled', false);
       }
       , self:this
@@ -65,7 +65,7 @@ Controller.prototype.verificarCompletude = function(elem){
     this.postVitoria();
     this.initGame();
   }
-  $('.palavra')[0].innerHTML=this.jogo.getPalavra();
+  $('.palavra:eq(0)').html(this.jogo.getPalavra());
   $('#palpite').val('');
 };
 

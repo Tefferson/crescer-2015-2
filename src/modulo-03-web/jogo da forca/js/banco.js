@@ -64,13 +64,15 @@ Banco.prototype.buscarPalavra = function(args){
   var tamanhoMinimo = args.self.tamanhoMinimoPalavra;
   var query = this.baseURL+ 'palavras' + '?nome.length_gte='+tamanhoMinimo
   +'&idpalavra_gte='+~~randomId+'&idpalavra_lte='+~~randomId;
-  console.log(query);
+  args.selfBusca = this;
   $.get(query)
   .done(function(data) {
     if(data.length){
       args.callback({palavra:data[0].nome,self:args.self});
     }else{
-      this.buscarPalavra(args);
+      console.log(query);
+      console.log(args.selfBusca);
+      args.selfBusca.buscarPalavra(args);
     }
   });
 }
