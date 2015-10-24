@@ -4,6 +4,7 @@ function Jogo(options){
   this.maxErros=options.maxErros;
   this.erros=0;
   this.estado='jogando';
+  this.pontos=100;
 };
 
 Jogo.prototype.init = function(){
@@ -27,6 +28,7 @@ Jogo.prototype.chutarLetra = function(letra){
 
 Jogo.prototype.incrementarErros = function(){
   this.erros++;
+  this.pontos-=10;
   if(this.perdeu()){
     this.estado = 'derrota';
   }
@@ -48,6 +50,10 @@ Jogo.prototype.getPalavra = function(){
   );
   return letrasVisiveis.join('');
 };
+
+Jogo.prototype.getPontos = function(){
+  return this.pontos;
+}
 
 Jogo.prototype.verificarCompletude = function(){
   return this.letras.reduce(

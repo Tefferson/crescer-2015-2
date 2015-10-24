@@ -17,6 +17,7 @@ Controller.prototype.initGame = function(){
         args.self.jogo.init();
         $('.palavra:eq(0)').html(args.self.jogo.getPalavra());
         $('.botao').prop('disabled', false);
+        args.self.updatePontos(100);
       }
       , self:this
     }
@@ -35,14 +36,22 @@ Controller.prototype.init = function() {
   $('.iniciar').click(function(){this.buscarJogadorPrincipal({nome:$('.nome').val()})}.bind(this));
 };
 
+Controller.prototype.updatePontos = function(pontos){
+  pontos = pontos || this.jogo.getPontos();
+  $('.pontos:eq(0)').html(pontos+' pontos');
+}
+
 Controller.prototype.buscarJogadorPrincipal = function(args){
   if(!!args.jogador){
     $('.form-container').toggleClass('ocultar');
     $('body div:eq(1)').toggleClass('ocultar');
     $('body div:eq(2)').toggleClass('teclado');
     $('body div:eq(6)').toggleClass('ocultar');
-    controller.jogador = args.jogador;
-    controller.initGame();
+    var self = controller;
+    self.jogador = args.jogador;
+    $('.jogador-info').toggleClass('ocultar').html(args.jogador.toString());
+    self.initGame();
+    $('.pontos').toggleClass('ocultar');
   }else{
     var self = this;
     self.banco.buscarOuCriarJogador({callback:self.buscarJogadorPrincipal
@@ -58,7 +67,7 @@ Controller.prototype.verificarCompletude = function(elem){
     this.jogo.chutarLetra(elem.value);
     elem.disabled=true;
   }
-
+  this.updatePontos();
   if(this.jogo.estado==='derrota'){
     this.initGame();
   }else if(this.jogo.estado==='vitoria'){
@@ -66,6 +75,7 @@ Controller.prototype.verificarCompletude = function(elem){
     this.initGame();
   }
   $('.palavra:eq(0)').html(this.jogo.getPalavra());
+  $('.pontos:eq(0)').html(this.jogo.getPontos());
   $('#palpite').val('');
 };
 
