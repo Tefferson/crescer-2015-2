@@ -1,6 +1,6 @@
 Olá, bem vindo ao jogo da forca do time Gyarados.
 Antes de iniciar o jogo será necessário efetuar a inicialização da base de dados, para realizar isso basta seguir os seguintes passos:
->Windows:
+*Windows:
 >Abra o prompt de comando (CMD), para isso vá ao menu iniciar, pesquisar, e digite CMD e pressione ENTER.
 >Com isso navegue através dos diretórios( utilizando os comandos CD nome_da_pasta.) até localizar o local onde se encontra os >arquivo de banco de dados do jogo(pasta DB).
 >Feito isso utilize o comando “json-server dados.json —watch” e deixe o Prompt aberto até o jogo ser fechado 
