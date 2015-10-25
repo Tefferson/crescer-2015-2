@@ -14,6 +14,7 @@ Jogo.prototype.init = function(){
       return {letra:elem, visivel:elem===' '};
     }
   );
+  this.erros=0;
 };
 
 Jogo.prototype.chutarLetra = function(letra){
