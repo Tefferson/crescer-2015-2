@@ -102,10 +102,14 @@
   top: 9%;
   left: 2%;
   float: left;
+  font-family: monospace;
+  font-weight: bold;
 }
 
 .hint {
   display: inline-block;
+  font-family: monospace;
+  font-weight: bold;
 }
 
 .opcoes {
