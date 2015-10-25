@@ -48,6 +48,10 @@
   float: left;
 }
 
+.hint {
+  display: inline-block;
+}
+
 .opcoes {
   position: fixed;
   top: 5%;

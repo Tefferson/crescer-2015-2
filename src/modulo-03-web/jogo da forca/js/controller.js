@@ -33,11 +33,13 @@ Controller.prototype.updateTela = function(){
     $('.palpite').removeClass('ocultar');
     $('.opcoes').removeClass('ocultar');
     $('.pontos').removeClass('ocultar');
+    $('.dica').removeClass('ocultar');
   }else if(this.estado==='game over'){
     $('.palavra').addClass('ocultar');
     $('.teclado').addClass('ocultar');
     $('.palpite').addClass('ocultar');
     $('.pontos').addClass('ocultar');
+    $('.dica').addClass('ocultar');
     $('.game-over').removeClass('ocultar');
   }
 }
@@ -48,11 +50,12 @@ Controller.prototype.initBanco = function(){
 
 Controller.prototype.init = function() {
   this.initBanco();
-  $('.botao').click(function(e){this.verificarCompletude(e.toElement);}.bind(this));
-  $('#btnPalpite').click(function(){this.verificarCompletude($('#palpite').val().toUpperCase());}.bind(this));
+  $('.botao').click(function(e){this.verificarCompletude(e.toElement)}.bind(this));
+  $('#btnPalpite').click(function(){this.verificarCompletude($('#palpite').val().toUpperCase())}.bind(this));
   $('.iniciar').click(function(){this.buscarJogadorPrincipal({nome:$('.nome').val()})}.bind(this));
   $('#reiniciar').click(function(){this.reiniciarJogo()}.bind(this));
   $('#top5').click(function(){this.toogleRanking()}.bind(this));
+  $('.showHint').click(function(){this.mostrarDica()}.bind(this));
   this.estado = 'informando dados';
   this.updateTela();
 };
@@ -60,6 +63,11 @@ Controller.prototype.init = function() {
 Controller.prototype.updatePontos = function(pontos){
   pontos = pontos || this.jogo.getPontos();
   $('.pontos:eq(0)').html(pontos+' pontos/'+this.jogo.erros+' erros');
+}
+
+Controller.prototype.mostrarDica = function(){
+  $('.showHint').prop('disabled',true);
+  $('.hint').removeClass('ocultar');
 }
 
 Controller.prototype.buscarJogadorPrincipal = function(args){
@@ -100,8 +108,12 @@ Controller.prototype.verificarCompletude = function(elem){
   }
   this.updatePontos();
   if(this.jogo.estado==='derrota'){
+    $('.showHint').prop('disabled',false);
+    $('.hint').addClass('ocultar');
     this.endGame();
   }else if(this.jogo.estado==='vitoria'){
+    $('.showHint').prop('disabled',false);
+    $('.hint').addClass('ocultar');
     this.postVitoria();
     this.initGame();
   }
