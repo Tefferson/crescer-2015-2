@@ -4,7 +4,7 @@ function Jogo(options){
   this.maxErros=options.maxErros;
   this.erros=0;
   this.estado='jogando';
-  this.pontos=100;
+  this.pontos=0;
 };
 
 Jogo.prototype.init = function(){
@@ -26,9 +26,14 @@ Jogo.prototype.chutarLetra = function(letra){
   }
 };
 
+Jogo.prototype.novaPartida = function(novaPalavra){
+  this.estado = 'jogando';
+  this.palavra = novaPalavra;
+  this.init();
+};
+
 Jogo.prototype.incrementarErros = function(){
   this.erros++;
-  this.pontos-=10;
   if(this.perdeu()){
     this.estado = 'derrota';
   }

@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <div class="form-container">
+  <div class="form-container ocultar animation">
     <input class="nome" type="text" placeholder="Digite seu nome" name="name" value="">
     <select class="dificuldade" name="">
       <option value"normal">normal</option>
@@ -15,8 +15,8 @@
     </select>
     <input class="iniciar" type="button" name="name" value="Iniciar jogo">
   </div>
-  <div class="palavra ocultar"></div>
-  <div class="teclado ocultar">
+  <div class="palavra animation ocultar"></div>
+  <div class="teclado animation ocultar">
     <div class="row">
       <input id="Q" type="button" class="botao" value="Q">
       <input id="W" type="button" class="botao" value="W">
@@ -51,15 +51,20 @@
       <input id="M" type="button" class="botao" value="M">
     </div>
   </div>
-  <div class="row ocultar">
+  <div class="row palpite animation ocultar">
     <input type="text" id="palpite"name="name" value="" placeholder="Palpite">
     <button type="button" id="btnPalpite" name="button">Palpitar</button>
   </div>
-  <div class="rank">
+  <div class="rank animation ocultar">
     <ul></ul>
   </div>
-  <div class="jogador-info ocultar"></div>
-  <div class="pontos ocultar"></div>
+  <div class="jogador-info animation ocultar"></div>
+  <div class="pontos animation ocultar"></div>
+  <div class="opcoes animation ocultar">
+    <input id="top5" type="button" name="name" value="top 5">
+    <input id="reiniciar" type="button" name="name" value="reiniciar">
+  </div>
+  <div class="game-over animation ocultar">Game Over</div>
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="Utils/String.js"></script>
   <script type="text/javascript" src="js/jogador.js"></script>

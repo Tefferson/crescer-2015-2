@@ -5,6 +5,9 @@
   display: inline-block;
 }
 
+.body {
+}
+
 .palavra {
   font-size: 80px;
   text-align: center;
@@ -15,14 +18,17 @@
 }
 
 .ocultar {
-  display: none;
+  transform: scale(0);
 }
 
 .teclado {
 }
 
+.animation {
+  transition: transform 0.5s;
+}
+
 .form-container {
   text-align: center;
-  transition: transform 2s;
   overflow: hidden;
 }
