@@ -22,6 +22,7 @@ Jogo.prototype.chutarLetra = function(letra){
     if(this.verificarCompletude()){
       this.estado = 'vitoria';
     }
+    return true;
   }else{
     this.incrementarErros();
   }

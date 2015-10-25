@@ -1,6 +1,10 @@
 function Controller(options){
   options = options || {};
   this.jogo = new Jogo();
+  this.audio = {botao:new Audio('audio/botao.mp3'),
+  derrota:new Audio('audio/derrota.mp3'),
+  vitoria:new Audio('audio/vitoria.mp3'),
+  letra:new Audio('audio/letra.mp3')};
 };
 
 Controller.prototype.initGame = function(){
@@ -10,7 +14,7 @@ Controller.prototype.initGame = function(){
   this.banco.buscarPalavra(
     {
       callback:function(args){
-        args.self.palavra=args.palavra;
+        args.self.jogo.palavra=args.palavra;
         args.self.jogo.novaPartida({palavra:args.palavra,dica:args.dica});
         args.self.jogo.init();
         $('.palavra:eq(0)').html(args.self.jogo.getPalavra());
@@ -93,6 +97,7 @@ Controller.prototype.endGame = function(){
   $('.palavra').html('');
   this.estado = 'game over';
   this.updateTela();
+  this.audio.derrota.play();
 };
 
 Controller.prototype.reiniciarJogo = function(){
@@ -106,7 +111,9 @@ Controller.prototype.verificarCompletude = function(elem){
   if (elem.length > 1 || elem===''){
     this.jogo.chutarPalavra(elem);
   }else{
-    this.jogo.chutarLetra(elem.value);
+    this.jogo.chutarLetra(elem.value)?
+    this.audio.letra.play():
+    this.audio.botao.play();
     elem.disabled=true;
   }
   this.updatePontos();
@@ -120,7 +127,7 @@ Controller.prototype.verificarCompletude = function(elem){
     this.postVitoria();
     this.initGame();
   }
-  $('.palavra:eq(0)').html(this.jogo.getPalavra());
+  this.jogo.estado!=='derrota' && $('.palavra:eq(0)').html(this.jogo.getPalavra());
   this.updatePontos();
   $('#palpite').val('');
 };
@@ -129,7 +136,8 @@ Controller.prototype.postVitoria = function(){
   this.jogo.pontos+=105;
   this.jogador.pontuacao+=105;
   this.banco.postVitoria(this.jogador);
-  alert('vitoria!!!Começando próxima rodada');
+  this.audio.vitoria.play();
+  alert('Vitória!!!Começando próxima rodada!');
 };
 
 Controller.prototype.toogleRanking = function(){
