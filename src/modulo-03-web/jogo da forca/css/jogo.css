@@ -41,6 +41,13 @@
   left: 37%;
 }
 
+.rank {
+  position: fixed;
+  top: 15%;
+  left: 1%;
+  float: left;
+}
+
 .game-over {
   text-align: center;
   font-size: 80px;
