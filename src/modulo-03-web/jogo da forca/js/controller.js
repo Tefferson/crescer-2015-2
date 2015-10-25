@@ -49,7 +49,7 @@ Controller.prototype.initBanco = function(){
 Controller.prototype.init = function() {
   this.initBanco();
   $('.botao').click(function(e){this.verificarCompletude(e.toElement);}.bind(this));
-  $('#btnPalpite').click(function(){this.verificarCompletude($('#palpite').val().toUpperCase());});
+  $('#btnPalpite').click(function(){this.verificarCompletude($('#palpite').val().toUpperCase());}.bind(this));
   $('.iniciar').click(function(){this.buscarJogadorPrincipal({nome:$('.nome').val()})}.bind(this));
   $('#reiniciar').click(function(){this.reiniciarJogo()}.bind(this));
   $('#top5').click(function(){this.toogleRanking()}.bind(this));
