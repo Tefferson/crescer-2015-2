@@ -1,3 +1,7 @@
+.body {
+  transition: background-color 0.6s;
+}
+
 .botao {
   height: 50px;
   width: 50px;
@@ -46,6 +50,45 @@
   position: fixed;
   top: 15%;
   left: 1%;
+  float: left;
+}
+
+.pointer {
+  width: 25px;
+  height: 25px;
+  background-color: rgba(0,0,0,0);
+  border: 3px solid rgba(0,0,0,0);
+  border-right-color: #ccc;
+  border-radius: 50%;
+  position: fixed;
+  top: 44%;
+  left: 3%;
+  float: left;
+  z-index: -1;
+}
+
+.cores {
+  width: 25px;
+  height: 25px;
+  background-color: #e1e1e1;
+  border: 3px solid;
+  border-top-color: #0f0;
+  border-bottom-color: #00f;
+  border-left-color: #f00;
+  border-right-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 6px black;
+  transition: transform 0.5s;
+}
+
+.cores:hover {
+  cursor: pointer;
+}
+
+.personalizar {
+  position: fixed;
+  top: 44%;
+  left: 2%;
   float: left;
 }
 

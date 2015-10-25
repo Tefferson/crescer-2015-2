@@ -61,9 +61,20 @@ Controller.prototype.init = function() {
   $('#reiniciar').click(function(){this.reiniciarJogo()}.bind(this));
   $('#top5').click(function(){this.toogleRanking()}.bind(this));
   $('.showHint').click(function(){this.mostrarDica()}.bind(this));
+  $('.cores').click(function(){this.mudarTema()}.bind(this));
   this.estado = 'informando dados';
   this.updateTela();
 };
+
+Controller.prototype.mudarTema = function(){
+  if(!this.botaoCores){
+    this.botaoCores={selected:0,cores:['white','green','red','blue']}
+  }
+  this.botaoCores.selected++;
+  $('.cores').css('transform','rotate3d(0,0,1,'+90*this.botaoCores.selected+'deg)');
+  console.log(this.botaoCores[this.botaoCores.selected%4]);
+  $('body').css('background-color',this.botaoCores.cores[this.botaoCores.selected%4]);
+}
 
 Controller.prototype.updatePontos = function(pontos){
   pontos = pontos || this.jogo.getPontos();
