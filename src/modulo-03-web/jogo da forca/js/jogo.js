@@ -52,7 +52,7 @@ Jogo.prototype.chutarPalavra = function(palavra){
 Jogo.prototype.getPalavra = function(){
   var letrasVisiveis = this.letras.map(
     function(elem){
-      return elem.visivel?elem.letra:'_';
+      return elem.visivel?elem.letra:'-';
     }
   );
   return letrasVisiveis.join('');
