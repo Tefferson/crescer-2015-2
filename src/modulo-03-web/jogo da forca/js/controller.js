@@ -4,7 +4,8 @@ function Controller(options){
   this.audio = {botao:new Audio('audio/botao.mp3'),
   derrota:new Audio('audio/derrota.mp3'),
   vitoria:new Audio('audio/vitoria.mp3'),
-  letra:new Audio('audio/letra.mp3')};
+  letra:new Audio('audio/letra.mp3'),
+  flawlessVictory:new Audio('audio/flawlessVictory.mp3')};
 };
 
 Controller.prototype.initGame = function(){
@@ -147,7 +148,7 @@ Controller.prototype.postVitoria = function(){
   this.jogo.pontos+=105;
   this.jogador.pontuacao+=105;
   this.banco.postVitoria(this.jogador);
-  this.audio.vitoria.play();
+  this.jogo.erros>0?this.audio.vitoria.play():this.audio.flawlessVictory.play();
   alert('Vitória!!!Começando próxima rodada!');
 };
 
