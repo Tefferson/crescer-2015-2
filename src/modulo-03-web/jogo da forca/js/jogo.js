@@ -1,6 +1,7 @@
 function Jogo(options){
   options = options || {};
   this.palavra=options.palavra;
+  this.dica=options.dica;
   this.maxErros=options.maxErros;
   this.erros=0;
   this.estado='jogando';
@@ -26,9 +27,10 @@ Jogo.prototype.chutarLetra = function(letra){
   }
 };
 
-Jogo.prototype.novaPartida = function(novaPalavra){
+Jogo.prototype.novaPartida = function(options){
   this.estado = 'jogando';
-  this.palavra = novaPalavra;
+  this.palavra = options.palavra;
+  this.dica = options.dica;
   this.init();
 };
 
@@ -55,6 +57,10 @@ Jogo.prototype.getPalavra = function(){
   );
   return letrasVisiveis.join('');
 };
+
+Jogo.prototype.getDica = function(){
+  return this.dica;
+}
 
 Jogo.prototype.getPontos = function(){
   return this.pontos;

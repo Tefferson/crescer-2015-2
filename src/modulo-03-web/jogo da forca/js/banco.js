@@ -68,7 +68,7 @@ Banco.prototype.buscarPalavra = function(args){
   $.get(query)
   .done(function(data) {
     if(data.length && args.selfBusca.verificarReincidencia(data[0].nome,args.self.jogador.nome)){
-      args.callback({palavra:data[0].nome,self:args.self});
+      args.callback({palavra:data[0].nome,dica:data[0].dica,self:args.self});
     }else{
       args.selfBusca.buscarPalavra(args);
     }

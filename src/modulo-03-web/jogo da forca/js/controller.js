@@ -11,9 +11,10 @@ Controller.prototype.initGame = function(){
     {
       callback:function(args){
         args.self.palavra=args.palavra;
-        args.self.jogo.novaPartida(args.self.palavra);
+        args.self.jogo.novaPartida({palavra:args.palavra,dica:args.dica});
         args.self.jogo.init();
         $('.palavra:eq(0)').html(args.self.jogo.getPalavra());
+        $('.hint:eq(0)').html(args.self.jogo.getDica());
         $('.botao').prop('disabled', false);
         args.self.updatePontos(args.self.jogo.getPontos());
       }
