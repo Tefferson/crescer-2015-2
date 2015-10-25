@@ -90,6 +90,7 @@ Controller.prototype.buscarJogadorPrincipal = function(args){
 };
 
 Controller.prototype.endGame = function(){
+  $('.palavra').html('');
   this.estado = 'game over';
   this.updateTela();
 };

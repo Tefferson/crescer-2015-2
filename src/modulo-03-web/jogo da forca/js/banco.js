@@ -58,7 +58,7 @@ Banco.prototype.topRanking = function(args){
 };
 
 Banco.prototype.buscarPalavra = function(args){
-  var randomId = parseInt(Math.random()*61);
+  var randomId = parseInt(Math.random()*96);
   var tamanhoMinimo = args.self.tamanhoMinimoPalavra;
   var query = this.baseURL+ 'palavras' + '?nome.length_gte='+tamanhoMinimo
   +'&id_gte='+randomId+'&id_lte='+randomId;
