@@ -99,10 +99,11 @@ Controller.prototype.reiniciarJogo = function(){
   this.jogo.erros=0;
   this.jogo.pontos=0;
   this.buscarJogadorPrincipal({jogador:this.jogador});
+  $('.showHint').prop('disabled',false);
 };
 
 Controller.prototype.verificarCompletude = function(elem){
-  if (elem.length > 1){
+  if (elem.length > 1 || elem===''){
     this.jogo.chutarPalavra(elem);
   }else{
     this.jogo.chutarLetra(elem.value);
