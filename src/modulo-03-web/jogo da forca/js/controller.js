@@ -125,7 +125,9 @@ Controller.prototype.verificarCompletude = function(elem){
 
 Controller.prototype.postVitoria = function(){
   this.jogo.pontos+=105;
-  alert('vitoria!!!');
+  this.jogador.pontuacao+=105;
+  this.banco.postVitoria(this.jogador);
+  alert('vitoria!!!Começando próxima rodada');
 };
 
 Controller.prototype.toogleRanking = function(){

@@ -123,3 +123,12 @@ Banco.prototype.adicionarPalavraRepetida = function(nomeDoUsuario, palavraDeReto
   listaPalavras[indice].palavrasRepetidas.push({'nome': palavraDeRetorno});
   localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
 };
+
+Banco.prototype.postVitoria = function(jogador){
+  var url = (this.baseURL+'pessoas/'+jogador.id);
+  $.ajax({
+    url: url,
+    type: 'PATCH',
+    data: {"pontuacao": jogador.pontuacao},
+  });
+};
