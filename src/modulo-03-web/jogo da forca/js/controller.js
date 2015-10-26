@@ -21,7 +21,7 @@ Controller.prototype.initGame = function(){
         $('.palavra:eq(0)').html(args.self.jogo.getPalavra());
         $('.hint:eq(0)').html(args.self.jogo.getDica());
         $('.botao').prop('disabled', false);
-        args.self.updatePontos(args.self.jogo.getPontos());
+        args.self.updatePontos(args.self.jogador.getPontuacao());
       }
       , self:this
     }
@@ -78,7 +78,7 @@ Controller.prototype.mudarTema = function(){
 }
 
 Controller.prototype.updatePontos = function(pontos){
-  pontos = pontos || this.jogo.getPontos();
+  pontos = pontos || this.jogador.getPontuacao();
   $('.pontos:eq(0)').html(pontos+' pontos/'+this.jogo.erros+' erros');
 }
 

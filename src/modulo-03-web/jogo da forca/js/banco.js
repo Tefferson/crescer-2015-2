@@ -16,9 +16,7 @@ Banco.prototype.buscarJogadores = function(args){
 Banco.prototype.buscarOuCriarJogador = function(args){
   if(!!args.data){
     if(args.data.length>0){
-      args.callback({jogador:new Jogador(
-        args.data[0]
-      )}
+      args.callback({jogador:new Jogador(args.data[0])}
     );
   }else{
     args.self.criarJogador({callback:args.self.buscarOuCriarJogador

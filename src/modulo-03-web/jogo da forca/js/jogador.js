@@ -8,3 +8,7 @@ function Jogador(options){
 Jogador.prototype.toString = function(){
   return this.nome + ' ' + this.pontuacao;
 }
+
+Jogador.prototype.getPontuacao = function(){
+  return this.pontuacao;
+}
