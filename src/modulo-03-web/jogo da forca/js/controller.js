@@ -73,7 +73,7 @@ Controller.prototype.mudarTema = function(){
   }
   this.botaoCores.selected++;
   $('.cores').css('transform','rotate3d(0,0,1,'+90*this.botaoCores.selected+'deg)');
-  console.log(this.botaoCores[this.botaoCores.selected%4]);
+  this.botaoCores[this.botaoCores.selected%4];
   $('body').css('background-color',this.botaoCores.cores[this.botaoCores.selected%4]);
 }
 
