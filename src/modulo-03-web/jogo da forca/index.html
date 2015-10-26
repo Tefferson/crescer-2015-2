@@ -6,14 +6,13 @@
   <link rel="stylesheet" href="css/jogo.css">
 </head>
 <body class="body">
-
   <div class="form-container ocultar animation">
-    <input class="nome" type="text" placeholder="Digite seu nome" name="name" value="">
-    <select class="dificuldade" name="">
+    <input class="nome" type="text" placeholder="Digite seu nome">
+    <select class="dificuldade">
       <option value="normal">normal</option>
       <option value="nunez">nunez</option>
     </select>
-    <input class="iniciar" type="button" name="name" value="Iniciar jogo">
+    <input class="iniciar" type="button" value="Iniciar jogo">
   </div>
   <div class="palavra animation ocultar"></div>
   <div class="teclado animation ocultar">
@@ -52,7 +51,7 @@
     </div>
   </div>
   <div class="row palpite animation ocultar">
-    <input type="text" id="palpite" name="name" value="" placeholder="Palpite">
+    <input type="text" id="palpite" name="name" placeholder="Palpite">
     <button type="button" id="btnPalpite" name="button">Palpitar</button>
   </div>
   <div class="rank animation ocultar">
@@ -61,12 +60,12 @@
   <div class="jogador-info animation ocultar"></div>
   <div class="pontos animation ocultar"></div>
   <div class="opcoes animation ocultar">
-    <input id="top5" type="button" name="name" value="Top 5">
-    <input id="reiniciar" type="button" name="name" value="Reiniciar">
+    <input id="top5" type="button" value="Top 5">
+    <input id="reiniciar" type="button" value="Reiniciar">
   </div>
   <div class="game-over animation ocultar">Game Over</div>
   <div class="dica animation ocultar">
-    <input class="showHint" type="button" name="name" value="Dica!">
+    <input class="showHint" type="button" value="Dica!">
     <div class="hint animation ocultar">Teste</div>
   </div>
   <div class="personalizar">
@@ -74,10 +73,10 @@
     <div class="cores"></div>
   </div>
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="Utils/String.js"></script>
-  <script type="text/javascript" src="js/jogador.js"></script>
-  <script type="text/javascript" src="js/banco.js"></script>
-  <script type="text/javascript" src="js/jogo.js"></script>
-  <script type="text/javascript" src="js/controller.js"></script>
+  <script src="Utils/String.js"></script>
+  <script src="js/jogador.js"></script>
+  <script src="js/banco.js"></script>
+  <script src="js/jogo.js"></script>
+  <script src="js/controller.js"></script>
 </body>
 </html>
