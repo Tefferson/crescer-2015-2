@@ -58,7 +58,7 @@ Controller.prototype.init = function() {
   this.initBanco();
   $('.botao').click(function(e){this.verificarCompletude(e.toElement)}.bind(this));
   $('#btnPalpite').click(function(){this.verificarCompletude($('#palpite').val().toUpperCase())}.bind(this));
-  $('.iniciar').click(function(){this.buscarJogadorPrincipal({nome:$('.nome').val()})}.bind(this));
+  $('.iniciar').click(function(){this.startButtonsGlow(2);this.buscarJogadorPrincipal({nome:$('.nome').val()})}.bind(this));
   $('#reiniciar').click(function(){this.reiniciarJogo()}.bind(this));
   $('#top5').click(function(){this.toogleRanking()}.bind(this));
   $('.showHint').click(function(){this.mostrarDica()}.bind(this));
@@ -66,6 +66,11 @@ Controller.prototype.init = function() {
   this.estado = 'informando dados';
   this.updateTela();
 };
+
+Controller.prototype.startButtonsGlow = function(delay){
+  var millis = delay*1000 || 0;
+  setTimeout(function(){$('.botao').css('animation','glow 4s infinite')},millis);
+}
 
 Controller.prototype.mudarTema = function(){
   if(!this.botaoCores){
