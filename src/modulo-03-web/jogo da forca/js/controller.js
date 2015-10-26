@@ -129,6 +129,7 @@ Controller.prototype.verificarCompletude = function(elem){
     elem.disabled=true;
   }
   this.updatePontos();
+  this.jogo.estado!=='derrota' && $('.palavra:eq(0)').html(this.jogo.getPalavra());
   if(this.jogo.estado==='derrota'){
     $('.showHint').prop('disabled',false);
     $('.hint').addClass('ocultar');
@@ -139,7 +140,6 @@ Controller.prototype.verificarCompletude = function(elem){
     this.postVitoria();
     this.initGame();
   }
-  this.jogo.estado!=='derrota' && $('.palavra:eq(0)').html(this.jogo.getPalavra());
   this.updatePontos();
   $('#palpite').val('');
 };
