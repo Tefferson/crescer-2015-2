@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
@@ -12,7 +8,7 @@ namespace ConsoleApp
         const int REMOVER_POR_NOME = 2;
         const int REMOVER_POR_NUMERO = 3;
         const int LISTAR = 4;
-        const int LISTAR_POR_NOME = 5;
+        const int LISTAR_POR_NOME = 5; 
         const int SAIR = 0;
         static string LerLinha(string mensagem)
         {
