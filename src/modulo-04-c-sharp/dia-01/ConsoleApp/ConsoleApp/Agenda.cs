@@ -36,7 +36,7 @@ namespace ConsoleApp
             var lista = "";
             foreach (var contato in contatos)
             {
-                lista += (contato.Nome + "-" + contato.Numero + "\n");
+                lista += (contato.ToString() + "\n");
             }
             return lista;
         }
