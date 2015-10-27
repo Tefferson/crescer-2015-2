@@ -14,7 +14,7 @@ namespace ConsoleApp
         public Contato(string nome, int numero)
         {
             Nome = nome;
-            Numero = numero;
+            Numero = numero; 
         }
 
         public override string ToString()
