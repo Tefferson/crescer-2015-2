@@ -8,106 +8,87 @@ namespace ConsoleApp
 {
     class Program
     {
+        enum Estados { MOSTRANDO_MENU, CRIANDO_CONTATO, LISTANDO_CONTATOS, REMOVENDO_CONTATOS_POR_NOME, REMOVENDO_CONTATOS_POR_NUMERO, LISTANDO_CONTATOS_POR_NOME, SAINDO }
+        static string LerLinha(string mensagem)
+        {
+            Console.WriteLine(mensagem);
+            return Console.ReadLine();
+        }
+
+        static int LerNumero(string mensagem)
+        {
+            int numeroLido;
+            int.TryParse(LerLinha(mensagem), out numeroLido);
+            return numeroLido;
+        }
+
         static void Main(string[] args)
         {
+            const int ADICIONAR = 1;
+            const int REMOVER_POR_NOME = 2;
+            const int REMOVER_POR_NUMERO = 3;
+            const int LISTAR = 4;
+            const int LISTAR_POR_NOME = 5;
+            const int SAIR = 0;
             var agenda = new Agenda();
             var loop = true;
-            var estado = 0;
+            var estado = Estados.MOSTRANDO_MENU;
             var menu = "1-Adicionar\n2-Remover por nome\n3-Remover por número\n4-Listar\n5-Listar por nome\n0-Sair";
             var informarNome = "Por favor informe o nome:";
             var informarNumero = "Por favor informe o número:";
             var continuar = "Por favor, pressione enter para continuar...";
-            var digitado = "";
-            var nome = "";
-            var numero = 0;
+            var cabecalho = "=====AGENDA=====";
             while (loop)
             {
                 Console.Clear();
-                if (estado == 0)
+                Console.WriteLine(cabecalho);
+                if (estado == Estados.MOSTRANDO_MENU)
                 {
-                    Console.WriteLine(menu);
-                    digitado = Console.ReadLine();
-                    var digitadoToInt = Convert.ToInt32(digitado);
-                    if (digitadoToInt == 1)
+                    switch (LerNumero(menu))
                     {
-                        estado = 1;
-                    }
-                    else if (digitadoToInt == 4)
-                    {
-                        estado = 3;
-                    }
-                    else if (digitadoToInt == 2)
-                    {
-                        estado = 4;
-                    }
-                    else if (digitadoToInt == 3)
-                    {
-                        estado = 5;
-                    }
-                    else if (digitadoToInt == 5)
-                    {
-                        estado = 6;
-                    }
-                    else if (digitadoToInt == 0)
-                    {
-                        estado = 7;
+                        case ADICIONAR:
+                            estado = Estados.CRIANDO_CONTATO;
+                            break;
+                        case LISTAR:
+                            estado = Estados.LISTANDO_CONTATOS;
+                            break;
+                        case REMOVER_POR_NOME:
+                            estado = Estados.REMOVENDO_CONTATOS_POR_NOME;
+                            break;
+                        case REMOVER_POR_NUMERO: estado = Estados.REMOVENDO_CONTATOS_POR_NUMERO;
+                            break;
+                        case LISTAR_POR_NOME: estado = Estados.LISTANDO_CONTATOS_POR_NOME;
+                            break;
+                        case SAIR: estado = Estados.SAINDO;
+                            break;
                     }
                 }
-                else if (estado == 1)
+                else if (estado == Estados.CRIANDO_CONTATO)
                 {
-                    Console.WriteLine(informarNome);
-                    digitado = Console.ReadLine();
-                    if (digitado != "")
-                    {
-                        nome = digitado;
-                        estado = 2;
-                    }
-                    else
-                    {
-                        estado = 0;
-                    }
+                    agenda.AdicionarContato(new Contato(LerLinha(informarNome), LerNumero(informarNumero)));
+                    estado = Estados.MOSTRANDO_MENU;
                 }
-                else if (estado == 2)
+                else if (estado == Estados.LISTANDO_CONTATOS)
                 {
-                    Console.WriteLine(informarNumero);
-                    digitado = Console.ReadLine();
-                    numero = Convert.ToInt32(digitado);
-                    agenda.AdicionarContato(new Contato(nome, numero));
-                    estado = 0;
+                    LerLinha(agenda.ListarContatos() + '\n' + continuar);
+                    estado = Estados.MOSTRANDO_MENU;
                 }
-                else if (estado == 3)
+                else if (estado == Estados.REMOVENDO_CONTATOS_POR_NOME)
                 {
-                    Console.WriteLine(agenda.ListarContatos());
-                    Console.WriteLine(continuar);
-                    Console.ReadKey();
-                    estado = 0;
+                    agenda.RemoverContatosPorNome(LerLinha(informarNome));
+                    estado = Estados.MOSTRANDO_MENU;
                 }
-                else if (estado == 4)
+                else if (estado == Estados.REMOVENDO_CONTATOS_POR_NUMERO)
                 {
-                    Console.WriteLine(informarNome);
-                    digitado = Console.ReadLine();
-                    if (digitado != "")
-                    {
-                        agenda.RemoverContatosPorNome(digitado);
-                    }
-                    estado = 0;
+                    agenda.RemoverContatosPorNumero(LerNumero(informarNumero));
+                    estado = Estados.MOSTRANDO_MENU;
                 }
-                else if (estado == 5)
+                else if (estado == Estados.LISTANDO_CONTATOS_POR_NOME)
                 {
-                    Console.WriteLine(informarNumero);
-                    digitado = Console.ReadLine();
-                    var digitadoToInt = Convert.ToInt32(digitado);
-                    agenda.RemoverContatosPorNumero(digitadoToInt);
-                    estado = 0;
+                    LerLinha(agenda.ListarContatosOrdenadosPorNome() + '\n' + continuar);
+                    estado = Estados.MOSTRANDO_MENU;
                 }
-                else if (estado == 6)
-                {
-                    Console.WriteLine(agenda.ListarContatosOrdenadosPorNome());
-                    Console.WriteLine(continuar);
-                    Console.ReadKey();
-                    estado = 0;
-                }
-                else if (estado == 7)
+                else if (estado == Estados.SAINDO)
                 {
                     loop = false;
                 }

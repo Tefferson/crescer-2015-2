@@ -8,16 +8,13 @@ namespace ConsoleApp
 {
     public class Contato
     {
-        private string nome;
-        private int numero;
-
-        public string Nome { get { return nome; } set { nome = value; } }
-        public int Numero { get { return numero; } set { numero = value; } }
+        public string Nome { get; set; }
+        public int Numero { get; set; }
 
         public Contato(string nome, int numero)
         {
-            this.nome = nome;
-            this.numero = numero;
+            Nome = nome;
+            Numero = numero;
         }
     }
 }

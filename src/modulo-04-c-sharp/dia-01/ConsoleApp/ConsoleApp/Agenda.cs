@@ -43,12 +43,12 @@ namespace ConsoleApp
 
         public string ListarContatosOrdenadosPorNome()
         {            
-            contatos.Sort(delegate (Contato contatoA, Contato y)
+            contatos.Sort(delegate (Contato contatoA, Contato contatoB)
             {
-                if (contatoA.Nome == null && y.Nome == null) return 0;
+                if (contatoA.Nome == null && contatoB.Nome == null) return 0;
                 else if (contatoA.Nome == null) return -1;
-                else if (y.Nome == null) return 1;
-                else return contatoA.Nome.CompareTo(y.Nome);
+                else if (contatoB.Nome == null) return 1;
+                else return contatoA.Nome.CompareTo(contatoB.Nome);
             });
             return ListarContatos();
         }
