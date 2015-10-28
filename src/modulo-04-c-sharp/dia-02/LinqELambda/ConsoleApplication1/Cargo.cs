@@ -20,8 +20,16 @@ namespace ConsoleApplication1
         public override bool Equals(object obj)
         {
             Cargo cargo = (Cargo)obj;
-            return Titulo==cargo.Titulo && Salario==cargo.Salario;
+            return Titulo == cargo.Titulo && Salario == cargo.Salario;
         }
 
+        public override string ToString()
+        {
+            return Titulo + "-" + Salario;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

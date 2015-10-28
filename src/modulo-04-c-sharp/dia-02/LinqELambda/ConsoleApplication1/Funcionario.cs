@@ -21,5 +21,9 @@ namespace ConsoleApplication1
             this.DataNascimento = dataNascimento;
         }
 
+        public override string ToString()
+        {
+            return Id + "-" + Nome + "-" + DataNascimento + "-" + TurnoTrabalho + "-" + Cargo;
+        }
     }
 }
