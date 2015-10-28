@@ -113,10 +113,10 @@ namespace ConsoleApplication1
             if (turnos.Count() > 0)
             {
                 var turnosUnicos = turnos.GroupBy(turno => turno);
-                var query = from turno in turnosUnicos
-                            join funcionario in Funcionarios
-                            on turno.Key equals funcionario.TurnoTrabalho
-                            select funcionario;
+                IEnumerable<Funcionario> query = from turno in turnosUnicos
+                                                 join funcionario in Funcionarios
+                                                 on turno.Key equals funcionario.TurnoTrabalho
+                                                 select funcionario;
                 return query.ToList();
             }
             return new List<Funcionario>();
@@ -178,11 +178,11 @@ namespace ConsoleApplication1
         public dynamic FuncionarioMaisComplexo()
         {
             string padrao = "[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]";
-            int maiorReincidenciaDeConasoantes = Funcionarios.Max(funcionario => Regex.Matches(funcionario.Nome, @padrao).Count);
+            int maiorIncidenciaDeConasoantes = Funcionarios.Max(funcionario => Regex.Matches(funcionario.Nome, @padrao).Count);
 
             Funcionario funcionarioComplexo = Funcionarios.First(funcionario => Regex
             .Matches(funcionario.Nome, @padrao)
-            .Count == maiorReincidenciaDeConasoantes);
+            .Count == maiorIncidenciaDeConasoantes);
 
             double salario = funcionarioComplexo.Cargo.Salario;
             return new
