@@ -154,16 +154,8 @@ namespace ConsoleApplication1
         //H
         public double SalarioMedio(TurnoTrabalho? turno)
         {
-            IList<Funcionario> filtradosPorTurno;
-            if (turno.HasValue)
-            {
-                filtradosPorTurno = BuscarPorTurno(turno.Value);
-            }
-            else
-            {
-                TurnoTrabalho[] turnos = { TurnoTrabalho.Manha, TurnoTrabalho.Tarde, TurnoTrabalho.Noite };
-                filtradosPorTurno = BuscarPorTurno(turnos);
-            }
+            TurnoTrabalho[] turnos = { TurnoTrabalho.Manha, TurnoTrabalho.Tarde, TurnoTrabalho.Noite };
+            IList<Funcionario> filtradosPorTurno = turno.HasValue ? BuscarPorTurno(turno.Value) : BuscarPorTurno(turnos);
             return filtradosPorTurno.Average(funcionario => funcionario.Cargo.Salario);
         }
 
