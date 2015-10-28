@@ -130,7 +130,7 @@ namespace ConsoleApplication1
                 .Select(grupo => new
                 {
                     TurnoTrabalho = grupo.Key,
-                    Count = grupo.Sum(x => 1)
+                    Count = grupo.Count()
                 }).ToList();
             return qtdFuncionariosPorTurno.ToList();
         }
@@ -164,8 +164,7 @@ namespace ConsoleApplication1
                 TurnoTrabalho[] turnos = { TurnoTrabalho.Manha, TurnoTrabalho.Tarde, TurnoTrabalho.Noite };
                 filtradosPorTurno = BuscarPorTurno(turnos);
             }
-            int count = filtradosPorTurno.Count;
-            return filtradosPorTurno.Sum(funcionario => funcionario.Cargo.Salario) / count;
+            return filtradosPorTurno.Average(funcionario => funcionario.Cargo.Salario);
         }
 
         //I
