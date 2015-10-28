@@ -170,10 +170,10 @@ namespace ConsoleApplication1
         public dynamic FuncionarioMaisComplexo()
         {
             string padrao = "[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]";
-            int maiorIncidenciaDeConasoantes = Funcionarios.Max(funcionario => Regex.Matches(funcionario.Nome, @padrao).Count);
+            int maiorIncidenciaDeConasoantes = Funcionarios.Max(funcionario => Regex.Matches(funcionario.Nome, padrao).Count);
 
             Funcionario funcionarioComplexo = Funcionarios.First(funcionario => Regex
-            .Matches(funcionario.Nome, @padrao)
+            .Matches(funcionario.Nome, padrao)
             .Count == maiorIncidenciaDeConasoantes);
 
             double salario = funcionarioComplexo.Cargo.Salario;

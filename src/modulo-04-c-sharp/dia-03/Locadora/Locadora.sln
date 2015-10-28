@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.UI", "Locadora.UI\Locadora.UI.csproj", "{F4581B79-9256-45CD-9483-B04993D5B3A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Dominio", "Locadora.Dominio\Locadora.Dominio.csproj", "{27A617DE-6FBC-4B02-BD34-59D8324BC98C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4581B79-9256-45CD-9483-B04993D5B3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4581B79-9256-45CD-9483-B04993D5B3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4581B79-9256-45CD-9483-B04993D5B3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4581B79-9256-45CD-9483-B04993D5B3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A617DE-6FBC-4B02-BD34-59D8324BC98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A617DE-6FBC-4B02-BD34-59D8324BC98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A617DE-6FBC-4B02-BD34-59D8324BC98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A617DE-6FBC-4B02-BD34-59D8324BC98C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

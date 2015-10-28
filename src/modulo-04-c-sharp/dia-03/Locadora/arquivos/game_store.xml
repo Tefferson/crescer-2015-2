@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<jogos>
+  <jogo id="1">
+    <nome>Chrono Trigger</nome>
+    <preco>60</preco>
+    <categoria>RPG</categoria>
+  </jogo>
+  <jogo id="2">
+    <nome>Top Gear</nome>
+    <preco>20</preco>
+    <categoria>CORRIDA</categoria>
+  </jogo>
+  <jogo id="3">
+    <nome>Megaman X</nome>
+    <preco>40</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="4">
+    <nome>Super Metroid</nome>
+    <preco>35</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="5">
+    <nome>Donkey Kong Country</nome>
+    <preco>25</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="6">
+    <nome>Super Mario Kart</nome>
+    <preco>40</preco>
+    <categoria>CORRIDA</categoria>
+  </jogo>
+  <jogo id="7">
+    <nome>Super Street Fighter</nome>
+    <preco>25</preco>
+    <categoria>LUTA</categoria>
+  </jogo>
+  <jogo id="8">
+    <nome>Mortal Kombat 2</nome>
+    <preco>37</preco>
+    <categoria>LUTA</categoria>
+  </jogo>
+  <jogo id="9">
+    <nome>Killer Instinct</nome>
+    <preco>18</preco>
+    <categoria>LUTA</categoria>
+  </jogo>
+  <jogo id="10">
+    <nome>Final Fight</nome>
+    <preco>12</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="11">
+    <nome>Super Mario RPG</nome>
+    <preco>70</preco>
+    <categoria>RPG</categoria>
+  </jogo>
+  <jogo id="12">
+    <nome>Aladdin</nome>
+    <preco>16</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="13">
+    <nome>Rock 'n Roll Racing</nome>
+    <preco>22</preco>
+    <categoria>CORRIDA</categoria>
+  </jogo>
+  <jogo id="14">
+    <nome>Zelda: A link to the past</nome>
+    <preco>110</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="15">
+    <nome>Final Fantasy VI</nome>
+    <preco>30.5</preco>
+    <categoria>RPG</categoria>
+  </jogo>
+  <jogo id="16">
+    <nome>International Super Star Soccer Deluxe</nome>
+    <preco>45</preco>
+    <categoria>ESPORTE</categoria>
+  </jogo>
+  <jogo id="17">
+    <nome>Contra III</nome>
+    <preco>28</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="18">
+    <nome>Sunset Riders Alterado</nome>
+    <preco>37,9</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="19">
+    <nome>Goof Troop</nome>
+    <preco>41.9</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="20">
+    <nome>Mickey to Donald: Magical Adventure 3</nome>
+    <preco>32.9</preco>
+    <categoria>AVENTURA</categoria>
+  </jogo>
+  <jogo id="21">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="22">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="23">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="24">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="25">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="26">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="27">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="28">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="29">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="30">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+  <jogo id="31">
+    <nome>joguinho</nome>
+    <preco>23.99</preco>
+    <categoria>muita ação</categoria>
+  </jogo>
+</jogos>
