@@ -62,11 +62,14 @@ namespace ConsoleApplication1.Tests
         [TestMethod]
         public void QtdFuncionariosPorTurnoTest()
         {
-            //BaseDeDados dados = new BaseDeDados();
-            //var qtdPorTurno = dados.QtdFuncionariosPorTurno();
-            //Assert.AreEqual(2, qtdPorTurno[0].Count);
-            //Erro 'Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo.Create'
-            Assert.Fail();
+            BaseDeDados dados = new BaseDeDados();
+            string esperadoManha = "{ TurnoTrabalho = Manha, Count = 5 }";
+            string esperadoTarde = "{ TurnoTrabalho = Tarde, Count = 4 }";
+            string esperadoNoite = "{ TurnoTrabalho = Noite, Count = 2 }";
+            IList<dynamic> atual = dados.QtdFuncionariosPorTurno();
+            Assert.AreEqual(esperadoManha, atual[0].ToString());
+            Assert.AreEqual(esperadoTarde, atual[1].ToString());
+            Assert.AreEqual(esperadoNoite, atual[2].ToString());
         }
 
         [TestMethod]
@@ -116,11 +119,16 @@ namespace ConsoleApplication1.Tests
         [TestMethod]
         public void FuncionarioMaisComplexoTest()
         {
-            //BaseDeDados dados = new BaseDeDados();
-            //dynamic lista = dados.FuncionarioMaisComplexo();
-            //Type type = lista.GetType();
-            //Erro 'Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo.Create'
-            Assert.Fail();
+            BaseDeDados dados = new BaseDeDados();
+            string esperado = new
+            {
+                Nome = "Leandro Andreolli",
+                SalarioRS = "R$190,00",
+                SalarioUS = "U$190,00"
+            }.ToString();
+
+            string atual = dados.FuncionarioMaisComplexo().ToString();
+            Assert.AreEqual(esperado, atual);
         }
     }
 }
