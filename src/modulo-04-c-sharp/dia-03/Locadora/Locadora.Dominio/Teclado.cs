@@ -10,9 +10,8 @@ namespace Locadora.Dominio
     {
         public Teclado() { }
 
-        public Int32? LerInt(params string[] mensagens)
+        public Int32? LerInt()
         {
-            writeMensagens(mensagens);
             string digitado = Console.ReadLine();
             int num;
             if (digitado != "" && Int32.TryParse(digitado, out num))
@@ -22,9 +21,8 @@ namespace Locadora.Dominio
             return null;
         }
 
-        public Double? LerDouble(params string[] mensagens)
+        public Double? LerDouble()
         {
-            writeMensagens(mensagens);
             string digitado = Console.ReadLine();
             double num;
             if (digitado != "" && Double.TryParse(digitado.Replace(".", ","), out num))
@@ -34,25 +32,15 @@ namespace Locadora.Dominio
             return null;
         }
 
-        public string LerString(params string[] mensagens)
+        public string LerString()
         {
-            writeMensagens(mensagens);
             string digitado = Console.ReadLine();
             return digitado != "" ? digitado : null;
         }
 
-        public string LerLinha(params string[] mensagens)
+        public string LerLinha()
         {
-            writeMensagens(mensagens);
             return Console.ReadLine();
-        }
-
-        private void writeMensagens(string[] mensagens)
-        {
-            foreach (string mensagem in mensagens)
-            {
-                Console.WriteLine(mensagem);
-            }
         }
     }
 }
