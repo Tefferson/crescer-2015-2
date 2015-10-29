@@ -1,158 +1,361 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<jogos>
-  <jogo id="1">
-    <nome>Chrono Trigger</nome>
-    <preco>60</preco>
-    <categoria>RPG</categoria>
-  </jogo>
-  <jogo id="2">
-    <nome>Top Gear</nome>
-    <preco>20</preco>
-    <categoria>CORRIDA</categoria>
-  </jogo>
-  <jogo id="3">
-    <nome>Megaman X</nome>
-    <preco>40</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="4">
-    <nome>Super Metroid</nome>
-    <preco>35</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="5">
-    <nome>Donkey Kong Country</nome>
-    <preco>25</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="6">
-    <nome>Super Mario Kart</nome>
-    <preco>40</preco>
-    <categoria>CORRIDA</categoria>
-  </jogo>
-  <jogo id="7">
-    <nome>Super Street Fighter</nome>
-    <preco>25</preco>
-    <categoria>LUTA</categoria>
-  </jogo>
-  <jogo id="8">
-    <nome>Mortal Kombat 2</nome>
-    <preco>37</preco>
-    <categoria>LUTA</categoria>
-  </jogo>
-  <jogo id="9">
-    <nome>Killer Instinct</nome>
-    <preco>18</preco>
-    <categoria>LUTA</categoria>
-  </jogo>
-  <jogo id="10">
-    <nome>Final Fight</nome>
-    <preco>12</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="11">
-    <nome>Super Mario RPG</nome>
-    <preco>70</preco>
-    <categoria>RPG</categoria>
-  </jogo>
-  <jogo id="12">
-    <nome>Aladdin</nome>
-    <preco>16</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="13">
-    <nome>Rock 'n Roll Racing</nome>
-    <preco>22</preco>
-    <categoria>CORRIDA</categoria>
-  </jogo>
-  <jogo id="14">
-    <nome>Zelda: A link to the past</nome>
-    <preco>110</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="15">
-    <nome>Final Fantasy VI</nome>
-    <preco>30.5</preco>
-    <categoria>RPG</categoria>
-  </jogo>
-  <jogo id="16">
-    <nome>International Super Star Soccer Deluxe</nome>
-    <preco>45</preco>
-    <categoria>ESPORTE</categoria>
-  </jogo>
-  <jogo id="17">
-    <nome>Contra III</nome>
-    <preco>28</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="18">
-    <nome>Sunset Riders Alterado</nome>
-    <preco>37,9</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="19">
-    <nome>Goof Troop</nome>
-    <preco>41.9</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="20">
-    <nome>Mickey to Donald: Magical Adventure 3</nome>
-    <preco>32.9</preco>
-    <categoria>AVENTURA</categoria>
-  </jogo>
-  <jogo id="21">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="22">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="23">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="24">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="25">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="26">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="27">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="28">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="29">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="30">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-  <jogo id="31">
-    <nome>joguinho</nome>
-    <preco>23.99</preco>
-    <categoria>muita ação</categoria>
-  </jogo>
-</jogos>
+<root>
+  <jogos>
+    <jogo id="1">
+      <nome>Chrono Trigger</nome>
+      <preco>60</preco>
+      <categoria>RPG</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="2">
+      <nome>Top Gear</nome>
+      <preco>20</preco>
+      <categoria>CORRIDA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="3">
+      <nome>Megaman X</nome>
+      <preco>40</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="4">
+      <nome>Super Metroid</nome>
+      <preco>35</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="5">
+      <nome>Donkey Kong Country</nome>
+      <preco>25</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="6">
+      <nome>Super Mario Kart</nome>
+      <preco>40</preco>
+      <categoria>CORRIDA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="7">
+      <nome>Super Street Fighter</nome>
+      <preco>25</preco>
+      <categoria>LUTA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="8">
+      <nome>Mortal Kombat 2</nome>
+      <preco>37</preco>
+      <categoria>LUTA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="9">
+      <nome>Killer Instinct</nome>
+      <preco>19</preco>
+      <categoria>LUTA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="10">
+      <nome>Final Fight</nome>
+      <preco>12</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="11">
+      <nome>Super Mario RPG</nome>
+      <preco>70</preco>
+      <categoria>RPG</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="12">
+      <nome>Aladdin</nome>
+      <preco>16</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="13">
+      <nome>Rock 'n Roll Racing</nome>
+      <preco>22</preco>
+      <categoria>CORRIDA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="14">
+      <nome>Zelda: A link to the past</nome>
+      <preco>110</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="15">
+      <nome>Final Fantasy VI</nome>
+      <preco>30.5</preco>
+      <categoria>RPG</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="16">
+      <nome>International Super Star Soccer Deluxe</nome>
+      <preco>45</preco>
+      <categoria>ESPORTE</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="17">
+      <nome>Contra III</nome>
+      <preco>28</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="18">
+      <nome>Sunset Riders Alterado De Novo</nome>
+      <preco>37,9</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="19">
+      <nome>Goof Troop</nome>
+      <preco>41.9</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="20">
+      <nome>Mickey to Donald: Magical Adventure 3</nome>
+      <preco>32.9</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="21">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="22">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="23">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="24">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="25">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="26">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="27">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="28">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="29">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="30">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="31">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="32">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="33">
+      <nome>joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>muita ação</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="34">
+      <nome>Jogo de testar</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="35">
+      <nome>Jogo de testar</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="36">
+      <nome>Jogo de testar36</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="37">
+      <nome>Jogo de testar37</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="38">
+      <nome>Jogo de testar38</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="39">
+      <nome>Jogo de testar39</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="40">
+      <nome>Jogo de testar40</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="41">
+      <nome>Jogo de testar41</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="42">
+      <nome>Jogo de testar42</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="43">
+      <nome>Jogo de testar43</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="44">
+      <nome>Jogo de testar44</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="45">
+      <nome>Jogo de testar45</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="46">
+      <nome>Jogo de testar46</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="47">
+      <nome>Jogo de testar47</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="48">
+      <nome>Jogo de testar48</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="49">
+      <nome>Jogo de testar49</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="50">
+      <nome>Jogo de testar50</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="51">
+      <nome>Jogo de testar51</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="52">
+      <nome>Jogo de testar52</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="53">
+      <nome>Jogo de testar53</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="54">
+      <nome>Jogo de testar54</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="55">
+      <nome>Jogo de testar55</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+  </jogos>
+  <clientes>
+    <cliente id="1">
+      <nome>TestUser</nome>
+    </cliente>
+    <cliente id="2">
+      <nome>TestCli2</nome>
+    </cliente>
+    <cliente id="3">
+      <nome>TestCli3</nome>
+    </cliente>
+    <cliente id="4">
+      <nome>TestCli4</nome>
+    </cliente>
+    <cliente id="5">
+      <nome>TestCli5</nome>
+    </cliente>
+    <cliente id="6">
+      <nome>TestCli6</nome>
+    </cliente>
+    <cliente id="7">
+      <nome>TestCli7</nome>
+    </cliente>
+    <cliente id="8">
+      <nome>TestCli8</nome>
+    </cliente>
+  </clientes>
+</root>

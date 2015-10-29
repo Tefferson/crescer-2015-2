@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDeDados.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="LocadoraElement.cs" />
     <Compile Include="Jogo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
