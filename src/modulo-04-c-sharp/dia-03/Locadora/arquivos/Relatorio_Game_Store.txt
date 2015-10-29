@@ -1,5 +1,5 @@
                              LOCADORA NUNES GAMES                               
-28/10/2015                                                              23:51:48
+29/10/2015                                                              00:06:58
                               Relatório de jogos                                
 
 ================================================================================
@@ -59,11 +59,12 @@ ID       Categoria        Nome                          Preço         Disponive
 53       LÓGICA           Jogo de testar53              R$ 23,99             SIM
 54       LÓGICA           Jogo de testar54              R$ 23,99             SIM
 55       LÓGICA           Jogo de testar55              R$ 23,99             SIM
+56       LÓGICA           Jogo de testar56              R$ 23,99             SIM
 
 --------------------------------------------------------------------------------
-Quantidade total de jogos: 55
-Quantidade de jogos disponíveis: 55
-Valor médio por jogo: R$ 28,85
+Quantidade total de jogos: 56
+Quantidade de jogos disponíveis: 56
+Valor médio por jogo: R$ 28,77
 Jogo mais caro: Zelda: A link to the past
 Jogo mais barato: Final Fight
 ================================================================================

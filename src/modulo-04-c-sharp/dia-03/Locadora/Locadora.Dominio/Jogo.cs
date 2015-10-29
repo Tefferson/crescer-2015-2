@@ -33,22 +33,11 @@ namespace Locadora.Dominio
 
         public override string ToString()
         {
-            return String.Format("{0,-9}{1,-17}{2,-30}{3,-14}{4,10}",
-                 Id, Categoria, Truncate(Nome, 30), "R$ " + Preco.ToString("0.00"), Disponivel ? "SIM" : "NÃO");
-        }
-
-        private string Truncate(string nome, int maxSize)
-        {
-            if (maxSize < 4)
-            {
-                return "";
-            }
-            if (Nome.Length < maxSize)
-            {
-                return nome;
-            }
-
-            return nome.Substring(0, maxSize - 3) + "...";
+            //nl = new line
+            string nl = Environment.NewLine;
+            return String.Format("{6,-12}{0}{5}{7,-12}R$ {1}{5}{8,-12}{2}{5}{9,-12}{3}{5}{10,-12}{4}",
+                Nome, Preco.ToString("0.00"), Id, Categoria, Disponivel ? "SIM" : "NÃO", nl,
+                "Nome:", "Preço:", "ID:", "Categoria:", "Disponível:");
         }
 
         public override XElement ToXElement()

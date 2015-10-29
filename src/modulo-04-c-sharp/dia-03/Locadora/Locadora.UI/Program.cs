@@ -12,15 +12,19 @@ namespace Locadora.UI
     {
         static void Main(string[] args)
         {
-            string caminho = Environment.CurrentDirectory + @"..\..\..\..\arquivos\game_store.xml";
-            BaseDeDados dados = new BaseDeDados(caminho);
+            //string caminho = Environment.CurrentDirectory + @"..\..\..\..\arquivos\game_store.xml";
+            //BaseDeDados dados = new BaseDeDados(caminho);
 
             //Jogo jogo = dados.PesquisarJogoPorNome("Sunset Riders Alterado");
             //Jogo jogoNovo = new Jogo("joguinho",23.99,"muita ação");
-            //dados.CadastrarJogo(jogoNovo);
+            //dados.Cadastrar(jogoNovo);
             //jogo.Nome += " De Novo";
             //dados.EditarJogo(jogo);
-            dados.ExportarRelatorioEmTxt();
+            //dados.ExportarRelatorioEmTxt();
+            Tela sistema = new Tela();
+
+            while (sistema.UpdateTela()) ;
+
             Console.ReadKey();
         }
     }
