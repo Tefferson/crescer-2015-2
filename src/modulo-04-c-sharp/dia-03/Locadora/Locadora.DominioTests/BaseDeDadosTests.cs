@@ -30,7 +30,7 @@ namespace Locadora.Dominio.Tests
             BaseDeDados dados = new BaseDeDados(caminho);
             string nextId = dados.GetNextJogoId().ToString();
             Jogo esperado = new Jogo("Jogo de testar" + nextId, 23.99, "LÓGICA");
-            dados.CadastrarJogo(esperado);
+            dados.Cadastrar(esperado);
             Assert.AreEqual(esperado, dados.PesquisarJogoPorNome("Jogo de testar" + nextId));
         }
 
@@ -40,7 +40,7 @@ namespace Locadora.Dominio.Tests
             BaseDeDados dados = new BaseDeDados(caminho);
             string nextId = dados.GetNextClienteId().ToString();
             Cliente esperado = new Cliente("TestCli" + nextId);
-            dados.CadastrarCliente(esperado);
+            dados.Cadastrar(esperado);
             Cliente atual = new Cliente(XElement.Load(caminho)
                 .Element("clientes").Elements()
                 .First(cliente => cliente.Attribute("id").Value == nextId));

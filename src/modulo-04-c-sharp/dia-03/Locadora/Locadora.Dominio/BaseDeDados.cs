@@ -24,14 +24,21 @@ namespace Locadora.Dominio
             return xejogo == null ? null : new Jogo(xejogo);
         }
 
-        public void CadastrarJogo(Jogo jogo)
+        public void Cadastrar(LocadoraElement elem)
         {
-            AddXElement("jogos", jogo);
-        }
-
-        public void CadastrarCliente(Cliente cliente)
-        {
-            AddXElement("clientes", cliente);
+            string node = "";
+            if (elem is Jogo)
+            {
+                node = "jogos";
+            }
+            else if (elem is Cliente)
+            {
+                node = "clientes";
+            }
+            if (node.Length > 0)
+            {
+                AddXElement(node, elem);
+            }
         }
 
         public int GetNextJogoId()
