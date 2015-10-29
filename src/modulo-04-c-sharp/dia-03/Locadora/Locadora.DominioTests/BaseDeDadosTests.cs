@@ -19,7 +19,7 @@ namespace Locadora.Dominio.Tests
         {
             BaseDeDados dados = new BaseDeDados(caminho);
             IList<Jogo> atual = dados.PesquisarJogoPorNome("Aladdin");
-            Jogo esperado = new Jogo("Aladdin", 17, "AVENTURA");
+            Jogo esperado = new Jogo("Aladdin", 16, "AVENTURA");
             esperado.Id = 12;
             Assert.AreEqual(esperado, atual[0]);
         }
@@ -29,9 +29,9 @@ namespace Locadora.Dominio.Tests
         {
             BaseDeDados dados = new BaseDeDados(caminho);
             string nextId = dados.GetNextJogoId().ToString();
-            Jogo esperado = new Jogo("Jogo de testar" + nextId, 23.99, "LÓGICA");
+            Jogo esperado = new Jogo("Jogo de testar" + nextId, 23.99, "AVENTURA");
             dados.Cadastrar(esperado);
-            Assert.AreEqual(esperado, dados.PesquisarJogoPorNome("Jogo de testar" + nextId));
+            Assert.AreEqual(esperado, dados.PesquisarJogoPorNome("Jogo de testar" + nextId)[0]);
         }
 
         [TestMethod]
@@ -51,10 +51,10 @@ namespace Locadora.Dominio.Tests
         public void EditarJogoTest()
         {
             BaseDeDados dados = new BaseDeDados(caminho);
-            IList<Jogo> esperado = dados.PesquisarJogoPorNome("Killer Instinct");
-            esperado[0].Preco = 19;
-            dados.EditarJogo(esperado[0]);
-            Assert.AreEqual(esperado, dados.PesquisarJogoPorNome("Killer Instinct"));
+            Jogo esperado = dados.PesquisarJogoPorNome("Killer Instinct")[0];
+            esperado.Preco = 19;
+            dados.EditarJogo(esperado);
+            Assert.AreEqual(esperado, dados.PesquisarJogoPorNome("Killer Instinct")[0]);
         }
     }
 }
