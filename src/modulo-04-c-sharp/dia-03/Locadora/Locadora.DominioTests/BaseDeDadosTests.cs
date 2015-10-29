@@ -13,15 +13,15 @@ namespace Locadora.Dominio.Tests
     public class BaseDeDadosTests
     {
         string caminho = Environment.CurrentDirectory + @"..\..\..\..\arquivos\game_store.xml";
-        
+
         [TestMethod]
         public void PesquisarJogoPorNomeTest()
         {
             BaseDeDados dados = new BaseDeDados(caminho);
-            Jogo atual = dados.PesquisarJogoPorNome("Aladdin");
-            Jogo esperado = new Jogo("Aladdin", 16, "AVENTURA");
+            IList<Jogo> atual = dados.PesquisarJogoPorNome("Aladdin");
+            Jogo esperado = new Jogo("Aladdin", 17, "AVENTURA");
             esperado.Id = 12;
-            Assert.AreEqual(esperado, atual);
+            Assert.AreEqual(esperado, atual[0]);
         }
 
         [TestMethod]
@@ -51,9 +51,9 @@ namespace Locadora.Dominio.Tests
         public void EditarJogoTest()
         {
             BaseDeDados dados = new BaseDeDados(caminho);
-            Jogo esperado = dados.PesquisarJogoPorNome("Killer Instinct");
-            esperado.Preco = 19;
-            dados.EditarJogo(esperado);
+            IList<Jogo> esperado = dados.PesquisarJogoPorNome("Killer Instinct");
+            esperado[0].Preco = 19;
+            dados.EditarJogo(esperado[0]);
             Assert.AreEqual(esperado, dados.PesquisarJogoPorNome("Killer Instinct"));
         }
     }

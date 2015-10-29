@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace Locadora.Dominio
@@ -18,10 +15,16 @@ namespace Locadora.Dominio
             CaminhoArquivo = caminhoArquivo;
         }
 
-        public Jogo PesquisarJogoPorNome(string nome)
+        public IList<Jogo> PesquisarJogoPorNome(string nome)
         {
-            XElement xejogo = GetElements("jogos").FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
-            return xejogo == null ? null : new Jogo(xejogo);
+            nome = nome.ToUpper();
+            List<Jogo> listaDeJogos = new List<Jogo>();
+            IEnumerable<XElement> xejogos = GetElements("jogos").Where(jogo => jogo.Element("nome").Value.ToUpper().Contains(nome));
+            foreach (XElement xelem in xejogos)
+            {
+                listaDeJogos.Add(new Jogo(xelem));
+            }
+            return listaDeJogos;
         }
 
         public void Cadastrar(LocadoraElement elem)
@@ -53,9 +56,9 @@ namespace Locadora.Dominio
 
         public void EditarJogo(Jogo jogoEditado)
         {
-            XDocument doc = XDocument.Load(CaminhoArquivo);
+            XElement doc = XElement.Load(CaminhoArquivo);
             string strId = jogoEditado.Id.ToString();
-            XElement xejogo = doc.Element("root").Elements("jogos")
+            XElement xejogo = doc.Element("jogos")
                 .Elements().FirstOrDefault(jogo => strId == jogo.Attribute("id").Value);
             xejogo.Element("nome").Value = jogoEditado.Nome;
             xejogo.Element("preco").Value = jogoEditado.Preco.ToString();
@@ -138,8 +141,8 @@ namespace Locadora.Dominio
         {
             elem.Id = GetNextId(node);
             XElement xelem = elem.ToXElement();
-            XDocument doc = XDocument.Load(CaminhoArquivo);
-            doc.Element("root").Element(node).Add(xelem);
+            XElement doc = XElement.Load(CaminhoArquivo);
+            doc.Element(node).Add(xelem);
             doc.Save(CaminhoArquivo);
         }
 

@@ -21,6 +21,20 @@ namespace Locadora.Dominio
             return null;
         }
 
+        public Int32? LerInt(int min, int max)
+        {
+            string digitado = Console.ReadLine();
+            int num;
+            if (digitado != "" && Int32.TryParse(digitado, out num))
+            {
+                if (num >= min && num <= max)
+                {
+                    return num;
+                }
+            }
+            return null;
+        }
+
         public Double? LerDouble()
         {
             string digitado = Console.ReadLine();

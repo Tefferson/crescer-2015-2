@@ -96,8 +96,13 @@ namespace Locadora.UI
             LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome);
 
             Console.Clear();
-            Jogo pesquisado = dados.PesquisarJogoPorNome(nome);
-            EscreverMensagens(pesquisado != null ? pesquisado.ToString() : PESQUISA_FALHA, "", PESQUISA_CONCLUIDA);
+            string listaDeJogos = "";
+            IList<Jogo> pesquisado = dados.PesquisarJogoPorNome(nome);
+            foreach (Jogo jogo in pesquisado)
+            {
+                listaDeJogos += jogo + Environment.NewLine + Environment.NewLine;
+            }
+            EscreverMensagens(pesquisado.Count > 0 ? listaDeJogos : PESQUISA_FALHA, PESQUISA_CONCLUIDA);
             teclado.LerLinha();
             current = Telas.Menu;
             return true;
@@ -113,7 +118,9 @@ namespace Locadora.UI
         private bool EditarJogo()
         {
             string nome;
-            Jogo editar = null;
+            double preco;
+            Categoria categoria;
+            IList<Jogo> editar = null;
 
             if (!LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
@@ -131,96 +138,73 @@ namespace Locadora.UI
                 return true;
             }
 
-            EscreverMensagens(INFORMAR_NOME);
-            nome = teclado.LerString();
-            while (nome == null)
+            if (!LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
-                EscreverMensagens(DIGITAR_ENTER_PARA_VOLTAR);
-                nome = teclado.LerString();
-                if (nome == null)
-                {
-                    current = Telas.Menu;
-                    return true;
-                }
+                current = Telas.Menu;
+                return true;
             }
             EscreverMensagens();
 
-            EscreverMensagens(INFORMAR_PRECO);
-            double? preco = teclado.LerDouble();
-            while (preco == null)
+            if (!LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
             {
-                EscreverMensagens(DIGITAR_ENTER_PARA_VOLTAR);
-                preco = teclado.LerDouble();
-                if (preco == null)
-                {
-                    current = Telas.Menu;
-                    return true;
-                }
+                current = Telas.Menu;
+                return true;
             }
+            EscreverMensagens();
 
-            EscreverMensagens("", GetCategorias(), "", INFORMAR_CATEGORIA);
-            int? categoria = teclado.LerInt();
-            while (categoria == null || !Enum.IsDefined(typeof(Categoria), categoria))
+            if (!LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
             {
-                EscreverMensagens(DIGITAR_ENTER_PARA_VOLTAR + " ou informe a categoria:");
-                categoria = teclado.LerInt();
-                if (categoria == null)
-                {
-                    current = Telas.Menu;
-                    return true;
-                }
+                current = Telas.Menu;
+                return true;
             }
+            EscreverMensagens();
 
-            editar.Nome = nome;
-            editar.Preco = (double)preco;
-            editar.Categoria = ((Categoria)categoria).ToString().ToUpper();
+            editar[0].Nome = nome;
+            editar[0].Preco = preco;
+            editar[0].Categoria = categoria.ToString().ToUpper();
             current = Telas.Menu;
-            dados.EditarJogo(editar);
+            dados.EditarJogo(editar[0]);
+            return true;
+        }
+
+        private bool SelecionarJogoParaEditar(List<Jogo> jogos, out Jogo jogo)
+        {
+            jogo = null;
+            int? selected = teclado.LerInt(0, jogos.Count - 1);
+            if (selected == null)
+            {
+                return false;
+            }
+            jogo = jogos[(int)selected];
             return true;
         }
 
         private bool CadastrarJogo()
         {
-            EscreverMensagens(INFORMAR_NOME);
-            string nome = teclado.LerString();
-            while (nome == null)
+            string nome;
+            double preco;
+            Categoria categoria;
+            if (!LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
-                EscreverMensagens(DIGITAR_ENTER_PARA_VOLTAR);
-                nome = teclado.LerString();
-                if (nome == null)
-                {
-                    current = Telas.Menu;
-                    return true;
-                }
+                current = Telas.Menu;
+                return true;
+            }
+            EscreverMensagens();
+
+            if (!LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
+            {
+                current = Telas.Menu;
+                return true;
+            }
+            EscreverMensagens();
+
+            if (!LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
+            {
+                current = Telas.Menu;
+                return true;
             }
 
-            EscreverMensagens("", INFORMAR_PRECO);
-            double? preco = teclado.LerDouble();
-            while (preco == null)
-            {
-                EscreverMensagens(DIGITAR_ENTER_PARA_VOLTAR);
-                preco = teclado.LerDouble();
-                if (preco == null)
-                {
-                    current = Telas.Menu;
-                    return true;
-                }
-            }
-
-            EscreverMensagens("", GetCategorias(), "", INFORMAR_CATEGORIA);
-            int? categoria = teclado.LerInt();
-            while (categoria == null || !Enum.IsDefined(typeof(Categoria), categoria))
-            {
-                EscreverMensagens(DIGITAR_ENTER_PARA_VOLTAR + " ou informe a categoria:");
-                categoria = teclado.LerInt();
-                if (categoria == null)
-                {
-                    current = Telas.Menu;
-                    return true;
-                }
-            }
-
-            dados.Cadastrar(new Jogo(nome, (double)preco, ((Categoria)categoria).ToString().ToUpper()));
+            dados.Cadastrar(new Jogo(nome, preco, categoria.ToString().ToUpper()));
             current = Telas.Menu;
             return true;
         }
@@ -277,7 +261,7 @@ namespace Locadora.UI
             {
                 cats += String.Format("{1:D}-{0}{2}", categoria.ToUpper(),
                                              Enum.Parse(typeof(Categoria), categoria),
-                                             Environment.NewLine);
+                                             Environment.NewLine, Environment.NewLine);
             }
             return cats;
         }
@@ -312,6 +296,50 @@ namespace Locadora.UI
                     }
                 }
             }
+            return true;
+        }
+
+        private bool LerPreco(string mensagemSolicitacao, string mensagemAviso, out double preco)
+        {
+            double? precoLido = null;
+            while (precoLido == null)
+            {
+                EscreverMensagens(mensagemSolicitacao);
+                precoLido = teclado.LerDouble();
+                if (precoLido == null)
+                {
+                    EscreverMensagens(mensagemAviso);
+                    precoLido = teclado.LerDouble();
+                    if (precoLido == null)
+                    {
+                        preco = 0; ;
+                        return false;
+                    }
+                }
+            }
+            preco = (double)precoLido;
+            return true;
+        }
+
+        private bool LerCategoria(string mensagemSolicitacao, string mensagemAviso, out Categoria categoria)
+        {
+            int? intLido = null;
+            while (intLido == null || !Enum.IsDefined(typeof(Categoria), intLido))
+            {
+                EscreverMensagens(mensagemSolicitacao);
+                intLido = teclado.LerInt();
+                if (intLido == null || !Enum.IsDefined(typeof(Categoria), intLido))
+                {
+                    EscreverMensagens(mensagemAviso);
+                    intLido = teclado.LerInt();
+                    if (intLido == null)
+                    {
+                        categoria = 0; ;
+                        return false;
+                    }
+                }
+            }
+            categoria = (Categoria)intLido;
             return true;
         }
     }
