@@ -27,7 +27,7 @@ namespace Locadora.Dominio
             writeMensagens(mensagens);
             string digitado = Console.ReadLine();
             double num;
-            if (digitado != "" && Double.TryParse(digitado, out num))
+            if (digitado != "" && Double.TryParse(digitado.Replace(".", ","), out num))
             {
                 return num;
             }
