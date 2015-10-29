@@ -20,6 +20,7 @@ namespace Locadora.UI
         const string INFORMAR_PRECO = "Por favor, informe um preço:";
         const string INFORMAR_OPCAO = "Por favor, informe uma opção:";
         const string INFORMAR_CATEGORIA = "Por favor, informe uma categoria:";
+        const string INFORMAR_NUMERO_LISTA = "Por favor, informe um número da lista:";
         const string INFORMAR_OPCAO_VALIDA = "Por favor, informe uma opção válida:";
         const string DIGITAR_ENTER_PARA_VOLTAR = "Pressione ENTER novamente para voltar";
         const string PESQUISA_CONCLUIDA = "Pesquisa concluída. Por favor, pressione ENTER para ir ao menu...";
@@ -96,6 +97,14 @@ namespace Locadora.UI
             LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome);
 
             Console.Clear();
+            PesquisarJogoPorNome(nome);
+            teclado.LerLinha();
+            current = Telas.Menu;
+            return true;
+        }
+
+        private IList<Jogo> PesquisarJogoPorNome(string nome)
+        {
             string listaDeJogos = "";
             IList<Jogo> pesquisado = dados.PesquisarJogoPorNome(nome);
             foreach (Jogo jogo in pesquisado)
@@ -103,9 +112,7 @@ namespace Locadora.UI
                 listaDeJogos += jogo + Environment.NewLine + Environment.NewLine;
             }
             EscreverMensagens(pesquisado.Count > 0 ? listaDeJogos : PESQUISA_FALHA, PESQUISA_CONCLUIDA);
-            teclado.LerLinha();
-            current = Telas.Menu;
-            return true;
+            return pesquisado;
         }
 
         private bool Sair()
@@ -120,7 +127,7 @@ namespace Locadora.UI
             string nome;
             double preco;
             Categoria categoria;
-            IList<Jogo> editar = null;
+            Jogo editar = null;
 
             if (!LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
@@ -128,7 +135,12 @@ namespace Locadora.UI
                 return true;
             }
             Console.Clear();
-            editar = dados.PesquisarJogoPorNome(nome);
+            if (!SelecionarJogoParaEditar(PesquisarJogoPorNome(nome), out editar))
+            {
+                current = Telas.Menu;
+                return true;
+            }
+
             EscreverMensagens(editar != null ? editar.ToString() : PESQUISA_EDITAR_FALHA, "");
             if (editar == null)
             {
@@ -159,23 +171,24 @@ namespace Locadora.UI
             }
             EscreverMensagens();
 
-            editar[0].Nome = nome;
-            editar[0].Preco = preco;
-            editar[0].Categoria = categoria.ToString().ToUpper();
+            editar.Nome = nome;
+            editar.Preco = preco;
+            editar.Categoria = categoria.ToString().ToUpper();
             current = Telas.Menu;
-            dados.EditarJogo(editar[0]);
+            dados.EditarJogo(editar);
             return true;
         }
 
-        private bool SelecionarJogoParaEditar(List<Jogo> jogos, out Jogo jogo)
+        private bool SelecionarJogoParaEditar(IList<Jogo> jogos, out Jogo jogo)
         {
             jogo = null;
-            int? selected = teclado.LerInt(0, jogos.Count - 1);
+            EscreverMensagens(INFORMAR_NUMERO_LISTA);
+            int? selected = teclado.LerInt(1, jogos.Count);
             if (selected == null)
             {
                 return false;
             }
-            jogo = jogos[(int)selected];
+            jogo = jogos[(int)selected - 1];
             return true;
         }
 
