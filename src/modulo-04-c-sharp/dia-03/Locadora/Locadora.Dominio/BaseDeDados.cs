@@ -8,6 +8,12 @@ namespace Locadora.Dominio
 {
     public class BaseDeDados
     {
+        public const string CABECALHO = "                             LOCADORA NUNES GAMES                               ";
+        public const string TITULO = "                              Relatório de jogos                                ";
+        public const string IGUAIS = "================================================================================";
+        public const string TRACOS = "--------------------------------------------------------------------------------";
+        public const string COLUNAS = "ID       Categoria        Nome                          Preço         Disponivel";
+
         string CaminhoArquivo { get; set; }
 
         public BaseDeDados(string caminhoArquivo)
@@ -70,23 +76,17 @@ namespace Locadora.Dominio
         {
             IEnumerable<XElement> jogos = GetElements("jogos");
             string novaLinha = Environment.NewLine;
-            string cabecalho = "                             LOCADORA NUNES GAMES                               ";
-            string titulo = "                              Relatório de jogos                                " + novaLinha;
-            string linhaIguais = "================================================================================";
-            string linhaTracos = "--------------------------------------------------------------------------------";
-            string colunas = "ID       Categoria        Nome                          Preço         Disponivel";
             string estatisticas = "Quantidade total de jogos: {1}{0}Quantidade de jogos disponíveis: {2}{0}Valor médio por jogo: R$ {3}{0}Jogo mais caro: {4}{0}Jogo mais barato: {5}";
             string dataEHora = String.Format("{0:dd/MM/yyyy}                                                              {0:HH:mm:ss}", DateTime.Now);
-            string relatorio = cabecalho
+            string relatorio = CABECALHO
                 + novaLinha + dataEHora
-                + novaLinha + titulo
-                + novaLinha + linhaIguais
-                + novaLinha + colunas
+                + novaLinha + TITULO + novaLinha 
+                + novaLinha + IGUAIS
+                + novaLinha + COLUNAS
                 + novaLinha + GetListaDeJogosComoTexto()
-                + novaLinha + linhaTracos
+                + novaLinha + TRACOS
                 + novaLinha + estatisticas
-                + novaLinha + linhaIguais;
-            colunas = String.Format(colunas, novaLinha, jogos.Count());
+                + novaLinha + IGUAIS;
             Func<XElement, double> doubleLambda = jogo => Convert.ToDouble(jogo.Element("preco").Value.Replace(".", ","));
             string maiorPreco = jogos.Max(doubleLambda).ToString();
             string menorPreco = jogos.Min(doubleLambda).ToString();

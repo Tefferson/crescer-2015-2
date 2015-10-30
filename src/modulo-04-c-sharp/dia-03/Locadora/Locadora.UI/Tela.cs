@@ -20,13 +20,12 @@ namespace Locadora.UI
         const string INFORMAR_PRECO = "Por favor, informe um preço:";
         const string INFORMAR_OPCAO = "Por favor, informe uma opção:";
         const string INFORMAR_CATEGORIA = "Por favor, informe uma categoria:";
-        const string INFORMAR_NUMERO_LISTA = "Por favor, informe um número da lista:";
+        const string INFORMAR_ID_LISTA = "Por favor, informe um id da lista:";
         const string INFORMAR_OPCAO_VALIDA = "Por favor, informe uma opção válida:";
         const string DIGITAR_ENTER_PARA_VOLTAR = "Pressione ENTER novamente para voltar... ";
         const string PESQUISA_CONCLUIDA = "Pesquisa concluída. Por favor, pressione ENTER para ir ao menu...";
         const string PESQUISA_EDITAR_FALHA = "Desculpe, o jogo desejado não existe.";
         const string RELATORIO_GERADO = "Relatório gerado. Por favor, pressione ENTER para ir ao menu...";
-        const string TRACOS = "================================================================================";
         const int PESQUISAR_JOGO_POR_NOME = 1;
         const int CADASTRAR_CLIENTE = 2;
         const int CADASTRAR_JOGO = 3;
@@ -108,11 +107,16 @@ namespace Locadora.UI
 
         private IList<Jogo> PesquisarJogoPorNome(string nome)
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            EscreverMensagens(true, BaseDeDados.COLUNAS + Environment.NewLine);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             string listaDeJogos = "";
             IList<Jogo> pesquisado = dados.PesquisarJogoPorNome(nome);
             foreach (Jogo jogo in pesquisado)
             {
-                listaDeJogos += jogo + Environment.NewLine + Environment.NewLine;
+                listaDeJogos += dados.ToStringFormatado(jogo) + Environment.NewLine;
             }
             EscreverMensagens(true, listaDeJogos);
             return pesquisado;
@@ -193,13 +197,14 @@ namespace Locadora.UI
             {
                 return false;
             }
-            EscreverMensagens(false, INFORMAR_NUMERO_LISTA);
-            int? selected = teclado.LerInt(1, jogos.Count);
+            EscreverMensagens(false, INFORMAR_ID_LISTA);
+            int? selected = teclado.LerInt();
             if (selected == null)
             {
                 return false;
             }
-            jogo = jogos[(int)selected - 1];
+
+            jogo = jogos.FirstOrDefault(elem => elem.Id == selected);
             return true;
         }
 
@@ -303,9 +308,9 @@ namespace Locadora.UI
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(TRACOS);
+            Console.WriteLine(BaseDeDados.IGUAIS);
             Console.WriteLine(FormatTo80(current.ToString()));
-            Console.WriteLine(TRACOS);
+            Console.WriteLine(BaseDeDados.IGUAIS);
             Console.ForegroundColor = ConsoleColor.White;
         }
 
