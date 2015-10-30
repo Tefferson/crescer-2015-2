@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Locadora.UI
 {
@@ -341,15 +339,9 @@ namespace Locadora.UI
             string delimitador = useNewLine ? Environment.NewLine : "";
             foreach (string mensagem in mensagens)
             {
-                linhas += FormatTo80(mensagem) + delimitador;
+                linhas += ((mensagem) + delimitador).FormatTo80();
             }
             Console.Write(linhas);
-        }
-
-        private string FormatTo80(string line)
-        {
-            int len = 40 + (line.Length / 2);
-            return String.Format("{0," + len + "}", line);
         }
 
         private void EscreverCabecalho()
@@ -357,7 +349,7 @@ namespace Locadora.UI
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(Relatorio.IGUAIS);
-            Console.WriteLine(FormatTo80(current.ToString()));
+            Console.WriteLine(current.ToString().FormatTo80());
             Console.WriteLine(Relatorio.IGUAIS);
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -366,7 +358,7 @@ namespace Locadora.UI
         {
             if (!String.IsNullOrEmpty(mensagem))
             {
-                Console.Write(FormatTo80(mensagem));
+                Console.Write(mensagem.FormatTo80());
                 Console.ReadKey();
             }
             current = Telas.Menu;
