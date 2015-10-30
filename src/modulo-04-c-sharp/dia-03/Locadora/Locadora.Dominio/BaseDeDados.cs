@@ -106,12 +106,12 @@ namespace Locadora.Dominio
             string jogosComoTexto = "";
             foreach (XElement xelem in GetElements("jogos"))
             {
-                jogosComoTexto += new Jogo(xelem) + Environment.NewLine;
+                jogosComoTexto += ToStringFormatado(new Jogo(xelem)) + Environment.NewLine;
             }
             return jogosComoTexto;
         }
 
-        private string ToStringFormatado(Jogo jogo)
+        public string ToStringFormatado(Jogo jogo)
         {
             return String.Format("{0,-9}{1,-17}{2,-30}{3,-14}{4,10}",
                  jogo.Id, jogo.Categoria, Truncate(jogo.Nome, 30), "R$ " + jogo.Preco.ToString("0.00"), jogo.Disponivel ? "SIM" : "NÃO");

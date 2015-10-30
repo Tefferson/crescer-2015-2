@@ -33,11 +33,9 @@ namespace Locadora.Dominio
 
         public override string ToString()
         {
-            //nl = new line
-            string nl = Environment.NewLine;
             return String.Format("{6,-12}{0}{5}{7,-12}R$ {1}{5}{8,-12}{2}{5}{9,-12}{3}{5}{10,-12}{4}",
-                Nome, Preco.ToString("0.00"), Id, Categoria, Disponivel ? "SIM" : "NÃO", nl,
-                "Nome:", "Preço:", "ID:", "Categoria:", "Disponível:");
+                Nome, Preco.ToString("0.00"), Id, Categoria, Disponivel ? "SIM" : "NÃO",
+                Environment.NewLine, "Nome:", "Preço:", "ID:", "Categoria:", "Disponível:");
         }
 
         public override XElement ToXElement()

@@ -22,11 +22,11 @@ namespace Locadora.UI
         const string INFORMAR_CATEGORIA = "Por favor, informe uma categoria:";
         const string INFORMAR_NUMERO_LISTA = "Por favor, informe um número da lista:";
         const string INFORMAR_OPCAO_VALIDA = "Por favor, informe uma opção válida:";
-        const string DIGITAR_ENTER_PARA_VOLTAR = "Pressione ENTER novamente para voltar";
+        const string DIGITAR_ENTER_PARA_VOLTAR = "Pressione ENTER novamente para voltar... ";
         const string PESQUISA_CONCLUIDA = "Pesquisa concluída. Por favor, pressione ENTER para ir ao menu...";
-        const string PESQUISA_FALHA = "Desculpe, sua consulta não teve sucesso.";
         const string PESQUISA_EDITAR_FALHA = "Desculpe, o jogo desejado não existe.";
         const string RELATORIO_GERADO = "Relatório gerado. Por favor, pressione ENTER para ir ao menu...";
+        const string TRACOS = "================================================================================";
         const int PESQUISAR_JOGO_POR_NOME = 1;
         const int CADASTRAR_CLIENTE = 2;
         const int CADASTRAR_JOGO = 3;
@@ -45,7 +45,7 @@ namespace Locadora.UI
 
         public bool UpdateTela()
         {
-            Console.Clear();
+            EscreverCabecalho();
             switch (current)
             {
                 case Telas.Menu:
@@ -69,11 +69,11 @@ namespace Locadora.UI
 
         private bool CadastrarCliente()
         {
-            EscreverMensagens(INFORMAR_NOME);
+            EscreverMensagens(false, INFORMAR_NOME);
             string nome = teclado.LerString();
             while (nome == null)
             {
-                EscreverMensagens(INFORMAR_NOME);
+                EscreverMensagens(false, INFORMAR_NOME);
                 nome = teclado.LerString();
             }
 
@@ -84,7 +84,7 @@ namespace Locadora.UI
         private bool GerarRelatorio()
         {
             dados.ExportarRelatorioEmTxt();
-            EscreverMensagens(RELATORIO_GERADO);
+            EscreverMensagens(true, RELATORIO_GERADO);
             teclado.LerLinha();
             current = Telas.Menu;
             return true;
@@ -93,12 +93,15 @@ namespace Locadora.UI
         private bool PesquisarJogoPorNome()
         {
             string nome;
+            teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome);
 
-            LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome);
-
-            Console.Clear();
-            PesquisarJogoPorNome(nome);
-            teclado.LerLinha();
+            EscreverCabecalho();
+            if (!String.IsNullOrEmpty(nome))
+            {
+                PesquisarJogoPorNome(nome);
+                EscreverMensagens(true, PESQUISA_CONCLUIDA);
+                teclado.LerLinha();
+            }
             current = Telas.Menu;
             return true;
         }
@@ -111,13 +114,13 @@ namespace Locadora.UI
             {
                 listaDeJogos += jogo + Environment.NewLine + Environment.NewLine;
             }
-            EscreverMensagens(pesquisado.Count > 0 ? listaDeJogos : PESQUISA_FALHA, PESQUISA_CONCLUIDA);
+            EscreverMensagens(true, listaDeJogos);
             return pesquisado;
         }
 
         private bool Sair()
         {
-            EscreverMensagens("Tchau!!!");
+            EscreverMensagens(true, "Tchau!!!");
             teclado.LerLinha();
             return false;
         }
@@ -129,42 +132,41 @@ namespace Locadora.UI
             Categoria categoria;
             Jogo editar = null;
 
-            if (!LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
+            if (!teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
                 current = Telas.Menu;
                 return true;
             }
-            Console.Clear();
+            EscreverCabecalho();
             if (!SelecionarJogoParaEditar(PesquisarJogoPorNome(nome), out editar))
             {
                 current = Telas.Menu;
                 return true;
             }
 
-            EscreverMensagens(editar != null ? editar.ToString() : PESQUISA_EDITAR_FALHA, "");
             if (editar == null)
             {
-                EscreverMensagens(DIGITAR_ENTER_PARA_VOLTAR);
+                EscreverMensagens(false, DIGITAR_ENTER_PARA_VOLTAR);
                 teclado.LerLinha();
                 current = Telas.Menu;
                 return true;
             }
 
-            if (!LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
+            if (!teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
                 current = Telas.Menu;
                 return true;
             }
             EscreverMensagens();
 
-            if (!LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
+            if (!teclado.LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
             {
                 current = Telas.Menu;
                 return true;
             }
             EscreverMensagens();
 
-            if (!LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
+            if (!teclado.LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
             {
                 current = Telas.Menu;
                 return true;
@@ -182,7 +184,16 @@ namespace Locadora.UI
         private bool SelecionarJogoParaEditar(IList<Jogo> jogos, out Jogo jogo)
         {
             jogo = null;
-            EscreverMensagens(INFORMAR_NUMERO_LISTA);
+            if (jogos.Count == 1)
+            {
+                jogo = jogos[0];
+                return true;
+            }
+            else if (jogos.Count == 0)
+            {
+                return false;
+            }
+            EscreverMensagens(false, INFORMAR_NUMERO_LISTA);
             int? selected = teclado.LerInt(1, jogos.Count);
             if (selected == null)
             {
@@ -197,21 +208,21 @@ namespace Locadora.UI
             string nome;
             double preco;
             Categoria categoria;
-            if (!LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
+            if (!teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
                 current = Telas.Menu;
                 return true;
             }
             EscreverMensagens();
 
-            if (!LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
+            if (!teclado.LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
             {
                 current = Telas.Menu;
                 return true;
             }
             EscreverMensagens();
 
-            if (!LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
+            if (!teclado.LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
             {
                 current = Telas.Menu;
                 return true;
@@ -224,22 +235,15 @@ namespace Locadora.UI
 
         private bool Menu()
         {
-            //nl = new line
-            string nl = Environment.NewLine;
-            string[] opcoes = {
-                "1-Pesquisar jogo por nome",
-                "2-Cadastrar cliente",
-                "3-Cadastrar jogo",
-                "4-Editar jogo",
-                "5-Gerar relatório TXT",
-                "6-Sair"
-            };
-            string ops = (String.Join(nl, opcoes) + nl);
-            EscreverMensagens(ops, INFORMAR_OPCAO);
+            EscreverMensagens(true,
+                "1-Pesquisar jogo por nome", "2-Cadastrar cliente",
+                "3-Cadastrar jogo", "4-Editar jogo",
+                "5-Gerar relatório TXT", "6-Sair", Environment.NewLine);
+            EscreverMensagens(false, INFORMAR_OPCAO);
             int? op = teclado.LerInt();
             while (op == null)
             {
-                EscreverMensagens(INFORMAR_OPCAO);
+                EscreverMensagens(false, INFORMAR_OPCAO);
                 op = teclado.LerInt();
             }
 
@@ -279,81 +283,36 @@ namespace Locadora.UI
             return cats;
         }
 
-        private void EscreverMensagens(params string[] mensagens)
+        private void EscreverMensagens()
         {
-            if (mensagens.Length == 0)
-            {
-                Console.WriteLine();
-            }
+            EscreverMensagens(true);
+        }
+
+        public void EscreverMensagens(bool useNewLine, params string[] mensagens)
+        {
+            string linhas = "";
+            string delimitador = useNewLine ? Environment.NewLine : "";
             foreach (string mensagem in mensagens)
             {
-                Console.WriteLine(mensagem);
+                linhas += FormatTo80(mensagem) + delimitador;
             }
+            Console.Write(linhas);
         }
 
-        private bool LerNome(string mensagemSolicitacao, string mensagemAviso, out string nome)
+        private void EscreverCabecalho()
         {
-            nome = null;
-            while (nome == null)
-            {
-                EscreverMensagens(mensagemSolicitacao);
-                nome = teclado.LerString();
-                if (nome == null)
-                {
-                    EscreverMensagens(mensagemAviso);
-                    nome = teclado.LerString();
-                    if (nome == null)
-                    {
-                        nome = "";
-                        return false;
-                    }
-                }
-            }
-            return true;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(TRACOS);
+            Console.WriteLine(FormatTo80(current.ToString()));
+            Console.WriteLine(TRACOS);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        private bool LerPreco(string mensagemSolicitacao, string mensagemAviso, out double preco)
+        private string FormatTo80(string line)
         {
-            double? precoLido = null;
-            while (precoLido == null)
-            {
-                EscreverMensagens(mensagemSolicitacao);
-                precoLido = teclado.LerDouble();
-                if (precoLido == null)
-                {
-                    EscreverMensagens(mensagemAviso);
-                    precoLido = teclado.LerDouble();
-                    if (precoLido == null)
-                    {
-                        preco = 0; ;
-                        return false;
-                    }
-                }
-            }
-            preco = (double)precoLido;
-            return true;
-        }
-
-        private bool LerCategoria(string mensagemSolicitacao, string mensagemAviso, out Categoria categoria)
-        {
-            int? intLido = null;
-            while (intLido == null || !Enum.IsDefined(typeof(Categoria), intLido))
-            {
-                EscreverMensagens(mensagemSolicitacao);
-                intLido = teclado.LerInt();
-                if (intLido == null || !Enum.IsDefined(typeof(Categoria), intLido))
-                {
-                    EscreverMensagens(mensagemAviso);
-                    intLido = teclado.LerInt();
-                    if (intLido == null)
-                    {
-                        categoria = 0; ;
-                        return false;
-                    }
-                }
-            }
-            categoria = (Categoria)intLido;
-            return true;
+            int len = 40 + (line.Length / 2);
+            return String.Format("{0," + len + "}", line);
         }
     }
 }

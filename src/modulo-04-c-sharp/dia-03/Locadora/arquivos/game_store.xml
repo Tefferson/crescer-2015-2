@@ -69,7 +69,7 @@
     </jogo>
     <jogo id="12">
       <nome>Aladdin</nome>
-      <preco>16</preco>
+      <preco>17</preco>
       <categoria>AVENTURA</categoria>
       <disponivel>true</disponivel>
     </jogo>
@@ -99,7 +99,7 @@
     </jogo>
     <jogo id="17">
       <nome>Contra III</nome>
-      <preco>28</preco>
+      <preco>31</preco>
       <categoria>AVENTURA</categoria>
       <disponivel>true</disponivel>
     </jogo>
@@ -331,6 +331,36 @@
       <categoria>LÓGICA</categoria>
       <disponivel>true</disponivel>
     </jogo>
+    <jogo id="56">
+      <nome>Jogo de testar56</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="57">
+      <nome>Jogo de testar57</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="58">
+      <nome>Jogo de testar58</nome>
+      <preco>23.99</preco>
+      <categoria>LÓGICA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="59">
+      <nome>Joguinho</nome>
+      <preco>23.99</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="60">
+      <nome>Lutinha</nome>
+      <preco>35.5</preco>
+      <categoria>LUTA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
   </jogos>
   <clientes>
     <cliente id="1">
@@ -356,6 +386,15 @@
     </cliente>
     <cliente id="8">
       <nome>TestCli8</nome>
+    </cliente>
+    <cliente id="9">
+      <nome>TestCli9</nome>
+    </cliente>
+    <cliente id="10">
+      <nome>TestCli10</nome>
+    </cliente>
+    <cliente id="11">
+      <nome>TestCli11</nome>
     </cliente>
   </clientes>
 </root>

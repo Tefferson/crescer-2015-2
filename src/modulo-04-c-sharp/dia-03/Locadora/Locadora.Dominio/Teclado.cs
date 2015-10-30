@@ -56,5 +56,70 @@ namespace Locadora.Dominio
         {
             return Console.ReadLine();
         }
+
+        public bool LerNome(string mensagemSolicitacao, string mensagemAviso, out string nome)
+        {
+            nome = null;
+            while (nome == null)
+            {
+                Console.Write(mensagemSolicitacao);
+                nome = LerString();
+                if (nome == null)
+                {
+                    Console.Write(mensagemAviso);
+                    nome = LerString();
+                    if (nome == null)
+                    {
+                        nome = "";
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool LerPreco(string mensagemSolicitacao, string mensagemAviso, out double preco)
+        {
+            double? precoLido = null;
+            while (precoLido == null)
+            {
+                Console.Write(mensagemSolicitacao);
+                precoLido = LerDouble();
+                if (precoLido == null)
+                {
+                    Console.Write(mensagemAviso);
+                    precoLido = LerDouble();
+                    if (precoLido == null)
+                    {
+                        preco = 0; ;
+                        return false;
+                    }
+                }
+            }
+            preco = (double)precoLido;
+            return true;
+        }
+
+        public bool LerCategoria(string mensagemSolicitacao, string mensagemAviso, out Categoria categoria)
+        {
+            int? intLido = null;
+            while (intLido == null || !Enum.IsDefined(typeof(Categoria), intLido))
+            {
+                Console.Write(mensagemSolicitacao);
+                intLido = LerInt();
+                if (intLido == null || !Enum.IsDefined(typeof(Categoria), intLido))
+                {
+                    Console.Write(mensagemAviso);
+                    intLido = LerInt();
+                    if (intLido == null)
+                    {
+                        categoria = 0; ;
+                        return false;
+                    }
+                }
+            }
+            categoria = (Categoria)intLido;
+            return true;
+        }
     }
 }
