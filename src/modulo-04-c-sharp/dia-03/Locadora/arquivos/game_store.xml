@@ -53,7 +53,7 @@
       <nome>Killer Instinct</nome>
       <preco>19</preco>
       <categoria>LUTA</categoria>
-      <disponivel>true</disponivel>
+      <disponivel>True</disponivel>
     </jogo>
     <jogo id="10">
       <nome>Final Fight</nome>
@@ -127,100 +127,10 @@
       <categoria>muita ação</categoria>
       <disponivel>true</disponivel>
     </jogo>
-    <jogo id="22">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="23">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="24">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="25">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="26">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="27">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="28">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="29">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="30">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="31">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="32">
-      <nome>joguinho</nome>
-      <preco>23.99</preco>
-      <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
     <jogo id="33">
       <nome>joguinho</nome>
       <preco>23.99</preco>
       <categoria>muita ação</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="34">
-      <nome>Jogo de testar</nome>
-      <preco>23.99</preco>
-      <categoria>LÓGICA</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="35">
-      <nome>Jogo de testar</nome>
-      <preco>23.99</preco>
-      <categoria>LÓGICA</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="36">
-      <nome>Jogo de testar36</nome>
-      <preco>23.99</preco>
-      <categoria>LÓGICA</categoria>
-      <disponivel>true</disponivel>
-    </jogo>
-    <jogo id="37">
-      <nome>Jogo de testar37</nome>
-      <preco>23.99</preco>
-      <categoria>LÓGICA</categoria>
       <disponivel>true</disponivel>
     </jogo>
     <jogo id="38">
@@ -344,10 +254,10 @@
       <disponivel>true</disponivel>
     </jogo>
     <jogo id="58">
-      <nome>Jogo de testar58</nome>
-      <preco>23.99</preco>
-      <categoria>LÓGICA</categoria>
-      <disponivel>true</disponivel>
+      <nome>jogo do uila</nome>
+      <preco>9,99</preco>
+      <categoria>RPG</categoria>
+      <disponivel>False</disponivel>
     </jogo>
     <jogo id="59">
       <nome>Joguinho</nome>
@@ -359,6 +269,12 @@
       <nome>Lutinha</nome>
       <preco>35.5</preco>
       <categoria>LUTA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="61">
+      <nome>Jogo de testar61</nome>
+      <preco>23.99</preco>
+      <categoria>AVENTURA</categoria>
       <disponivel>true</disponivel>
     </jogo>
   </jogos>
@@ -396,6 +312,12 @@
     <cliente id="11">
       <nome>TestCli11</nome>
     </cliente>
+    <cliente id="12">
+      <nome>TestCli12</nome>
+    </cliente>
+    <cliente id="13">
+      <nome>Uila</nome>
+    </cliente>
   </clientes>
   <locacoes>
     <locacao id="0">
@@ -415,6 +337,14 @@
       <id-jogo>12</id-jogo>
     </locacao>
     <locacao id="4">
+      <id-cliente>3</id-cliente>
+      <id-jogo>12</id-jogo>
+    </locacao>
+    <locacao id="5">
+      <id-cliente>12</id-cliente>
+      <id-jogo>58</id-jogo>
+    </locacao>
+    <locacao id="6">
       <id-cliente>3</id-cliente>
       <id-jogo>12</id-jogo>
     </locacao>

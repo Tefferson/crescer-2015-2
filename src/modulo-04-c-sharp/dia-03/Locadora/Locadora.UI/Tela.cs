@@ -41,9 +41,11 @@ namespace Locadora.UI
         Telas current = Telas.Menu;
         Teclado teclado = new Teclado();
         BaseDeDados dados;
+        Relatorio relatorio;
         public Tela()
         {
             dados = new BaseDeDados(caminho);
+            relatorio = new Relatorio();
         }
 
         public bool UpdateTela()
@@ -122,7 +124,7 @@ namespace Locadora.UI
 
         private bool GerarRelatorio()
         {
-            dados.ExportarRelatorioEmTxt();
+            relatorio.ExportarRelatorioEmTxt(dados);
             EscreverMensagens(true, RELATORIO_GERADO);
             teclado.LerLinha();
             current = Telas.Menu;
@@ -149,14 +151,14 @@ namespace Locadora.UI
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
-            EscreverMensagens(true, BaseDeDados.COLUNAS + Environment.NewLine);
+            EscreverMensagens(true, Relatorio.COLUNAS + Environment.NewLine);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             string listaDeJogos = "";
             IList<Jogo> pesquisado = dados.PesquisarJogoPorNome(nome);
             foreach (Jogo jogo in pesquisado)
             {
-                listaDeJogos += dados.ToStringFormatado(jogo) + Environment.NewLine;
+                listaDeJogos += relatorio.ToStringFormatado(jogo) + Environment.NewLine;
             }
             EscreverMensagens(true, listaDeJogos);
             return pesquisado;
@@ -334,20 +336,20 @@ namespace Locadora.UI
             Console.Write(linhas);
         }
 
-        private void EscreverCabecalho()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(BaseDeDados.IGUAIS);
-            Console.WriteLine(FormatTo80(current.ToString()));
-            Console.WriteLine(BaseDeDados.IGUAIS);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
         private string FormatTo80(string line)
         {
             int len = 40 + (line.Length / 2);
             return String.Format("{0," + len + "}", line);
+        }
+
+        private void EscreverCabecalho()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(Relatorio.IGUAIS);
+            Console.WriteLine(FormatTo80(current.ToString()));
+            Console.WriteLine(Relatorio.IGUAIS);
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
