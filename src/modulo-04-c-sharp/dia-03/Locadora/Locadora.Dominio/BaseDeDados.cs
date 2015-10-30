@@ -13,7 +13,7 @@ namespace Locadora.Dominio
         {
             CaminhoArquivo = caminhoArquivo;
         }
-
+        
         public IList<Jogo> PesquisarJogoPorNome(string nome)
         {
             nome = nome.ToUpper();

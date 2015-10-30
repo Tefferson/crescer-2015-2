@@ -39,6 +39,7 @@ namespace Locadora.UI
         const string CADASTRO_JOGO_SUCESSO = "Jogo cadstrado com sucesso!!!";
         const string CADASTRO_JOGO_FALHA = "Desculpe, não foi possível cadastrar o jogo...";
         const string TCHAU = "Tchau!!!";
+        const string ERRO_ES = "Desculpe, ocorreu um erro, o programa será fechado...";
         const int PESQUISAR_JOGO_POR_NOME = 1;
         const int LOCAR = 2;
         const int DEVOLVER = 3;
@@ -67,28 +68,35 @@ namespace Locadora.UI
         public bool UpdateTela()
         {
             EscreverCabecalho();
-            switch (current)
+            try
             {
-                case Telas.Menu:
-                    return Menu();
-                case Telas.LocacaoDeJogo:
-                    return LocarJogo();
-                case Telas.DevolucaoDeJogo:
-                    return DevolverJogo();
-                case Telas.CadastroCliente:
-                    return CadastrarCliente();
-                case Telas.CadastroJogo:
-                    return CadastrarJogo();
-                case Telas.EditarJogo:
-                    return EditarJogo();
-                case Telas.PesquisarJogoNome:
-                    return PesquisarJogoPorNome();
-                case Telas.ExportarTxt:
-                    return GerarRelatorio();
-                case Telas.Sair:
-                    return Sair();
-                default:
-                    return false;
+                switch (current)
+                {
+                    case Telas.Menu:
+                        return Menu();
+                    case Telas.LocacaoDeJogo:
+                        return LocarJogo();
+                    case Telas.DevolucaoDeJogo:
+                        return DevolverJogo();
+                    case Telas.CadastroCliente:
+                        return CadastrarCliente();
+                    case Telas.CadastroJogo:
+                        return CadastrarJogo();
+                    case Telas.EditarJogo:
+                        return EditarJogo();
+                    case Telas.PesquisarJogoNome:
+                        return PesquisarJogoPorNome();
+                    case Telas.ExportarTxt:
+                        return GerarRelatorio();
+                    case Telas.Sair:
+                        return Sair();
+                    default:
+                        return false;
+                }
+            }
+            catch (Exception)
+            {
+                return !VoltarParaMenuComMensagem(ERRO_ES);
             }
         }
 
