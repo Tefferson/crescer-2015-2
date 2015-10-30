@@ -43,6 +43,7 @@
     <Compile Include="BaseDeDados.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Locacao.cs" />
     <Compile Include="LocadoraElement.cs" />
     <Compile Include="Jogo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

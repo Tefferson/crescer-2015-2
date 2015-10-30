@@ -9,6 +9,7 @@ namespace Locadora.UI
     enum Telas
     {
         Menu = 0, CadastroJogo = 1, EditarJogo = 2, ExportarTxt = 3, Sair = 4, PesquisarJogoNome = 5,
-        CadastroCliente = 6
+        CadastroCliente = 6,
+        LocacaoDeJogo = 7
     }
 }

@@ -35,15 +35,7 @@ namespace Locadora.Dominio
 
         public void Cadastrar(LocadoraElement elem)
         {
-            string node = "";
-            if (elem is Jogo)
-            {
-                node = "jogos";
-            }
-            else if (elem is Cliente)
-            {
-                node = "clientes";
-            }
+            string node = GetNodeName(elem);
             if (node.Length > 0)
             {
                 AddXElement(node, elem);
@@ -69,6 +61,7 @@ namespace Locadora.Dominio
             xejogo.Element("nome").Value = jogoEditado.Nome;
             xejogo.Element("preco").Value = jogoEditado.Preco.ToString();
             xejogo.Element("categoria").Value = jogoEditado.Categoria;
+            xejogo.Element("disponivel").Value = jogoEditado.Disponivel.ToString();
             doc.Save(CaminhoArquivo);
         }
 
@@ -80,7 +73,7 @@ namespace Locadora.Dominio
             string dataEHora = String.Format("{0:dd/MM/yyyy}                                                              {0:HH:mm:ss}", DateTime.Now);
             string relatorio = CABECALHO
                 + novaLinha + dataEHora
-                + novaLinha + TITULO + novaLinha 
+                + novaLinha + TITULO + novaLinha
                 + novaLinha + IGUAIS
                 + novaLinha + COLUNAS
                 + novaLinha + GetListaDeJogosComoTexto()
@@ -99,6 +92,21 @@ namespace Locadora.Dominio
                 maisCaro, maisBarato);
             string relPath = Environment.CurrentDirectory + @"..\..\..\..\arquivos\Relatorio_Game_Store.txt";
             File.WriteAllText(relPath, relatorio);
+        }
+
+        public void SetJogoDisponivel(int idJogo, bool disponivel)
+        {
+            string idStr = idJogo.ToString();
+            XElement xejogo = GetElements("jogos").First(jogo => jogo.Attribute("id").Value == idStr);
+            xejogo.Element("disponivel").Value = disponivel.ToString();
+            EditarJogo(new Jogo(xejogo));
+        }
+
+        public bool JogoIsDisponivel(int idJogo)
+        {
+            string idStr = idJogo.ToString();
+            return GetElements("jogos").Any(jogo => jogo.Attribute("id").Value == idStr
+            && jogo.Element("disponivel").Value == "true");
         }
 
         private string GetListaDeJogosComoTexto()
@@ -149,6 +157,40 @@ namespace Locadora.Dominio
         private IEnumerable<XElement> GetElements(string node)
         {
             return XElement.Load(CaminhoArquivo).Element(node).Elements();
+        }
+
+        public bool ValidarIdCliente(int id)
+        {
+            return ValidarId("clientes", id);
+        }
+
+        public bool ValidarIdJogo(int id)
+        {
+            return ValidarId("jogos", id);
+        }
+
+        private bool ValidarId(string node, int id)
+        {
+            string idStr = id.ToString();
+            return XElement.Load(CaminhoArquivo).Element(node)
+                .Elements().Any(elem => elem.Attribute("id").Value == idStr);
+        }
+
+        private string GetNodeName(LocadoraElement elem)
+        {
+            if (elem is Jogo)
+            {
+                return "jogos";
+            }
+            else if (elem is Cliente)
+            {
+                return "clientes";
+            }
+            else if (elem is Locacao)
+            {
+                return "locacoes";
+            }
+            return "";
         }
     }
 }

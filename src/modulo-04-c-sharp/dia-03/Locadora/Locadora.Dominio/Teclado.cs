@@ -121,5 +121,27 @@ namespace Locadora.Dominio
             categoria = (Categoria)intLido;
             return true;
         }
+
+        public bool LerInt(string mensagemSolicitacao, string mensagemAviso, out int id)
+        {
+            int? intLido = null;
+            while (intLido == null)
+            {
+                Console.Write(mensagemSolicitacao);
+                intLido = LerInt();
+                if (intLido == null)
+                {
+                    Console.Write(mensagemAviso);
+                    intLido = LerInt();
+                    if (intLido == null)
+                    {
+                        id = 0; ;
+                        return false;
+                    }
+                }
+            }
+            id = (int)intLido;
+            return true;
+        }
     }
 }

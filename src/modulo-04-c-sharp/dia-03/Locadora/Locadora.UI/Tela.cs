@@ -20,6 +20,8 @@ namespace Locadora.UI
         const string INFORMAR_PRECO = "Por favor, informe um preço:";
         const string INFORMAR_OPCAO = "Por favor, informe uma opção:";
         const string INFORMAR_CATEGORIA = "Por favor, informe uma categoria:";
+        const string INFORMAR_ID_CLIENTE = "Por favor, informe o cliente:";
+        const string INFORMAR_ID_JOGO = "Por favor, informe o jogo:";
         const string INFORMAR_ID_LISTA = "Por favor, informe um id da lista:";
         const string INFORMAR_OPCAO_VALIDA = "Por favor, informe uma opção válida:";
         const string DIGITAR_ENTER_PARA_VOLTAR = "Pressione ENTER novamente para voltar... ";
@@ -27,11 +29,12 @@ namespace Locadora.UI
         const string PESQUISA_EDITAR_FALHA = "Desculpe, o jogo desejado não existe.";
         const string RELATORIO_GERADO = "Relatório gerado. Por favor, pressione ENTER para ir ao menu...";
         const int PESQUISAR_JOGO_POR_NOME = 1;
-        const int CADASTRAR_CLIENTE = 2;
-        const int CADASTRAR_JOGO = 3;
-        const int EDITAR_JOGO = 4;
-        const int GERAR_RELATORIO = 5;
-        const int SAIR_DO_SISTEMA = 6;
+        const int LOCAR = 2;
+        const int CADASTRAR_CLIENTE = 3;
+        const int CADASTRAR_JOGO = 4;
+        const int EDITAR_JOGO = 5;
+        const int GERAR_RELATORIO = 6;
+        const int SAIR_DO_SISTEMA = 0;
 
         string caminho = Environment.CurrentDirectory + @"..\..\..\..\arquivos\game_store.xml";
         Telas current = Telas.Menu;
@@ -49,6 +52,8 @@ namespace Locadora.UI
             {
                 case Telas.Menu:
                     return Menu();
+                case Telas.LocacaoDeJogo:
+                    return LocarJogo();
                 case Telas.CadastroCliente:
                     return CadastrarCliente();
                 case Telas.CadastroJogo:
@@ -66,17 +71,34 @@ namespace Locadora.UI
             }
         }
 
+        private bool LocarJogo()
+        {
+            int idJogo;
+            int idCliente;
+
+            if (teclado.LerInt(INFORMAR_ID_JOGO, INFORMAR_ID_JOGO, out idJogo)
+                && dados.ValidarIdJogo(idJogo) && dados.JogoIsDisponivel(idJogo))
+            {
+                EscreverMensagens();
+                if (teclado.LerInt(INFORMAR_ID_CLIENTE, INFORMAR_ID_CLIENTE, out idCliente)
+                && dados.ValidarIdCliente(idCliente))
+                {
+                    dados.Cadastrar(new Locacao(idCliente, idJogo));
+                    dados.SetJogoDisponivel(idJogo, false);
+                }
+            }
+            current = Telas.Menu;
+            return true;
+        }
+
         private bool CadastrarCliente()
         {
-            EscreverMensagens(false, INFORMAR_NOME);
-            string nome = teclado.LerString();
-            while (nome == null)
+            string nome;
+            if (teclado.LerNome(INFORMAR_NOME, INFORMAR_NOME, out nome))
             {
-                EscreverMensagens(false, INFORMAR_NOME);
-                nome = teclado.LerString();
+                dados.Cadastrar(new Cliente(nome));
             }
-
-            dados.Cadastrar(new Cliente(nome));
+            current = Telas.Menu;
             return true;
         }
 
@@ -156,32 +178,24 @@ namespace Locadora.UI
                 return true;
             }
 
-            if (!teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
+            if (teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
-                current = Telas.Menu;
-                return true;
+                EscreverMensagens();
+                if (teclado.LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
+                {
+                    EscreverMensagens();
+                    if (teclado.LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
+                    {
+                        EscreverMensagens();
+                        editar.Nome = nome;
+                        editar.Preco = preco;
+                        editar.Categoria = categoria.ToString().ToUpper();
+                        current = Telas.Menu;
+                        dados.EditarJogo(editar);
+                    }
+                }
             }
-            EscreverMensagens();
-
-            if (!teclado.LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
-            {
-                current = Telas.Menu;
-                return true;
-            }
-            EscreverMensagens();
-
-            if (!teclado.LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
-            {
-                current = Telas.Menu;
-                return true;
-            }
-            EscreverMensagens();
-
-            editar.Nome = nome;
-            editar.Preco = preco;
-            editar.Categoria = categoria.ToString().ToUpper();
             current = Telas.Menu;
-            dados.EditarJogo(editar);
             return true;
         }
 
@@ -213,27 +227,19 @@ namespace Locadora.UI
             string nome;
             double preco;
             Categoria categoria;
-            if (!teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
+            if (teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome))
             {
-                current = Telas.Menu;
-                return true;
+                EscreverMensagens();
+                if (teclado.LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
+                {
+                    EscreverMensagens();
+                    if (teclado.LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
+                    {
+                        EscreverMensagens();
+                        dados.Cadastrar(new Jogo(nome, preco, categoria.ToString().ToUpper()));
+                    }
+                }
             }
-            EscreverMensagens();
-
-            if (!teclado.LerPreco(INFORMAR_PRECO, DIGITAR_ENTER_PARA_VOLTAR, out preco))
-            {
-                current = Telas.Menu;
-                return true;
-            }
-            EscreverMensagens();
-
-            if (!teclado.LerCategoria(GetCategorias() + INFORMAR_CATEGORIA, DIGITAR_ENTER_PARA_VOLTAR, out categoria))
-            {
-                current = Telas.Menu;
-                return true;
-            }
-
-            dados.Cadastrar(new Jogo(nome, preco, categoria.ToString().ToUpper()));
             current = Telas.Menu;
             return true;
         }
@@ -241,9 +247,9 @@ namespace Locadora.UI
         private bool Menu()
         {
             EscreverMensagens(true,
-                "1-Pesquisar jogo por nome", "2-Cadastrar cliente",
-                "3-Cadastrar jogo", "4-Editar jogo",
-                "5-Gerar relatório TXT", "6-Sair", Environment.NewLine);
+                "1-Pesquisar jogo por nome", "2-Alugar jogo",
+                "3-Cadastrar cliente", "4-Cadastrar jogo", "5-Editar jogo",
+                "6-Gerar relatório TXT", "0-Sair", Environment.NewLine);
             EscreverMensagens(false, INFORMAR_OPCAO);
             int? op = teclado.LerInt();
             while (op == null)
@@ -256,6 +262,9 @@ namespace Locadora.UI
             {
                 case PESQUISAR_JOGO_POR_NOME:
                     current = Telas.PesquisarJogoNome;
+                    break;
+                case LOCAR:
+                    current = Telas.LocacaoDeJogo;
                     break;
                 case CADASTRAR_CLIENTE:
                     current = Telas.CadastroCliente;

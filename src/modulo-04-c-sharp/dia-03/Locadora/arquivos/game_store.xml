@@ -71,7 +71,7 @@
       <nome>Aladdin</nome>
       <preco>17</preco>
       <categoria>AVENTURA</categoria>
-      <disponivel>true</disponivel>
+      <disponivel>False</disponivel>
     </jogo>
     <jogo id="13">
       <nome>Rock 'n Roll Racing</nome>
@@ -397,4 +397,26 @@
       <nome>TestCli11</nome>
     </cliente>
   </clientes>
+  <locacoes>
+    <locacao id="0">
+      <id-cliente>3</id-cliente>
+      <id-jogo>12</id-jogo>
+    </locacao>
+    <locacao id="1">
+      <id-cliente>3</id-cliente>
+      <id-jogo>12</id-jogo>
+    </locacao>
+    <locacao id="2">
+      <id-cliente>3</id-cliente>
+      <id-jogo>12</id-jogo>
+    </locacao>
+    <locacao id="3">
+      <id-cliente>3</id-cliente>
+      <id-jogo>12</id-jogo>
+    </locacao>
+    <locacao id="4">
+      <id-cliente>3</id-cliente>
+      <id-jogo>12</id-jogo>
+    </locacao>
+  </locacoes>
 </root>

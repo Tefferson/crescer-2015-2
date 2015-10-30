@@ -1,314 +1,74 @@
                              LOCADORA NUNES GAMES                               
-29/10/2015                                                              03:36:14
+30/10/2015                                                              00:43:08
                               Relatório de jogos                                
 
 ================================================================================
 ID       Categoria        Nome                          Preço         Disponivel
-Nome:       Chrono Trigger
-Preço:      R$ 60,00
-ID:         1
-Categoria:  RPG
-Disponível: SIM
-Nome:       Top Gear
-Preço:      R$ 20,00
-ID:         2
-Categoria:  CORRIDA
-Disponível: SIM
-Nome:       Megaman X
-Preço:      R$ 40,00
-ID:         3
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Super Metroid
-Preço:      R$ 35,00
-ID:         4
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Donkey Kong Country
-Preço:      R$ 25,00
-ID:         5
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Super Mario Kart
-Preço:      R$ 40,00
-ID:         6
-Categoria:  CORRIDA
-Disponível: SIM
-Nome:       Super Street Fighter
-Preço:      R$ 25,00
-ID:         7
-Categoria:  LUTA
-Disponível: SIM
-Nome:       Mortal Kombat 2
-Preço:      R$ 37,00
-ID:         8
-Categoria:  LUTA
-Disponível: SIM
-Nome:       Killer Instinct
-Preço:      R$ 19,00
-ID:         9
-Categoria:  LUTA
-Disponível: SIM
-Nome:       Final Fight
-Preço:      R$ 12,00
-ID:         10
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Super Mario RPG
-Preço:      R$ 70,00
-ID:         11
-Categoria:  RPG
-Disponível: SIM
-Nome:       Aladdin
-Preço:      R$ 16,00
-ID:         12
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Rock 'n Roll Racing
-Preço:      R$ 22,00
-ID:         13
-Categoria:  CORRIDA
-Disponível: SIM
-Nome:       Zelda: A link to the past
-Preço:      R$ 110,00
-ID:         14
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Final Fantasy VI
-Preço:      R$ 30,50
-ID:         15
-Categoria:  RPG
-Disponível: SIM
-Nome:       International Super Star Soccer Deluxe
-Preço:      R$ 45,00
-ID:         16
-Categoria:  ESPORTE
-Disponível: SIM
-Nome:       Contra III
-Preço:      R$ 31,00
-ID:         17
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Sunset Riders Alterado De Novo
-Preço:      R$ 37,90
-ID:         18
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Goof Troop
-Preço:      R$ 41,90
-ID:         19
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Mickey to Donald: Magical Adventure 3
-Preço:      R$ 32,90
-ID:         20
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         21
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         22
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         23
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         24
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         25
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         26
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         27
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         28
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         29
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         30
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         31
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         32
-Categoria:  muita ação
-Disponível: SIM
-Nome:       joguinho
-Preço:      R$ 23,99
-ID:         33
-Categoria:  muita ação
-Disponível: SIM
-Nome:       Jogo de testar
-Preço:      R$ 23,99
-ID:         34
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar
-Preço:      R$ 23,99
-ID:         35
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar36
-Preço:      R$ 23,99
-ID:         36
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar37
-Preço:      R$ 23,99
-ID:         37
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar38
-Preço:      R$ 23,99
-ID:         38
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar39
-Preço:      R$ 23,99
-ID:         39
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar40
-Preço:      R$ 23,99
-ID:         40
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar41
-Preço:      R$ 23,99
-ID:         41
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar42
-Preço:      R$ 23,99
-ID:         42
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar43
-Preço:      R$ 23,99
-ID:         43
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar44
-Preço:      R$ 23,99
-ID:         44
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar45
-Preço:      R$ 23,99
-ID:         45
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar46
-Preço:      R$ 23,99
-ID:         46
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar47
-Preço:      R$ 23,99
-ID:         47
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar48
-Preço:      R$ 23,99
-ID:         48
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar49
-Preço:      R$ 23,99
-ID:         49
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar50
-Preço:      R$ 23,99
-ID:         50
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar51
-Preço:      R$ 23,99
-ID:         51
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar52
-Preço:      R$ 23,99
-ID:         52
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar53
-Preço:      R$ 23,99
-ID:         53
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar54
-Preço:      R$ 23,99
-ID:         54
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar55
-Preço:      R$ 23,99
-ID:         55
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar56
-Preço:      R$ 23,99
-ID:         56
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar57
-Preço:      R$ 23,99
-ID:         57
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Jogo de testar58
-Preço:      R$ 23,99
-ID:         58
-Categoria:  LÓGICA
-Disponível: SIM
-Nome:       Joguinho
-Preço:      R$ 23,99
-ID:         59
-Categoria:  AVENTURA
-Disponível: SIM
-Nome:       Lutinha
-Preço:      R$ 35,50
-ID:         60
-Categoria:  LUTA
-Disponível: SIM
+1        RPG              Chrono Trigger                R$ 60,00             SIM
+2        CORRIDA          Top Gear                      R$ 20,00             SIM
+3        AVENTURA         Megaman X                     R$ 40,00             SIM
+4        AVENTURA         Super Metroid                 R$ 35,00             SIM
+5        AVENTURA         Donkey Kong Country           R$ 25,00             SIM
+6        CORRIDA          Super Mario Kart              R$ 40,00             SIM
+7        LUTA             Super Street Fighter          R$ 25,00             SIM
+8        LUTA             Mortal Kombat 2               R$ 37,00             SIM
+9        LUTA             Killer Instinct               R$ 19,00             SIM
+10       AVENTURA         Final Fight                   R$ 12,00             SIM
+11       RPG              Super Mario RPG               R$ 70,00             SIM
+12       AVENTURA         Aladdin                       R$ 17,00             SIM
+13       CORRIDA          Rock 'n Roll Racing           R$ 22,00             SIM
+14       AVENTURA         Zelda: A link to the past     R$ 110,00            SIM
+15       RPG              Final Fantasy VI              R$ 30,50             SIM
+16       ESPORTE          International Super Star So...R$ 45,00             SIM
+17       AVENTURA         Contra III                    R$ 31,00             SIM
+18       AVENTURA         Sunset Riders Alterado De N...R$ 37,90             SIM
+19       AVENTURA         Goof Troop                    R$ 41,90             SIM
+20       AVENTURA         Mickey to Donald: Magical A...R$ 32,90             SIM
+21       muita ação       joguinho                      R$ 23,99             SIM
+22       muita ação       joguinho                      R$ 23,99             SIM
+23       muita ação       joguinho                      R$ 23,99             SIM
+24       muita ação       joguinho                      R$ 23,99             SIM
+25       muita ação       joguinho                      R$ 23,99             SIM
+26       muita ação       joguinho                      R$ 23,99             SIM
+27       muita ação       joguinho                      R$ 23,99             SIM
+28       muita ação       joguinho                      R$ 23,99             SIM
+29       muita ação       joguinho                      R$ 23,99             SIM
+30       muita ação       joguinho                      R$ 23,99             SIM
+31       muita ação       joguinho                      R$ 23,99             SIM
+32       muita ação       joguinho                      R$ 23,99             SIM
+33       muita ação       joguinho                      R$ 23,99             SIM
+34       LÓGICA           Jogo de testar                R$ 23,99             SIM
+35       LÓGICA           Jogo de testar                R$ 23,99             SIM
+36       LÓGICA           Jogo de testar36              R$ 23,99             SIM
+37       LÓGICA           Jogo de testar37              R$ 23,99             SIM
+38       LÓGICA           Jogo de testar38              R$ 23,99             SIM
+39       LÓGICA           Jogo de testar39              R$ 23,99             SIM
+40       LÓGICA           Jogo de testar40              R$ 23,99             SIM
+41       LÓGICA           Jogo de testar41              R$ 23,99             SIM
+42       LÓGICA           Jogo de testar42              R$ 23,99             SIM
+43       LÓGICA           Jogo de testar43              R$ 23,99             SIM
+44       LÓGICA           Jogo de testar44              R$ 23,99             SIM
+45       LÓGICA           Jogo de testar45              R$ 23,99             SIM
+46       LÓGICA           Jogo de testar46              R$ 23,99             SIM
+47       LÓGICA           Jogo de testar47              R$ 23,99             SIM
+48       LÓGICA           Jogo de testar48              R$ 23,99             SIM
+49       LÓGICA           Jogo de testar49              R$ 23,99             SIM
+50       LÓGICA           Jogo de testar50              R$ 23,99             SIM
+51       LÓGICA           Jogo de testar51              R$ 23,99             SIM
+52       LÓGICA           Jogo de testar52              R$ 23,99             SIM
+53       LÓGICA           Jogo de testar53              R$ 23,99             SIM
+54       LÓGICA           Jogo de testar54              R$ 23,99             SIM
+55       LÓGICA           Jogo de testar55              R$ 23,99             SIM
+56       LÓGICA           Jogo de testar56              R$ 23,99             SIM
+57       LÓGICA           Jogo de testar57              R$ 23,99             SIM
+58       LÓGICA           Jogo de testar58              R$ 23,99             SIM
+59       AVENTURA         Joguinho                      R$ 23,99             SIM
+60       LUTA             Lutinha                       R$ 35,50             SIM
 
 --------------------------------------------------------------------------------
 Quantidade total de jogos: 60
 Quantidade de jogos disponíveis: 60
-Valor médio por jogo: R$ 28,69
+Valor médio por jogo: R$ 28,71
 Jogo mais caro: Zelda: A link to the past
 Jogo mais barato: Final Fight
 ================================================================================
