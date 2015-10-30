@@ -30,10 +30,11 @@ namespace Locadora.UI
         const string RELATORIO_GERADO = "Relatório gerado. Por favor, pressione ENTER para ir ao menu...";
         const int PESQUISAR_JOGO_POR_NOME = 1;
         const int LOCAR = 2;
-        const int CADASTRAR_CLIENTE = 3;
-        const int CADASTRAR_JOGO = 4;
-        const int EDITAR_JOGO = 5;
-        const int GERAR_RELATORIO = 6;
+        const int DEVOLVER = 3;
+        const int CADASTRAR_CLIENTE = 4;
+        const int CADASTRAR_JOGO = 5;
+        const int EDITAR_JOGO = 6;
+        const int GERAR_RELATORIO = 7;
         const int SAIR_DO_SISTEMA = 0;
 
         string caminho = Environment.CurrentDirectory + @"..\..\..\..\arquivos\game_store.xml";
@@ -54,6 +55,8 @@ namespace Locadora.UI
                     return Menu();
                 case Telas.LocacaoDeJogo:
                     return LocarJogo();
+                case Telas.DevolucaoDeJogo:
+                    return DevolverJogo();
                 case Telas.CadastroCliente:
                     return CadastrarCliente();
                 case Telas.CadastroJogo:
@@ -71,11 +74,26 @@ namespace Locadora.UI
             }
         }
 
+        private bool DevolverJogo()
+        {
+            int idJogo;
+
+            if (teclado.LerInt(INFORMAR_ID_JOGO, INFORMAR_ID_JOGO, out idJogo)
+                && dados.ValidarIdJogo(idJogo))
+            {
+                if (!dados.JogoIsDisponivel(idJogo))
+                {
+                    dados.SetJogoDisponivel(idJogo, true);
+                }
+            }
+            current = Telas.Menu;
+            return true;
+        }
+
         private bool LocarJogo()
         {
             int idJogo;
             int idCliente;
-
             if (teclado.LerInt(INFORMAR_ID_JOGO, INFORMAR_ID_JOGO, out idJogo)
                 && dados.ValidarIdJogo(idJogo) && dados.JogoIsDisponivel(idJogo))
             {
@@ -247,9 +265,9 @@ namespace Locadora.UI
         private bool Menu()
         {
             EscreverMensagens(true,
-                "1-Pesquisar jogo por nome", "2-Alugar jogo",
-                "3-Cadastrar cliente", "4-Cadastrar jogo", "5-Editar jogo",
-                "6-Gerar relatório TXT", "0-Sair", Environment.NewLine);
+                "1-Pesquisar jogo por nome", "2-Alugar jogo", "3-Devolver jogo",
+                "4-Cadastrar cliente", "5-Cadastrar jogo", "6-Editar jogo",
+                "7-Gerar relatório TXT", "0-Sair", Environment.NewLine);
             EscreverMensagens(false, INFORMAR_OPCAO);
             int? op = teclado.LerInt();
             while (op == null)
@@ -265,6 +283,9 @@ namespace Locadora.UI
                     break;
                 case LOCAR:
                     current = Telas.LocacaoDeJogo;
+                    break;
+                case DEVOLVER:
+                    current = Telas.DevolucaoDeJogo;
                     break;
                 case CADASTRAR_CLIENTE:
                     current = Telas.CadastroCliente;

@@ -1,5 +1,5 @@
                              LOCADORA NUNES GAMES                               
-30/10/2015                                                              00:43:08
+30/10/2015                                                              10:30:17
                               Relatório de jogos                                
 
 ================================================================================
@@ -25,22 +25,7 @@ ID       Categoria        Nome                          Preço         Disponive
 19       AVENTURA         Goof Troop                    R$ 41,90             SIM
 20       AVENTURA         Mickey to Donald: Magical A...R$ 32,90             SIM
 21       muita ação       joguinho                      R$ 23,99             SIM
-22       muita ação       joguinho                      R$ 23,99             SIM
-23       muita ação       joguinho                      R$ 23,99             SIM
-24       muita ação       joguinho                      R$ 23,99             SIM
-25       muita ação       joguinho                      R$ 23,99             SIM
-26       muita ação       joguinho                      R$ 23,99             SIM
-27       muita ação       joguinho                      R$ 23,99             SIM
-28       muita ação       joguinho                      R$ 23,99             SIM
-29       muita ação       joguinho                      R$ 23,99             SIM
-30       muita ação       joguinho                      R$ 23,99             SIM
-31       muita ação       joguinho                      R$ 23,99             SIM
-32       muita ação       joguinho                      R$ 23,99             SIM
 33       muita ação       joguinho                      R$ 23,99             SIM
-34       LÓGICA           Jogo de testar                R$ 23,99             SIM
-35       LÓGICA           Jogo de testar                R$ 23,99             SIM
-36       LÓGICA           Jogo de testar36              R$ 23,99             SIM
-37       LÓGICA           Jogo de testar37              R$ 23,99             SIM
 38       LÓGICA           Jogo de testar38              R$ 23,99             SIM
 39       LÓGICA           Jogo de testar39              R$ 23,99             SIM
 40       LÓGICA           Jogo de testar40              R$ 23,99             SIM
@@ -64,11 +49,12 @@ ID       Categoria        Nome                          Preço         Disponive
 58       LÓGICA           Jogo de testar58              R$ 23,99             SIM
 59       AVENTURA         Joguinho                      R$ 23,99             SIM
 60       LUTA             Lutinha                       R$ 35,50             SIM
+61       AVENTURA         Jogo de testar61              R$ 23,99             SIM
 
 --------------------------------------------------------------------------------
-Quantidade total de jogos: 60
-Quantidade de jogos disponíveis: 60
-Valor médio por jogo: R$ 28,71
+Quantidade total de jogos: 46
+Quantidade de jogos disponíveis: 46
+Valor médio por jogo: R$ 30,14
 Jogo mais caro: Zelda: A link to the past
 Jogo mais barato: Final Fight
 ================================================================================

@@ -19,7 +19,7 @@ namespace Locadora.Dominio.Tests
         {
             BaseDeDados dados = new BaseDeDados(caminho);
             IList<Jogo> atual = dados.PesquisarJogoPorNome("Aladdin");
-            Jogo esperado = new Jogo("Aladdin", 16, "AVENTURA");
+            Jogo esperado = new Jogo("Aladdin", 17, "AVENTURA");
             esperado.Id = 12;
             Assert.AreEqual(esperado, atual[0]);
         }

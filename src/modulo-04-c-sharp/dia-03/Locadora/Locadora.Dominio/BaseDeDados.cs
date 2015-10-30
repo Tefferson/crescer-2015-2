@@ -87,7 +87,7 @@ namespace Locadora.Dominio
             string maisBarato = jogos.First(jogo => jogo.Element("preco").Value == menorPreco).Element("nome").Value;
             relatorio = String.Format(
                 relatorio, novaLinha, jogos.Count(),
-                jogos.Count(jogo => jogo.Element("disponivel").Value == "true"),
+                jogos.Count(jogo => jogo.Element("disponivel").Value.ToUpper() == "TRUE"),
                 jogos.Average(doubleLambda).ToString("0.00"),
                 maisCaro, maisBarato);
             string relPath = Environment.CurrentDirectory + @"..\..\..\..\arquivos\Relatorio_Game_Store.txt";
@@ -106,7 +106,7 @@ namespace Locadora.Dominio
         {
             string idStr = idJogo.ToString();
             return GetElements("jogos").Any(jogo => jogo.Attribute("id").Value == idStr
-            && jogo.Element("disponivel").Value == "true");
+            && jogo.Element("disponivel").Value.ToUpper() == "TRUE");
         }
 
         private string GetListaDeJogosComoTexto()
