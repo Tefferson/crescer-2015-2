@@ -18,9 +18,9 @@ namespace Locadora.Dominio.Tests
         public void PesquisarJogoPorNomeTest()
         {
             BaseDeDados dados = new BaseDeDados(caminho);
-            IList<Jogo> atual = dados.PesquisarJogoPorNome("Aladdin");
-            Jogo esperado = new Jogo("Aladdin", 17, "AVENTURA");
-            esperado.Id = 12;
+            IList<Jogo> atual = dados.PesquisarJogoPorNome("Contra III");
+            Jogo esperado = new Jogo("Contra III", 31, "AVENTURA");
+            esperado.Id = 17;
             Assert.AreEqual(esperado, atual[0]);
         }
 
@@ -55,6 +55,31 @@ namespace Locadora.Dominio.Tests
             esperado.Preco = 19;
             dados.EditarJogo(esperado);
             Assert.AreEqual(esperado, dados.PesquisarJogoPorNome("Killer Instinct")[0]);
+        }
+
+        [TestMethod]
+        public void PesquisarClientePorNomeTest()
+        {
+            BaseDeDados dados = new BaseDeDados(caminho);
+            Cliente cliente = dados.PesquisarClientePorNome("usER")[1];
+            Assert.AreEqual("User", cliente.Nome);
+        }
+
+        [TestMethod]
+        public void JogoIsDisponivelTest()
+        {
+            BaseDeDados dados = new BaseDeDados(caminho);
+            dados.SetJogoDisponivel(6, false);
+            Assert.IsTrue(!dados.JogoIsDisponivel(6));
+        }
+
+        [TestMethod]
+        public void SetJogoDisponivelTest()
+        {
+            BaseDeDados dados = new BaseDeDados(caminho);
+            bool disponivel = dados.JogoIsDisponivel(16);
+            dados.SetJogoDisponivel(16, !disponivel);
+            Assert.AreEqual(!disponivel, dados.JogoIsDisponivel(16));
         }
     }
 }
