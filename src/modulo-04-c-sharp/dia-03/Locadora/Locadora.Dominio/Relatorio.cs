@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Locadora.Dominio
@@ -16,8 +14,9 @@ namespace Locadora.Dominio
         public const string TRACOS = "--------------------------------------------------------------------------------";
         public const string COLUNAS = "ID       Categoria        Nome                          Preço         Disponivel";
         public const string MUST_FORMAT_WITH_DATETIME = "{0:dd/MM/yyyy}                                                              {0:HH:mm:ss}";
+        public const string COLUNAS_CLIENTE = "       ID Nome                                                                  ";
         string caminhoRelatorio = Environment.CurrentDirectory + @"..\..\..\..\arquivos\Relatorio_Game_Store.txt";
-
+        
         public void ExportarRelatorioEmTxt(BaseDeDados dados)
         {
             IEnumerable<XElement> jogos = dados.GetElements("jogos"); ;
@@ -51,6 +50,12 @@ namespace Locadora.Dominio
         {
             return String.Format("{0,-9}{1,-17}{2,-30}{3,-14}{4,10}",
                  jogo.Id, jogo.Categoria, Truncate(jogo.Nome, 30), "R$ " + jogo.Preco.ToString("0.00"), jogo.Disponivel ? "SIM" : "NÃO");
+        }
+
+        public string ToStringFormatado(Cliente cliente)
+        {
+            return String.Format("{0,9} {1,-70}",
+                 cliente.Id, cliente.Nome);
         }
 
         private string Truncate(string nome, int maxSize)

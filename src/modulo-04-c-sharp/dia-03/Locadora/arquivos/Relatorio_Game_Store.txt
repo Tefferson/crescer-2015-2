@@ -1,5 +1,5 @@
                              LOCADORA NUNES GAMES                               
-30/10/2015                                                              10:30:17
+30/10/2015                                                              20:18:39
                               Relatório de jogos                                
 
 ================================================================================
@@ -15,7 +15,7 @@ ID       Categoria        Nome                          Preço         Disponive
 9        LUTA             Killer Instinct               R$ 19,00             SIM
 10       AVENTURA         Final Fight                   R$ 12,00             SIM
 11       RPG              Super Mario RPG               R$ 70,00             SIM
-12       AVENTURA         Aladdin                       R$ 17,00             SIM
+12       AVENTURA         Aladdin                       R$ 17,00             NÃO
 13       CORRIDA          Rock 'n Roll Racing           R$ 22,00             SIM
 14       AVENTURA         Zelda: A link to the past     R$ 110,00            SIM
 15       RPG              Final Fantasy VI              R$ 30,50             SIM
@@ -46,15 +46,15 @@ ID       Categoria        Nome                          Preço         Disponive
 55       LÓGICA           Jogo de testar55              R$ 23,99             SIM
 56       LÓGICA           Jogo de testar56              R$ 23,99             SIM
 57       LÓGICA           Jogo de testar57              R$ 23,99             SIM
-58       LÓGICA           Jogo de testar58              R$ 23,99             SIM
+58       RPG              jogo do uila                  R$ 9,99              NÃO
 59       AVENTURA         Joguinho                      R$ 23,99             SIM
 60       LUTA             Lutinha                       R$ 35,50             SIM
 61       AVENTURA         Jogo de testar61              R$ 23,99             SIM
 
 --------------------------------------------------------------------------------
 Quantidade total de jogos: 46
-Quantidade de jogos disponíveis: 46
-Valor médio por jogo: R$ 30,14
+Quantidade de jogos disponíveis: 44
+Valor médio por jogo: R$ 29,84
 Jogo mais caro: Zelda: A link to the past
-Jogo mais barato: Final Fight
+Jogo mais barato: jogo do uila
 ================================================================================

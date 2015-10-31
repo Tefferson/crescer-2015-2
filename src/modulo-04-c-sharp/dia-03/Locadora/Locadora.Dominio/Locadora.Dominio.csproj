@@ -36,13 +36,14 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDeDados.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Csv.cs" />
+    <Compile Include="ImportaJogo.cs" />
     <Compile Include="Locacao.cs" />
     <Compile Include="LocadoraElement.cs" />
     <Compile Include="Jogo.cs" />

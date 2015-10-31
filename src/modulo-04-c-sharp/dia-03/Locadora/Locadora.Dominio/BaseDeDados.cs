@@ -13,7 +13,7 @@ namespace Locadora.Dominio
         {
             CaminhoArquivo = caminhoArquivo;
         }
-        
+
         public IList<Jogo> PesquisarJogoPorNome(string nome)
         {
             nome = nome.ToUpper();
@@ -24,6 +24,18 @@ namespace Locadora.Dominio
                 listaDeJogos.Add(new Jogo(xelem));
             }
             return listaDeJogos;
+        }
+
+        public IList<Cliente> PesquisarClientePorNome(string nome)
+        {
+            nome = nome.ToUpper();
+            List<Cliente> listaDeClientes = new List<Cliente>();
+            IEnumerable<XElement> xeclientes = GetElements("clientes").Where(cliente => cliente.Element("nome").Value.ToUpper().Contains(nome));
+            foreach (XElement xelem in xeclientes)
+            {
+                listaDeClientes.Add(new Cliente(xelem));
+            }
+            return listaDeClientes;
         }
 
         public void Cadastrar(LocadoraElement elem)
@@ -79,7 +91,7 @@ namespace Locadora.Dominio
                 .Max(xejogo => Convert.ToInt32(xejogo.Attribute("id").Value)) + 1;
         }
 
-        private void AddXElement(string node, LocadoraElement elem)
+        public void AddXElement(string node, LocadoraElement elem)
         {
             elem.Id = GetNextId(node);
             XElement xelem = elem.ToXElement();

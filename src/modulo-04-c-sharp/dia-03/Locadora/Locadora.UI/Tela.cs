@@ -1,7 +1,9 @@
 ﻿using Locadora.Dominio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Locadora.UI
 {
@@ -36,15 +38,21 @@ namespace Locadora.UI
         const string VOLTANDO_PARA_MENU = "Voltando para o menu, por favor pressione ENTER...";
         const string CADASTRO_JOGO_SUCESSO = "Jogo cadstrado com sucesso!!!";
         const string CADASTRO_JOGO_FALHA = "Desculpe, não foi possível cadastrar o jogo...";
+        const string ARQUIVO_NAO_SELECIONADO = "Arquivo não selecionado, pressione ENTER para continuar...";
+        const string SELECIONANDO_ARQUIVO = "Selecionando arquivo...";
+        const string IMPORTANDO_DADOS = "Arquivo selecionado, importando dados...";
+        const string DADOS_IMPORTADOS = "Dados importados com sucesso!!!";
         const string TCHAU = "Tchau!!!";
         const string ERRO_ES = "Desculpe, ocorreu um erro, o programa será fechado...";
         const int PESQUISAR_JOGO_POR_NOME = 1;
         const int LOCAR = 2;
         const int DEVOLVER = 3;
-        const int CADASTRAR_CLIENTE = 4;
-        const int CADASTRAR_JOGO = 5;
-        const int EDITAR_JOGO = 6;
-        const int GERAR_RELATORIO = 7;
+        const int PESQUISAR_CLIENTE_POR_NOME = 4;
+        const int CADASTRAR_CLIENTE = 5;
+        const int CADASTRAR_JOGO = 6;
+        const int EDITAR_JOGO = 7;
+        const int GERAR_RELATORIO = 8;
+        const int IMPORTAR_CSV = 9;
         const int SAIR_DO_SISTEMA = 0;
 
         string caminho = Environment.CurrentDirectory + @"..\..\..\..\arquivos\game_store.xml";
@@ -52,15 +60,19 @@ namespace Locadora.UI
         Teclado teclado = new Teclado();
         BaseDeDados dados;
         Relatorio relatorio;
+        ImportaJogo importaJogo;
+        Csv csv;
         private string[] OPCOES_DO_MENU = {
-                "1-Pesquisar jogo por nome", "2-Alugar jogo", "3-Devolver jogo",
-                "4-Cadastrar cliente", "5-Cadastrar jogo", "6-Editar jogo",
-                "7-Gerar relatório TXT", "0-Sair", Environment.NewLine};
+                "1-Pesquisar jogo por nome", "2-Alugar jogo", "3-Devolver jogo", "4-Pesquisar cliente por nome",
+                "5-Cadastrar cliente", "6-Cadastrar jogo", "7-Editar jogo",
+                "8-Gerar relatório TXT", "9-Importar csv", "0-Sair", Environment.NewLine};
 
         public Tela()
         {
             dados = new BaseDeDados(caminho);
             relatorio = new Relatorio();
+            csv = new Csv();
+            importaJogo = new ImportaJogo();
         }
 
         public bool UpdateTela()
@@ -76,6 +88,8 @@ namespace Locadora.UI
                         return LocarJogo();
                     case Telas.DevolucaoDeJogo:
                         return DevolverJogo();
+                    case Telas.PesquisarClientePorNome:
+                        return PesquisarClientePorNome();
                     case Telas.CadastroCliente:
                         return CadastrarCliente();
                     case Telas.CadastroJogo:
@@ -86,6 +100,8 @@ namespace Locadora.UI
                         return PesquisarJogoPorNome();
                     case Telas.ExportarTxt:
                         return GerarRelatorio();
+                    case Telas.ImportarCsv:
+                        return ImportarCsv();
                     case Telas.Sair:
                         return Sair();
                     default:
@@ -96,6 +112,32 @@ namespace Locadora.UI
             {
                 return !VoltarParaMenuComMensagem(ERRO_ES);
             }
+        }
+
+        private bool PesquisarClientePorNome()
+        {
+            string nome;
+            teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome);
+            EscreverCabecalho();
+            if (!String.IsNullOrEmpty(nome))
+            {
+                PesquisarClientePorNome(nome);
+                return VoltarParaMenuComMensagem(PESQUISA_CONCLUIDA);
+            }
+            return VoltarParaMenuComMensagem(VOLTANDO_PARA_MENU);
+        }
+
+        private bool ImportarCsv()
+        {
+            EscreverMensagens(true, SELECIONANDO_ARQUIVO);
+            StreamReader reader = SelectFile();
+            if (reader == null)
+            {
+                return VoltarParaMenuComMensagem(ARQUIVO_NAO_SELECIONADO);
+            }
+            EscreverMensagens(true, IMPORTANDO_DADOS);
+            importaJogo.importarJogos(csv.GetJogosFromCsv(reader), dados);
+            return VoltarParaMenuComMensagem(DADOS_IMPORTADOS);
         }
 
         private bool DevolverJogo()
@@ -154,14 +196,13 @@ namespace Locadora.UI
         {
             string nome;
             teclado.LerNome(INFORMAR_NOME, DIGITAR_ENTER_PARA_VOLTAR, out nome);
-
             EscreverCabecalho();
             if (!String.IsNullOrEmpty(nome))
             {
                 PesquisarJogoPorNome(nome);
+                return VoltarParaMenuComMensagem(PESQUISA_CONCLUIDA);
             }
-
-            return VoltarParaMenuComMensagem(PESQUISA_CONCLUIDA);
+            return VoltarParaMenuComMensagem(VOLTANDO_PARA_MENU);
         }
 
         private IList<Jogo> PesquisarJogoPorNome(string nome)
@@ -178,6 +219,23 @@ namespace Locadora.UI
                 listaDeJogos += relatorio.ToStringFormatado(jogo) + Environment.NewLine;
             }
             EscreverMensagens(true, listaDeJogos);
+            return pesquisado;
+        }
+
+        private IList<Cliente> PesquisarClientePorNome(string nome)
+        {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            EscreverMensagens(true, Relatorio.COLUNAS_CLIENTE + Environment.NewLine);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            string listaDeClientes = "";
+            IList<Cliente> pesquisado = dados.PesquisarClientePorNome(nome);
+            foreach (Cliente cliente in pesquisado)
+            {
+                listaDeClientes += relatorio.ToStringFormatado(cliente) + Environment.NewLine;
+            }
+            EscreverMensagens(true, listaDeClientes);
             return pesquisado;
         }
 
@@ -300,6 +358,9 @@ namespace Locadora.UI
                 case CADASTRAR_CLIENTE:
                     current = Telas.CadastroCliente;
                     break;
+                case PESQUISAR_CLIENTE_POR_NOME:
+                    current = Telas.PesquisarClientePorNome;
+                    break;
                 case CADASTRAR_JOGO:
                     current = Telas.CadastroJogo;
                     break;
@@ -308,6 +369,9 @@ namespace Locadora.UI
                     break;
                 case GERAR_RELATORIO:
                     current = Telas.ExportarTxt;
+                    break;
+                case IMPORTAR_CSV:
+                    current = Telas.ImportarCsv;
                     break;
                 case SAIR_DO_SISTEMA:
                     current = Telas.Sair;
@@ -363,6 +427,16 @@ namespace Locadora.UI
             }
             current = Telas.Menu;
             return true;
+        }
+
+        private StreamReader SelectFile()
+        {
+            OpenFileDialog importFile = new OpenFileDialog();
+            if (importFile.ShowDialog() == DialogResult.OK)
+            {
+                return new StreamReader(importFile.OpenFile());
+            }
+            return null;
         }
     }
 }

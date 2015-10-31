@@ -69,7 +69,7 @@
     </jogo>
     <jogo id="12">
       <nome>Aladdin</nome>
-      <preco>17</preco>
+      <preco>16</preco>
       <categoria>AVENTURA</categoria>
       <disponivel>False</disponivel>
     </jogo>
@@ -277,6 +277,37 @@
       <categoria>AVENTURA</categoria>
       <disponivel>true</disponivel>
     </jogo>
+    <jogo id="62">
+      <nome>nova
+linha</nome>
+      <preco>13</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="63">
+      <nome>jogau</nome>
+      <preco>2</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="64">
+      <nome>jogau</nome>
+      <preco>2</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="65">
+      <nome>jogau</nome>
+      <preco>2</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
+    <jogo id="66">
+      <nome>jogau</nome>
+      <preco>2</preco>
+      <categoria>AVENTURA</categoria>
+      <disponivel>true</disponivel>
+    </jogo>
   </jogos>
   <clientes>
     <cliente id="1">
@@ -345,6 +376,10 @@
       <id-jogo>58</id-jogo>
     </locacao>
     <locacao id="6">
+      <id-cliente>3</id-cliente>
+      <id-jogo>12</id-jogo>
+    </locacao>
+    <locacao id="7">
       <id-cliente>3</id-cliente>
       <id-jogo>12</id-jogo>
     </locacao>

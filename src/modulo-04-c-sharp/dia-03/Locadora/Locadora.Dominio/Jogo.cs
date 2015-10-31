@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Locadora.Dominio
@@ -25,7 +21,7 @@ namespace Locadora.Dominio
         public Jogo(XElement xejogo)
         {
             Id = Convert.ToInt32(xejogo.Attribute("id").Value);
-            Nome = xejogo.Element("nome").Value;
+            Nome = xejogo.Element("nome").Value.ToString().Replace("\n", " ");
             Preco = Convert.ToDouble(xejogo.Element("preco").Value.Replace(".", ","));
             Categoria = xejogo.Element("categoria").Value;
             Disponivel = Convert.ToBoolean(xejogo.Element("disponivel").Value);

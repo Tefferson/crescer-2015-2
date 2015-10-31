@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
@@ -49,7 +45,7 @@ namespace Locadora.Dominio
         public string LerString()
         {
             string digitado = Console.ReadLine();
-            return digitado != "" ? digitado : null;
+            return String.IsNullOrEmpty(digitado)? null : digitado;
         }
 
         public string LerLinha()
