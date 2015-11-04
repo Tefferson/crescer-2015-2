@@ -2,9 +2,15 @@
     ViewBag.Title = "Página Inicial";
 }
 
-<img src="@Url.Content("~/Content/Images/tsg.jpg")" />
-<h1 class="titulo">TSG Games</h1>
-<h3>Serviço bom é serviço de qualidade!!!</h3>
-
-<a href="/Relatorio/JogosDisponiveis">Jogos Disponíveis</a>
-
+<div class="container">
+    <div class="row">
+        <img class="col-md-10 col-md-push-1" src="@Url.Content("~/Content/Images/tsg.jpg")" />
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-push-1">
+            <h1 class="titulo">TSG Games</h1>
+            <h3>Serviço bom é serviço de qualidade!!!</h3>
+            <button class="shiny-button" onclick="location.href='/Relatorio/JogosDisponiveis'">Jogos Disponíveis</button>
+        </div>
+    </div>
+</div>
