@@ -1,16 +1,17 @@
 ﻿using Locadora.Dominio;
+using System.Collections.Generic;
 
 namespace Locadora.Models
 {
     public class RelatorioModel
     {
-        private Relatorio relatorio;
-
-        public string Relatorio { get { return relatorio.GerarRelatorio(); } }
+        private BaseDeDados dados;
+        public IList<Jogo> ListaDeJogos { get; }
 
         public RelatorioModel()
         {
-            relatorio = new Relatorio();
+            dados = new BaseDeDados();
+            ListaDeJogos = dados.PesquisarJogoPorNome("");
         }
     }
 }

@@ -9,7 +9,29 @@
 </head>
 <body class="jogos-container">
     <div class="relatorio-container">
-        <text class="relatorio">@Model.Relatorio</text>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th class="text-center">Categoria</th>
+                    <th class="text-center">Disponível</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Locadora.Dominio.Jogo jogo in @Model.ListaDeJogos)
+                {
+                    <tr>
+                        <td class="text-right">@jogo.Id</td>
+                        <td class="text-left">@jogo.Nome</td>
+                        <td class="text-left">@("R$ " + jogo.Preco.ToString("0.00"))</td>
+                        <td class="text-center">@jogo.Categoria</td>
+                        <td class="text-center">@(jogo.Disponivel ? "SIM" : "NÃO")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
