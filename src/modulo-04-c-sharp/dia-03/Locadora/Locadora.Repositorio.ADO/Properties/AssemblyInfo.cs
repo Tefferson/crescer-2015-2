@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Locadora.Dominio")]
+[assembly: AssemblyTitle("Locadora.Repositorio.ADO")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Locadora.Dominio")]
+[assembly: AssemblyProduct("Locadora.Repositorio.ADO")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("93d95d00-78c7-4b77-be44-686ab7a29c7c")]
+[assembly: Guid("14105bc9-3336-43bc-b394-6e0aa2a29751")]
 
 // Version information for an assembly consists of the following four values:
 //

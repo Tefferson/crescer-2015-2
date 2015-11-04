@@ -1,86 +1,35 @@
-﻿using System;
+﻿using Locadora.Dominio.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Xml.Linq;
 
 namespace Locadora.Dominio
 {
     public class Relatorio
     {
-        public const string CABECALHO = "                                   TSG  GAMES                                   ";
-        public const string TITULO = "                              Relatório de jogos                                ";
-        public const string IGUAIS = "================================================================================";
-        public const string TRACOS = "--------------------------------------------------------------------------------";
-        public const string COLUNAS = "ID       Categoria        Nome                          Preço         Disponivel";
-        public const string MUST_FORMAT_WITH_DATETIME = "{0:dd/MM/yyyy}                                                              {0:HH:mm:ss}";
-        public const string COLUNAS_CLIENTE = "       ID Nome                                                                  ";
-        string caminhoRelatorio = Environment.CurrentDirectory + @"..\..\..\..\arquivos\Relatorio_Game_Store.txt";
-
-        public void ExportarRelatorioEmTxt(BaseDeDados dados)
+        public void Gerar(string caminhoPastaRelatorio, IJogoRepositorio jogoRepositorio)
         {
-            IEnumerable<XElement> jogos = dados.GetElements("jogos");
-            string relatorio = GerarRelatorio(dados);
+            IList<Jogo> todosOsJogos = jogoRepositorio.BuscarTodos();
 
-            File.WriteAllText(caminhoRelatorio, relatorio);
-        }
+            string caminhoRelatorio = Path.Combine(caminhoPastaRelatorio, "relatorio_jogos.txt");
 
-        public string GerarRelatorio()
-        {
-            return GerarRelatorio(new BaseDeDados());
-        }
-
-        public string GerarRelatorio(BaseDeDados dados)
-        {
-            IList<Jogo> jogos = dados.PesquisarJogoPorNome("");
-            string dataEHora = String.Format(MUST_FORMAT_WITH_DATETIME, DateTime.Now);
-            string relatorio = String.Format("{1}{0}{2}{0}{3}{0}{0}{4}{0}{5}{0}{6}{0}{7}{0}",
-                Environment.NewLine, CABECALHO, dataEHora, TITULO, IGUAIS, COLUNAS, GetListaDeJogosComoTexto(dados),
-                 TRACOS);
-            string estatisticas = "Quantidade total de jogos: {1}{0}Quantidade de jogos disponíveis: {2}{0}Valor médio por jogo: {3}{0}Jogo mais caro: {4}{0}Jogo mais barato: {5}";
-            relatorio += String.Format("{1}{0}{2}", Environment.NewLine, estatisticas, IGUAIS);
-            string maisCaro = dados.GetNomeJogoMaisCaro();
-            string maisBarato = dados.GetNomeJogoMaisBarato();
-            relatorio = String.Format(relatorio, Environment.NewLine, jogos.Count(),
-                jogos.Count(jogo => jogo.Disponivel),
-                dados.GetValorMedio(), maisCaro, maisBarato);
-            return relatorio;
-        }
-
-        private string GetListaDeJogosComoTexto(BaseDeDados dados)
-        {
-            string jogosComoTexto = "";
-            foreach (XElement xelem in dados.GetElements("jogos"))
+            if(File.Exists(caminhoRelatorio))
             {
-                jogosComoTexto += ToStringFormatado(new Jogo(xelem)) + Environment.NewLine;
-            }
-            return jogosComoTexto;
-        }
-
-        public string ToStringFormatado(Jogo jogo)
-        {
-            return String.Format("{0,-9}{1,-17}{2,-30}{3,-14}{4,10}",
-                 jogo.Id, jogo.Categoria, Truncate(jogo.Nome, 30), "R$ " + jogo.Preco.ToString("0.00"), jogo.Disponivel ? "SIM" : "NÃO");
-        }
-
-        public string ToStringFormatado(Cliente cliente)
-        {
-            return String.Format("{0,9} {1,-70}",
-                 cliente.Id, cliente.Nome);
-        }
-
-        private string Truncate(string nome, int maxSize)
-        {
-            if (maxSize < 4)
-            {
-                return "";
-            }
-            if (nome.Length < maxSize)
-            {
-                return nome;
+                File.Delete(caminhoRelatorio);
             }
 
-            return nome.Substring(0, maxSize - 3) + "...";
+            using (var writer = new StreamWriter(caminhoRelatorio))
+            {
+                writer.WriteLine("===== RELATÓRIO =====");
+                writer.WriteLine(String.Format("{0:dd/MM/yyyy}", DateTime.Now));
+                writer.WriteLine();
+
+                foreach (Jogo jogo in todosOsJogos)
+                {
+                    writer.WriteLine(jogo);
+                    writer.WriteLine();
+                }
+            }
         }
     }
 }

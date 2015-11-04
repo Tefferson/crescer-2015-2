@@ -2,6 +2,10 @@
 {
     public enum Categoria
     {
-        Rpg = 0, Corrida = 1, Aventura = 2, Luta = 3, Esporte = 4
+        RPG = 1,
+        CORRIDA = 2,
+        AVENTURA = 3,
+        LUTA = 4,
+        ESPORTE = 5
     }
 }

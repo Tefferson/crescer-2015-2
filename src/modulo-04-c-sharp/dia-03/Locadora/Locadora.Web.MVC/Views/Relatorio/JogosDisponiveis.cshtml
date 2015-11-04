@@ -1,0 +1,24 @@
+﻿@model List<JogoModel>
+@{
+    ViewBag.Title = "Jogos Disponíveis";
+}
+
+<h2>Jogos disponíveis para locação</h2>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th style="width: 40%">Jogo</th>            
+            <th style="width: 30%">Categoria</th>
+            <th style="width: 30%">Preço</th>
+        </tr>
+    </thead>
+    @foreach (var jogo in @Model)
+    {
+        <tr>
+            <td>@jogo.Nome</td>            
+            <td>@jogo.Categoria</td>
+            <td>@jogo.Preco.ToString("c")</td>
+        </tr>
+    }
+</table>

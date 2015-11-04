@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<clientes>
+  <cliente id="1">
+    <nome>Joao </nome>
+  </cliente>
+</clientes>
