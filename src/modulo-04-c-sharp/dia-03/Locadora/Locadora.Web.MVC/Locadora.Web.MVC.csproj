@@ -91,6 +91,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\tsg.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -111,6 +112,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\JogoModel.cs" />
+    <Compile Include="Models\RelatorioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +134,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
+      <Project>{93d95d00-78c7-4b77-be44-686ab7a29c7c}</Project>
+      <Name>Locadora.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Helpers\Locadora.Helpers.csproj">
+      <Project>{98cfbfa0-6792-41aa-9f4c-f69ffd0c3c5c}</Project>
+      <Name>Locadora.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Repositorio.ADO\Locadora.Repositorio.ADO.csproj">
+      <Project>{14105bc9-3336-43bc-b394-6e0aa2a29751}</Project>
+      <Name>Locadora.Repositorio.ADO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Repositorio.XML\Locadora.Repositorio.XML.csproj">
+      <Project>{94e11ed9-d5fd-4339-9fcd-dd1d3ff1badd}</Project>
+      <Name>Locadora.Repositorio.XML</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

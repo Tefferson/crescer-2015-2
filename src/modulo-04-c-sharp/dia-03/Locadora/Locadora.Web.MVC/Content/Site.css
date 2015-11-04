@@ -16,3 +16,8 @@ textarea {
     max-width: 280px;
 }
 
+.titulo {
+    color: orangered;
+    font-family: monospace;
+}
+
