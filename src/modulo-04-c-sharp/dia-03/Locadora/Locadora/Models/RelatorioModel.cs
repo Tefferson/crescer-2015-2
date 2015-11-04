@@ -7,11 +7,17 @@ namespace Locadora.Models
     {
         private BaseDeDados dados;
         public IList<Jogo> ListaDeJogos { get; }
+        public string JogoMaisCaro { get; }
+        public string JogoMaisBarato { get; }
+        public string PrecoMedio { get; }
 
         public RelatorioModel()
         {
             dados = new BaseDeDados();
-            ListaDeJogos = dados.PesquisarJogoPorNome("");
+            ListaDeJogos = dados.PesquisarJogoPorNome();
+            JogoMaisBarato = dados.GetNomeJogoMaisBarato();
+            JogoMaisCaro = dados.GetNomeJogoMaisCaro();
+            PrecoMedio = dados.GetValorMedio();
         }
     }
 }

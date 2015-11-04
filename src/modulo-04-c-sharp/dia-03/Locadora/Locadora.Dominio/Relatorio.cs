@@ -32,21 +32,18 @@ namespace Locadora.Dominio
 
         public string GerarRelatorio(BaseDeDados dados)
         {
-            IEnumerable<XElement> jogos = dados.GetElements("jogos");
+            IList<Jogo> jogos = dados.PesquisarJogoPorNome("");
             string dataEHora = String.Format(MUST_FORMAT_WITH_DATETIME, DateTime.Now);
             string relatorio = String.Format("{1}{0}{2}{0}{3}{0}{0}{4}{0}{5}{0}{6}{0}{7}{0}",
                 Environment.NewLine, CABECALHO, dataEHora, TITULO, IGUAIS, COLUNAS, GetListaDeJogosComoTexto(dados),
                  TRACOS);
-            string estatisticas = "Quantidade total de jogos: {1}{0}Quantidade de jogos disponíveis: {2}{0}Valor médio por jogo: R$ {3}{0}Jogo mais caro: {4}{0}Jogo mais barato: {5}";
+            string estatisticas = "Quantidade total de jogos: {1}{0}Quantidade de jogos disponíveis: {2}{0}Valor médio por jogo: {3}{0}Jogo mais caro: {4}{0}Jogo mais barato: {5}";
             relatorio += String.Format("{1}{0}{2}", Environment.NewLine, estatisticas, IGUAIS);
-            Func<XElement, double> doubleLambda = jogo => Convert.ToDouble(jogo.Element("preco").Value.Replace(".", ","));
-            string maiorPreco = jogos.Max(doubleLambda).ToString();
-            string menorPreco = jogos.Min(doubleLambda).ToString();
-            string maisCaro = jogos.First(jogo => jogo.Element("preco").Value == maiorPreco).Element("nome").Value;
-            string maisBarato = jogos.First(jogo => jogo.Element("preco").Value == menorPreco).Element("nome").Value;
+            string maisCaro = dados.GetNomeJogoMaisCaro();
+            string maisBarato = dados.GetNomeJogoMaisBarato();
             relatorio = String.Format(relatorio, Environment.NewLine, jogos.Count(),
-                jogos.Count(jogo => jogo.Element("disponivel").Value.ToUpper() == "TRUE"),
-                jogos.Average(doubleLambda).ToString("0.00"), maisCaro, maisBarato);
+                jogos.Count(jogo => jogo.Disponivel),
+                dados.GetValorMedio(), maisCaro, maisBarato);
             return relatorio;
         }
 

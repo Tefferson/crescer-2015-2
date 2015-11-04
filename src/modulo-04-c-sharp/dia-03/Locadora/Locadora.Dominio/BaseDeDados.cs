@@ -19,7 +19,7 @@ namespace Locadora.Dominio
             CaminhoArquivo = @"C:\Users\Tefferson\Documents\Tefferson\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\arquivos\game_store.xml";
         }
 
-        public IList<Jogo> PesquisarJogoPorNome(string nome)
+        public IList<Jogo> PesquisarJogoPorNome(string nome = "")
         {
             nome = nome.ToUpper();
             List<Jogo> listaDeJogos = new List<Jogo>();
@@ -41,6 +41,26 @@ namespace Locadora.Dominio
                 listaDeClientes.Add(new Cliente(xelem));
             }
             return listaDeClientes;
+        }
+
+        public String GetNomeJogoMaisCaro()
+        {
+            IList<Jogo> lista = PesquisarJogoPorNome();
+            double max = lista.Max(jogo => jogo.Preco);
+            return lista.FirstOrDefault(jogo => jogo.Preco == max).Nome;
+        }
+
+        public String GetNomeJogoMaisBarato()
+        {
+            IList<Jogo> lista = PesquisarJogoPorNome();
+            double min = lista.Min(jogo => jogo.Preco);
+            return lista.FirstOrDefault(jogo => jogo.Preco == min).Nome;
+        }
+
+        public string GetValorMedio()
+        {
+            IList<Jogo> lista = PesquisarJogoPorNome();
+            return "R$ " + lista.Average(jogo => jogo.Preco).ToString("0.00");
         }
 
         public void Cadastrar(LocadoraElement elem)
