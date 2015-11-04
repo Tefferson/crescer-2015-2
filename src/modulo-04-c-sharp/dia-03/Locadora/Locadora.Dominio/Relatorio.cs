@@ -8,7 +8,7 @@ namespace Locadora.Dominio
 {
     public class Relatorio
     {
-        public const string CABECALHO = "                             LOCADORA NUNES GAMES                               ";
+        public const string CABECALHO = "                                   TSG  GAMES                                   ";
         public const string TITULO = "                              Relatório de jogos                                ";
         public const string IGUAIS = "================================================================================";
         public const string TRACOS = "--------------------------------------------------------------------------------";
@@ -16,15 +16,29 @@ namespace Locadora.Dominio
         public const string MUST_FORMAT_WITH_DATETIME = "{0:dd/MM/yyyy}                                                              {0:HH:mm:ss}";
         public const string COLUNAS_CLIENTE = "       ID Nome                                                                  ";
         string caminhoRelatorio = Environment.CurrentDirectory + @"..\..\..\..\arquivos\Relatorio_Game_Store.txt";
-        
+
         public void ExportarRelatorioEmTxt(BaseDeDados dados)
         {
-            IEnumerable<XElement> jogos = dados.GetElements("jogos"); ;
-            string estatisticas = "Quantidade total de jogos: {1}{0}Quantidade de jogos disponíveis: {2}{0}Valor médio por jogo: R$ {3}{0}Jogo mais caro: {4}{0}Jogo mais barato: {5}";
+            IEnumerable<XElement> jogos = dados.GetElements("jogos");
+            string relatorio = GerarRelatorio(dados);
+
+            File.WriteAllText(caminhoRelatorio, relatorio);
+        }
+
+        public string GerarRelatorio()
+        {
+            return GerarRelatorio(new BaseDeDados());
+        }
+
+        public string GerarRelatorio(BaseDeDados dados)
+        {
+            IEnumerable<XElement> jogos = dados.GetElements("jogos");
             string dataEHora = String.Format(MUST_FORMAT_WITH_DATETIME, DateTime.Now);
-            string relatorio = String.Format("{1}{0}{2}{0}{3}{0}{0}{4}{0}{5}{0}{6}{0}{7}{0}{8}{0}{9}",
+            string relatorio = String.Format("{1}{0}{2}{0}{3}{0}{0}{4}{0}{5}{0}{6}{0}{7}{0}",
                 Environment.NewLine, CABECALHO, dataEHora, TITULO, IGUAIS, COLUNAS, GetListaDeJogosComoTexto(dados),
-                 TRACOS, estatisticas, IGUAIS);
+                 TRACOS);
+            string estatisticas = "Quantidade total de jogos: {1}{0}Quantidade de jogos disponíveis: {2}{0}Valor médio por jogo: R$ {3}{0}Jogo mais caro: {4}{0}Jogo mais barato: {5}";
+            relatorio += String.Format("{1}{0}{2}", Environment.NewLine, estatisticas, IGUAIS);
             Func<XElement, double> doubleLambda = jogo => Convert.ToDouble(jogo.Element("preco").Value.Replace(".", ","));
             string maiorPreco = jogos.Max(doubleLambda).ToString();
             string menorPreco = jogos.Min(doubleLambda).ToString();
@@ -33,7 +47,7 @@ namespace Locadora.Dominio
             relatorio = String.Format(relatorio, Environment.NewLine, jogos.Count(),
                 jogos.Count(jogo => jogo.Element("disponivel").Value.ToUpper() == "TRUE"),
                 jogos.Average(doubleLambda).ToString("0.00"), maisCaro, maisBarato);
-            File.WriteAllText(caminhoRelatorio, relatorio);
+            return relatorio;
         }
 
         private string GetListaDeJogosComoTexto(BaseDeDados dados)

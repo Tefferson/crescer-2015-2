@@ -14,6 +14,11 @@ namespace Locadora.Dominio
             CaminhoArquivo = caminhoArquivo;
         }
 
+        public BaseDeDados()
+        {
+            CaminhoArquivo = @"C:\Users\Tefferson\Documents\Tefferson\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\arquivos\game_store.xml";
+        }
+
         public IList<Jogo> PesquisarJogoPorNome(string nome)
         {
             nome = nome.ToUpper();
