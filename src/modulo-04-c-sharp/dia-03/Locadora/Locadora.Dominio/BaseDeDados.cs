@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -16,7 +17,7 @@ namespace Locadora.Dominio
 
         public BaseDeDados()
         {
-            CaminhoArquivo = @"C:\Users\Tefferson\Documents\Tefferson\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\arquivos\game_store.xml";
+            CaminhoArquivo = @"C:\Users\tefferson.guterres\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\arquivos\game_store.xml";
         }
 
         public IList<Jogo> PesquisarJogoPorNome(string nome = "")
@@ -45,22 +46,19 @@ namespace Locadora.Dominio
 
         public String GetNomeJogoMaisCaro()
         {
-            IList<Jogo> lista = PesquisarJogoPorNome();
-            double max = lista.Max(jogo => jogo.Preco);
-            return lista.FirstOrDefault(jogo => jogo.Preco == max).Nome;
+            return PesquisarJogoPorNome().OrderByDescending(jogo => jogo.Preco).First().Nome;
         }
 
         public String GetNomeJogoMaisBarato()
         {
-            IList<Jogo> lista = PesquisarJogoPorNome();
-            double min = lista.Min(jogo => jogo.Preco);
-            return lista.FirstOrDefault(jogo => jogo.Preco == min).Nome;
+            return PesquisarJogoPorNome().OrderBy(jogo => jogo.Preco).First().Nome;
         }
 
         public string GetValorMedio()
         {
             IList<Jogo> lista = PesquisarJogoPorNome();
-            return "R$ " + lista.Average(jogo => jogo.Preco).ToString("0.00");
+            string brl = new CultureInfo("pt-BR").NumberFormat.CurrencySymbol;
+            return String.Format("{0} {1:0.00}", brl, lista.Average(jogo => jogo.Preco));
         }
 
         public void Cadastrar(LocadoraElement elem)
@@ -161,7 +159,7 @@ namespace Locadora.Dominio
             {
                 return "locacoes";
             }
-            return "";
+            return String.Empty;
         }
     }
 }
