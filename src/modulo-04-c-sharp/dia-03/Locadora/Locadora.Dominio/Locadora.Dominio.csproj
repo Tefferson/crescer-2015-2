@@ -49,6 +49,7 @@
     <Compile Include="Relatorio.cs" />
     <Compile Include="Repositorio\IClienteRepositorio.cs" />
     <Compile Include="Repositorio\IJogoRepositorio.cs" />
+    <Compile Include="Selo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,7 +14,9 @@
                     <tr>
                         <th>Nome</th>
                         <th>Categoria</th>
+                        <th>Selo</th>
                         <th>Preço</th>
+                        <th>Mais<th>
                     </tr>
                 </thead>
                 @foreach (var jogo in @Model.Jogos)
@@ -22,7 +24,9 @@
                     <tr>
                         <td>@jogo.Nome</td>
                         <td>@jogo.Categoria</td>
+                        <td>@jogo.Selo</td>
                         <td>@jogo.Preco.ToString("c")</td>
+                        <td><button onclick="location.href='@Url.Action("Detalhes","Jogo")/@jogo.Id'">Detalhes</button></td>
                     </tr>
                 }
             </table>

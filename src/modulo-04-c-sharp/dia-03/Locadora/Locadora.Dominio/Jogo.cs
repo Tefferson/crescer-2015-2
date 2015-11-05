@@ -12,8 +12,12 @@ namespace Locadora.Dominio
 
         public Categoria Categoria { get; set; }
 
+        public string Descricao { get; set; }
+
+        public Selo Selo { get; set; }
+
         public int? IdClienteLocacao { get; private set; }
-        
+
         public Jogo()
         {
 
@@ -37,6 +41,8 @@ namespace Locadora.Dominio
             builder.AppendLine("Nome: " + this.Nome);
             builder.AppendLine("Preço: " + this.Preco.ToString("C", CultureInfo.GetCultureInfo("pt-BR")));
             builder.AppendLine("Categoria: " + this.Categoria);
+            builder.AppendLine("Descrição: " + this.Descricao);
+            builder.AppendLine("Selo: " + this.Selo);
 
             return builder.ToString();
         }
@@ -48,7 +54,7 @@ namespace Locadora.Dominio
 
         public override bool Equals(object obj)
         {
-            if(obj.GetType() == typeof(Jogo))
+            if (obj.GetType() == typeof(Jogo))
             {
                 Jogo jogoComp = (Jogo)obj;
 
@@ -56,7 +62,9 @@ namespace Locadora.Dominio
                     && this.Nome == jogoComp.Nome
                     && this.Preco == jogoComp.Preco
                     && this.Categoria == jogoComp.Categoria
-                    && this.IdClienteLocacao == jogoComp.IdClienteLocacao;
+                    && this.IdClienteLocacao == jogoComp.IdClienteLocacao
+                    && this.Descricao == jogoComp.Descricao
+                    && this.Selo == jogoComp.Selo;
             }
 
             return false;

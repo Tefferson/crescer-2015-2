@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.ConsoleApp", "Locadora.UI\Locadora.ConsoleApp.csproj", "{E9144EF4-BD2E-4D34-956B-E591464A7EA2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Dominio", "Locadora.Dominio\Locadora.Dominio.csproj", "{93D95D00-78C7-4B77-BE44-686AB7A29C7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.ADO", "Locadora.Repositorio.ADO\Locadora.Repositorio.ADO.csproj", "{14105BC9-3336-43BC-B394-6E0AA2A29751}"
@@ -33,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E9144EF4-BD2E-4D34-956B-E591464A7EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9144EF4-BD2E-4D34-956B-E591464A7EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9144EF4-BD2E-4D34-956B-E591464A7EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9144EF4-BD2E-4D34-956B-E591464A7EA2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{93D95D00-78C7-4B77-BE44-686AB7A29C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{93D95D00-78C7-4B77-BE44-686AB7A29C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D95D00-78C7-4B77-BE44-686AB7A29C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,7 +60,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E9144EF4-BD2E-4D34-956B-E591464A7EA2} = {8417346F-31C6-4FC1-BB6A-16DD44DC3C63}
 		{93D95D00-78C7-4B77-BE44-686AB7A29C7C} = {D8961BAA-30BB-4F13-88CC-56954725149C}
 		{14105BC9-3336-43BC-B394-6E0AA2A29751} = {4C4BE62A-458D-4CF0-91DD-92DBB516982C}
 		{94E11ED9-D5FD-4339-9FCD-DD1D3FF1BADD} = {4C4BE62A-458D-4CF0-91DD-92DBB516982C}
