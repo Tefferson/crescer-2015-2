@@ -17,9 +17,11 @@ namespace Locadora.Web.MVC.Controllers
             {
                 var jogoModel = new JogoModel()
                 {
+                    Id = jogo.Id,
                     Nome = jogo.Nome,
                     Preco = jogo.Preco,
-                    Categoria = jogo.Categoria.ToString()
+                    Categoria = jogo.Categoria.ToString(),
+                    Selo = jogo.Selo.ToString()
                 };
 
                 model.Jogos.Add(jogoModel);
