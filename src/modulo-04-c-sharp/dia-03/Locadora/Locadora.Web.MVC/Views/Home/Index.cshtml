@@ -17,9 +17,9 @@
             <button class="shiny-button" onclick="location.href='@Url.Action("JogosDisponiveis", "Relatorio")'">Jogos Disponíveis</button>
         </div>
         <div class="col-md-4">
-            <form id="buscar-jogo" action='@Url.Action("JogosDaBusca", "Relatorio")' method="get">
-                <input type="text" name="nome"/>
-                <input type="submit" value="Buscar" />
+            <form action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
+                <input type="text" placeholder="Digite sua busca" name="nome" />
+                <input class="shiny-button" type="submit" value="Buscar" />
             </form>
         </div>
     </div>

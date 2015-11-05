@@ -1,5 +1,8 @@
-﻿using Locadora.Dominio.Repositorio;
+﻿using Locadora.Dominio;
+using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -9,12 +12,24 @@ namespace Locadora.Web.MVC.Controllers
     {
         private IJogoRepositorio repositorio = null;
 
-        public ActionResult JogosDisponiveis()
+        public ActionResult JogosDisponiveis(string nome)
         {
             repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
             var model = new RelatorioModel();
+            bool buscarPorNome = !string.IsNullOrEmpty(nome);
 
-            foreach (var jogo in repositorio.BuscarTodos())
+            IList<Jogo> listaDeJogos;
+
+            if (buscarPorNome)
+            {
+                listaDeJogos = repositorio.BuscarPorNome(nome);
+            }
+            else
+            {
+                listaDeJogos = repositorio.BuscarTodos();
+            }
+
+            foreach (var jogo in listaDeJogos)
             {
                 var jogoModel = new JogoModel()
                 {
@@ -34,34 +49,6 @@ namespace Locadora.Web.MVC.Controllers
             model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
 
             return View(model);
-        }
-
-
-        public ActionResult JogosDaBusca(string nome)
-        {
-            repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
-            var model = new RelatorioModel();
-
-            foreach (var jogo in repositorio.BuscarPorNome(nome))
-            {
-                var jogoModel = new JogoModel()
-                {
-                    Id = jogo.Id,
-                    Nome = jogo.Nome,
-                    Preco = jogo.Preco,
-                    Categoria = jogo.Categoria.ToString(),
-                    Selo = jogo.Selo.ToString()
-                };
-
-                model.Jogos.Add(jogoModel);
-            }
-
-            model.QuantidadeTotalDeJogos = model.Jogos.Count;
-            model.JogoMaisBarato = model.Jogos.OrderBy(jogo => jogo.Preco).First().Nome;
-            model.JogoMaisCaro = model.Jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
-            model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
-
-            return View("JogosDisponiveis", model);
         }
     }
 }
