@@ -35,5 +35,33 @@ namespace Locadora.Web.MVC.Controllers
 
             return View(model);
         }
+
+
+        public ActionResult JogosDaBusca(string nome)
+        {
+            repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
+            var model = new RelatorioModel();
+
+            foreach (var jogo in repositorio.BuscarPorNome(nome))
+            {
+                var jogoModel = new JogoModel()
+                {
+                    Id = jogo.Id,
+                    Nome = jogo.Nome,
+                    Preco = jogo.Preco,
+                    Categoria = jogo.Categoria.ToString(),
+                    Selo = jogo.Selo.ToString()
+                };
+
+                model.Jogos.Add(jogoModel);
+            }
+
+            model.QuantidadeTotalDeJogos = model.Jogos.Count;
+            model.JogoMaisBarato = model.Jogos.OrderBy(jogo => jogo.Preco).First().Nome;
+            model.JogoMaisCaro = model.Jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
+            model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
+
+            return View("JogosDisponiveis", model);
+        }
     }
 }

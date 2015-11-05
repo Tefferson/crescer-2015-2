@@ -13,5 +13,6 @@ namespace Locadora.Web.MVC.Models
         public string Categoria { get; set; }
         public string Selo { get; set; }
         public string Descricao { get; set; }
+        public string Imagem { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace Locadora.Dominio
 
         public string Descricao { get; set; }
 
+        public string Imagem { get; set; }
+
         public Selo Selo { get; set; }
 
         public int? IdClienteLocacao { get; private set; }
@@ -43,6 +45,7 @@ namespace Locadora.Dominio
             builder.AppendLine("Categoria: " + this.Categoria);
             builder.AppendLine("Descrição: " + this.Descricao);
             builder.AppendLine("Selo: " + this.Selo);
+            builder.AppendLine("Image: " + this.Imagem);
 
             return builder.ToString();
         }
@@ -64,7 +67,8 @@ namespace Locadora.Dominio
                     && this.Categoria == jogoComp.Categoria
                     && this.IdClienteLocacao == jogoComp.IdClienteLocacao
                     && this.Descricao == jogoComp.Descricao
-                    && this.Selo == jogoComp.Selo;
+                    && this.Selo == jogoComp.Selo
+                    && this.Imagem == jogoComp.Imagem;
             }
 
             return false;

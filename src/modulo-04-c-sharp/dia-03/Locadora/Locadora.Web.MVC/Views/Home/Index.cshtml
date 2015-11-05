@@ -10,7 +10,17 @@
         <div class="col-md-10 col-md-push-1">
             <h1 class="titulo">TSG Games</h1>
             <h3>Serviço bom é serviço de qualidade!!!</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-push-1">
             <button class="shiny-button" onclick="location.href='@Url.Action("JogosDisponiveis", "Relatorio")'">Jogos Disponíveis</button>
+        </div>
+        <div class="col-md-4">
+            <form id="buscar-jogo" action='@Url.Action("JogosDaBusca", "Relatorio")' method="get">
+                <input type="text" name="nome"/>
+                <input type="submit" value="Buscar" />
+            </form>
         </div>
     </div>
 </div>
