@@ -4,15 +4,17 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
-    public class JogoController : Controller
+    public class JogoController : BaseController
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
+        private IJogoRepositorio repositorio = null;
+
         // GET: Jogo
         public ActionResult Detalhes(int id)
         {
+            repositorio = CriarJogoRepositorio();
             var jogo = repositorio.BuscarPorId(id);
 
-            JogoModel model = new JogoModel()
+            DetalhesJogoModel model = new DetalhesJogoModel()
             {
                 Id = jogo.Id,
                 Nome = jogo.Nome,

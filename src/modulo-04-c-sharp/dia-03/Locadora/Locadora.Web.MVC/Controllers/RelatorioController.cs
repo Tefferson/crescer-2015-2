@@ -7,10 +7,11 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class RelatorioController : Controller
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
+        private IJogoRepositorio repositorio = null;
 
         public ActionResult JogosDisponiveis()
         {
+            repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
             var model = new RelatorioModel();
 
             foreach (var jogo in repositorio.BuscarTodos())

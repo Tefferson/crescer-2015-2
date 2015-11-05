@@ -28,7 +28,9 @@ namespace Locadora.Repositorio.XML
 
             jogoSalvo.SetElementValue("nome", entidade.Nome);
             jogoSalvo.SetElementValue("preco", entidade.Preco);
+            jogoSalvo.SetElementValue("descricao", entidade.Descricao);
             jogoSalvo.SetElementValue("categoria", entidade.Categoria.ToString());
+            jogoSalvo.SetElementValue("selo", entidade.Selo.ToString());
             jogoSalvo.SetElementValue("id_cliente_locacao", entidade.IdClienteLocacao.HasValue ? entidade.IdClienteLocacao.Value.ToString() : "");
 
             SalvarDbXml(db);
@@ -125,7 +127,9 @@ namespace Locadora.Repositorio.XML
             jogo.Nome = jogoXml.Element("nome").Value;
             jogo.Preco = Convert.ToDecimal(jogoXml.Element("preco").Value);
             jogo.Categoria = ConverterXmlCategoriaEmEnum(jogoXml.Element("categoria"));
-            
+            jogo.Selo = ConverterXmlSeloEmEnum(jogoXml.Element("selo"));
+            jogo.Descricao = jogoXml.Element("descricao").Value;
+
             return jogo;
         }
 
@@ -133,6 +137,12 @@ namespace Locadora.Repositorio.XML
         {
             string valorXml = categoriaXml.Value;
             return (Categoria)Enum.Parse(typeof(Categoria), valorXml);
+        }
+
+        private Selo ConverterXmlSeloEmEnum(XElement seloXml)
+        {
+            string valorXml = seloXml.Value;
+            return (Selo)Enum.Parse(typeof(Selo), valorXml);
         }
     }
 }
