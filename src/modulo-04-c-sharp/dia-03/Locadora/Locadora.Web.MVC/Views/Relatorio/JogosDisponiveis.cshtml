@@ -26,7 +26,7 @@
                         <td>@jogo.Categoria</td>
                         <td>@jogo.Selo</td>
                         <td>@jogo.Preco.ToString("c")</td>
-                        <td><button onclick="location.href='@Url.Action("Detalhes","Jogo")/@jogo.Id'">Detalhes</button></td>
+                        <td class="text-center"><button class="shiny-button" onclick="location.href='@Url.Action("Detalhes","Jogo")/@jogo.Id'">Detalhes</button></td>
                     </tr>
                 }
             </table>
