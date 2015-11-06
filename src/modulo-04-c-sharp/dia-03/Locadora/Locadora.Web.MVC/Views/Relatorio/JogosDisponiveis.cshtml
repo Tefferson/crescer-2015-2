@@ -9,29 +9,36 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-push-2">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Categoria</th>
-                        <th>Selo</th>
-                        <th>Preço</th>
-                        <th>Mais</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var jogo in @Model.Jogos)
-                    {
+            @if (Model.Jogos.Count > 0)
+            {
+                <table class="table table-bordered table-hover">
+                    <thead>
                         <tr>
-                            <td>@jogo.Nome</td>
-                            <td>@jogo.Categoria</td>
-                            <td>@Html.Partial("_ImagemSelo", @jogo.Selo)</td>
-                            <td>@jogo.Preco.ToString("c")</td>
-                            <td class="text-center"><button class="shiny-button" onclick="location.href='@Url.Action("Detalhes","Jogo")/@jogo.Id'">Detalhes</button></td>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Selo</th>
+                            <th>Preço</th>
+                            <th>Mais</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var jogo in @Model.Jogos)
+                        {
+                            <tr>
+                                <td>@jogo.Nome</td>
+                                <td>@jogo.Categoria</td>
+                                <td>@Html.Partial("_ImagemSelo", @jogo.Selo)</td>
+                                <td>@jogo.Preco.ToString("c")</td>
+                                <td class="text-center"><button class="shiny-button" onclick="location.href='@Url.Action("Detalhes", "Jogo")/@jogo.Id'">Detalhes</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h2>Nenhum jogo encontrado.</h2>
+            }
         </div>
         <aside class="col-md-3 col-md-push-2">
             <div class="list-group">
@@ -55,6 +62,3 @@
         </aside>
     </div>
 </div>
-
-
-

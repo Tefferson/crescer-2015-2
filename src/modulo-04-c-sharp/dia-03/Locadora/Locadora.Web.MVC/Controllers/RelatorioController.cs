@@ -29,25 +29,26 @@ namespace Locadora.Web.MVC.Controllers
                 listaDeJogos = repositorio.BuscarTodos();
             }
 
-            foreach (var jogo in listaDeJogos)
+            if (listaDeJogos.Count > 0)
             {
-                var jogoModel = new JogoModel()
+                foreach (var jogo in listaDeJogos)
                 {
-                    Id = jogo.Id,
-                    Nome = jogo.Nome,
-                    Preco = jogo.Preco,
-                    Categoria = jogo.Categoria.ToString(),
-                    Selo = jogo.Selo.ToString()
-                };
+                    var jogoModel = new JogoModel()
+                    {
+                        Id = jogo.Id,
+                        Nome = jogo.Nome,
+                        Preco = jogo.Preco,
+                        Categoria = jogo.Categoria.ToString(),
+                        Selo = jogo.Selo.ToString()
+                    };
 
-                model.Jogos.Add(jogoModel);
+                    model.Jogos.Add(jogoModel);
+                }
+                model.QuantidadeTotalDeJogos = model.Jogos.Count;
+                model.JogoMaisBarato = model.Jogos.OrderBy(jogo => jogo.Preco).First().Nome;
+                model.JogoMaisCaro = model.Jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
+                model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
             }
-
-            model.QuantidadeTotalDeJogos = model.Jogos.Count;
-            model.JogoMaisBarato = model.Jogos.OrderBy(jogo => jogo.Preco).First().Nome;
-            model.JogoMaisCaro = model.Jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
-            model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
-
             return View(model);
         }
     }
