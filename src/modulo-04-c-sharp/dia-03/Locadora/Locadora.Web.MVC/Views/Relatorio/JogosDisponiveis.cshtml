@@ -8,7 +8,7 @@
         <h2 class="col-md-8 col-md-push-2">TSG Games</h2>
     </div>
     <div class="row">
-        <div role="main" class="col-md-8 col-md-push-2">
+        <div class="col-md-8 col-md-push-2">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -16,22 +16,24 @@
                         <th>Categoria</th>
                         <th>Selo</th>
                         <th>Preço</th>
-                        <th>Mais<th>
+                        <th>Mais</th>
                     </tr>
                 </thead>
-                @foreach (var jogo in @Model.Jogos)
-                {
-                    <tr>
-                        <td>@jogo.Nome</td>
-                        <td>@jogo.Categoria</td>
-                        <td>@jogo.Selo</td>
-                        <td>@jogo.Preco.ToString("c")</td>
-                        <td class="text-center"><button class="shiny-button" onclick="location.href='@Url.Action("Detalhes","Jogo")/@jogo.Id'">Detalhes</button></td>
-                    </tr>
-                }
+                <tbody>
+                    @foreach (var jogo in @Model.Jogos)
+                    {
+                        <tr>
+                            <td>@jogo.Nome</td>
+                            <td>@jogo.Categoria</td>
+                            <td>@jogo.Selo</td>
+                            <td>@jogo.Preco.ToString("c")</td>
+                            <td class="text-center"><button class="shiny-button" onclick="location.href='@Url.Action("Detalhes","Jogo")/@jogo.Id'">Detalhes</button></td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
-        <aside role="complementary" class="col-md-3 col-md-push-2">
+        <aside class="col-md-3 col-md-push-2">
             <div class="list-group">
                 <a href="#" class="list-group-item active">
                     <h4 class="list-group-item-heading">@Model.JogoMaisCaro</h4>
