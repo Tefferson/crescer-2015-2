@@ -1,4 +1,5 @@
-﻿using Locadora.Dominio.Repositorio;
+﻿using Locadora.Dominio;
+using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
 using System.Web.Mvc;
 
@@ -27,6 +28,39 @@ namespace Locadora.Web.MVC.Controllers
             };
 
             return View(model);
+        }
+
+        public ActionResult Salvar()
+        {
+            return View();
+        }
+
+        public ActionResult Manter(int id = -1)
+        {
+            bool estaEditando = id > 0;
+
+            if (estaEditando)
+            {
+                repositorio = CriarJogoRepositorio();
+                Jogo jogo = repositorio.BuscarPorId(id);
+
+                ManterJogoModel model = new ManterJogoModel()
+                {
+                    Nome = jogo.Nome,
+                    Preco = jogo.Preco,
+                    Categoria = jogo.Categoria.ToString(),
+                    Selo = jogo.Selo.ToString(),
+                    Descricao = jogo.Descricao,
+                    Imagem = jogo.Imagem,
+                    Video = jogo.Video
+                };
+
+                return View(model);
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

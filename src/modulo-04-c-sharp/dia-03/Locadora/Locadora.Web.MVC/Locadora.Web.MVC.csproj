@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Models\DetalhesJogoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
+    <Compile Include="Models\ManterJogoModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Jogo\Detalhes.cshtml" />
     <Content Include="Views\Shared\_ImagemSelo.cshtml" />
+    <Content Include="Views\Jogo\Manter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
