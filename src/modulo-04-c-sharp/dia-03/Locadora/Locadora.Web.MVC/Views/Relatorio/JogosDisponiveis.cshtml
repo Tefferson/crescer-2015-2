@@ -25,7 +25,7 @@
                         <tr>
                             <td>@jogo.Nome</td>
                             <td>@jogo.Categoria</td>
-                            <td>@jogo.Selo</td>
+                            <td>@Html.Partial("_ImagemSelo", @jogo.Selo)</td>
                             <td>@jogo.Preco.ToString("c")</td>
                             <td class="text-center"><button class="shiny-button" onclick="location.href='@Url.Action("Detalhes","Jogo")/@jogo.Id'">Detalhes</button></td>
                         </tr>

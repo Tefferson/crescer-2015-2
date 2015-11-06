@@ -8,13 +8,13 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
-    public class RelatorioController : Controller
+    public class RelatorioController : BaseController
     {
         private IJogoRepositorio repositorio = null;
 
         public ActionResult JogosDisponiveis(string nome)
         {
-            repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
+            repositorio = CriarJogoRepositorio();
             var model = new RelatorioModel();
             bool buscarPorNome = !string.IsNullOrEmpty(nome);
 
