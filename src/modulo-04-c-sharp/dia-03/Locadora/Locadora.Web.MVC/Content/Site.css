@@ -58,3 +58,11 @@ textarea {
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
+
+.nav-form {
+    margin: 15px;
+}
+
+.nav-link {
+    margin: 5px;
+}

@@ -23,7 +23,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href='@Url.Action("JogosDisponiveis", "Relatorio")'>Jogos Disponíveis</a>
+                        <a class="nav-link" href='@Url.Action("JogosDisponiveis", "Relatorio")'>Jogos Disponíveis</a>
+                    </li>
+                    <li>
+                        <form class="nav-form" action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
+                            <input type="text" placeholder="Digite sua busca" name="nome" />
+                            <input class="shiny-button" type="submit" value="Buscar" />
+                        </form>
                     </li>
                 </ul>
             </div>
