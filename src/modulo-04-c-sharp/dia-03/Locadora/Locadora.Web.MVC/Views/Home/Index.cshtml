@@ -13,14 +13,26 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-md-push-1">
-            <button class="shiny-button" onclick="location.href='@Url.Action("JogosDisponiveis", "Relatorio")'">Jogos Disponíveis</button>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-offset-3 col-md-4">
             <form action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
                 <input type="text" placeholder="Digite sua busca" name="nome" />
                 <input class="shiny-button" type="submit" value="Buscar" />
             </form>
         </div>
+        <div class="col-md-4">
+            <div class="fb-like"></div>
+        </div>
     </div>
 </div>
+
+@section Scripts{
+    <div id="fb-root" action="curtir"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+}
