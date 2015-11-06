@@ -5,36 +5,48 @@
 
 <div class="container">
     <div class="row">
-        <h2 class="col-md-6 col-md-push-3">TSG Games - Detalhes do jogo</h2>
+        <h2 class="col-md-5 col-md-push-3 text-center">TSG Games - Detalhes do jogo</h2>
     </div>
-    <div class="col-md-6 col-md-push-3">
-        <div class="list-group">
-            <a href="#" class="list-group-item active">
-                <h4 class="list-group-item-heading">@Model.Nome</h4>
-                <p class="list-group-item-text">Nome</p>
-            </a>
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">@Model.Id</h4>
-                <p class="list-group-item-text">Id</p>
-            </a>
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">@Model.Categoria</h4>
-                <p class="list-group-item-text">Categoria</p>
-            </a>
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">@Model.Selo</h4>
-                <p class="list-group-item-text">Selo</p>
-            </a>
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">@Model.Preco.ToString("c")</h4>
-                <p class="list-group-item-text">Preço</p>
-            </a>
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">@Model.Descricao</h4>
-                <p class="list-group-item-text">Detalhes</p>
-            </a>
+
+    <div class="row">
+        <div class="col-md-offset-3 col-md-5">
             <a href="#" class="list-group-item text-center">
-                <img src=@Model.Imagem width="400"/>
+                <iframe width="420" height="315" src=@Model.Video frameborder="0" allowfullscreen></iframe>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">@Model.Nome</h4>
+                    <p class="list-group-item-text">Nome</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">@Model.Id</h4>
+                    <p class="list-group-item-text">Id</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">@Model.Categoria</h4>
+                    <p class="list-group-item-text">Categoria</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">@Model.Selo</h4>
+                    <p class="list-group-item-text">Selo</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">@Model.Preco.ToString("c")</h4>
+                    <p class="list-group-item-text">Preço</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">@Model.Descricao</h4>
+                    <p class="list-group-item-text">Detalhes</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-push-3">
+            <a href="#" class="list-group-item text-center">
+                <img src=@Model.Imagem width="400" />
             </a>
         </div>
     </div>

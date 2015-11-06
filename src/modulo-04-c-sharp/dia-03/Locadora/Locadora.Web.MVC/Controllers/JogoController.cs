@@ -22,7 +22,8 @@ namespace Locadora.Web.MVC.Controllers
                 Categoria = jogo.Categoria.ToString(),
                 Selo = jogo.Selo.ToString(),
                 Descricao = jogo.Descricao,
-                Imagem = jogo.Imagem
+                Imagem = jogo.Imagem,
+                Video = jogo.Video
             };
 
             return View(model);
