@@ -14,73 +14,47 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-push-2"><h2>TSG Games</h2></div>
-        <div class="col-md-2" style="margin-top:23px;">
+        <div class="col-md-1 col-md-push-5" style="margin-top:20px;">
             <button class="shiny-button" onclick="location.href='@Url.Action("Manter","Jogo")'">Criar jogo</button>
         </div>
     </div>
-    @if (Model.Jogos.Count > 0)
+    <div class="row" style="margin-top:22px;margin-left:40px;">
+        <div class="col-md-12">
+            @if (Model.Jogos.Count > 0)
             {
-        <div class="row">
-            <div class="col-md-8 col-md-push-2">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Categoria</th>
-                            <th>Selo</th>
-                            <th>Preço</th>
-                            <th class="text-center">Mais</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var jogo in @Model.Jogos)
-                        {
-                            <tr>
-                                <td>@jogo.Nome</td>
-                                <td>@Html.Partial("_ImagemCategoria", @jogo.Categoria)</td>
-                                <td>@Html.Partial("_ImagemSelo", @jogo.Selo)</td>
-                                <td>@jogo.Preco.ToString("c")</td>
-                                <td class="text-center">
-                                    <a href='@Url.Action("Detalhes", "Jogo")/@jogo.Id'>
-                                        <img src="~/Content/Images/info.png" />
-                                    </a>
-                                    <a href='@Url.Action("Manter", "Jogo")/@jogo.Id'>
-                                        <img src="~/Content/Images/edit.png" />
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <aside class="col-md-3 col-md-push-2">
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">
-                        <h4 class="list-group-item-heading">@Model.JogoMaisCaro</h4>
-                        <p class="list-group-item-text">Jogo mais caro</p>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">@Model.JogoMaisBarato</h4>
-                        <p class="list-group-item-text">Jogo mais barato</p>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">@Model.PrecoMedio.ToString("c")</h4>
-                        <p class="list-group-item-text">Média de preço</p>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">@Model.QuantidadeTotalDeJogos</h4>
-                        <p class="list-group-item-text">Total de jogos</p>
-                    </a>
+                foreach (var jogo in @Model.Jogos)
+                {
+                    @Html.Partial("_CelulaJogo", @jogo)
+                }
+                <aside class="col-md-3 col-md-push-2">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active">
+                            <h4 class="list-group-item-heading">@Model.JogoMaisCaro</h4>
+                            <p class="list-group-item-text">Jogo mais caro</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">@Model.JogoMaisBarato</h4>
+                            <p class="list-group-item-text">Jogo mais barato</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">@Model.PrecoMedio.ToString("c")</h4>
+                            <p class="list-group-item-text">Média de preço</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">@Model.QuantidadeTotalDeJogos</h4>
+                            <p class="list-group-item-text">Total de jogos</p>
+                        </a>
+                    </div>
+                </aside>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-8 col-md-push-2">
+                        <h2>Nenhum jogo encontrado.</h2>
+                    </div>
                 </div>
-            </aside>
+            }
         </div>
-    }
-    else
-    {
-        <div class="row">
-            <div class="col-md-8 col-md-push-2">
-                <h2>Nenhum jogo encontrado.</h2>
-            </div>
-        </div>
-    }
+    </div>
 </div>

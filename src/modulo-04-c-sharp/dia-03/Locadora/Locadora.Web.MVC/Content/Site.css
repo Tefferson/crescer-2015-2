@@ -11,9 +11,65 @@ h2 {
     font-size: 20px;
 }
 
+h2.arredondar img{
+    border-radius: 6px;
+}
+
 h3 {
     color: #ccc;
     font-size: 15px;
+}
+
+.celula-jogo {
+    padding: 0;
+    margin: 4px 24px;
+    width: 120px;
+    height: 250px;
+    background-color: rgba(50,50,50,0.7);
+    border-radius: 6px;
+}
+
+.celula-jogo .nome {
+   height: 77px;
+}
+
+.celula-jogo img {
+    width: 120px;
+    height: 120px;
+}
+
+.celula-jogo h3 {
+    font-size: 10px;
+    font-weight: bolder;
+}
+
+.celula-jogo:hover {
+    cursor: pointer;
+}
+
+.celula-jogo-info {
+    padding-left: 6px;
+    padding-top: 4px;
+}
+
+.celula-jogo-info div {
+    height: 35px;
+}
+
+.celula-jogo-info img {
+    height: 17px;
+    width: 17px;
+    border-radius: 5px;
+}
+
+.celula-jogo-info h2 {
+    font-size: 12px;
+    margin: auto;
+}
+
+.celula-jogo-info h3 {
+    margin: auto;
+    margin-top: 12px;
 }
 
 .descricao {
@@ -57,31 +113,31 @@ textarea {
     box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
 }
 
-.shiny-button:hover {
-}
+    .shiny-button:hover {
+    }
 
-.shiny-button:after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 0%;
-    height: 100%;
-    background-color: rgba(255,255,255,0.4);
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    transition: none;
-}
+    .shiny-button:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 0%;
+        height: 100%;
+        background-color: rgba(255,255,255,0.4);
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
 
-.shiny-button:hover:after {
-    width: 100%;
-    background-color: rgba(255,255,255,0);
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
+    .shiny-button:hover:after {
+        width: 100%;
+        background-color: rgba(255,255,255,0);
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+    }
 
 .nav-form {
     margin: 15px;

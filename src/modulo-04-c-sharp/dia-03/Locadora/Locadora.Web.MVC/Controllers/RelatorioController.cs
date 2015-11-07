@@ -39,7 +39,7 @@ namespace Locadora.Web.MVC.Controllers
                         Nome = jogo.Nome,
                         Preco = jogo.Preco,
                         Categoria = jogo.Categoria.ToString(),
-                        Selo = jogo.Selo.ToString()
+                        Imagem = jogo.Imagem
                     };
 
                     model.Jogos.Add(jogoModel);

@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-9">
             <h1>@Model.Nome</h1>
-            <h2>@Html.Partial("_ImagemCategoria", @Model.Categoria)|@Html.Partial("_ImagemSelo", @Model.Selo)</h2>
+            <h2 class="arredondar">@Html.Partial("_ImagemCategoria", @Model.Categoria)|@Html.Partial("_ImagemSelo", @Model.Selo)</h2>
             <hr />
             <iframe width="717" height="395" src=@Model.Video frameborder="0" allowfullscreen></iframe>
             <h2 class="bold">Descrição</h2>

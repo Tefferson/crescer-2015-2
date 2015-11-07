@@ -116,9 +116,9 @@
     <Content Include="Content\Images\edit.png" />
     <Content Include="Content\Images\fundoazul.jpg" />
     <Content Include="Content\Images\info.png" />
-    <Content Include="Content\Images\selobronze.jpg" />
-    <Content Include="Content\Images\seloouro.jpg" />
-    <Content Include="Content\Images\seloprata.jpg" />
+    <Content Include="Content\Images\selobronze.png" />
+    <Content Include="Content\Images\seloouro.png" />
+    <Content Include="Content\Images\seloprata.png" />
     <Content Include="Content\Images\tsg.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -167,6 +167,7 @@
     <Content Include="Views\Shared\_ImagemSelo.cshtml" />
     <Content Include="Views\Jogo\Manter.cshtml" />
     <Content Include="Views\Shared\_ImagemCategoria.cshtml" />
+    <Content Include="Views\Shared\_CelulaJogo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

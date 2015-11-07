@@ -1,0 +1,14 @@
+﻿@model JogoModel
+
+<div onclick="location.href='@Url.Action("Detalhes", "Jogo")/@Model.Id'" class="col-md-2 celula-jogo">
+    <img src=@Model.Imagem />
+    <div class="celula-jogo-info">
+        <div class="nome">
+            @Model.Nome <a href='@Url.Action("Manter", "Jogo")/@Model.Id'>
+                <img src="~/Content/Images/edit.png" />
+            </a>
+        </div>
+        <h2>@Model.Preco.ToString("c")</h2>
+        <h3>@Html.Partial("_ImagemCategoria", Model.Categoria)</h3>
+    </div>
+</div>

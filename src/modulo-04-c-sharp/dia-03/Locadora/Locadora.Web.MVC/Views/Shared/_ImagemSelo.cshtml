@@ -4,15 +4,15 @@
     string nomeImagem = "";
     if (@Model == "OURO")
     {
-        nomeImagem = "seloouro.jpg";
+        nomeImagem = "seloouro.png";
     }
     else if (@Model == "PRATA")
     {
-        nomeImagem = "seloprata.jpg";
+        nomeImagem = "seloprata.png";
     }
     else if (@Model == "BRONZE")
     {
-        nomeImagem = "selobronze.jpg";
+        nomeImagem = "selobronze.png";
     }
-    <span class="text-center"><img width="40" height="40" src="~/Content/Images/@nomeImagem" /></span>
+    <span class="text-center"><img width="40" height="40" src="~/Content/Images/@nomeImagem" title=@Model /></span>
 }
