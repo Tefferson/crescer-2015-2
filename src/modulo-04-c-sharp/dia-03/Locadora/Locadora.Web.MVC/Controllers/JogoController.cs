@@ -94,7 +94,7 @@ namespace Locadora.Web.MVC.Controllers
             }
             else
             {
-                return View();
+                return View(new ManterJogoModel());
             }
         }
 
