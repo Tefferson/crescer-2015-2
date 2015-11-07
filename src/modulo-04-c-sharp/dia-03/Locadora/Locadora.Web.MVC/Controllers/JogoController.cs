@@ -10,7 +10,7 @@ namespace Locadora.Web.MVC.Controllers
     {
         private IJogoRepositorio repositorio = null;
 
-        // GET: Jogo
+        [HttpGet]
         public ActionResult Detalhes(int id)
         {
             repositorio = CriarJogoRepositorio();
@@ -29,7 +29,8 @@ namespace Locadora.Web.MVC.Controllers
 
             return View(model);
         }
-
+        
+        [HttpPost]
         public ActionResult Salvar(ManterJogoModel model)
         {
             bool podeSalvarNoBanco = ModelState.IsValid;
@@ -69,6 +70,7 @@ namespace Locadora.Web.MVC.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult Manter(int id = -1)
         {
             ColocarListaCategoriaEListaSeloNaViewBag();
