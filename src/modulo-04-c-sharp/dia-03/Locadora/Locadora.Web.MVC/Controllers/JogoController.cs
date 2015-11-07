@@ -1,6 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
@@ -17,7 +18,6 @@ namespace Locadora.Web.MVC.Controllers
 
             DetalhesJogoModel model = new DetalhesJogoModel()
             {
-                Id = jogo.Id,
                 Nome = jogo.Nome,
                 Preco = jogo.Preco,
                 Categoria = jogo.Categoria.ToString(),
@@ -30,13 +30,37 @@ namespace Locadora.Web.MVC.Controllers
             return View(model);
         }
 
-        public ActionResult Salvar()
+        public ActionResult Salvar(ManterJogoModel model)
         {
-            return View();
+            bool podeSalvarNoBanco = ModelState.IsValid;
+
+            if (podeSalvarNoBanco)
+            {
+                repositorio = CriarJogoRepositorio();
+                repositorio.Atualizar(new Jogo(model.Id)
+                {
+                    Nome = model.Nome,
+                    Categoria = model.Categoria,
+                    Descricao = model.Descricao,
+                    Imagem = model.Imagem,
+                    Video = model.Video,
+                    Preco = model.Preco,
+                    Selo = model.Selo
+                });
+
+                TempData["Mensagem"] = "Jogo salvo com sucesso!";
+                return RedirectToAction("JogosDisponiveis", "Relatorio");
+            }
+            else
+            {
+                ColocarListaCategoriaEListaSeloNaViewBag();
+                return View("Manter", model);
+            }
         }
 
         public ActionResult Manter(int id = -1)
         {
+            ColocarListaCategoriaEListaSeloNaViewBag();
             bool estaEditando = id > 0;
 
             if (estaEditando)
@@ -48,8 +72,8 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     Nome = jogo.Nome,
                     Preco = jogo.Preco,
-                    Categoria = jogo.Categoria.ToString(),
-                    Selo = jogo.Selo.ToString(),
+                    Categoria = jogo.Categoria,
+                    Selo = jogo.Selo,
                     Descricao = jogo.Descricao,
                     Imagem = jogo.Imagem,
                     Video = jogo.Video
@@ -61,6 +85,12 @@ namespace Locadora.Web.MVC.Controllers
             {
                 return View();
             }
+        }
+
+        private void ColocarListaCategoriaEListaSeloNaViewBag()
+        {
+            ViewBag.ListaCategoria = new SelectList(new List<Categoria>() { Categoria.AVENTURA, Categoria.CORRIDA, Categoria.ESPORTE, Categoria.LUTA, Categoria.RPG });
+            ViewBag.ListaSelo = new SelectList(new List<Selo>() { Selo.OURO, Selo.PRATA, Selo.BRONZE });
         }
     }
 }

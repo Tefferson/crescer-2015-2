@@ -1,0 +1,26 @@
+﻿@model string
+
+@{
+    string nomeImagem = "";
+    if (@Model == "RPG")
+    {
+        nomeImagem = "categoriaRPG.png";
+    }
+    else if (@Model == "CORRIDA")
+    {
+        nomeImagem = "categoriaCorrida.png";
+    }
+    else if (@Model == "AVENTURA")
+    {
+        nomeImagem = "categoriaAventura.png";
+    }
+    else if (@Model == "LUTA")
+    {
+        nomeImagem = "categoriaLuta.png";
+    }
+    else if (@Model == "ESPORTE")
+    {
+        nomeImagem = "categoriaEsporte.png";
+    }
+    <span class="pull-left"><img width="40" height="40" src="~/Content/Images/@nomeImagem" />@Model</span>
+}

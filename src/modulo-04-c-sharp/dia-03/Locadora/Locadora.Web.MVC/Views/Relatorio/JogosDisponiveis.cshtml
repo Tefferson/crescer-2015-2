@@ -3,6 +3,14 @@
     ViewBag.Title = "Jogos Disponíveis";
 }
 
+@{
+    bool temMensagemParaMostrar = TempData["Mensagem"] != null;
+    if (temMensagemParaMostrar)
+    {
+        <h1>@TempData["Mensagem"]</h1>
+    }
+}
+
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-push-2"><h2>TSG Games</h2></div>
@@ -21,7 +29,7 @@
                             <th>Categoria</th>
                             <th>Selo</th>
                             <th>Preço</th>
-                            <th>Mais</th>
+                            <th class="text-center">Mais</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,10 +37,17 @@
                         {
                             <tr>
                                 <td>@jogo.Nome</td>
-                                <td>@jogo.Categoria</td>
+                                <td>@Html.Partial("_ImagemCategoria", @jogo.Categoria)</td>
                                 <td>@Html.Partial("_ImagemSelo", @jogo.Selo)</td>
                                 <td>@jogo.Preco.ToString("c")</td>
-                                <td class="text-center"><button class="shiny-button" onclick="location.href='@Url.Action("Detalhes", "Jogo")/@jogo.Id'">Detalhes</button></td>
+                                <td class="text-center">
+                                    <a href='@Url.Action("Detalhes", "Jogo")/@jogo.Id'>
+                                        <img src="~/Content/Images/info.png" />
+                                    </a>
+                                    <a href='@Url.Action("Manter", "Jogo")/@jogo.Id'>
+                                        <img src="~/Content/Images/edit.png" />
+                                    </a>
+                                </td>
                             </tr>
                         }
                     </tbody>

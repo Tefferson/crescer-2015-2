@@ -24,7 +24,7 @@ namespace Locadora.Repositorio.ADO
                 sql.Append(" Preco = @paramPreco, ");
                 sql.Append(" Descricao = @paramDescricao, ");
                 sql.Append(" IdCategoria = @paramIdCategoria, ");
-                sql.Append(" Selo = @paramIdSelo, ");
+                sql.Append(" IdSelo = @paramIdSelo, ");
                 sql.Append(" Imagem = @paramImagem, ");
                 sql.Append(" Video = @paramVideo, ");
                 sql.Append(" IdClienteLocacao = @paramIdClienteLocacao ");

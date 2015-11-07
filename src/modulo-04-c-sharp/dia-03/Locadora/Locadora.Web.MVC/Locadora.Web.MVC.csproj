@@ -108,6 +108,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\categoriaAventura.png" />
+    <Content Include="Content\Images\categoriaCorrida.png" />
+    <Content Include="Content\Images\categoriaEsporte.png" />
+    <Content Include="Content\Images\categoriaLuta.png" />
+    <Content Include="Content\Images\categoriaRPG.png" />
+    <Content Include="Content\Images\edit.png" />
+    <Content Include="Content\Images\fundoazul.jpg" />
+    <Content Include="Content\Images\info.png" />
     <Content Include="Content\Images\selobronze.jpg" />
     <Content Include="Content\Images\seloouro.jpg" />
     <Content Include="Content\Images\seloprata.jpg" />
@@ -158,6 +166,7 @@
     <Content Include="Views\Jogo\Detalhes.cshtml" />
     <Content Include="Views\Shared\_ImagemSelo.cshtml" />
     <Content Include="Views\Jogo\Manter.cshtml" />
+    <Content Include="Views\Shared\_ImagemCategoria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -2,60 +2,20 @@
 @{
     ViewBag.Title = "Detalhes";
 }
-<ul id="tabDetalhes" class="nav nav-tabs tab-margin">
-    <li><a href="#descricao" data-toggle="tab">Descrição</a></li>
-    <li><a href="#imagem" data-toggle="tab">Imagem</a></li>
-    <li><a href="#video" data-toggle="tab">Video</a></li>
-</ul>
 
-<div id="detalhes" class="tab-content">
-    <div class="tab-pane fade in active" id="descricao">
-        <div class="container">
-            <div class="row">
-                <h2 class="col-md-5 col-md-push-3 text-center">TSG Games - Detalhes do jogo</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-3 col-md-6">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">
-                            <h4 class="list-group-item-heading">@Model.Nome</h4>
-                            <p class="list-group-item-text">Nome</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Model.Id</h4>
-                            <p class="list-group-item-text">Id</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Model.Categoria</h4>
-                            <p class="list-group-item-text">Categoria</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Html.Partial("_ImagemSelo", @Model.Selo)</h4>
-                            <p class="list-group-item-text">Selo</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Model.Preco.ToString("c")</h4>
-                            <p class="list-group-item-text">Preço</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Model.Descricao</h4>
-                            <p class="list-group-item-text">Detalhes</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src=@Model.Imagem width="225" height="225" />
+            <h1>@Model.Preco.ToString("c")</h1>
         </div>
-    </div>
-
-    <div class="tab-pane fade" id="imagem">
-        <a href="#" class="list-group-item text-center">
-            <img src=@Model.Imagem width="520" height="415" />
-        </a>
-    </div>
-
-    <div class="tab-pane fade" id="video">
-        <a href="#" class="list-group-item text-center">
-            <iframe width="520" height="415" src=@Model.Video frameborder="0" allowfullscreen></iframe>
-        </a>
+        <div class="col-md-9">
+            <h1>@Model.Nome</h1>
+            <h2>@Html.Partial("_ImagemCategoria", @Model.Categoria)|@Html.Partial("_ImagemSelo", @Model.Selo)</h2>
+            <hr />
+            <iframe width="717" height="395" src=@Model.Video frameborder="0" allowfullscreen></iframe>
+            <h2 class="bold">Descrição</h2>
+            <h3 class="descricao">@Model.Descricao</h3>
+        </div>
     </div>
 </div>

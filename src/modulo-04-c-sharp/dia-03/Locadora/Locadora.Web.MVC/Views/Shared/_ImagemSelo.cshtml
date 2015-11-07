@@ -1,16 +1,18 @@
-﻿
-@model string
+﻿@model string
 
-@if (@Model == "OURO")
-{
-    <div class="pull-right"><img width="40" height="40" src="~/Content/Images/seloouro.jpg" /></div>
+@{
+    string nomeImagem = "";
+    if (@Model == "OURO")
+    {
+        nomeImagem = "seloouro.jpg";
+    }
+    else if (@Model == "PRATA")
+    {
+        nomeImagem = "seloprata.jpg";
+    }
+    else if (@Model == "BRONZE")
+    {
+        nomeImagem = "selobronze.jpg";
+    }
+    <span class="text-center"><img width="40" height="40" src="~/Content/Images/@nomeImagem" /></span>
 }
-else if (@Model == "PRATA")
-{
-    <div class="pull-right"><img width="40" height="40" src="~/Content/Images/seloprata.jpg" /></div>
-}
-else if (@Model=="BRONZE")
-{
-    <div class="pull-left"><img width="40" height="40" src="~/Content/Images/selobronze.jpg" /></div>
-}
-
