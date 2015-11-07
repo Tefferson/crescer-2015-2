@@ -26,7 +26,13 @@ h3 {
     width: 120px;
     height: 250px;
     background-color: rgba(50,50,50,0.7);
-    border-radius: 6px;
+    outline: 4px solid rgba(255,255,255,0);
+    transition: outline 0.5s;
+}
+
+
+.celula-jogo:hover {
+    outline-color: rgba(255,255,255,1);
 }
 
     .celula-jogo .nome {
