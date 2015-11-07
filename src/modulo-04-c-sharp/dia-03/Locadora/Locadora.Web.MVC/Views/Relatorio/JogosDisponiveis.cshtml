@@ -20,17 +20,38 @@
     </div>
     @if (Model.Jogos.Count > 0)
     {
+        string nomeDaBusca = @Request.QueryString["nome"];
+        bool nomeDaBuscaEVazio = String.IsNullOrWhiteSpace(nomeDaBusca);
         <div class="row estatisticas-jogo">
-            <div class="col-md-9">
-                Você buscou por
-                <span>@Request.QueryString["nome"]</span>
-            </div>
+            @if (nomeDaBuscaEVazio)
+            {
+                <div class="col-md-9">
+                    <span>Listagem de jogos</span>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-9">
+                    Você buscou por
+                    <span>@nomeDaBusca</span>
+                </div>
+            }
         </div>
         <div class="row estatisticas-jogo">
-            <div class="col-md-7">
-                <span>@Model.QuantidadeTotalDeJogos</span>
-                correspondências
-            </div>
+            @if (nomeDaBuscaEVazio)
+            {
+                <div class="col-md-7">
+                    Total de jogos:
+                    <span>@Model.QuantidadeTotalDeJogos</span>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-7">
+                    <span>@Model.QuantidadeTotalDeJogos</span>
+                    correspondências
+                </div>
+            }
             <div class="col-md-7">
                 Jogo mais caro:
                 <span>@Model.JogoMaisCaro</span>
