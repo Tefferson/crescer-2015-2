@@ -12,49 +12,51 @@
 }
 
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin: 30px 0px;">
         <div class="col-md-4 col-md-push-2"><h2>TSG Games</h2></div>
-        <div class="col-md-1 col-md-push-5" style="margin-top:20px;">
+        <div class="col-md-1 col-md-push-5">
             <button class="shiny-button" onclick="location.href='@Url.Action("Manter","Jogo")'">Criar jogo</button>
         </div>
     </div>
-    <div class="row" style="margin-top:22px;margin-left:40px;">
-        <div class="col-md-12">
-            @if (Model.Jogos.Count > 0)
-            {
-                foreach (var jogo in @Model.Jogos)
+    @if (Model.Jogos.Count > 0)
+    {
+        <div class="row estatisticas-jogo">
+            <div class="col-md-9">
+                Você buscou por
+                <span>@Request.QueryString["nome"]</span>
+            </div>
+        </div>
+        <div class="row estatisticas-jogo">
+            <div class="col-md-7">
+                <span>@Model.QuantidadeTotalDeJogos</span>
+                correspondências
+            </div>
+            <div class="col-md-7">
+                Jogo mais caro:
+                <span>@Model.JogoMaisCaro</span>
+            </div>
+            <div class="col-md-7">
+                Jogo mais Barato:
+                <span>@Model.JogoMaisBarato</span>
+            </div>
+            <div class="col-md-7">
+                Preço médio:
+                <span> @Model.PrecoMedio.ToString("c")</span>
+            </div>
+        </div>
+        <div class="row" style="margin-top:22px;margin-left:0px;margin-right:0px">
+            @foreach (var jogo in @Model.Jogos)
                 {
-                    @Html.Partial("_CelulaJogo", @jogo)
-                }
-                <aside class="col-md-3 col-md-push-2">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">
-                            <h4 class="list-group-item-heading">@Model.JogoMaisCaro</h4>
-                            <p class="list-group-item-text">Jogo mais caro</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Model.JogoMaisBarato</h4>
-                            <p class="list-group-item-text">Jogo mais barato</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Model.PrecoMedio.ToString("c")</h4>
-                            <p class="list-group-item-text">Média de preço</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">@Model.QuantidadeTotalDeJogos</h4>
-                            <p class="list-group-item-text">Total de jogos</p>
-                        </a>
-                    </div>
-                </aside>
-            }
-            else
-            {
-                <div class="row">
-                    <div class="col-md-8 col-md-push-2">
-                        <h2>Nenhum jogo encontrado.</h2>
-                    </div>
-                </div>
+                @Html.Partial("_CelulaJogo", jogo)
             }
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-8 col-md-push-2">
+                <h2>Nenhum jogo encontrado.</h2>
+            </div>
+        </div>
+    }
 </div>

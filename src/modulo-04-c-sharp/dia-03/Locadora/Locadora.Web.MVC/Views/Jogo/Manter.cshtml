@@ -10,14 +10,16 @@
 else
 {
     <h2>Editar jogo</h2>
-
 }
 
 @using (Html.BeginForm("Salvar", "Jogo", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.ValidationSummary(false)
-    
+
+    @Html.HiddenFor(m => m.Id)
+
     <div class="col-md-6">
+
         <div class="form-group">
             @Html.LabelFor(m => m.Nome, new { @class = "col-sm-2 control-label" })
             <div>

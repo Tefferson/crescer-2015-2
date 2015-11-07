@@ -3,19 +3,17 @@
     ViewBag.Title = "Detalhes";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <img src=@Model.Imagem width="225" height="225" />
-            <h1>@Model.Preco.ToString("c")</h1>
-        </div>
-        <div class="col-md-9">
-            <h1>@Model.Nome</h1>
-            <h2 class="arredondar">@Html.Partial("_ImagemCategoria", @Model.Categoria)|@Html.Partial("_ImagemSelo", @Model.Selo)</h2>
-            <hr />
-            <iframe width="717" height="395" src=@Model.Video frameborder="0" allowfullscreen></iframe>
-            <h2 class="bold">Descrição</h2>
-            <h3 class="descricao">@Model.Descricao</h3>
-        </div>
+<div style="margin-top: 25px;">
+    <div class="col-md-3 side-info-jogo">
+        <img src=@Model.Imagem width="225" height="225" />
+        <div><h1>@Model.Preco.ToString("c")</h1></div>
+    </div>
+    <div class="col-md-9">
+        <h1>@Model.Nome</h1>
+        <h2 class="arredondar">@Html.Partial("_ImagemCategoria", @Model.Categoria)|@Html.Partial("_ImagemSelo", @Model.Selo)</h2>
+        <hr />
+        <iframe width="717" height="395" src=@Model.Video frameborder="0" allowfullscreen></iframe>
+        <h2 class="bold">Descrição</h2>
+        <h3 class="descricao">@Model.Descricao</h3>
     </div>
 </div>

@@ -11,9 +11,9 @@ h2 {
     font-size: 20px;
 }
 
-h2.arredondar img{
-    border-radius: 6px;
-}
+    h2.arredondar img {
+        border-radius: 6px;
+    }
 
 h3 {
     color: #ccc;
@@ -22,55 +22,99 @@ h3 {
 
 .celula-jogo {
     padding: 0;
-    margin: 4px 24px;
+    margin: 22.5px;
     width: 120px;
     height: 250px;
     background-color: rgba(50,50,50,0.7);
     border-radius: 6px;
 }
 
-.celula-jogo .nome {
-   height: 77px;
-}
+    .celula-jogo .nome {
+        height: 77px;
+    }
 
-.celula-jogo img {
-    width: 120px;
-    height: 120px;
-}
+    .celula-jogo img {
+        width: 120px;
+        height: 120px;
+    }
 
-.celula-jogo h3 {
-    font-size: 10px;
-    font-weight: bolder;
-}
+    .celula-jogo h3 {
+        font-size: 10px;
+        font-weight: bolder;
+    }
 
-.celula-jogo:hover {
-    cursor: pointer;
-}
+    .celula-jogo:hover {
+        cursor: pointer;
+    }
 
 .celula-jogo-info {
     padding-left: 6px;
     padding-top: 4px;
 }
 
-.celula-jogo-info div {
-    height: 35px;
+    .celula-jogo-info div {
+        height: 35px;
+    }
+
+    .celula-jogo-info img {
+        height: 17px;
+        width: 17px;
+        border-radius: 5px;
+    }
+
+    .celula-jogo-info h2 {
+        font-size: 12px;
+        margin: auto;
+    }
+
+    .celula-jogo-info h3 {
+        margin: auto;
+        margin-top: 12px;
+    }
+
+.side-info-jogo {
+    width: 225px;
+    margin-left: 8.5px;
 }
 
-.celula-jogo-info img {
-    height: 17px;
-    width: 17px;
-    border-radius: 5px;
+    .side-info-jogo div {
+        width: 225px;
+        margin-top: -15px;
+        margin-left: -15.5px;
+        background-color: rgba(255,255,255,0.15);
+    }
+
+        .side-info-jogo div h1 {
+            padding-top: 12px;
+            padding-left: 12px;
+            height: 55px;
+            font-size: 35px;
+            font-weight: bolder;
+        }
+
+    .side-info-jogo img {
+        margin-left: -15.5px;
+    }
+
+.estatisticas-jogo {
+    font-size: 15px;
+    margin-left: 15px;
+    color: #f1f1f1;
 }
 
-.celula-jogo-info h2 {
-    font-size: 12px;
-    margin: auto;
-}
+    .estatisticas-jogo span {
+        font-style: italic;
+    }
 
-.celula-jogo-info h3 {
-    margin: auto;
-    margin-top: 12px;
-}
+    .estatisticas-jogo div.col-md-9 {
+        color: rgba(255,255,255,0.4);
+        font-size: 40px;
+    }
+
+    .estatisticas-jogo div.col-md-9 span{
+    color: #f1f1f1;
+        font-size: 40px;
+    }
 
 .descricao {
     white-space: pre-line;
@@ -86,7 +130,14 @@ h3 {
     padding-top: 25px;
     padding-left: 15px;
     padding-right: 15px;
+    padding: 0;
     background-color: rgba(0,0,0,0.7);
+}
+
+div.container {
+    padding: 0;
+    width: auto;
+    max-width: 990px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
