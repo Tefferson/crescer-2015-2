@@ -36,8 +36,9 @@ namespace Locadora.Web.MVC.Controllers
 
             if (podeSalvarNoBanco)
             {
+                bool deveAlterar = model.Id > 0;
                 repositorio = CriarJogoRepositorio();
-                repositorio.Atualizar(new Jogo(model.Id)
+                Jogo jogo = new Jogo(model.Id)
                 {
                     Nome = model.Nome,
                     Categoria = model.Categoria,
@@ -46,9 +47,19 @@ namespace Locadora.Web.MVC.Controllers
                     Video = model.Video,
                     Preco = model.Preco,
                     Selo = model.Selo
-                });
+                };
 
-                TempData["Mensagem"] = "Jogo salvo com sucesso!";
+                if (deveAlterar)
+                {
+                    repositorio.Atualizar(jogo);
+                    TempData["Mensagem"] = "Jogo editado com sucesso!";
+                }
+                else
+                {
+                    repositorio.Criar(jogo);
+                    TempData["Mensagem"] = "Jogo salvo com sucesso!";
+                }
+
                 return RedirectToAction("JogosDisponiveis", "Relatorio");
             }
             else
