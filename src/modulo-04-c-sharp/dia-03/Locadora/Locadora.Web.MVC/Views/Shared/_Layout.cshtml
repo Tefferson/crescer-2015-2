@@ -62,6 +62,14 @@
                     .appendTo(ul);
             };
         });
+        $.ui.autocomplete.prototype._renderMenu = function (ul, items) {
+            var self = this;
+            $.each(items, function (index, item) {
+                if (index < 5)
+                { self._renderItem(ul, item); }
+            });
+            ul.append("<li class='item-ver-tudo'><a>Ver tudo</a></li>");
+        }
     </script>
 </body>
 </html>

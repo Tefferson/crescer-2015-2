@@ -195,10 +195,6 @@
       <Project>{14105bc9-3336-43bc-b394-6e0aa2a29751}</Project>
       <Name>Locadora.Repositorio.ADO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Locadora.Repositorio.XML\Locadora.Repositorio.XML.csproj">
-      <Project>{94e11ed9-d5fd-4339-9fcd-dd1d3ff1badd}</Project>
-      <Name>Locadora.Repositorio.XML</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

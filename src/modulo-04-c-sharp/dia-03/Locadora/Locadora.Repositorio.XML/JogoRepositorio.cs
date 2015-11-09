@@ -33,7 +33,7 @@ namespace Locadora.Repositorio.XML
             jogoSalvo.SetElementValue("selo", entidade.Selo.ToString());
             jogoSalvo.SetElementValue("imagem", entidade.Imagem);
             jogoSalvo.SetElementValue("video", entidade.Video);
-            jogoSalvo.SetElementValue("id_cliente_locacao", entidade.IdClienteLocacao.HasValue ? entidade.IdClienteLocacao.Value.ToString() : "");
+            jogoSalvo.SetElementValue("id_cliente_locacao", entidade.ClienteLocacao.HasValue ? entidade.ClienteLocacao.Value.ToString() : "");
 
             SalvarDbXml(db);
             return 1;
@@ -112,7 +112,7 @@ namespace Locadora.Repositorio.XML
             jogoXml.SetElementValue("imagem", jogo.Imagem);
             jogoXml.SetElementValue("Video", jogo.Video);
             jogoXml.SetElementValue("categoria", jogo.Categoria.ToString());
-            jogoXml.SetElementValue("id_cliente_locacao", jogo.IdClienteLocacao.HasValue ? jogo.IdClienteLocacao.Value.ToString() : "");
+            jogoXml.SetElementValue("id_cliente_locacao", jogo.ClienteLocacao.HasValue ? jogo.ClienteLocacao.Value.ToString() : "");
 
             return jogoXml;
         }
@@ -126,7 +126,7 @@ namespace Locadora.Repositorio.XML
 
             var jogo = new Jogo(
                     id: Convert.ToInt32(jogoXml.Attribute("id").Value),
-                    idClienteLocacao: jogoXml.Element("id_cliente_locacao").Value.ToNullable<int>()
+                    clienteLocacao: jogoXml.Element("id_cliente_locacao").Value.ToNullable<int>()
                     );
 
             jogo.Nome = jogoXml.Element("nome").Value;

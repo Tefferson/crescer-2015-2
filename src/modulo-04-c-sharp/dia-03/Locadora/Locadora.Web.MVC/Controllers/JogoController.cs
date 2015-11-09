@@ -29,7 +29,7 @@ namespace Locadora.Web.MVC.Controllers
 
             return View(model);
         }
-        
+
         [HttpPost]
         public ActionResult Salvar(ManterJogoModel model)
         {
