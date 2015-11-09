@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 20px;
     background-image: url("Images/fundoazul.jpg");
     background-repeat: repeat;
@@ -18,6 +18,16 @@ h2 {
 h3 {
     color: #ccc;
     font-size: 15px;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top{
+    background-color: rgba(0,0,0,0.9);
+    border-bottom: 1px solid #222;
+}
+
+form input.transparente{
+    background-color: rgba(255,255,255,0.2);
+    color: #f1f1f1;
 }
 
 .celula-jogo {
