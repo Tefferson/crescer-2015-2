@@ -15,27 +15,48 @@
     <div class="row" style="margin: 30px 0px;">
         <div class="col-md-4 col-md-push-2"><h2>TSG Games</h2></div>
         <div class="col-md-1 col-md-push-5">
-            <button class="shiny-button" onclick="location.href='@Url.Action("Manter","Jogo")'">Criar jogo</button>
+            <button class="shiny-button" onclick="location.href='@Url.Action("Manter", "Jogo")'">Criar jogo</button>
         </div>
     </div>
     @if (Model.Jogos.Count > 0)
     {
         string nomeDaBusca = @Request.QueryString["nome"];
         bool nomeDaBuscaEVazio = String.IsNullOrWhiteSpace(nomeDaBusca);
-        <div class="row estatisticas-jogo">
+        <div class="row">
             @if (nomeDaBuscaEVazio)
             {
-                <div class="col-md-9">
+                <div class="col-md-9 estatisticas-jogo">
                     <span>Listagem de jogos</span>
                 </div>
             }
             else
             {
-                <div class="col-md-9">
+                <div class="col-md-9 estatisticas-jogo">
                     Você buscou por
                     <span>@nomeDaBusca</span>
                 </div>
             }
+            <div class="row">
+                <div class="col-md-offset-8 col-md-4 ordem-container">
+                    <span>Classificar por</span>
+                    <select class="ordem" onchange="$('.form-filtro').submit()">
+                        @{
+                            var opcoes = new List<string>() { "Título(A-Z)", "Título(Z-A)", "Preço(menor-maior)", "Preço(maior-menor)" };
+                            foreach (string opcao in opcoes)
+                            {
+                                if (opcao == ViewBag.Ordem)
+                                {
+                                    <option value=@opcao selected>@opcao</option>
+                                }
+                                else
+                                {
+                                    <option value=@opcao>@opcao</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="row estatisticas-jogo">
             @if (nomeDaBuscaEVazio)
@@ -49,7 +70,14 @@
             {
                 <div class="col-md-7">
                     <span>@Model.QuantidadeTotalDeJogos</span>
-                    correspondências
+                    @if (Model.QuantidadeTotalDeJogos == 1)
+                    {
+                        <text>correspondência</text>
+                    }
+                    else
+                    {
+                        <text>correspondências</text>
+                    }
                 </div>
             }
             <div class="col-md-7">
@@ -67,17 +95,17 @@
         </div>
         <div class="row" style="margin-top:22px;margin-left:0px;margin-right:0px">
             @foreach (var jogo in @Model.Jogos)
-                {
+            {
                 @Html.Partial("_CelulaJogo", jogo)
             }
         </div>
-    }
-    else
-    {
-        <div class="row">
-            <div class="col-md-8 col-md-push-2">
-                <h2>Nenhum jogo encontrado.</h2>
-            </div>
-        </div>
-    }
+                            }
+                            else
+                            {
+                                <div class="row">
+                                    <div class="col-md-8 col-md-push-2">
+                                        <h2>Nenhum jogo encontrado.</h2>
+                                    </div>
+                                </div>
+                            }
 </div>

@@ -102,6 +102,10 @@ h3 {
         margin-left: -15.5px;
     }
 
+.ordem-container{
+    padding-top: 20px;
+}
+
 .estatisticas-jogo {
     font-size: 15px;
     margin-left: 15px;
@@ -112,12 +116,12 @@ h3 {
         font-style: italic;
     }
 
-    .estatisticas-jogo div.col-md-9 {
+    .estatisticas-jogo.col-md-9 {
         color: rgba(255,255,255,0.4);
         font-size: 40px;
     }
 
-    .estatisticas-jogo div.col-md-9 span{
+    .estatisticas-jogo.col-md-9 span{
     color: #f1f1f1;
         font-size: 40px;
     }

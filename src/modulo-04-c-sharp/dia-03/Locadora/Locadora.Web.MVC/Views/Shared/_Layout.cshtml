@@ -25,7 +25,7 @@
                         <a class="nav-link" href='@Url.Action("JogosDisponiveis", "Relatorio")'>Jogos Disponíveis</a>
                     </li>
                     <li>
-                        <form class="nav-form" action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
+                        <form class="nav-form form-filtro" action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
                             <input type="text" placeholder="Digite sua busca" name="nome" />
                             <input class="shiny-button" type="submit" value="Buscar" />
                         </form>
@@ -44,5 +44,6 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/submitquery")    
 </body>
 </html>

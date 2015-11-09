@@ -12,7 +12,7 @@ namespace Locadora.Web.MVC.Controllers
     {
         private IJogoRepositorio repositorio = null;
 
-        public ActionResult JogosDisponiveis(string nome)
+        public ActionResult JogosDisponiveis(string nome, string ordem = "Título(A-Z)")
         {
             repositorio = CriarJogoRepositorio();
             var model = new RelatorioModel();
@@ -31,7 +31,26 @@ namespace Locadora.Web.MVC.Controllers
 
             if (listaDeJogos.Count > 0)
             {
-                foreach (var jogo in listaDeJogos)
+                ViewBag.Ordem = ordem;
+                IOrderedEnumerable<Jogo> listaOrdenada = null;
+                if (ordem == "Título(A-Z)")
+                {
+                    listaOrdenada = listaDeJogos.OrderBy(j => j.Nome);
+                }
+                else if (ordem == "Título(Z-A)")
+                {
+                    listaOrdenada = listaDeJogos.OrderByDescending(j => j.Nome);
+                }
+                else if (ordem == "Preço(menor-maior)")
+                {
+                    listaOrdenada = listaDeJogos.OrderBy(j => j.Preco);
+                }
+                else if (ordem == "Preço(maior-menor)")
+                {
+                    listaOrdenada = listaDeJogos.OrderByDescending(j => j.Preco);
+                }
+
+                foreach (var jogo in listaOrdenada)
                 {
                     var jogoModel = new JogoModel()
                     {
