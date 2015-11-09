@@ -1,7 +1,6 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -69,6 +68,12 @@ namespace Locadora.Web.MVC.Controllers
                 model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
             }
             return View(model);
+        }
+
+        public ActionResult Autocomplete(string term)
+        {
+            var repositorio = CriarJogoRepositorio();
+            return Json(repositorio.BuscarPorNome(term).Select(j => new {label=j.Nome, value=j.Id }), JsonRequestBehavior.AllowGet);
         }
     }
 }

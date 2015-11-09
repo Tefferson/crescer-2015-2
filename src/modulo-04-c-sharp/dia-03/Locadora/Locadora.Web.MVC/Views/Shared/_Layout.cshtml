@@ -26,7 +26,7 @@
                     </li>
                     <li>
                         <form class="nav-form form-filtro" action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
-                            <input class="transparente" type="text" placeholder="Digite sua busca" name="nome" />
+                            <input class="transparente texto-busca" type="text" placeholder="Digite sua busca" name="nome" />
                             <input class="shiny-button" type="submit" value="Buscar" />
                         </form>
                     </li>
@@ -44,6 +44,19 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/submitquery")    
+    @Scripts.Render("~/bundles/submitquery")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".texto-busca").autocomplete({
+                source: '@Url.Action("Autocomplete", "Relatorio")',
+                minLength: 1,
+                select: function (event, ui) {
+                    if (ui.item) {
+                        location.href = "/Jogo/Detalhes/" + ui.item.value;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

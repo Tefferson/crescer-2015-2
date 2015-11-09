@@ -20,12 +20,12 @@ h3 {
     font-size: 15px;
 }
 
-.navbar.navbar-inverse.navbar-fixed-top{
+.navbar.navbar-inverse.navbar-fixed-top {
     background-color: rgba(0,0,0,0.9);
     border-bottom: 1px solid #222;
 }
 
-form input.transparente{
+form input.transparente {
     background-color: rgba(255,255,255,0.2);
     color: #f1f1f1;
 }
@@ -41,9 +41,9 @@ form input.transparente{
 }
 
 
-.celula-jogo:hover {
-    outline-color: rgba(255,255,255,1);
-}
+    .celula-jogo:hover {
+        outline-color: rgba(255,255,255,1);
+    }
 
     .celula-jogo .nome {
         height: 77px;
@@ -107,7 +107,29 @@ form input.transparente{
             font-weight: bolder;
         }
 
-.ordem-container{
+.ui-menu {
+    justify-content: space-between;
+}
+
+.ui-menu .ui-menu-item {
+    margin-left:-40px;
+    background-color: rgba(255,255,255,0.9);
+    width:174px;
+    font-size: 15px;
+    list-style-type: none;
+}
+
+.ui-menu .ui-menu-item a{
+    padding-left: 3px;
+    font-family: Calibri;
+    color: rgba(0,0,0,0.8);
+}
+
+.ui-menu .ui-menu-item a:hover{
+    cursor: pointer;
+}
+
+.ordem-container {
     padding-top: 20px;
 }
 
@@ -126,10 +148,10 @@ form input.transparente{
         font-size: 40px;
     }
 
-    .estatisticas-jogo.col-md-9 span{
-    color: #f1f1f1;
-        font-size: 40px;
-    }
+        .estatisticas-jogo.col-md-9 span {
+            color: #f1f1f1;
+            font-size: 40px;
+        }
 
 .descricao {
     white-space: pre-line;
