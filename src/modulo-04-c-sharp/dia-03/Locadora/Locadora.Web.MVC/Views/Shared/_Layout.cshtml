@@ -55,7 +55,12 @@
                         location.href = "/Jogo/Detalhes/" + ui.item.value;
                     }
                 }
-            });
+            }).data("autocomplete")._renderItem = function (ul, item) {
+                return $("<li>").data("item.autocomplete", item)
+                    .append("<img width='50' height=50 src=" + item.icon + " />")
+                    .append("<a>" + item.label + "</a>")
+                    .appendTo(ul);
+            };
         });
     </script>
 </body>

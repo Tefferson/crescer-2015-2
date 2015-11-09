@@ -73,7 +73,7 @@ namespace Locadora.Web.MVC.Controllers
         public ActionResult Autocomplete(string term)
         {
             var repositorio = CriarJogoRepositorio();
-            return Json(repositorio.BuscarPorNome(term).Select(j => new {label=j.Nome, value=j.Id }), JsonRequestBehavior.AllowGet);
+            return Json(repositorio.BuscarPorNome(term).Select(j => new {label=j.Nome, value=j.Id, icon=j.Imagem }), JsonRequestBehavior.AllowGet);
         }
     }
 }

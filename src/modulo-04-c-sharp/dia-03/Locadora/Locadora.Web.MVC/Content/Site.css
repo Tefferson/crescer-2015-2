@@ -107,20 +107,20 @@ form input.transparente {
             font-weight: bolder;
         }
 
-.ui-menu {
-    justify-content: space-between;
-}
-
 .ui-menu .ui-menu-item {
     margin-left:-40px;
     background-color: rgba(255,255,255,0.9);
-    width:174px;
+    width:235px;
     font-size: 15px;
     list-style-type: none;
 }
 
+.ui-menu .ui-menu-item img{
+    margin: 5px;
+}
+
 .ui-menu .ui-menu-item a{
-    padding-left: 3px;
+    word-wrap: break-word;
     font-family: Calibri;
     color: rgba(0,0,0,0.8);
 }
@@ -181,6 +181,7 @@ div.container {
 input,
 select,
 textarea {
+    width: 235px;
     max-width: 280px;
 }
 
