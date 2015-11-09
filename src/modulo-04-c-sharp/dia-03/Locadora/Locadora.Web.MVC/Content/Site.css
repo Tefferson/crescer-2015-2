@@ -96,7 +96,6 @@ form input.transparente{
     .side-info-jogo div {
         width: 225px;
         margin-top: -15px;
-        margin-left: -15.5px;
         background-color: rgba(255,255,255,0.15);
     }
 
@@ -107,10 +106,6 @@ form input.transparente{
             font-size: 35px;
             font-weight: bolder;
         }
-
-    .side-info-jogo img {
-        margin-left: -15.5px;
-    }
 
 .ordem-container{
     padding-top: 20px;
