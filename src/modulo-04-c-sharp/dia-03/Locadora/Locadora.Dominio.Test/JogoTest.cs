@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Locadora.Dominio.Test
 {
@@ -19,10 +18,11 @@ namespace Locadora.Dominio.Test
         public void LocacaoParaClienteTemIdCorreto()
         {
             Jogo jogo = new Jogo();
+            Cliente cliente = new Cliente(id: 1);
 
-            jogo.LocarPara(new Cliente(id: 1));
+            jogo.LocarPara(cliente);
 
-            Assert.AreEqual(1, jogo.ClienteLocacao);
+            Assert.AreEqual(cliente, jogo.ClienteLocacao);
         }
     }
 }

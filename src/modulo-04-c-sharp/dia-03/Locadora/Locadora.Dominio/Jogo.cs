@@ -60,7 +60,7 @@ namespace Locadora.Dominio
 
         public override bool Equals(object obj)
         {
-            if (obj.GetType() == typeof(Jogo))
+            if (obj != null && obj.GetType() == typeof(Jogo))
             {
                 Jogo jogoComp = (Jogo)obj;
 
