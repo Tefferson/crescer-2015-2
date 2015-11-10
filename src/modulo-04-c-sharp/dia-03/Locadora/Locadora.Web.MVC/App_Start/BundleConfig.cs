@@ -13,6 +13,9 @@ namespace Locadora.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/submitquery").Include(
                         "~/Scripts/submitquery.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/autocomplete").Include(
+                        "~/Scripts/autocomplete.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
