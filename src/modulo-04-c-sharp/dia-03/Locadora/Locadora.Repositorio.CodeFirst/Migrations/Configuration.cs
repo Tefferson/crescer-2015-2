@@ -1,4 +1,4 @@
-namespace Locadora.Repositorio.EF.Migrations
+namespace Locadora.Repositorio.CodeFirst.Migrations
 {
     using System;
     using System.Data.Entity;

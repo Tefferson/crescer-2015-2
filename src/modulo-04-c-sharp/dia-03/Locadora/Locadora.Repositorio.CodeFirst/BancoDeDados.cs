@@ -38,9 +38,6 @@ namespace Locadora.Repositorio.EF
             Property(p => p.Categoria).IsRequired();
 
             HasOptional(o => o.ClienteLocacao).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
-            //TODO> criar tabelas
-            //HasRequired(o => o.Selo).WithRequiredDependent().Map(m => m.MapKey("IdSelo"));
-            //HasRequired(o => o.Categoria).WithRequiredDependent().Map(m => m.MapKey("IdCategoria"));
         }
 
     }

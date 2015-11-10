@@ -7,7 +7,7 @@ namespace Locadora.Web.MVC.Controllers
     {
         public IJogoRepositorio CriarJogoRepositorio()
         {
-            return new Locadora.Repositorio.ADO.JogoRepositorio();
+            return new Locadora.Repositorio.EF.JogoRepositorio();
         }
     }
 }
