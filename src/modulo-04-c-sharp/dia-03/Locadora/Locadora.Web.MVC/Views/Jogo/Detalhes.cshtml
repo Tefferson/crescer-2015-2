@@ -13,7 +13,9 @@
         <h2 class="arredondar">@Html.Partial("_ImagemCategoria", @Model.Categoria)|@Html.Partial("_ImagemSelo", @Model.Selo)</h2>
         <hr />
         <iframe width="717" height="395" src=@Model.Video frameborder="0" allowfullscreen style="margin-left:8px;"></iframe>
-        <h2 class="bold">Descrição</h2>
-        <h3 class="descricao">@Model.Descricao</h3>
+        <div class="detalhes-descricao">
+            <h2 class="bold">Descrição</h2>
+            <h3 class="descricao">@Model.Descricao</h3>
+        </div>
     </div>
 </div>

@@ -27,7 +27,7 @@
                     <li>
                         <form class="nav-form form-filtro" action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
                             <input class="transparente texto-busca" type="text" placeholder="Digite sua busca" name="nome" />
-                            <input class="shiny-button" type="submit" value="Buscar" />
+                            <input class="botao-busca" type="submit" value="" />
                         </form>
                     </li>
                 </ul>
@@ -52,14 +52,23 @@
                 minLength: 1,
                 select: function (event, ui) {
                     if (ui.item) {
-                        location.href = "/Jogo/Detalhes/" + ui.item.value;
+                        if (ui.item.value === '*') {
+                            $('.form-filtro').submit();
+                        } else {
+                            location.href = '/Jogo/Detalhes/' + ui.item.value;
+                        }
                     }
                 }
             }).data("autocomplete")._renderItem = function (ul, item) {
-                return $("<li>").data("item.autocomplete", item)
-                    .append("<img width='50' height=50 src=" + item.icon + " />")
-                    .append("<a>" + item.label + "</a>")
+                var newItem = $("<li>").data("item.autocomplete", item);
+                if (item.icon) {
+                    newItem.append("<img width='50' height=50 src=" + item.icon + " />")
+                }
+                newItem.append("<a>" + item.label + "</a>")
                     .appendTo(ul);
+
+                if (item.value === '*') newItem.addClass('item-ver-tudo');
+                return newItem;
             };
         });
         $.ui.autocomplete.prototype._renderMenu = function (ul, items) {
@@ -68,7 +77,7 @@
                 if (index < 5)
                 { self._renderItem(ul, item); }
             });
-            ul.append("<li class='item-ver-tudo'><a>Ver tudo</a></li>");
+            self._renderItem(ul, { label: 'Ver tudo', value: '*' });
         }
     </script>
 </body>

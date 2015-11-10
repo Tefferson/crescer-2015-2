@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\buscar.png" />
     <Content Include="Content\Images\categoriaAventura.png" />
     <Content Include="Content\Images\categoriaCorrida.png" />
     <Content Include="Content\Images\categoriaEsporte.png" />
@@ -116,6 +117,7 @@
     <Content Include="Content\Images\edit.png" />
     <Content Include="Content\Images\fundoazul.jpg" />
     <Content Include="Content\Images\info.png" />
+    <Content Include="Content\Images\search.png" />
     <Content Include="Content\Images\selobronze.png" />
     <Content Include="Content\Images\seloouro.png" />
     <Content Include="Content\Images\seloprata.png" />

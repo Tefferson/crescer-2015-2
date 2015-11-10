@@ -20,27 +20,50 @@ h3 {
     font-size: 15px;
 }
 
+input:focus, a:focus {
+    outline-color: rgba(0,0,0,0);
+}
+
 .navbar.navbar-inverse.navbar-fixed-top {
-    background-color: black;
+    background-color: rgba(0,0,0,0.9);
     border-bottom: 1px solid #222;
 }
 
 form input.transparente {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0);
     color: #f1f1f1;
+    border: 0;
+    margin-left: 5px;
+}
+
+.form-filtro {
+    background-color: rgba(255,255,255,0.2);
+    padding: 3px;
+    border-radius: 4px;
+    border: 2px solid #ccc;
+    width: 284px;
+}
+
+.botao-busca {
+    background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-24.png') no-repeat;
+    width: 30px;
+    background-color: rgba(0,0,0,0);
+    border: 0;
 }
 
 .item-ver-tudo {
     background-color: rgba(0,0,0,0.9);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    padding-top: 15px;
+    padding-bottom: 8px;
 }
 
-.item-ver-tudo a {
-    color: rgba(0,0,0,0.8);
-    font-weight: bold;
-    padding-left: 5px;
-}
+    .item-ver-tudo a {
+        color: rgba(0,0,0,0.8);
+        font-weight: bold;
+        padding-left: 5px;
+    }
 
 .celula-jogo {
     padding: 0;
@@ -120,30 +143,30 @@ form input.transparente {
         }
 
 .ui-menu {
-    box-shadow: 0 0 5px black;
-}
-
-.ui-menu .ui-menu-item {
-    margin-left:-40px;
-    background-color: rgba(255,255,255,0.9);
-    width:235px;
-    font-size: 15px;
+    width: 273px;
     list-style-type: none;
+    padding-top: 2px;
 }
 
-.ui-menu .ui-menu-item img{
-    margin: 5px;
-}
+    .ui-menu .ui-menu-item {
+        margin-left: -50px;
+        background-color: rgba(255,255,255,0.9);
+        font-size: 15px;
+    }
 
-.ui-menu .ui-menu-item a{
-    word-wrap: break-word;
-    font-family: Calibri;
-    color: rgba(0,0,0,0.8);
-}
+        .ui-menu .ui-menu-item img {
+            margin: 5px;
+        }
 
-.ui-menu .ui-menu-item a:hover{
-    cursor: pointer;
-}
+        .ui-menu .ui-menu-item a {
+            word-wrap: break-word;
+            font-family: Calibri;
+            color: rgba(0,0,0,0.8);
+        }
+
+            .ui-menu .ui-menu-item a:hover {
+                cursor: pointer;
+            }
 
 .ordem-container {
     padding-top: 20px;
@@ -195,9 +218,13 @@ div.container {
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
 textarea {
     width: 235px;
+    max-width: 280px;
+}
+
+select {
+    width: 145px;
     max-width: 280px;
 }
 
@@ -254,4 +281,8 @@ textarea {
 
 .tab-margin {
     margin: 15px;
+}
+
+.detalhes-descricao {
+    padding-left: 8px;
 }
