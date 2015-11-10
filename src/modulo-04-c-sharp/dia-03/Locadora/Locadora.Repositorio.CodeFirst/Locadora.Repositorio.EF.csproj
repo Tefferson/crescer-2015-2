@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
+    <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="JogoRepositorio.cs" />
     <Compile Include="Migrations\201511091909533_initial.cs" />
     <Compile Include="Migrations\201511091909533_initial.Designer.cs">
