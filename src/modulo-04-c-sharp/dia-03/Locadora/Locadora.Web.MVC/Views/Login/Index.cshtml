@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
+{
+    <div class="form-group">
+        <label for="usuario">Nome:</label>
+        <input type="text" class="form-control" name="usuario" value="" />
+    </div>
+    <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" class="form-control" name="senha" value="" />
+    </div>
+
+    <input class="shiny-button" type="submit" name="enviar" value="Login" />
+}

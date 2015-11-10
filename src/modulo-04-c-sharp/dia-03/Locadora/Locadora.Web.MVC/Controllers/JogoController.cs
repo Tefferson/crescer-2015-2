@@ -3,14 +3,17 @@ using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using WebApplication1.Filters;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class JogoController : BaseController
     {
         private IJogoRepositorio repositorio = null;
 
         [HttpGet]
+        [Autorizador(Roles = "DETALHES_DO_JOGO")]
         public ActionResult Detalhes(int id)
         {
             repositorio = CriarJogoRepositorio();

@@ -4,9 +4,11 @@ using Locadora.Web.MVC.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WebApplication1.Filters;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class RelatorioController : BaseController
     {
         private IJogoRepositorio repositorio = null;
