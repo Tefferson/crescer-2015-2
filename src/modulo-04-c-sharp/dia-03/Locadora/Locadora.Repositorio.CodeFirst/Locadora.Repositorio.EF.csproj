@@ -53,13 +53,9 @@
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="JogoRepositorio.cs" />
-    <Compile Include="Migrations\201511091909533_initial.cs" />
-    <Compile Include="Migrations\201511091909533_initial.Designer.cs">
-      <DependentUpon>201511091909533_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511100113064_initial.cs" />
-    <Compile Include="Migrations\201511100113064_initial.Designer.cs">
-      <DependentUpon>201511100113064_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201511101555394_initial.cs" />
+    <Compile Include="Migrations\201511101555394_initial.Designer.cs">
+      <DependentUpon>201511101555394_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,11 +71,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511091909533_initial.resx">
-      <DependentUpon>201511091909533_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511100113064_initial.resx">
-      <DependentUpon>201511100113064_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511101555394_initial.resx">
+      <DependentUpon>201511101555394_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

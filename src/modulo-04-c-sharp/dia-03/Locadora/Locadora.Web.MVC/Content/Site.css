@@ -20,7 +20,7 @@ h3 {
     font-size: 15px;
 }
 
-input:focus, a:focus {
+input:focus, a:focus, button:focus {
     outline-color: rgba(0,0,0,0);
 }
 
