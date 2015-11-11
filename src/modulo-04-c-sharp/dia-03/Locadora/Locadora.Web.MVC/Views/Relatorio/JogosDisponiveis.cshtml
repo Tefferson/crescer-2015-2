@@ -80,18 +80,6 @@
                     }
                 </div>
             }
-            <div class="col-md-7">
-                Jogo mais caro:
-                <span>@Model.JogoMaisCaro</span>
-            </div>
-            <div class="col-md-7">
-                Jogo mais Barato:
-                <span>@Model.JogoMaisBarato</span>
-            </div>
-            <div class="col-md-7">
-                Preço médio:
-                <span> @Model.PrecoMedio.ToString("c")</span>
-            </div>
         </div>
         <div class="row" style="margin-top:22px;margin-left:0px;margin-right:0px">
             @foreach (var jogo in @Model.Jogos)

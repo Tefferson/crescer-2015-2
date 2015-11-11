@@ -52,9 +52,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicos\ServicoCriptografiaTests.cs" />
+    <Compile Include="ServicoCriptografiaTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj">
+      <Project>{0db0507b-09c5-4330-9a86-e0bab121f704}</Project>
+      <Name>Locadora.Infraestrutura.Servicos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Locadora.Repositorio.CodeFirst\Locadora.Repositorio.EF.csproj">
       <Project>{08C270A3-DA2B-4ED9-8BBA-04EB0B6507F8}</Project>
       <Name>Locadora.Repositorio.EF</Name>

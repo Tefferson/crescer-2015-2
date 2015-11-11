@@ -8,7 +8,7 @@
                 <img src="~/Content/Images/edit.png" />
             </a>
         </div>
-        <h2>@Model.Preco.ToString("c")</h2>
+        <h2>@Html.Partial("_ImagemSelo", Model.Selo.Nome)</h2>
         <h3>@Html.Partial("_ImagemCategoria", Model.Categoria)</h3>
     </div>
 </div>

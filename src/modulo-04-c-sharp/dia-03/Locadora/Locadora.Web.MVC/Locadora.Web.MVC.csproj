@@ -139,7 +139,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\submitquery.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Relatorio\JogosDisponiveis.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +201,10 @@
     <ProjectReference Include="..\Locadora.Helpers\Locadora.Helpers.csproj">
       <Project>{98cfbfa0-6792-41aa-9f4c-f69ffd0c3c5c}</Project>
       <Name>Locadora.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj">
+      <Project>{0db0507b-09c5-4330-9a86-e0bab121f704}</Project>
+      <Name>Locadora.Infraestrutura.Servicos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Locadora.Repositorio.CodeFirst\Locadora.Repositorio.EF.csproj">
       <Project>{08c270a3-da2b-4ed9-8bba-04eb0b6507f8}</Project>

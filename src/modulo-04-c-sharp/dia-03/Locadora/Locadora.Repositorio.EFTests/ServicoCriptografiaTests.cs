@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Locadora.Infraestrutura.ServicosTest
 {
@@ -9,7 +8,7 @@ namespace Locadora.Infraestrutura.ServicosTest
         [TestMethod]
         public void CriptografaSenhaComSucesso()
         {
-            var servicoCriptografia = new ServicoCriptografia();
+            var servicoCriptografia = new Locadora.Infraestrutura.Servicos.ServicoCriptografia();
             string senhaPadrao = "123";
 
             string senhaCriptografada = servicoCriptografia.CriptografarSenha(senhaPadrao);

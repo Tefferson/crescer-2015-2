@@ -21,9 +21,8 @@ namespace Locadora.Web.MVC.Controllers
             DetalhesJogoModel model = new DetalhesJogoModel()
             {
                 Nome = jogo.Nome,
-                Preco = jogo.Preco,
                 Categoria = jogo.Categoria.ToString(),
-                Selo = jogo.Selo.ToString(),
+                Selo = jogo.Selo,
                 Descricao = jogo.Descricao,
                 Imagem = jogo.Imagem,
                 Video = jogo.Video
@@ -49,7 +48,6 @@ namespace Locadora.Web.MVC.Controllers
                     Descricao = model.Descricao,
                     Imagem = model.Imagem,
                     Video = model.Video,
-                    Preco = model.Preco,
                     Selo = model.Selo
                 };
 
@@ -88,7 +86,6 @@ namespace Locadora.Web.MVC.Controllers
                 ManterJogoModel model = new ManterJogoModel()
                 {
                     Nome = jogo.Nome,
-                    Preco = jogo.Preco,
                     Categoria = jogo.Categoria,
                     Selo = jogo.Selo,
                     Descricao = jogo.Descricao,
@@ -107,7 +104,7 @@ namespace Locadora.Web.MVC.Controllers
         private void ColocarListaCategoriaEListaSeloNaViewBag()
         {
             ViewBag.ListaCategoria = new SelectList(new List<Categoria>() { Categoria.AVENTURA, Categoria.CORRIDA, Categoria.ESPORTE, Categoria.LUTA, Categoria.RPG });
-            ViewBag.ListaSelo = new SelectList(new List<Selo>() { Selo.OURO, Selo.PRATA, Selo.BRONZE });
+            ViewBag.ListaSelo = new SelectList(new List<Selo>() { new Selo("OURO", 15, 1) { }, new Selo("PRATA", 10, 2), new Selo("BRONZE", 5, 3) });
         }
     }
 }

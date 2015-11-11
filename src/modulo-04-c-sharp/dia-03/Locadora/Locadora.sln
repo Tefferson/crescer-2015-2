@@ -23,7 +23,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Helpers", "Locador
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.EF", "Locadora.Repositorio.CodeFirst\Locadora.Repositorio.EF.csproj", "{08C270A3-DA2B-4ED9-8BBA-04EB0B6507F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.EFTests", "Locadora.Repositorio.EFTests\Locadora.Repositorio.EFTests.csproj", "{397A49FE-5BCC-4FB5-9958-51509A69207F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Infraestrutura.ServicosTest", "Locadora.Repositorio.EFTests\Locadora.Infraestrutura.ServicosTest.csproj", "{397A49FE-5BCC-4FB5-9958-51509A69207F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servicos", "Servicos", "{CA6C77C5-DDC6-42AE-ABC8-F28BB5520D0C}"
+	ProjectSection(FolderStartupServices) = postProject
+		{82A7F48D-3B50-4B1E-B82E-3ADA8210C358} = {82A7F48D-3B50-4B1E-B82E-3ADA8210C358}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Infraestrutura.Servicos", "Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj", "{0DB0507B-09C5-4330-9A86-E0BAB121F704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +62,10 @@ Global
 		{397A49FE-5BCC-4FB5-9958-51509A69207F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{397A49FE-5BCC-4FB5-9958-51509A69207F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{397A49FE-5BCC-4FB5-9958-51509A69207F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DB0507B-09C5-4330-9A86-E0BAB121F704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB0507B-09C5-4330-9A86-E0BAB121F704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB0507B-09C5-4330-9A86-E0BAB121F704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB0507B-09C5-4330-9A86-E0BAB121F704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +78,8 @@ Global
 		{904D46BA-4984-4269-B153-D79D0AEFC0DD} = {B8852BF0-3657-4217-B96D-39339EDC6B84}
 		{98CFBFA0-6792-41AA-9F4C-F69FFD0C3C5C} = {904D46BA-4984-4269-B153-D79D0AEFC0DD}
 		{08C270A3-DA2B-4ED9-8BBA-04EB0B6507F8} = {4C4BE62A-458D-4CF0-91DD-92DBB516982C}
-		{397A49FE-5BCC-4FB5-9958-51509A69207F} = {B8852BF0-3657-4217-B96D-39339EDC6B84}
+		{397A49FE-5BCC-4FB5-9958-51509A69207F} = {CA6C77C5-DDC6-42AE-ABC8-F28BB5520D0C}
+		{CA6C77C5-DDC6-42AE-ABC8-F28BB5520D0C} = {B8852BF0-3657-4217-B96D-39339EDC6B84}
+		{0DB0507B-09C5-4330-9A86-E0BAB121F704} = {CA6C77C5-DDC6-42AE-ABC8-F28BB5520D0C}
 	EndGlobalSection
 EndGlobal

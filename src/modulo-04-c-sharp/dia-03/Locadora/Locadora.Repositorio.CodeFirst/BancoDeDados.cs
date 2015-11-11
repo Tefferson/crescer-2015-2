@@ -15,6 +15,7 @@ namespace Locadora.Repositorio.EF
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
+        public DbSet<Selo> Selo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -22,6 +23,7 @@ namespace Locadora.Repositorio.EF
             modelBuilder.Configurations.Add(new ClienteMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new PermissaoMap());
+            modelBuilder.Configurations.Add(new SeloMap());
             base.OnModelCreating(modelBuilder);
         }
     }

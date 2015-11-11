@@ -42,14 +42,6 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     listaOrdenada = listaDeJogos.OrderByDescending(j => j.Nome);
                 }
-                else if (ordem == "Preço(menor-maior)")
-                {
-                    listaOrdenada = listaDeJogos.OrderBy(j => j.Preco);
-                }
-                else if (ordem == "Preço(maior-menor)")
-                {
-                    listaOrdenada = listaDeJogos.OrderByDescending(j => j.Preco);
-                }
 
                 foreach (var jogo in listaOrdenada)
                 {
@@ -57,22 +49,19 @@ namespace Locadora.Web.MVC.Controllers
                     {
                         Id = jogo.Id,
                         Nome = jogo.Nome,
-                        Preco = jogo.Preco,
                         Categoria = jogo.Categoria.ToString(),
-                        Imagem = jogo.Imagem
+                        Imagem = jogo.Imagem,
+                        Selo = jogo.Selo
                     };
 
                     model.Jogos.Add(jogoModel);
                 }
                 model.QuantidadeTotalDeJogos = model.Jogos.Count;
-                model.JogoMaisBarato = model.Jogos.OrderBy(jogo => jogo.Preco).First().Nome;
-                model.JogoMaisCaro = model.Jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
-                model.PrecoMedio = model.Jogos.Average(jogo => jogo.Preco);
             }
             return View(model);
         }
 
-        public ActionResult Autocomplete(string term)
+        public JsonResult Autocomplete(string term)
         {
             var repositorio = CriarJogoRepositorio();
             return Json(repositorio.BuscarPorNome(term).Select(j => new {label=j.Nome, value=j.Id, icon=j.Imagem }), JsonRequestBehavior.AllowGet);
