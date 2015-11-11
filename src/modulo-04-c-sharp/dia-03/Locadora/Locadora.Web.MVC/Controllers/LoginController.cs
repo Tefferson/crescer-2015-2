@@ -14,6 +14,11 @@ namespace WebApplication1.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            if(ControleDeSessao.UsuarioLogado != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
