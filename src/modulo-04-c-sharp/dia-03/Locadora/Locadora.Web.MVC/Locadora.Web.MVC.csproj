@@ -150,6 +150,8 @@
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="Helpers\FabricaDeModulos.cs" />
+    <Compile Include="Segurança\ControleDeSessao.cs" />
     <Compile Include="Segurança\Filters\Autorizador.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

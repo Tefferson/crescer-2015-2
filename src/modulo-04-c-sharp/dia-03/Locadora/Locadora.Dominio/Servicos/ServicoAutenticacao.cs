@@ -5,25 +5,28 @@ namespace Locadora.Dominio.Servicos
     public class ServicoAutenticacao
     {
         private IUsuarioRepositorio repositorio;
+        private IServicoCriptografia servicoCriptografia;
 
-        public ServicoAutenticacao(IUsuarioRepositorio repositorio)
+        public ServicoAutenticacao(IUsuarioRepositorio repositorio, IServicoCriptografia servicoCriptografia)
         {
             this.repositorio = repositorio;
+            this.servicoCriptografia = servicoCriptografia;
         }
 
         public Usuario BuscarPorAutenticacao(string email, string senha)
         {
             var usuario = repositorio.BuscarPorEmail(email);
 
-            if(usuario != null)
+            if (usuario != null)
             {
-                if(usuario.Senha == senha)
+                string senhaCriptografada = servicoCriptografia.CriptografarSenha(senha);
+                if (usuario.Senha == senhaCriptografada)
                 {
                     return usuario;
                 }
             }
 
-            return null;//TODO: validar senha
+            return null;
         }
     }
 }

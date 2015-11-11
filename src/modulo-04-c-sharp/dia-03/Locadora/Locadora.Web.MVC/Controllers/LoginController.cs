@@ -1,7 +1,9 @@
 ﻿using Locadora.Dominio.Repositorio;
 using Locadora.Dominio.Servicos;
 using Locadora.Repositorio.EF;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -15,26 +17,30 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public ActionResult Login(string usuario, string senha)
+        public ActionResult Login(LoginModel loginModel)
         {
             if (ModelState.IsValid)
             {
                 IUsuarioRepositorio repositorio = new UsuarioRepositorio();
-                ServicoAutenticacao autenticador = new ServicoAutenticacao(repositorio);
+                ServicoAutenticacao autenticador = FabricaDeModulos.CriarServicoAutenticacao();
 
-                var usuarioAutenticado = autenticador.BuscarPorAutenticacao(usuario, senha);
+                var usuarioAutenticado = autenticador.BuscarPorAutenticacao(loginModel.Usuario, loginModel.Senha);
                 var autenticacaoEncontrada = usuarioAutenticado != null;
 
                 if (autenticacaoEncontrada)
                 {
-                    var usuarioLogadoModel = new UsuarioLogadoModel(usuarioAutenticado);
-
-                    FormsAuthentication.SetAuthCookie(usuario, true);
-                    Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                    ControleDeSessao.CriarSessaoDeUsuario(usuarioAutenticado);
+                    return RedirectToAction("Index", "Home");
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            ModelState.AddModelError("INVALID_LOGIN", "Usuário ou senha inválidos.");
+            return View("Index", loginModel);
+        }
+
+        public void Sair()
+        {
+            ControleDeSessao.Encerrar();
         }
 
     }

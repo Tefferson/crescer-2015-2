@@ -51,6 +51,7 @@
     <Compile Include="Repositorio\IJogoRepositorio.cs" />
     <Compile Include="Repositorio\IUsuarioRepositorio.cs" />
     <Compile Include="Selo.cs" />
+    <Compile Include="Servicos\IServicoCriptografia.cs" />
     <Compile Include="Servicos\ServicoAutenticacao.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
