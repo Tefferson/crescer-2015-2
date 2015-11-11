@@ -3,14 +3,16 @@
     ViewBag.Title = "Manter";
 }
 
-@if (Model == null)
-{
-    <h2>Criar jogo</h2>
-}
-else
-{
-    <h2>Editar jogo</h2>
-}
+<div class="titulo-manter">
+    @if (Model == null)
+    {
+        <h2>Criar jogo</h2>
+    }
+    else
+    {
+        <h2>Editar jogo</h2>
+    }
+</div>
 
 @using (Html.BeginForm("Salvar", "Jogo", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {

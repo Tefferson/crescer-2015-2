@@ -286,3 +286,7 @@ select {
 .detalhes-descricao {
     padding-left: 8px;
 }
+
+.login, .titulo-manter {
+    margin-left: 25px;
+}

@@ -1,33 +1,34 @@
 ﻿@model LoginModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Login";
 }
 
-<h2>Index</h2>
+<div class="login">
+    <h2>Login</h2>
 
-<div>
-    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
-    {
-        @Html.ValidationSummary(false)
+    <div>
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.ValidationSummary(false)
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Usuario, new { @class = "col-sm-3 control-label" })
-            <div>
-                @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Usuario)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Usuario, new { @class = "col-sm-3 control-label" })
+                <div>
+                    @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Usuario)
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Senha, new { @class = "col-sm-3 control-label" })
-            <div>
-                @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Senha)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Senha, new { @class = "col-sm-3 control-label" })
+                <div>
+                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Senha)
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <input class="shiny-button" type="submit" name="enviar" value="Login" />
-            <button type="submit" class="btn btn-primary" value="Login">Enviar</button>
-        </div>
-    }
+            <div class="form-group col-sm-offset-3">
+                <button type="submit" class="btn btn-primary" value="Login">Enviar</button>
+            </div>
+        }
+    </div>
 </div>
