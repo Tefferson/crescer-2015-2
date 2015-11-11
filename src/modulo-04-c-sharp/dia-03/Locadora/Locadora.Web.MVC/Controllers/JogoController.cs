@@ -33,7 +33,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpPost]
-        [Autorizador(Roles = "ADMIN")]
+        [Autorizador(Roles = Permissao.ADMIN)]
         public ActionResult Salvar(ManterJogoModel model)
         {
             bool podeSalvarNoBanco = ModelState.IsValid;
@@ -74,7 +74,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        [Autorizador(Roles = "ADMIN")]
+        [Autorizador(Roles = Permissao.ADMIN)]
         public ActionResult Manter(int id = -1)
         {
             ColocarListaCategoriaEListaSeloNaViewBag();
