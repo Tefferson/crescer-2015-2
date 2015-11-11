@@ -53,13 +53,13 @@
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="JogoRepositorio.cs" />
-    <Compile Include="Migrations\201511101555394_initial.cs" />
-    <Compile Include="Migrations\201511101555394_initial.Designer.cs">
-      <DependentUpon>201511101555394_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511101741128_usuario-com-permissao.cs" />
-    <Compile Include="Migrations\201511101741128_usuario-com-permissao.Designer.cs">
-      <DependentUpon>201511101741128_usuario-com-permissao.cs</DependentUpon>
+    <Compile Include="Mapping\ClienteMap.cs" />
+    <Compile Include="Mapping\JogoMap.cs" />
+    <Compile Include="Mapping\PermissaoMap.cs" />
+    <Compile Include="Mapping\UsuarioMap.cs" />
+    <Compile Include="Migrations\201511110244275_initial.cs" />
+    <Compile Include="Migrations\201511110244275_initial.Designer.cs">
+      <DependentUpon>201511110244275_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,11 +76,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511101555394_initial.resx">
-      <DependentUpon>201511101555394_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511101741128_usuario-com-permissao.resx">
-      <DependentUpon>201511101741128_usuario-com-permissao.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511110244275_initial.resx">
+      <DependentUpon>201511110244275_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
