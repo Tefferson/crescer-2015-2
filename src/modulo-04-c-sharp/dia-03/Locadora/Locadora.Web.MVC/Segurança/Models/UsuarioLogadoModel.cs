@@ -1,18 +1,29 @@
 ﻿using Locadora.Dominio;
 using System.Linq;
 
-namespace WebApplication1.Models
+namespace Locadora.Web.MVC.Models
 {
-    public class UsuarioLogado
+    public class UsuarioLogadoModel
     {
         public string Usuario { get; private set; }
 
         public string[] Permissoes { get; private set; }
 
-        public UsuarioLogado(Usuario usuario)
+        public UsuarioLogadoModel(Usuario usuario)
         {
             this.Usuario = usuario.Email;
-            this.Permissoes = usuario.Permissoes.Select(p=>p.Nome).ToArray<string>();
+
+            var permissoes = usuario.Permissoes;
+            bool usuarioPossuiPermissoes = permissoes != null;
+
+            if (usuarioPossuiPermissoes)
+            {
+                this.Permissoes = permissoes.Select(p => p.Nome).ToArray<string>();
+            }
+            else
+            {
+                Permissoes = new string[] { };
+            }
         }
     }
 }

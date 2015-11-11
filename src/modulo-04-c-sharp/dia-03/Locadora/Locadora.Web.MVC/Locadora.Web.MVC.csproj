@@ -158,6 +158,7 @@
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\ManterJogoModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
+    <Compile Include="Segurança\Models\LoginModel.cs" />
     <Compile Include="Segurança\Models\UsuarioLogadoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

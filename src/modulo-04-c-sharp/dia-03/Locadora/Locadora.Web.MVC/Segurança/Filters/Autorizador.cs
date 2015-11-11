@@ -1,8 +1,8 @@
-﻿using System.Security.Principal;
+﻿using Locadora.Web.MVC.Models;
+using System.Security.Principal;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication1.Models;
 
 namespace WebApplication1.Filters
 {
@@ -10,7 +10,7 @@ namespace WebApplication1.Filters
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            UsuarioLogado usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
+            UsuarioLogadoModel usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogadoModel;
             bool sessaoPossuiUsuarioLogado = usuarioLogado != null;
 
             if (sessaoPossuiUsuarioLogado)

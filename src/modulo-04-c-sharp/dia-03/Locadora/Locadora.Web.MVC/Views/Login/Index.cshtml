@@ -1,21 +1,33 @@
-﻿
+﻿@model LoginModel
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+<div>
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.ValidationSummary(false)
 
-@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
-{
-    <div class="form-group">
-        <label for="usuario">Nome:</label>
-        <input type="text" class="form-control" name="usuario" value="" />
-    </div>
-    <div class="form-group">
-        <label for="senha">Senha:</label>
-        <input type="password" class="form-control" name="senha" value="" />
-    </div>
-
-    <input class="shiny-button" type="submit" name="enviar" value="Login" />
-}
+        <div class="form-group">
+            @Html.LabelFor(m => m.Usuario, new { @class = "col-sm-3 control-label" })
+            <div>
+                @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Usuario)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Senha, new { @class = "col-sm-3 control-label" })
+            <div>
+                @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Senha)
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="shiny-button" type="submit" name="enviar" value="Login" />
+            <button type="submit" class="btn btn-primary" value="Login">Enviar</button>
+        </div>
+    }
+</div>

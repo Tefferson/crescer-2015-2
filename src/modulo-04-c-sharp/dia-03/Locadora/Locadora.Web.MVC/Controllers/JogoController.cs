@@ -13,7 +13,6 @@ namespace Locadora.Web.MVC.Controllers
         private IJogoRepositorio repositorio = null;
 
         [HttpGet]
-        [Autorizador(Roles = "DETALHES_DO_JOGO")]
         public ActionResult Detalhes(int id)
         {
             repositorio = CriarJogoRepositorio();
@@ -34,6 +33,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpPost]
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult Salvar(ManterJogoModel model)
         {
             bool podeSalvarNoBanco = ModelState.IsValid;
@@ -74,6 +74,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult Manter(int id = -1)
         {
             ColocarListaCategoriaEListaSeloNaViewBag();

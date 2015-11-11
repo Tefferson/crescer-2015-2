@@ -13,7 +13,17 @@ namespace Locadora.Dominio.Servicos
 
         public Usuario BuscarPorAutenticacao(string email, string senha)
         {
-            return repositorio.BuscarPorEmail(email);//TODO: validar senha
+            var usuario = repositorio.BuscarPorEmail(email);
+
+            if(usuario != null)
+            {
+                if(usuario.Senha == senha)
+                {
+                    return usuario;
+                }
+            }
+
+            return null;//TODO: validar senha
         }
     }
 }

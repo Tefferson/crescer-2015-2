@@ -1,10 +1,9 @@
 ﻿using Locadora.Dominio.Repositorio;
 using Locadora.Dominio.Servicos;
 using Locadora.Repositorio.EF;
-using System.Collections.Generic;
+using Locadora.Web.MVC.Models;
 using System.Web.Mvc;
 using System.Web.Security;
-using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -18,18 +17,21 @@ namespace WebApplication1.Controllers
 
         public ActionResult Login(string usuario, string senha)
         {
-            IUsuarioRepositorio repositorio = new UsuarioRepositorio();
-            ServicoAutenticacao autenticador = new ServicoAutenticacao(repositorio);
-
-            var usuarioAutenticado = autenticador.BuscarPorAutenticacao(usuario, senha);
-            var ehUsuarioValido = usuarioAutenticado != null;
-
-            if (ehUsuarioValido)
+            if (ModelState.IsValid)
             {
-                var usuarioLogadoModel = new UsuarioLogado(usuarioAutenticado);
+                IUsuarioRepositorio repositorio = new UsuarioRepositorio();
+                ServicoAutenticacao autenticador = new ServicoAutenticacao(repositorio);
 
-                FormsAuthentication.SetAuthCookie(usuario, true);
-                Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                var usuarioAutenticado = autenticador.BuscarPorAutenticacao(usuario, senha);
+                var autenticacaoEncontrada = usuarioAutenticado != null;
+
+                if (autenticacaoEncontrada)
+                {
+                    var usuarioLogadoModel = new UsuarioLogadoModel(usuarioAutenticado);
+
+                    FormsAuthentication.SetAuthCookie(usuario, true);
+                    Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                }
             }
 
             return RedirectToAction("Index", "Home");
