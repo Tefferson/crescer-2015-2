@@ -14,6 +14,7 @@ namespace Locadora.Web.MVC.Controllers
     {
         private IJogoRepositorio repositorio = null;
 
+        //TODO: Buscar apenas por disponíveis
         public ActionResult JogosDisponiveis(string nome, string ordem = "Título(A-Z)")
         {
             repositorio = FabricaDeModulos.CriarJogoRepositorio();

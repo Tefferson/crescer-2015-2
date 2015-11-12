@@ -52,7 +52,8 @@ namespace Locadora.Web.MVC.Controllers
                     Descricao = model.Descricao,
                     Imagem = model.Imagem,
                     Video = model.Video,
-                    Selo = seloRepositorio.BuscarPorNome(model.Selo)
+                    Selo = seloRepositorio.BuscarPorNome(model.Selo),
+                    Disponivel = true
                 };
 
                 if (deveAlterar)
