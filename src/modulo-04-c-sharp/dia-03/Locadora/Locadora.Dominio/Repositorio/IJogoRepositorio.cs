@@ -10,6 +10,8 @@ namespace Locadora.Dominio.Repositorio
     {
         IList<Jogo> BuscarPorNome(string nome);
         IList<Jogo> BuscarTodos();
+        IList<Jogo> BuscarDisponiveis();
+        IList<Jogo> BuscarIndisponiveis();
         int Criar(Jogo jogo);
         int Atualizar(Jogo jogo);
         int Excluir(int id);

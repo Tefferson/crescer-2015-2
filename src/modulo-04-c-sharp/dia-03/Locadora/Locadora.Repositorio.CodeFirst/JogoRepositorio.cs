@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Locadora.Dominio;
+using System;
 
 namespace Locadora.Repositorio.EF
 {
@@ -13,6 +14,22 @@ namespace Locadora.Repositorio.EF
             {
                 db.Entry(jogo).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();
+            }
+        }
+
+        public IList<Jogo> BuscarDisponiveis()
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Jogo.Include("Selo").Where(j => j.Disponivel).ToList();
+            }
+        }
+
+        public IList<Jogo> BuscarIndisponiveis()
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Jogo.Include("Selo").Where(j => !j.Disponivel).ToList();
             }
         }
 
