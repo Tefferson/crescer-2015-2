@@ -5,8 +5,16 @@ using Locadora.Dominio;
 
 namespace Locadora.Repositorio.EF
 {
-    class ClienteRepositorio : IClienteRepositorio
+    public class ClienteRepositorio : IClienteRepositorio
     {
+        public Cliente BuscarPorId(int idCliente)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Cliente.Find(idCliente);
+            }
+        }
+
         public IList<Cliente> BuscarPorNome(string nome)
         {
             using (var db = new BancoDeDados())
