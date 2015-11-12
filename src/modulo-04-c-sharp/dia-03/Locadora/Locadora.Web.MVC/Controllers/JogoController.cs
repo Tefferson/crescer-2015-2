@@ -1,5 +1,6 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -10,13 +11,14 @@ namespace Locadora.Web.MVC.Controllers
     [Autorizador]
     public class JogoController : BaseController
     {
-        private IJogoRepositorio repositorio = null;
+        private IJogoRepositorio jogoRepositorio = null;
+        private ISeloRepositorio seloRepositorio = null;
 
         [HttpGet]
         public ActionResult Detalhes(int id)
         {
-            repositorio = CriarJogoRepositorio();
-            var jogo = repositorio.BuscarPorId(id);
+            jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
+            var jogo = jogoRepositorio.BuscarPorId(id);
 
             DetalhesJogoModel model = new DetalhesJogoModel()
             {
@@ -40,7 +42,9 @@ namespace Locadora.Web.MVC.Controllers
             if (podeSalvarNoBanco)
             {
                 bool deveAlterar = model.Id > 0;
-                repositorio = CriarJogoRepositorio();
+                jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
+                seloRepositorio = FabricaDeModulos.CriarSeloRepositorio();
+
                 Jogo jogo = new Jogo(model.Id)
                 {
                     Nome = model.Nome,
@@ -48,17 +52,17 @@ namespace Locadora.Web.MVC.Controllers
                     Descricao = model.Descricao,
                     Imagem = model.Imagem,
                     Video = model.Video,
-                    Selo = model.Selo
+                    Selo = seloRepositorio.BuscarPorNome(model.Selo)
                 };
 
                 if (deveAlterar)
                 {
-                    repositorio.Atualizar(jogo);
+                    jogoRepositorio.Atualizar(jogo);
                     TempData["Mensagem"] = "Jogo editado com sucesso!";
                 }
                 else
                 {
-                    repositorio.Criar(jogo);
+                    jogoRepositorio.Criar(jogo);
                     TempData["Mensagem"] = "Jogo salvo com sucesso!";
                 }
 
@@ -75,19 +79,20 @@ namespace Locadora.Web.MVC.Controllers
         [Autorizador(Roles = Permissao.ADMIN)]
         public ActionResult Manter(int id = -1)
         {
+            seloRepositorio = FabricaDeModulos.CriarSeloRepositorio();
             ColocarListaCategoriaEListaSeloNaViewBag();
             bool estaEditando = id > 0;
 
             if (estaEditando)
             {
-                repositorio = CriarJogoRepositorio();
-                Jogo jogo = repositorio.BuscarPorId(id);
+                jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
+                Jogo jogo = jogoRepositorio.BuscarPorId(id);
 
                 ManterJogoModel model = new ManterJogoModel()
                 {
                     Nome = jogo.Nome,
                     Categoria = jogo.Categoria,
-                    Selo = jogo.Selo,
+                    Selo = jogo.Selo.Nome,
                     Descricao = jogo.Descricao,
                     Imagem = jogo.Imagem,
                     Video = jogo.Video
@@ -104,7 +109,7 @@ namespace Locadora.Web.MVC.Controllers
         private void ColocarListaCategoriaEListaSeloNaViewBag()
         {
             ViewBag.ListaCategoria = new SelectList(new List<Categoria>() { Categoria.AVENTURA, Categoria.CORRIDA, Categoria.ESPORTE, Categoria.LUTA, Categoria.RPG });
-            ViewBag.ListaSelo = new SelectList(new List<Selo>() { new Selo("OURO", 15, 1) { }, new Selo("PRATA", 10, 2), new Selo("BRONZE", 5, 3) });
+            ViewBag.ListaSelo = new SelectList(seloRepositorio.BuscarTodosNomes());
         }
     }
 }

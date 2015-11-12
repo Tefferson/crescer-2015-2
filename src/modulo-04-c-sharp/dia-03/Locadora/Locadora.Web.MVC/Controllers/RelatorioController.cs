@@ -1,5 +1,6 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Locadora.Web.MVC.Controllers
 
         public ActionResult JogosDisponiveis(string nome, string ordem = "Título(A-Z)")
         {
-            repositorio = CriarJogoRepositorio();
+            repositorio = FabricaDeModulos.CriarJogoRepositorio();
             var model = new RelatorioModel();
             bool buscarPorNome = !string.IsNullOrEmpty(nome);
 
@@ -63,8 +64,8 @@ namespace Locadora.Web.MVC.Controllers
 
         public JsonResult Autocomplete(string term)
         {
-            var repositorio = CriarJogoRepositorio();
-            return Json(repositorio.BuscarPorNome(term).Select(j => new {label=j.Nome, value=j.Id, icon=j.Imagem }), JsonRequestBehavior.AllowGet);
+            var repositorio = FabricaDeModulos.CriarJogoRepositorio();
+            return Json(repositorio.BuscarPorNome(term).Select(j => new { label = j.Nome, value = j.Id, icon = j.Imagem }), JsonRequestBehavior.AllowGet);
         }
     }
 }

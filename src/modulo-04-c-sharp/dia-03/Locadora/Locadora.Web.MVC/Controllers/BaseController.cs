@@ -7,9 +7,5 @@ namespace Locadora.Web.MVC.Controllers
     [Autorizador]
     public abstract class BaseController : Controller
     {
-        public IJogoRepositorio CriarJogoRepositorio()
-        {
-            return new Locadora.Repositorio.EF.JogoRepositorio();
-        }
     }
 }
