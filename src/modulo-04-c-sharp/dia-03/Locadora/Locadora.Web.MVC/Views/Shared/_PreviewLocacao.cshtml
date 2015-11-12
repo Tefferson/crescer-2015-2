@@ -1,13 +1,13 @@
 ﻿@model LocacaoModel
 
 <div class="col-md-4">
-    <img src=@Model.Imagem />
+    <img src=@Model.ImagemJogo />
 </div>
 <div class="col-md-8 borda-bonita">
     <h2 class="text-center">@Model.NomeJogo</h2>
     <h3>
         <span>Data prevista p/ devolução:</span>
-        @Model.DataPrevista
+        @Model.DataPrevista.ToString("dd/MM/yyyy")
     </h3>
     <h3>
         <span>Valor:</span>
