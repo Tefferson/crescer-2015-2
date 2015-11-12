@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\alugar.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\buscar.png" />
@@ -150,9 +151,11 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
+    <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Helpers\FabricaDeModulos.cs" />
+    <Compile Include="Models\LocacaoModel.cs" />
     <Compile Include="Segurança\ControleDeSessao.cs" />
     <Compile Include="Segurança\Filters\Autorizador.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,6 +186,8 @@
     <Content Include="Views\Shared\_CelulaJogo.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Locacao\Locacao.cshtml" />
+    <Content Include="Views\Shared\_PreviewLocacao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -48,11 +48,13 @@
     <Compile Include="Permissao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\IClienteRepositorio.cs" />
+    <Compile Include="Repositorio\ISeloRepositorio.cs" />
     <Compile Include="Repositorio\IJogoRepositorio.cs" />
     <Compile Include="Repositorio\IUsuarioRepositorio.cs" />
     <Compile Include="Selo.cs" />
     <Compile Include="Servicos\IServicoCriptografia.cs" />
     <Compile Include="Servicos\ServicoAutenticacao.cs" />
+    <Compile Include="Servicos\ServicoLocacao.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
