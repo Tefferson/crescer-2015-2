@@ -17,7 +17,7 @@ namespace Locadora.Repositorio.EF.Mapping
             Property(p => p.Disponivel).IsRequired();
             Property(p => p.Categoria).IsRequired().HasColumnName("IdCategoria");
             
-            HasRequired(o => o.Selo).WithRequiredDependent().Map(m => m.MapKey("IdSelo"));
+            HasRequired(o => o.Selo).WithMany().HasForeignKey(o => o.IdSelo);
         }
 
     }

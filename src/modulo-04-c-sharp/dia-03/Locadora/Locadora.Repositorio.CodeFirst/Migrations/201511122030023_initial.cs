@@ -26,11 +26,11 @@ namespace Locadora.Repositorio.EF.Migrations
                         Descricao = c.String(nullable: false, maxLength: 250),
                         Imagem = c.String(nullable: false, maxLength: 250),
                         Video = c.String(nullable: false, maxLength: 250),
-                        Disponivel = c.Boolean(nullable: false),
                         IdSelo = c.Int(nullable: false),
+                        Disponivel = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Selo", t => t.IdSelo)
+                .ForeignKey("dbo.Selo", t => t.IdSelo, cascadeDelete: true)
                 .Index(t => t.IdSelo);
             
             CreateTable(
@@ -49,18 +49,18 @@ namespace Locadora.Repositorio.EF.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        IdJogo = c.Int(nullable: false),
+                        IdCliente = c.Int(nullable: false),
                         Situacao = c.Int(nullable: false),
                         DataLocacao = c.DateTime(nullable: false),
                         DataPrevistaDevolucao = c.DateTime(nullable: false),
                         DataDevolucao = c.DateTime(),
-                        IdCliente = c.Int(nullable: false),
-                        IdJogo = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cliente", t => t.IdCliente)
-                .ForeignKey("dbo.Jogo", t => t.IdJogo)
-                .Index(t => t.IdCliente)
-                .Index(t => t.IdJogo);
+                .ForeignKey("dbo.Cliente", t => t.IdCliente, cascadeDelete: true)
+                .ForeignKey("dbo.Jogo", t => t.IdJogo, cascadeDelete: true)
+                .Index(t => t.IdJogo)
+                .Index(t => t.IdCliente);
             
             CreateTable(
                 "dbo.Permissao",
@@ -106,8 +106,8 @@ namespace Locadora.Repositorio.EF.Migrations
             DropForeignKey("dbo.Jogo", "IdSelo", "dbo.Selo");
             DropIndex("dbo.Usuario_Permissao", new[] { "IdPermissao" });
             DropIndex("dbo.Usuario_Permissao", new[] { "IdUsuario" });
-            DropIndex("dbo.Locacao", new[] { "IdJogo" });
             DropIndex("dbo.Locacao", new[] { "IdCliente" });
+            DropIndex("dbo.Locacao", new[] { "IdJogo" });
             DropIndex("dbo.Jogo", new[] { "IdSelo" });
             DropTable("dbo.Usuario_Permissao");
             DropTable("dbo.Usuario");

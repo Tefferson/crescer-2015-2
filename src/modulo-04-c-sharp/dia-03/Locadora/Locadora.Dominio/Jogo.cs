@@ -16,6 +16,8 @@ namespace Locadora.Dominio
 
         public string Video { get; set; }
 
+        public int IdSelo { get; set; }
+
         public Selo Selo { get; set; }
 
         public bool Disponivel { get; set; }

@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
     public class Locacao : EntidadeBase
     {
+        //TODO: unificar locação e serviço locação, são a mesma
+        public int IdJogo { get; set; }
         public Jogo Jogo { get; set; }
+        public int IdCliente { get; set; }
         public Cliente Cliente { get; set; }
         public Situacao Situacao { get; set; }
 

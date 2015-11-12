@@ -38,8 +38,8 @@ namespace Locadora.Dominio.Servicos
 
                     Locacao locacao = new Locacao()
                     {
-                        Jogo = jogo,
-                        Cliente = cliente,
+                        IdJogo = jogo.Id,
+                        IdCliente = cliente.Id,
                         Situacao = Situacao.Pendente,
                         DataLocacao = DateTime.Now,
                         DataPrevistaDevolucao = dataPrevistaParaDevolucao
@@ -54,6 +54,15 @@ namespace Locadora.Dominio.Servicos
             return false;
         }
 
+      /*  public decimal CalcularValorFinal(Locacao locacao)
+        {
+            decimal precoBase = locacao.Jogo.Selo.Preco;
+            
+            bool atrasado = locacao
+            if()
+                
+        }*/
+
         private bool ClientePossuiMenosDeTresJogosLocados(Cliente cliente)
         {
             int idCliente = cliente.Id;
@@ -61,6 +70,14 @@ namespace Locadora.Dominio.Servicos
                                     .BuscarPendentes()
                                     .Count(l => l.Cliente.Id == idCliente);
             return jogosLocados < 3;
+        }
+
+        public bool DevolverJogo(int idLocacao)
+        {
+            Locacao locacao = locacaoRepositorio.BuscarPorId(idLocacao);
+            locacao.Jogo.Disponivel = true;
+            locacao.Situacao = Situacao.Devolvido;
+            return locacaoRepositorio.Atualizar(locacao) > 0;
         }
     }
 }

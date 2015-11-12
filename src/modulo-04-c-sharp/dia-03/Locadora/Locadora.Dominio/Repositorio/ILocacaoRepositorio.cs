@@ -10,6 +10,7 @@ namespace Locadora.Dominio.Repositorio
     {
         int Criar(Locacao locacao);
         int Atualizar(Locacao locacao);
+        Locacao BuscarPorId(int idLocacao);
         IList<Locacao> BuscarPendentes();
         IList<Locacao> BuscarPendentesPorNomeDoJogo(string nomeJogo);
     }

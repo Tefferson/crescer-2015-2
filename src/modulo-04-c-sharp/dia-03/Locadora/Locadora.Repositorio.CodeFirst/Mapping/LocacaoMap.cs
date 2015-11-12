@@ -13,9 +13,11 @@ namespace Locadora.Repositorio.EF.Mapping
             Property(p => p.DataDevolucao).IsOptional();
             Property(p => p.DataLocacao).IsRequired();
             Property(p => p.DataPrevistaDevolucao).IsRequired();
+            Property(p => p.IdCliente);
+            Property(p => p.IdJogo);
 
-            HasRequired(o => o.Cliente).WithOptional().Map(m => m.MapKey("IdCliente"));
-            HasRequired(o => o.Jogo).WithOptional().Map(m => m.MapKey("IdJogo"));
+            HasRequired(o => o.Cliente).WithMany().HasForeignKey(o => o.IdCliente);
+            HasRequired(o => o.Jogo).WithMany().HasForeignKey(o => o.IdJogo);
         }
 
     }

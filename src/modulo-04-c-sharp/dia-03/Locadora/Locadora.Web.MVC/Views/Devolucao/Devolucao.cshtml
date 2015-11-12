@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Devolução";
+}
+
+<div class="preview-locacao">
+    <h1>Devolução</h1>
+    <div class="container">
+        <div class="row row-form-locacao">
+            @using (Html.BeginForm("Salvar", "Devolucao", FormMethod.Get, new { @class = "form-horizontal form-locacao", role = "form" }))
+            {
+                @Html.ValidationSummary(false)
+
+                <input type="hidden" id="locacaoIdJogo" value="jidd" />
+                <label for="texto" class="control-label">Jogo</label>
+                <input type="text" class="form-control" name="texto" id="locacaoNomeJogo" />
+
+                <div class="form-horizontal">
+                    <div class="col-md-offset-4 col-md-2">
+                        <button type="submit" onclick="submitIdLocacao();" class="btn btn-primary finalizar-locacao">Finalizar devolução</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

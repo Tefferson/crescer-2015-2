@@ -21,7 +21,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                return db.Locacao.Where(l => l.Situacao == Situacao.Pendente).ToList();
+                return db.Locacao.Include("Cliente").Include("Jogo").Where(l => l.Situacao == Situacao.Pendente).ToList();
             }
         }
 
@@ -29,7 +29,15 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                return db.Locacao.Where(l => l.Jogo.Nome == nomeJogo).ToList();
+                return db.Locacao.Include("Cliente").Include("Jogo").Where(l => l.Jogo.Nome.Equals(nomeJogo, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+        }
+
+        public Locacao BuscarPorId(int idLocacao)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Locacao.Include("Cliente").Include("Jogo").FirstOrDefault(l => l.Id == idLocacao);
             }
         }
 
