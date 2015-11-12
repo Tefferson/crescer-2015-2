@@ -12,11 +12,11 @@
         </div>
         <hr />
         <div class="row row-form-locacao">
-            @using (Html.BeginForm("Locar", "Locacao", FormMethod.Post, new { @class = "form-horizontal form-locacao", role = "form" }))
+            @using (Html.BeginForm("Salvar", "Locacao", FormMethod.Post, new { @class = "form-horizontal form-locacao", role = "form" }))
             {
                 @Html.ValidationSummary(false)
 
-                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.IdJogo)
 
                 <div class="form-horizontal">
                     <div class="col-md-offset-1 col-md-4">
