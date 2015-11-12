@@ -1,16 +1,17 @@
 ﻿@model string
 
 @{
+    string nomeDoSeloToUpper = Model.ToUpper();
     string nomeImagem = "";
-    if (@Model == "OURO")
+    if (nomeDoSeloToUpper == "OURO")
     {
         nomeImagem = "seloouro.png";
     }
-    else if (@Model == "PRATA")
+    else if (nomeDoSeloToUpper == "PRATA")
     {
         nomeImagem = "seloprata.png";
     }
-    else if (@Model == "BRONZE")
+    else if (nomeDoSeloToUpper == "BRONZE")
     {
         nomeImagem = "selobronze.png";
     }
