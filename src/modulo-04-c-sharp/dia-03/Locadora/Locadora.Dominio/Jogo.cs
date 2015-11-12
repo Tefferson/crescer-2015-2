@@ -7,7 +7,7 @@ namespace Locadora.Dominio
     public class Jogo : EntidadeBase
     {
         public string Nome { get; set; }
-        
+
         public Categoria Categoria { get; set; }
 
         public string Descricao { get; set; }
@@ -18,7 +18,7 @@ namespace Locadora.Dominio
 
         public Selo Selo { get; set; }
 
-        public Cliente ClienteLocacao { get; private set; }
+        public bool Disponivel { get; set; }
 
         public Jogo()
         {
@@ -28,12 +28,6 @@ namespace Locadora.Dominio
         public Jogo(int id, Cliente clienteLocacao = null)
         {
             this.Id = id;
-            this.ClienteLocacao = clienteLocacao;
-        }
-
-        public void LocarPara(Cliente cliente)
-        {
-            this.ClienteLocacao = cliente;
         }
 
         public override string ToString()
@@ -46,6 +40,7 @@ namespace Locadora.Dominio
             builder.AppendLine("Selo: " + this.Selo.Nome);
             builder.AppendLine("Image: " + this.Imagem);
             builder.AppendLine("Video: " + this.Video);
+            builder.AppendLine("Situação: " + (this.Disponivel ? "Disponível" : "Indisponível"));
 
             return builder.ToString();
         }
@@ -64,11 +59,11 @@ namespace Locadora.Dominio
                 return this.Id == jogoComp.Id
                     && this.Nome == jogoComp.Nome
                     && this.Categoria == jogoComp.Categoria
-                    && this.ClienteLocacao == jogoComp.ClienteLocacao
                     && this.Descricao == jogoComp.Descricao
                     && this.Selo == jogoComp.Selo
                     && this.Imagem == jogoComp.Imagem
-                    && this.Video == jogoComp.Video;
+                    && this.Video == jogoComp.Video
+                    && this.Disponivel == jogoComp.Disponivel;
             }
 
             return false;
