@@ -7,30 +7,46 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio.Servicos
 {
-    class ServicoLocacao
+    public class ServicoLocacao
     {
         private IJogoRepositorio jogoRepositorio;
         private IClienteRepositorio clienteRepositorio;
+        private ILocacaoRepositorio locacaoRepositorio;
 
-        public ServicoLocacao(IJogoRepositorio jogoRepositorio, IClienteRepositorio clienteRepositorio)
+        public ServicoLocacao(IJogoRepositorio jogoRepositorio, IClienteRepositorio clienteRepositorio, ILocacaoRepositorio locacaoRepositorio)
         {
             this.jogoRepositorio = jogoRepositorio;
             this.clienteRepositorio = clienteRepositorio;
+            this.locacaoRepositorio = locacaoRepositorio;
         }
 
-        public bool LocarJogoParaCliente(int idCliente, int idJogo)
+        public bool LocarJogoParaCliente(int idJogo, string nomeCliente)
         {
-            Cliente cliente = clienteRepositorio.BuscarPorId(idCliente);
+            Cliente cliente = clienteRepositorio.BuscarPorNome(nomeCliente).FirstOrDefault(c => c.Nome == nomeCliente);
             Jogo jogo = jogoRepositorio.BuscarPorId(idJogo);
 
-            bool jogoPodeSerLocado = jogo.ClienteLocacao == null;
+            bool jogoEClienteSaoValidos = jogo != null && cliente != null;
 
-            if (jogoPodeSerLocado)
+            if (jogoEClienteSaoValidos)
             {
-                if (ClientePossuiMenosDeTresJogosLocados(idCliente))
+                if (jogo.Disponivel && ClientePossuiMenosDeTresJogosLocados(cliente))
                 {
-                    jogo.LocarPara(cliente);
+                    jogo.Disponivel = false;
                     jogoRepositorio.Atualizar(jogo);
+
+                    DateTime dataPrevistaParaDevolucao = DateTime.Now.AddDays(jogo.Selo.PrazoDevolucao);
+
+                    Locacao locacao = new Locacao()
+                    {
+                        Jogo = jogo,
+                        Cliente = cliente,
+                        Situacao = Situacao.Pendente,
+                        DataLocacao = DateTime.Now,
+                        DataPrevistaDevolucao = dataPrevistaParaDevolucao
+                    };
+
+                    locacaoRepositorio.Criar(locacao);
+
                     return true;
                 }
             }
@@ -38,10 +54,12 @@ namespace Locadora.Dominio.Servicos
             return false;
         }
 
-        private bool ClientePossuiMenosDeTresJogosLocados(int idCliente)
+        private bool ClientePossuiMenosDeTresJogosLocados(Cliente cliente)
         {
-            int jogosLocados = jogoRepositorio.BuscarTodos()
-                                              .Count(j => j.ClienteLocacao.Id == idCliente);
+            int idCliente = cliente.Id;
+            int jogosLocados = locacaoRepositorio
+                                    .BuscarPendentes()
+                                    .Count(l => l.Cliente.Id == idCliente);
             return jogosLocados < 3;
         }
     }

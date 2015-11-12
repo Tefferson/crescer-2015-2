@@ -5,6 +5,7 @@ using Locadora.Dominio.Repositorio;
 using WebApplication1.Filters;
 using Locadora.Web.MVC.Helpers;
 using System.Linq;
+using Locadora.Dominio.Servicos;
 
 namespace Locadora.Web.MVC.Controllers
 {
@@ -12,23 +13,51 @@ namespace Locadora.Web.MVC.Controllers
     public class LocacaoController : BaseController
     {
         private IJogoRepositorio jogoRepositorio = null;
+        private IClienteRepositorio clienteRepositorio = null;
+        private ILocacaoRepositorio locacaoRepositorio = null;
+        private ServicoLocacao servicoLocacao = null;
         // GET: Locacao
+
+        [HttpGet]
         public ActionResult Locacao(int id)
         {
             jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
 
             var jogo = jogoRepositorio.BuscarPorId(id);
+            bool jogoNaoEncontrado = jogo == null;
+
+            if (jogoNaoEncontrado)
+            {
+                RedirectToAction("JogosDisponiveis", "Relatorio");
+            }
 
             var model = new LocacaoModel()
             {
-                Id = jogo.Id,
+                IdJogo = jogo.Id,
                 NomeJogo = jogo.Nome,
-                Imagem = jogo.Imagem,
+                ImagemJogo = jogo.Imagem,
+                NomeSelo = jogo.Selo.Nome,
                 Valor = jogo.Selo.Preco,
                 DataPrevista = DateTime.Now.AddDays(jogo.Selo.PrazoDevolucao)
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Salvar(LocacaoModel model)
+        {
+            jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
+            clienteRepositorio = FabricaDeModulos.CriarClienteRepositorio();
+            locacaoRepositorio = FabricaDeModulos.CriarLocacaoRepositorio();
+
+            servicoLocacao = new ServicoLocacao(jogoRepositorio, clienteRepositorio, locacaoRepositorio);
+
+            bool locacaoEfetuadaComSucesso = servicoLocacao.LocarJogoParaCliente(model.IdJogo, model.NomeCliente);
+
+            @TempData["Mensagem"] = locacaoEfetuadaComSucesso ? "Locação efetuada" : "Erro na locação";
+
+            return RedirectToAction("JogosDisponiveis", "Relatorio");
         }
 
         public JsonResult Autocomplete(string term)

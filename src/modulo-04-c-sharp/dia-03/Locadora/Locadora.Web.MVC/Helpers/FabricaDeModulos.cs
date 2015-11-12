@@ -28,6 +28,11 @@ namespace Locadora.Web.MVC.Helpers
             return new SeloRepositorio();
         }
 
+        public static ILocacaoRepositorio CriarLocacaoRepositorio()
+        {
+            return new LocacaoRepositorio();
+        }
+
         public static IServicoCriptografia CriarServicoCriptografia()
         {
             return new ServicoCriptografia();
