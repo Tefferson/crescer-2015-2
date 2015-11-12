@@ -142,29 +142,29 @@ form input.transparente {
             font-weight: bolder;
         }
 
-.ui-menu {
+.jogo-lista-autocomplete {
     width: 273px;
     list-style-type: none;
     padding-top: 2px;
 }
 
-    .ui-menu .ui-menu-item {
+    .jogo-lista-autocomplete .ui-menu-item {
         margin-left: -50px;
         background-color: rgba(255,255,255,0.9);
         font-size: 15px;
     }
 
-        .ui-menu .ui-menu-item img {
+        .jogo-lista-autocomplete .ui-menu-item img {
             margin: 5px;
         }
 
-        .ui-menu .ui-menu-item a {
+        .jogo-lista-autocomplete .ui-menu-item a {
             word-wrap: break-word;
             font-family: Calibri;
             color: rgba(0,0,0,0.8);
         }
 
-            .ui-menu .ui-menu-item a:hover {
+            .jogo-lista-autocomplete .ui-menu-item a:hover {
                 cursor: pointer;
             }
 
@@ -290,3 +290,65 @@ select {
 .login, .titulo-manter {
     margin-left: 25px;
 }
+
+.preview-locacao {
+    margin: 15px;
+}
+
+    .preview-locacao div div.row {
+        margin: 0;
+        background-color: rgba(0,0,0,0.75);
+    }
+
+    .preview-locacao img {
+        height: 225px;
+        width: 225px;
+        padding: 15px 0;
+        padding-right: 15px;
+    }
+
+.borda-bonita {
+    height: 195px;
+    width: 65%;
+    padding: 15px;
+    margin: 15px 0;
+    margin-right: 15px;
+    border: 1px solid #f1f1f1;
+}
+
+    .borda-bonita h2 {
+        font-size: 27px;
+    }
+
+.finalizar-locacao {
+    margin-top: 26px;
+}
+
+.form-locacao {
+    margin: 0;
+    padding: 0;
+    height: 90px;
+}
+
+.cliente-lista-autocomplete {
+    width: 100px;
+    list-style-type: none;
+    padding-top: 2px;
+}
+
+    .cliente-lista-autocomplete .ui-menu-item {
+        margin-left: -40px;
+        background-color: rgba(255,255,255,0.9);
+        font-size: 15px;
+    }
+
+        .cliente-lista-autocomplete .ui-menu-item a {
+            word-wrap: break-word;
+            font-family: Calibri;
+            color: rgba(0,0,0,0.8);
+            margin-left: 5px;
+        }
+
+            .cliente-lista-autocomplete .ui-menu-item a:hover {
+                cursor: pointer;
+            }
