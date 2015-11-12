@@ -9,14 +9,10 @@ namespace Locadora.Web.MVC.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "É obrigatório informar um nome válido")]
         public string Nome { get; set; }
-        [Required(ErrorMessage = "É obrigatório informar um preço válido")]
-        [DisplayName("Preço")]
-        [RegularExpression("[0-9]+(,[0-9]{2})?", ErrorMessage = "É obrigatório informar um preço válido")]
-        public decimal Preco { get; set; }
         [Required(ErrorMessage = "É obrigatório selecionar uma categoria válida")]
         public Categoria Categoria { get; set; }
         [Required(ErrorMessage = "É obrigatório selecionar um selo válido")]
-        public Selo Selo { get; set; }
+        public string Selo { get; set; }
         [Required(ErrorMessage = "É obrigatório inserir uma descrição")]
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
