@@ -13,7 +13,7 @@ namespace Locadora.Repositorio.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201511112047269_initial"; }
+            get { return "201511120257239_initial"; }
         }
         
         string IMigrationMetadata.Source
