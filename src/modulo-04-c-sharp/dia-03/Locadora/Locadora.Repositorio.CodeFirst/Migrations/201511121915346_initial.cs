@@ -26,13 +26,11 @@ namespace Locadora.Repositorio.EF.Migrations
                         Descricao = c.String(nullable: false, maxLength: 250),
                         Imagem = c.String(nullable: false, maxLength: 250),
                         Video = c.String(nullable: false, maxLength: 250),
-                        IdClienteLocacao = c.Int(),
+                        Disponivel = c.Boolean(nullable: false),
                         IdSelo = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cliente", t => t.IdClienteLocacao)
                 .ForeignKey("dbo.Selo", t => t.IdSelo)
-                .Index(t => t.IdClienteLocacao)
                 .Index(t => t.IdSelo);
             
             CreateTable(
@@ -45,6 +43,24 @@ namespace Locadora.Repositorio.EF.Migrations
                         PrazoDevolucao = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Locacao",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Situacao = c.Int(nullable: false),
+                        DataLocacao = c.DateTime(nullable: false),
+                        DataPrevistaDevolucao = c.DateTime(nullable: false),
+                        DataDevolucao = c.DateTime(),
+                        IdCliente = c.Int(nullable: false),
+                        IdJogo = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Cliente", t => t.IdCliente)
+                .ForeignKey("dbo.Jogo", t => t.IdJogo)
+                .Index(t => t.IdCliente)
+                .Index(t => t.IdJogo);
             
             CreateTable(
                 "dbo.Permissao",
@@ -85,15 +101,18 @@ namespace Locadora.Repositorio.EF.Migrations
         {
             DropForeignKey("dbo.Usuario_Permissao", "IdPermissao", "dbo.Permissao");
             DropForeignKey("dbo.Usuario_Permissao", "IdUsuario", "dbo.Usuario");
+            DropForeignKey("dbo.Locacao", "IdJogo", "dbo.Jogo");
+            DropForeignKey("dbo.Locacao", "IdCliente", "dbo.Cliente");
             DropForeignKey("dbo.Jogo", "IdSelo", "dbo.Selo");
-            DropForeignKey("dbo.Jogo", "IdClienteLocacao", "dbo.Cliente");
             DropIndex("dbo.Usuario_Permissao", new[] { "IdPermissao" });
             DropIndex("dbo.Usuario_Permissao", new[] { "IdUsuario" });
+            DropIndex("dbo.Locacao", new[] { "IdJogo" });
+            DropIndex("dbo.Locacao", new[] { "IdCliente" });
             DropIndex("dbo.Jogo", new[] { "IdSelo" });
-            DropIndex("dbo.Jogo", new[] { "IdClienteLocacao" });
             DropTable("dbo.Usuario_Permissao");
             DropTable("dbo.Usuario");
             DropTable("dbo.Permissao");
+            DropTable("dbo.Locacao");
             DropTable("dbo.Selo");
             DropTable("dbo.Jogo");
             DropTable("dbo.Cliente");
