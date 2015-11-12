@@ -41,7 +41,7 @@
                     <span>Classificar por</span>
                     <select class="ordem" onchange="$('.form-filtro').submit()">
                         @{
-                            var opcoes = new List<string>() { "Título(A-Z)", "Título(Z-A)", "Preço(menor-maior)", "Preço(maior-menor)" };
+                            var opcoes = new List<string>() { "Título(A-Z)", "Título(Z-A)" };
                             foreach (string opcao in opcoes)
                             {
                                 if (opcao == ViewBag.Ordem)
