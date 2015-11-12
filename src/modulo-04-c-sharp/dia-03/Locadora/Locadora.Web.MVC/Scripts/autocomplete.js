@@ -45,9 +45,6 @@
         minLength: 2,
         select: function (event, ui) {
             event.preventDefault();
-            if (ui.item) {
-                location.href = '/Jogo/Detalhes/' + ui.item.value;
-            }
         },
         focus: function (event, ui) { event.preventDefault(); $(".cliente-busca").val(ui.item.label); }
     });
