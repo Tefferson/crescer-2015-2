@@ -13,16 +13,5 @@ namespace Locadora.Dominio.Test
 
             Assert.AreEqual(jogoA, jogoB);
         }
-
-        [TestMethod]
-        public void LocacaoParaClienteTemIdCorreto()
-        {
-            Jogo jogo = new Jogo();
-            Cliente cliente = new Cliente(id: 1);
-
-            jogo.LocarPara(cliente);
-
-            Assert.AreEqual(cliente, jogo.ClienteLocacao);
-        }
     }
 }
