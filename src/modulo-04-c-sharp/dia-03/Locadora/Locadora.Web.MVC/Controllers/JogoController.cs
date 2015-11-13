@@ -60,11 +60,13 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     jogoRepositorio.Atualizar(jogo);
                     TempData["Mensagem"] = "Jogo editado com sucesso!";
+                    TempData["TipoMensagem"] = "sucesso";
                 }
                 else
                 {
                     jogoRepositorio.Criar(jogo);
                     TempData["Mensagem"] = "Jogo salvo com sucesso!";
+                    TempData["TipoMensagem"] = "sucesso";
                 }
 
                 return RedirectToAction("JogosDisponiveis", "Relatorio");

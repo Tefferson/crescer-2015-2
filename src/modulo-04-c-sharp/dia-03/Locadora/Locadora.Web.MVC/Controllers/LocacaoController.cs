@@ -56,6 +56,7 @@ namespace Locadora.Web.MVC.Controllers
             bool locacaoEfetuadaComSucesso = servicoLocacao.LocarJogoParaCliente(model.IdJogo, model.NomeCliente);
 
             @TempData["Mensagem"] = locacaoEfetuadaComSucesso ? "Locação efetuada" : "Erro na locação";
+            @TempData["TipoMensagem"] = locacaoEfetuadaComSucesso ? "sucesso" : "falha";
 
             return RedirectToAction("JogosDisponiveis", "Relatorio");
         }
