@@ -1,0 +1,27 @@
+﻿@model DevolucaoModel
+
+@{
+    ViewBag.Title = "Devolução - Detalhes";
+}
+
+<div class="preview-devolucao">
+    <h2>Detalhes</h2>
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_PreviewDevolucao", Model)
+        </div>
+        <div class="row">
+            <div class="col-md-offset-9 col-md-2">
+                @using (Html.BeginForm("Devolver", "Devolucao", FormMethod.Post, new { @class = "form-horizontal form-devolucao", role = "form" }))
+                {
+                    @Html.ValidationSummary(false)
+
+                    //@Html.HiddenFor(m => m.IdLocacao)
+                    <input type="hidden" value=@Model.IdLocacao name="idLocacao" />
+
+                    <button type="submit" class="btn btn-primary finalizar-devolucao">Finalizar devolução</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
