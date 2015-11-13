@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Locadora.Dominio.Repositorio
 {
@@ -12,6 +8,7 @@ namespace Locadora.Dominio.Repositorio
         int Atualizar(Locacao locacao);
         Locacao BuscarPorId(int idLocacao);
         IList<Locacao> BuscarPendentes();
+        IList<Locacao> BuscarPorNomeDoJogo(string term);
         IList<Locacao> BuscarPendentesPorNomeDoJogo(string nomeJogo);
     }
 }

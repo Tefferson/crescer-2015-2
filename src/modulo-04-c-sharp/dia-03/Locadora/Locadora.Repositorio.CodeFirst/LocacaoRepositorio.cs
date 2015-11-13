@@ -12,6 +12,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
+                db.Entry(locacao.Jogo).State = System.Data.Entity.EntityState.Modified;
                 db.Entry(locacao).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();
             }
@@ -21,7 +22,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                return db.Locacao.Include("Cliente").Include("Jogo").Where(l => l.Situacao == Situacao.Pendente).ToList();
+                return db.Locacao.Include("Cliente").Include("Jogo.Selo").Where(l => l.Situacao == Situacao.Pendente).ToList();
             }
         }
 
@@ -29,7 +30,8 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                return db.Locacao.Include("Cliente").Include("Jogo").Where(l => l.Jogo.Nome.Equals(nomeJogo, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                return db.Locacao.Include("Cliente").Include("Jogo.Selo").Where(l => l.Jogo.Nome.Equals(nomeJogo, StringComparison.InvariantCultureIgnoreCase)
+                                                                                     && l.Situacao == Situacao.Pendente).ToList();
             }
         }
 
@@ -37,7 +39,15 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new BancoDeDados())
             {
-                return db.Locacao.Include("Cliente").Include("Jogo").FirstOrDefault(l => l.Id == idLocacao);
+                return db.Locacao.Include("Cliente").Include("Jogo.Selo").FirstOrDefault(l => l.Id == idLocacao);
+            }
+        }
+
+        public IList<Locacao> BuscarPorNomeDoJogo(string term)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Locacao.Include("Cliente").Include("Jogo.Selo").Where(l => l.Jogo.Nome.Contains(term)).ToList();
             }
         }
 

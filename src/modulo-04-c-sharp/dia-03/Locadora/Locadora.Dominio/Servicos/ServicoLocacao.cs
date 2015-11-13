@@ -1,9 +1,6 @@
 ﻿using Locadora.Dominio.Repositorio;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Locadora.Dominio.Servicos
 {
@@ -54,14 +51,26 @@ namespace Locadora.Dominio.Servicos
             return false;
         }
 
-      /*  public decimal CalcularValorFinal(Locacao locacao)
+        public decimal CalcularValorFinal(Locacao locacao)
         {
             decimal precoBase = locacao.Jogo.Selo.Preco;
-            
-            bool atrasado = locacao
-            if()
-                
-        }*/
+            int prazo = locacao.Jogo.Selo.PrazoDevolucao;
+
+            TimeSpan diff = DateTime.Now - locacao.DataLocacao;
+            int diasDesdeALocacao = diff.Days;
+
+            bool deveAplicarMulta = diasDesdeALocacao > prazo;
+
+            if (deveAplicarMulta)
+            {
+                decimal valorDaMultaPorDiaAtrasado = 5m;
+                int diasDeAtraso = diasDesdeALocacao - prazo;
+
+                precoBase += diasDeAtraso * valorDaMultaPorDiaAtrasado;
+            }
+
+            return precoBase;
+        }
 
         private bool ClientePossuiMenosDeTresJogosLocados(Cliente cliente)
         {
@@ -75,9 +84,16 @@ namespace Locadora.Dominio.Servicos
         public bool DevolverJogo(int idLocacao)
         {
             Locacao locacao = locacaoRepositorio.BuscarPorId(idLocacao);
-            locacao.Jogo.Disponivel = true;
-            locacao.Situacao = Situacao.Devolvido;
-            return locacaoRepositorio.Atualizar(locacao) > 0;
+
+            if (locacao.Situacao == Situacao.Pendente)
+            {
+                locacao.Jogo.Disponivel = true;
+                locacao.Situacao = Situacao.Devolvido;
+                locacao.DataDevolucao = DateTime.Now;
+                return locacaoRepositorio.Atualizar(locacao) > 0;
+            }
+
+            return false;
         }
     }
 }

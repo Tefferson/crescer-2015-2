@@ -4,7 +4,6 @@ namespace Locadora.Dominio
 {
     public class Locacao : EntidadeBase
     {
-        //TODO: unificar locação e serviço locação, são a mesma
         public int IdJogo { get; set; }
         public Jogo Jogo { get; set; }
         public int IdCliente { get; set; }
