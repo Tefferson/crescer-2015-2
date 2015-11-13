@@ -5,14 +5,7 @@
         public string Nome { get; set; }
         public decimal Preco { get; set; }
         public int PrazoDevolucao { get; set; }
-
-        public Selo(string nome, decimal preco, int prazoDevolucao)
-        {
-            Nome = nome;
-            Preco = preco;
-            PrazoDevolucao = prazoDevolucao;
-        }
-
+        
         public Selo() { }
 
         public override string ToString()

@@ -34,7 +34,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpPost]
-        [Autorizador(Roles = Permissao.ADMIN)]
+        [Autorizador(Roles = Permissao.ADMINISTRADOR)]
         public ActionResult Salvar(ManterJogoModel model)
         {
             bool podeSalvarNoBanco = ModelState.IsValid;
@@ -79,7 +79,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        [Autorizador(Roles = Permissao.ADMIN)]
+        [Autorizador(Roles = Permissao.ADMINISTRADOR)]
         public ActionResult Manter(int id = -1)
         {
             seloRepositorio = FabricaDeModulos.CriarSeloRepositorio();

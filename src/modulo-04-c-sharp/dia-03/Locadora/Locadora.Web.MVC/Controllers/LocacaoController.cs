@@ -6,6 +6,7 @@ using WebApplication1.Filters;
 using Locadora.Web.MVC.Helpers;
 using System.Linq;
 using Locadora.Dominio.Servicos;
+using Locadora.Dominio;
 
 namespace Locadora.Web.MVC.Controllers
 {
@@ -19,6 +20,7 @@ namespace Locadora.Web.MVC.Controllers
         // GET: Locacao
 
         [HttpGet]
+        [Autorizador(Roles = Permissao.OPERADOR)]
         public ActionResult Locacao(int id)
         {
             jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
@@ -45,6 +47,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpPost]
+        [Autorizador(Roles = Permissao.OPERADOR)]
         public ActionResult Salvar(LocacaoModel model)
         {
             jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();

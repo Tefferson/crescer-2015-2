@@ -1,4 +1,5 @@
 ﻿using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace Locadora.Web.MVC.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Sair() {
+            ControleDeSessao.Encerrar();            
+            return RedirectToAction("Index");
         }
     }
 }

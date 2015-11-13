@@ -21,11 +21,14 @@ namespace Locadora.Web.MVC.Controllers
         private ServicoLocacao servicoLocacao = null;
 
         // GET: Devolucao
+        [HttpGet]
         public ActionResult Devolucao()
         {
             return View();
         }
 
+        [Autorizador(Roles = Permissao.OPERADOR)]
+        [HttpPost]
         public ActionResult Devolver(int idLocacao)
         {
             locacaoRepositorio = FabricaDeModulos.CriarLocacaoRepositorio();
@@ -41,6 +44,7 @@ namespace Locadora.Web.MVC.Controllers
             return RedirectToAction("Devolucao");
         }
 
+        [HttpGet]
         public ActionResult Detalhes(string nomeJogo)
         {
             locacaoRepositorio = FabricaDeModulos.CriarLocacaoRepositorio();
@@ -69,7 +73,8 @@ namespace Locadora.Web.MVC.Controllers
             TempData["TipoMensagem"] = "Falha";
             return View("Devolucao");
         }
-
+        
+        [HttpGet]
         public JsonResult Autocomplete(string term)
         {
             var repositorio = FabricaDeModulos.CriarLocacaoRepositorio();

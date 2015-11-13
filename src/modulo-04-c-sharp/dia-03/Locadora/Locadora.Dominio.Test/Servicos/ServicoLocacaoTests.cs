@@ -29,7 +29,7 @@ namespace Locadora.Dominio.Test
         public void DevolverJogoTest()
         {
             var servicoLocacao = CriarServicoLocacao();
-            Assert.IsFalse(servicoLocacao.DevolverJogo(1));
+            Assert.IsTrue(servicoLocacao.DevolverJogo(1));
         }
 
         private ServicoLocacao CriarServicoLocacao()

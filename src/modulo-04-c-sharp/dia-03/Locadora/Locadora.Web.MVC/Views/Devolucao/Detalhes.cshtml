@@ -15,11 +15,10 @@
                 @using (Html.BeginForm("Devolver", "Devolucao", FormMethod.Post, new { @class = "form-horizontal form-devolucao", role = "form" }))
                 {
                     @Html.ValidationSummary(false)
-
-                    //@Html.HiddenFor(m => m.IdLocacao)
+                    
                     <input type="hidden" value=@Model.IdLocacao name="idLocacao" />
 
-                    <button type="submit" class="btn btn-primary finalizar-devolucao">Finalizar devolução</button>
+                    <button type="submit" class="btn btn-primary finalizar-devolucao" autofocus>Finalizar devolução</button>
                 }
             </div>
         </div>

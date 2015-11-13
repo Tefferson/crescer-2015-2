@@ -17,7 +17,7 @@ namespace Locadora.Dominio
             Senha = senha;
         }
 
-        public Usuario() { }
+        public Usuario() { Permissoes = new List<Permissao>(); }
 
         public bool TemPermissao(string nomePermissao)
         {

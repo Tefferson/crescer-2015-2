@@ -9,7 +9,7 @@ namespace Locadora.Dominio.Test
         public void UsuarioEhCriadoSemPermissoes()
         {
             Usuario usuario = new Usuario();
-            Assert.IsNull(usuario.Permissoes);
+            Assert.IsNotNull(usuario.Permissoes);
         }
 
         [TestMethod]

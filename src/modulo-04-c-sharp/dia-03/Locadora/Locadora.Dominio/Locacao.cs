@@ -13,5 +13,11 @@ namespace Locadora.Dominio
         public DateTime DataLocacao { get; set; }
         public DateTime DataPrevistaDevolucao { get; set; }
         public DateTime? DataDevolucao { get; set; }
+
+        public Locacao(int idLocacao) {
+            Id = idLocacao;
+        }
+
+        public Locacao() { }
     }
 }

@@ -43,13 +43,15 @@ namespace Locadora.Dominio.Test.Mocks
         {
             var locacoes = new List<Locacao>();
 
-            Locacao locacao1 = new Locacao()
+            Locacao locacao1 = new Locacao(1)
             {
                 IdCliente = 1,
                 IdJogo = 1,
                 Situacao = Situacao.Pendente,
-                DataLocacao = new DateTime(2015, 1, 1),
-                DataPrevistaDevolucao = new DateTime(2015, 1, 3)
+                DataLocacao = new DateTime(2015, 11, 11),
+                DataPrevistaDevolucao = new DateTime(2015, 11, 13),
+                Jogo = new JogoRepositorioMock().BuscarPorId(1),
+                Cliente = new ClienteRepositorioMock().BuscarPorId(1),
             };
 
             locacoes.Add(locacao1);
