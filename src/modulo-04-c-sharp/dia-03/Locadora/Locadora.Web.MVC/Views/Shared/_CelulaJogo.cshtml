@@ -6,13 +6,17 @@
         <div class="nome">
             @Model.Nome
             <a href='@Url.Action("Manter", "Jogo")/@Model.Id'>
-                <img src="~/Content/Images/edit.png" />
+                <div class="imagem-manter">
+                    <img src="~/Content/Images/edit.png" />
+                </div>
             </a>
             <a href='@Url.Action("Locacao", "Locacao")/@Model.Id'>
-                <img src="~/Content/Images/alugar.png" />
+                <div class="imagem-locar">
+                    <img class="imagem-locar" src="~/Content/Images/alugar.png" />
+                </div>
             </a>
         </div>
-        <h2>@Html.Partial("_ImagemSelo", Model.Selo.Nome)</h2>
+        <h3>@Html.Partial("_ImagemSelo", Model.Selo.Nome)</h3>
         <h3>@Html.Partial("_ImagemCategoria", Model.Categoria)</h3>
     </div>
 </div>

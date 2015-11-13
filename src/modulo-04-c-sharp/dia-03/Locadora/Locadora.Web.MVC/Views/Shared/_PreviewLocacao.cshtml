@@ -1,7 +1,8 @@
 ﻿@model LocacaoModel
 
-<div class="col-md-4">
+<div class="col-md-4 imagem-com-selo">
     <img src=@Model.ImagemJogo />
+    @Html.Partial("_ImagemSelo", @Model.NomeSelo)
 </div>
 <div class="col-md-8 borda-bonita">
     <h2 class="text-center">@Model.NomeJogo</h2>
