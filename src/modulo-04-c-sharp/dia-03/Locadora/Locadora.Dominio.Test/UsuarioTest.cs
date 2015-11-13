@@ -8,14 +8,14 @@ namespace Locadora.Dominio.Test
         [TestMethod]
         public void UsuarioEhCriadoSemPermissoes()
         {
-            var usuario = new Usuario();
-            Assert.AreEqual(0, usuario.Permissoes.Count);
+            Usuario usuario = new Usuario();
+            Assert.IsNull(usuario.Permissoes);
         }
 
         [TestMethod]
         public void UsuarioComUmaPermissaoAdmin()
         {
-            var usuario = new Usuario();
+            Usuario usuario = new Usuario();
             usuario.AdicionarPermissao(new Permissao("Admin"));
 
             Assert.IsTrue(usuario.TemPermissao("Admin"));
@@ -24,7 +24,7 @@ namespace Locadora.Dominio.Test
         [TestMethod]
         public void UsuarioNaoTemPermissaoAdmin()
         {
-            var usuario = new Usuario();
+            Usuario usuario = new Usuario();
             usuario.AdicionarPermissao(new Permissao("User"));
 
             Assert.IsFalse(usuario.TemPermissao("Admin"));

@@ -6,6 +6,18 @@ namespace Locadora.Dominio.Test
     public class JogoTest
     {
         [TestMethod]
+        public void JogoTemNomeTesteEEstaIndisponivel()
+        {
+            Jogo jogo = new Jogo() {
+                Nome = "Teste",
+                Disponivel = false
+            };
+
+            Assert.AreEqual("Teste", jogo.Nome);
+            Assert.IsFalse(jogo.Disponivel);
+        }
+
+        [TestMethod]
         public void JogoADeveSerIgualJogoB()
         {
             Jogo jogoA = new Jogo(id: 1, clienteLocacao: null);
