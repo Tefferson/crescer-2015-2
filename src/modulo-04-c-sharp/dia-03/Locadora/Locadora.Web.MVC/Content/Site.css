@@ -92,6 +92,7 @@ form input.transparente {
     .celula-jogo h3 {
         font-size: 10px;
         font-weight: bolder;
+        transform: translateY(-17px);
     }
 
     .celula-jogo:hover {
@@ -165,6 +166,32 @@ form input.transparente {
         }
 
             .jogo-lista-autocomplete .ui-menu-item a:hover {
+                cursor: pointer;
+            }
+
+.locacao-lista-autocomplete {
+    width: 273px;
+    list-style-type: none;
+    padding-top: 2px;
+}
+
+    .locacao-lista-autocomplete .ui-menu-item {
+        margin-left: -40px;
+        background-color: rgba(255,255,255,0.9);
+        font-size: 15px;
+    }
+
+        .locacao-lista-autocomplete .ui-menu-item img {
+            margin: 5px;
+        }
+
+        .locacao-lista-autocomplete .ui-menu-item a {
+            word-wrap: break-word;
+            font-family: Calibri;
+            color: rgba(0,0,0,0.8);
+        }
+
+            .locacao-lista-autocomplete .ui-menu-item a:hover {
                 cursor: pointer;
             }
 
@@ -291,15 +318,18 @@ select {
     margin-left: 25px;
 }
 
-.preview-locacao {
+.preview-locacao,
+.preview-devolucao {
     margin: 15px;
 }
 
-    .preview-locacao div div.row {
+    .preview-locacao div div.row,
+    .preview-devolucao div div.row {
         margin: 0;
         background-color: rgba(0,0,0,0.75);
     }
 
+    .preview-devolucao img,
     .preview-locacao img {
         height: 225px;
         width: 225px;
@@ -324,10 +354,23 @@ select {
     margin-top: 26px;
 }
 
+.finalizar-devolucao {
+    transform: translate3d(30px,-10px,0);
+}
+
 .form-locacao {
     margin: 0;
     padding: 0;
     height: 90px;
+}
+
+.form-devolucao {
+    margin-left: 30px;
+    padding: 0;
+}
+
+.row-form-devolucao, .titulo-devolucao {    
+    margin-left: 30px;
 }
 
 .cliente-lista-autocomplete {
@@ -352,3 +395,40 @@ select {
             .cliente-lista-autocomplete .ui-menu-item a:hover {
                 cursor: pointer;
             }
+
+.imagem-com-selo span img {
+    width: 40px;
+    height: 54px;
+    position: absolute;
+    transform: translate3d(-45px, 7px, 0);
+}
+
+.mensagem-sucesso {
+    color: limegreen;
+    margin-left: 30px;
+}
+
+.mensagem-falha {
+    color: indianred;
+    margin-left: 30px;
+}
+
+.mensagem {
+    margin-left: 30px;
+}
+
+.botao-devolver {
+    transform: translate3d(0,-60px,0);
+}
+
+.imagem-manter {
+    position: absolute;
+    transform: translate3d(70px, 49px, 0);
+    z-index: 99;
+}
+
+.imagem-locar {
+    position: absolute;
+    transform: translate3d(45px, 27px, 0);
+    z-index: 99;
+}
