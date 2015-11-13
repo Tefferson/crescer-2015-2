@@ -189,8 +189,11 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Locacao\Locacao.cshtml" />
-    <Content Include="Views\Shared\_PreviewLocacao.cshtml" />
+    <Content Include="Views\Shared\_PreviewDevolucao.cshtml" />
     <Content Include="Views\Devolucao\Devolucao.cshtml" />
+    <Content Include="Views\Devolucao\Detalhes.cshtml" />
+    <Content Include="Views\Shared\_PreviewLocacao.cshtml" />
+    <Content Include="Views\Shared\_Mensagem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -52,9 +52,9 @@
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="Mapping\LocacaoMap.cs" />
-    <Compile Include="Migrations\201511122030023_initial.cs" />
-    <Compile Include="Migrations\201511122030023_initial.Designer.cs">
-      <DependentUpon>201511122030023_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201511130040243_initial.cs" />
+    <Compile Include="Migrations\201511130040243_initial.Designer.cs">
+      <DependentUpon>201511130040243_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="SeloRepositorio.cs" />
     <Compile Include="ClienteRepositorio.cs" />
@@ -80,8 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511122030023_initial.resx">
-      <DependentUpon>201511122030023_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511130040243_initial.resx">
+      <DependentUpon>201511130040243_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
