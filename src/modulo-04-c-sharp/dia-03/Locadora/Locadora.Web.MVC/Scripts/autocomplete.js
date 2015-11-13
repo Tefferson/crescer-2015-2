@@ -49,12 +49,36 @@
         focus: function (event, ui) { event.preventDefault(); $(".cliente-busca").val(ui.item.label); }
     });
 
-    clienteBusca.data("autocomplete")._renderMenu = function (ul, items) {
-        var self = this;
-        $.each(items, function (index, item) {
-            if (index < 5)
-            { self._renderItem(ul, item); }
-        });
-        $('.ui-menu').addClass("cliente-lista-autocomplete");
+    if (!!clienteBusca.data("autocomplete")) {
+        clienteBusca.data("autocomplete")._renderMenu = function (ul, items) {
+            var self = this;
+            $.each(items, function (index, item) {
+                if (index < 5)
+                { self._renderItem(ul, item); }
+            });
+            $('.ui-menu').addClass("cliente-lista-autocomplete");
+        };
+    };
+
+    var devolucaoBusca = $(".devolucao-busca").autocomplete({
+        source: '/Devolucao/Autocomplete',
+        minLength: 2,
+        select: function (event, ui) {
+            event.preventDefault();
+        },
+        focus: function (event, ui) { event.preventDefault(); $(".devolucao-busca").val(ui.item.label); }
+    });
+
+    if (!!devolucaoBusca.data("autocomplete")) {
+        devolucaoBusca.data("autocomplete")._renderItem = function (ul, item) {
+            var newItem = $("<li>").data("item.autocomplete", item);
+            if (item.icon) {
+                newItem.append("<img width='50' height=50 src=" + item.icon + " />")
+            }
+            newItem.append("<a>" + item.label + "</a>")
+                .appendTo(ul);
+            $('.ui-menu').addClass("locacao-lista-autocomplete");
+            return newItem;
+        };
     };
 });
