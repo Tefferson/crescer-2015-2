@@ -1,0 +1,23 @@
+﻿@{
+    bool temMensagemParaMostrar = TempData["Mensagem"] != null;
+    if (temMensagemParaMostrar)
+    {
+
+        if (TempData["TipoMensagem"] != null)
+        {
+            string tipoMensagem = TempData["TipoMensagem"].ToString();
+            if (tipoMensagem == "sucesso")
+            {
+                <h1 class="mensagem-sucesso">@TempData["Mensagem"]</h1>
+            }
+            else if (tipoMensagem == "falha")
+            {
+                <h1 class="mensagem-falha">@TempData["Mensagem"]</h1>
+            }
+        }
+        else
+        {
+            <h1 class="mensagem">@TempData["Mensagem"]</h1>
+        }
+    }
+}
