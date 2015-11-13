@@ -1,0 +1,16 @@
+﻿@model DevolucaoModel
+
+<div class="col-md-4">
+    <img src=@Model.ImagemJogo />
+</div>
+<div class="col-md-8 borda-bonita">
+    <h2 class="text-center">@Model.NomeJogo</h2>
+    <h3>
+        <span>Data de locação:</span>
+        @Model.DataLocacao.ToString("dd/MM/yyyy")
+    </h3>
+    <h3>
+        <span>Valor final:</span>
+        @Model.ValorFinal
+    </h3>
+</div>
