@@ -1,0 +1,18 @@
+package Interfaces;
+
+import java.util.List;
+
+public interface ILinkedList<T> {
+
+    void addFirst(T value);
+
+    T getFirst();
+
+    T getLast();
+
+    boolean isEmpty();
+    
+    List<T> list();
+    
+    void addLast(T value);
+}

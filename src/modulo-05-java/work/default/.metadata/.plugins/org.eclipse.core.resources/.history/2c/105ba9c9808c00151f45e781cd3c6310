@@ -1,0 +1,11 @@
+package br.com.cwi;
+
+
+public class Aplicacao {
+
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("primeiro");
+    }
+}

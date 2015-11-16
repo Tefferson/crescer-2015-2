@@ -1,0 +1,70 @@
+package br.com.cwi;
+
+import java.util.List;
+
+import Interfaces.ILinkedList;
+
+public class DoublyLinkedList<T> implements ILinkedList<T>{
+
+    private Node<T> first, last;
+
+    private class Node<E> {
+
+        protected E value;
+        protected Node<E> next, previous;
+    }
+
+    @Override
+    public void addFirst(T value) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public T getFirst() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public T getLast() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public List<T> list() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void addLast(T value) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void removeFirst() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void add(int index, T value) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void remove(int index) {
+        // TODO Auto-generated method stub
+        
+    }
+}

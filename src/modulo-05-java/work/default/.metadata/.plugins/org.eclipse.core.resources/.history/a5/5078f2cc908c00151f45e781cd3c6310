@@ -1,0 +1,6 @@
+package br.com.cwi.exception;
+
+
+public class EmptyListException {
+
+}

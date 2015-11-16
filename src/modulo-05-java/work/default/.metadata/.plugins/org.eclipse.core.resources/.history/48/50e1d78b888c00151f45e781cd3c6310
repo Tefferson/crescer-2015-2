@@ -1,0 +1,97 @@
+package br.com.cwi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LinkedList {
+
+    private Node last, first;
+
+    public void addFirst(String value) {
+        Node node = new Node(value, first);
+
+        if (first == null) {
+            last = node;
+        }
+        first = node;
+    }
+
+    public String getFirst() {
+        return first == null ? null : first.getValue();
+    }
+
+    public String getLast() {
+        return last == null ? null : last.getValue();
+    }
+
+    public List<String> list() {
+        ArrayList<String> list = new ArrayList<>();
+
+        Node actual = first;
+
+        while (actual != null) {
+            list.add(actual.getValue());
+            actual = actual.getNext();
+        }
+
+        return list;
+    }
+
+    public void addLast(String value) {
+        Node newLast = new Node(value);
+
+        if (first == null) {
+            first = newLast;
+        } else {
+            last.setNext(newLast);
+        }
+        last = newLast;
+    }
+
+    public void removeFirst() {
+        if (first != null) {
+            first = first.getNext();
+        }
+    }
+
+    public void add(int index, String value) {
+
+        if (index == 0 || first == null) {
+            addFirst(value);
+        } else {
+            Node actualNode = first;
+
+            for (int i = 1; i < index; i++) {
+                actualNode = actualNode.getNext();
+            }
+
+            Node newNode = new Node(value);
+
+            newNode.setNext(actualNode.getNext());
+
+            actualNode.setNext(newNode);
+        }
+    }
+
+    public void remove(int index) {
+        if (index == 0 || first == null) {
+            removeFirst();
+        } else {
+            Node actualNode = first;
+            boolean canRemove = true;
+
+            for (int i = 1; i < index; i++) {
+                if (actualNode == null) {
+                    canRemove = false;
+                    break;
+                }
+                actualNode = actualNode.getNext();
+            }
+
+            if (canRemove) {
+                actualNode.setNext(actualNode.getNext().getNext());
+            }
+        }
+    }
+
+}

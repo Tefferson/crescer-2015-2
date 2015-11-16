@@ -1,0 +1,8 @@
+package Interfaces;
+
+
+public interface ILinkedList<T>{
+    void addFirst(T value);
+    T getFirst();
+    
+}

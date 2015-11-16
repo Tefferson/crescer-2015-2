@@ -1,0 +1,15 @@
+package br.com.cwi;
+
+
+public class Aplicacao {
+
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        linkedList.addFirst("terceiro");
+        linkedList.addLast("último");
+        System.out.println(linkedList.list());
+    }
+}

@@ -1,0 +1,25 @@
+package br.com.cwi;
+
+import java.util.List;
+
+public class Aplicacao {
+
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        linkedList.addFirst("terceiro");
+        linkedList.addLast("último");
+        System.out.println(linkedList.list());
+
+        LinkedList listaNova = new LinkedList() {
+
+            @Override
+            public List<String> list() {
+                // TODO Auto-generated method stub
+                return super.list();
+            }
+        };
+    }
+}

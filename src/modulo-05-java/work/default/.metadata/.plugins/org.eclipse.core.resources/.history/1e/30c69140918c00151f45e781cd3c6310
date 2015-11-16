@@ -1,0 +1,9 @@
+package br.com.cwi.exception;
+
+
+public class EmptyListException extends Exception {
+
+    public EmptyListException(String msg) {
+
+    }
+}

@@ -1,0 +1,59 @@
+package br.com.cwi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LinkedList {
+
+    private Node last, first;
+
+    public void addFirst(String value) {
+        Node node = new Node(value, first);
+
+        if (first == null) {
+            last = node;
+        }
+        first = node;
+    }
+
+    public String getFirst() {
+        return first.getValue();
+    }
+
+    public String getLast() {
+        return last.getValue();
+    }
+
+    public List<String> list() {
+        ArrayList<String> list = new ArrayList<>();
+
+        Node actual = first;
+
+        while (actual != null) {
+            list.add(actual.getValue());
+            actual = actual.getNext();
+        }
+
+        return list;
+    }
+
+    public void addLast(String value) {
+        Node newLast = new Node(value);
+
+        if (first == null) {
+            first = newLast;
+        } else {
+            last.setNext(newLast);
+        }
+        last = newLast;
+    }
+
+    public void removeFirst() {
+        first = first.getNext();
+    }
+
+    public void insert(int index) {
+        int actual = 0;
+    }
+
+}

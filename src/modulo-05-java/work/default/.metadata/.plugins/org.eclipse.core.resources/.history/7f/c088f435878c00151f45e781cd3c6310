@@ -1,0 +1,133 @@
+package br.com.cwi.test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import br.com.cwi.LinkedList;
+
+public class LinkedListTest {
+
+    @Test
+    public void adicionarUmNodoNalistaVazia() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("primeiro");
+
+        assertEquals("primeiro", linkedList.getFirst());
+        assertEquals("primeiro", linkedList.getLast());
+    }
+
+    @Test
+    public void adicionarTresNodosNalistaVazia() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        linkedList.addFirst("terceiro");
+
+        assertEquals("terceiro", linkedList.getFirst());
+        assertEquals("primeiro", linkedList.getLast());
+    }
+
+    @Test
+    public void adicionarUltimo() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        linkedList.addLast("último");
+
+        assertEquals("segundo", linkedList.getFirst());
+        assertEquals("último", linkedList.getLast());
+    }
+
+    @Test
+    public void adicionarApenasUltimo() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addLast("último");
+
+        assertEquals("último", linkedList.getFirst());
+        assertEquals("último", linkedList.getLast());
+    }
+
+    @Test
+    public void listaTresNodos() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addLast("último");
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+
+        assertEquals(3, linkedList.list().size());
+    }
+
+    @Test
+    public void listaUmNodo() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("primeiro");
+
+        assertEquals(1, linkedList.list().size());
+    }
+
+    @Test
+    public void listaNenhumNodo() {
+        LinkedList linkedList = new LinkedList();
+
+        assertEquals(0, linkedList.list().size());
+    }
+
+    @Test
+    public void removerPrimeiro() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addLast("último");
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+
+        linkedList.removeFirst();
+
+        assertEquals(2, linkedList.list().size());
+        assertEquals("primeiro", linkedList.getFirst());
+    }
+
+    @Test
+    public void removerPrimeiroEmListaVazia() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.removeFirst();
+
+        assertEquals(0, linkedList.list().size());
+        assertEquals(null, linkedList.getFirst());
+    }
+
+    @Test
+    public void insereNaPosicaoZero() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("Valor");
+        linkedList.addFirst("Valor3");
+        linkedList.addFirst("Valor4");
+        linkedList.add(1, "Valor2");
+
+        assertEquals(4, linkedList.list().size());
+        assertEquals("Valor2", linkedList.list().get(1));
+    }
+
+    @Test
+    public void removeTerceiroNodo() {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.addFirst("Valor");
+        linkedList.addFirst("Valor3");
+        linkedList.addFirst("Valor4");
+        linkedList.add(1, "Valor2");
+        linkedList.remove(3);
+
+        assertEquals(3, linkedList.list().size());
+        assertEquals("Valor4", linkedList.list().get(2));
+    }
+
+}
