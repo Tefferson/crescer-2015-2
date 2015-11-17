@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LinkedListTest" project="projetoCrescer" tests="17" started="17" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.cwi.test.LinkedListTest" time="0.0">
+    <testcase name="adicionarUmNodoNalistaVazia" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="insereNaPosicaoUm" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="insereNaPosicaoZero" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="removerPrimeiroEmListaVazia" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="removeDaListaVazia" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="removerPrimeiro" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="adicionarApenasUltimo" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="removeDePosicaoInexistente" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="adicionarTresNodosNalistaVazia" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="removePrimeiroNodo" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="insereNaListaVazia" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="listaTresNodos" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="adicionarUltimo" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="listaUmNodo" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="adicionaEmPosicaoInexistente" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="removeTerceiroNodo" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+    <testcase name="listaNenhumNodo" classname="br.com.cwi.test.LinkedListTest" time="0.0"/>
+  </testsuite>
+</testrun>

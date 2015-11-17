@@ -1,0 +1,153 @@
+package br.com.cwi.application;
+
+import java.util.List;
+import java.util.Scanner;
+
+import br.com.cwi.list.linked.LinkedList;
+import br.com.cwi.list.linked.DoublyLinkedList;
+import br.com.cwi.list.linked.ILinkedList;
+
+public class Application {
+	private LinkedList<String> linkedList;
+	private DoublyLinkedList<String> doublyLinkedList;
+	private ILinkedList<String> actualList;
+	private Scanner scanner;
+
+	public final int MAIN_MENU = 0;
+	public final int ADD_MENU = 1;
+	public final int ADD = 1;
+	public final int ADD_FIRST = 2;
+	public final int ADD_LAST = 3;
+	public final int REMOVE_MENU = 2;
+	public final int REMOVE = 1;
+	public final int REMOVE_FIRST = 2;
+	public final int REMOVE_LAST = 3;
+	public final int LIST = 3;
+	public final int CHANGE_LIST = 4;
+	public final int EXIT = 0;
+	public final int LINKED_LIST = 1;
+	public final int LINKED_LISTDOUBLY_LINKED_LIST = 2;
+
+	public final String INFORME_VALOR = "Informe o valor:";
+	public final String INFORME_POSICAO = "Informe a posição:";
+
+	private void start() {
+		linkedList = new LinkedList<>();
+		doublyLinkedList = new DoublyLinkedList<>();
+		actualList = linkedList;
+		scanner = new Scanner(System.in);
+		menu();
+	}
+
+	private void menu() {
+
+		boolean isRunning = true;
+
+		while (isRunning) {
+
+			System.out.println(buildMenuOptions(MAIN_MENU));
+
+			switch (scanner.nextInt()) {
+			case ADD_MENU:
+				addElementOption();
+			case REMOVE_MENU:
+				break;
+			case LIST:
+				listElements();
+				break;
+			case CHANGE_LIST:
+				changeList();
+				break;
+			case EXIT:
+				isRunning = false;
+				break;
+			}
+		}
+
+	}
+
+	private void changeList() {
+		actualList = actualList instanceof LinkedList ? doublyLinkedList : linkedList;
+		
+		System.out.println("Lista trocada!!!");
+	}
+
+	private void listElements() {
+		List<String> list = actualList.list();
+		int size = list.size();
+
+		for (int i = 0; i < size; i++) {
+			System.out.println(i + ": " + list.get(i));
+		}
+	}
+
+	private void addElementOption() {
+		System.out.println(buildMenuOptions(ADD_MENU));
+
+		int option = scanner.nextInt();
+		scanner.nextLine();
+		
+		System.out.println("Informe o valor:");
+		
+		String value = scanner.nextLine();
+
+		switch (option) {
+		case ADD:
+			int index = scanner.nextInt();
+			actualList.add(index, value);
+			break;
+		case ADD_FIRST:
+			actualList.addFirst(value);
+			break;
+		case ADD_LAST:
+			actualList.addLast(value);
+			break;
+		}
+	}
+
+	private String buildMenuOptions(int menuIndex) {
+		switch (menuIndex) {
+
+		case MAIN_MENU:
+			return mainMenuOptions();
+		case ADD_MENU:
+			return addMenuOptions();
+		default:
+			return null;
+		}
+	}
+
+	private String mainMenuOptions() {
+
+		StringBuilder sb = new StringBuilder();
+		String newLine = System.getProperty("line.separator");
+
+		String actualListType = actualList instanceof LinkedList ? "LinkedList" : "DoublyLinkedList";
+
+		sb.append(ADD_MENU + "-Adicionar" + newLine);
+		sb.append(REMOVE_MENU + "-Remover" + newLine);
+		sb.append(LIST + "-Listar" + newLine);
+		sb.append(CHANGE_LIST + "-Trocar lista(atual: " + actualListType + ")" + newLine);
+		sb.append(EXIT + "-Sair" + newLine);
+
+		return sb.toString();
+	}
+
+	private String addMenuOptions() {
+
+		StringBuilder sb = new StringBuilder();
+		String newLine = System.getProperty("line.separator");
+
+		sb.append(ADD + "-Adicionar" + newLine);
+		sb.append(ADD_FIRST + "-Adicionar primeiro" + newLine);
+		sb.append(ADD_LAST + "-Adicionar último" + newLine);
+
+		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+
+		new Application().start();
+
+	}
+}

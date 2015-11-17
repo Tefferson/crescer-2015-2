@@ -1,0 +1,29 @@
+package br.com.cwi.application.screen;
+
+import br.com.cwi.application.Application;
+
+public class MenuScreen implements IScreen{
+	private Application application;
+
+	public MenuScreen(Application application) {
+		this.application = application;
+	}
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String options() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

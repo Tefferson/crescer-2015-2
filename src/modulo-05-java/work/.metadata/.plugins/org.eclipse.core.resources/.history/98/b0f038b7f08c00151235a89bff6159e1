@@ -1,0 +1,10 @@
+package br.com.cwi.application.menu;
+
+public interface IScreen {
+	
+	void show();
+	
+	void action();
+	
+	String options();
+}

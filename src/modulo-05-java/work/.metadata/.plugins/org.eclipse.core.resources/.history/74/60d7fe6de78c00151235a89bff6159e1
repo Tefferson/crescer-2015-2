@@ -1,0 +1,55 @@
+package br.com.cwi.application;
+
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import br.com.cwi.list.linked.LinkedList;
+import br.com.cwi.list.linked.DoublyLinkedList;
+
+public class Application {
+	private LinkedList<String> linkedList;
+	private DoublyLinkedList<String> doublyLinkedList;
+	private Scanner scanner;
+
+	private final int LIST = 3;
+	private final int INSERIR = 1;
+	private final int REMOVER = 2;
+	private final int EXIT = 0;
+	private final int LINKED_LIST = 1;
+	private final int LINKED_LISTDOUBLY_LINKED_LIST = 2;
+
+	private void start() {
+		LinkedList<String> linkedList = new LinkedList<>();
+		DoublyLinkedList<String> doublyLinkedList = new DoublyLinkedList<>();
+		Scanner scanner = new Scanner(System.in);
+		menu();
+	}
+
+	private void menu() {
+		boolean isRunning = true;
+		String menuOptions = buildMenuOptions();
+
+		while (isRunning) {
+
+		}
+
+		scanner.close();
+	}
+
+	private String buildMenuOptions() {
+		StringBuilder sb = new StringBuilder();
+		String newLine = System.getProperty("line.separator");
+
+		sb.append("1-" + newLine);
+
+		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+
+		new Application().start();
+
+	}
+}
