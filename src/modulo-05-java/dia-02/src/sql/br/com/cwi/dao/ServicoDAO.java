@@ -10,7 +10,7 @@ import java.util.List;
 import sql.br.com.cwi.jdbc.ConnectionFactory;
 import sql.br.com.cwi.model.Servico;
 
-public class ServicoDAO {
+public class ServicoDAO implements IDAO<Servico>{
 
 	public void insert(Servico servico) {
 

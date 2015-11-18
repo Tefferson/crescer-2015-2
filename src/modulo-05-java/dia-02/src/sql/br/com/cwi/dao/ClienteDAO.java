@@ -10,7 +10,7 @@ import java.util.List;
 import sql.br.com.cwi.jdbc.ConnectionFactory;
 import sql.br.com.cwi.model.Cliente;
 
-public class ClienteDAO {
+public class ClienteDAO implements IDAO<Cliente>{
 
 	public void insert(Cliente cliente) {
 
