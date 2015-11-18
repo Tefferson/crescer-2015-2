@@ -22,7 +22,7 @@ public class ServicoDAO implements IDAO<Servico>{
 
 			PreparedStatement statement = connection.prepareStatement(sql);
 
-			statement.setLong(1, servico.getIdServico());
+			statement.setLong(1, servico.getId());
 			statement.setString(2, servico.getDsServico());
 
 			statement.executeQuery();
@@ -49,7 +49,7 @@ public class ServicoDAO implements IDAO<Servico>{
 			while (result.next()) {
 				Servico servico = new Servico();
 
-				servico.setIdServico(result.getLong("idCliente"));
+				servico.setId(result.getLong("idCliente"));
 				servico.setDsServico(result.getString("nmCliente"));
 				
 				servicos.add(servico);

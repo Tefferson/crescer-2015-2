@@ -1,20 +1,10 @@
 package sql.br.com.cwi.model;
 
-public class Cliente {
-
-	private Long idCliente;
+public class Cliente extends BaseModel {
 
 	private String nmCliente;
 
 	private String nrCpf;
-
-	public Long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
 
 	public String getNmCliente() {
 		return nmCliente;
@@ -39,7 +29,7 @@ public class Cliente {
 		String newLine = System.lineSeparator();
 
 		sb.append(newLine + "Nome: " + this.nmCliente + newLine);
-		sb.append("Id: " + this.idCliente + newLine);
+		sb.append("Id: " + super.getId() + newLine);
 		sb.append("CPF: " + this.nrCpf + newLine);
 
 		return sb.toString();

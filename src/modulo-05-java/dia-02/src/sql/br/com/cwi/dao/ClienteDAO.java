@@ -22,7 +22,7 @@ public class ClienteDAO implements IDAO<Cliente>{
 
 			PreparedStatement statement = connection.prepareStatement(sql);
 
-			statement.setLong(1, cliente.getIdCliente());
+			statement.setLong(1, cliente.getId());
 			statement.setString(2, cliente.getNmCliente());
 			statement.setString(3, cliente.getNrCpf());
 
@@ -50,7 +50,7 @@ public class ClienteDAO implements IDAO<Cliente>{
 			while (result.next()) {
 				Cliente cliente = new Cliente();
 
-				cliente.setIdCliente(result.getLong("idCliente"));
+				cliente.setId(result.getLong("idCliente"));
 				cliente.setNmCliente(result.getString("nmCliente"));
 				cliente.setNrCpf(result.getString("nrCpf"));
 				

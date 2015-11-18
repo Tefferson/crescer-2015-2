@@ -1,15 +1,9 @@
 package sql.br.com.cwi.model;
 
-public class Servico {
-	private Long idServico;
+public class Servico extends BaseModel{
+	
 	private String dsServico;
 	
-	public Long getIdServico() {
-		return idServico;
-	}
-	public void setIdServico(Long idServico) {
-		this.idServico = idServico;
-	}
 	public String getDsServico() {
 		return dsServico;
 	}
@@ -23,7 +17,7 @@ public class Servico {
 
 		String newLine = System.lineSeparator();
 
-		sb.append(newLine + "Id: " + this.idServico + newLine);
+		sb.append(newLine + "Id: " + super.getId() + newLine);
 		sb.append("Descrição: " + this.dsServico + newLine);
 
 		return sb.toString();

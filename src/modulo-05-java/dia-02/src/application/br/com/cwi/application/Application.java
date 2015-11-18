@@ -6,8 +6,8 @@ import java.util.Scanner;
 import list.br.com.cwi.list.linked.DoublyLinkedList;
 import list.br.com.cwi.list.linked.ILinkedList;
 import list.br.com.cwi.list.linked.LinkedList;
-import sql.br.com.cwi.dao.ClienteDAO;
-import sql.br.com.cwi.model.Cliente;
+import sql.br.com.cwi.dao.DAOFactory;
+import sql.br.com.cwi.dao.IDAO;
 
 public class Application {
 	private LinkedList<String> linkedList;
@@ -42,16 +42,13 @@ public class Application {
 
 	public static void main(String[] args) throws IOException {
 
-		Cliente cliente = new Cliente();
-
-		cliente.setIdCliente(3L);
-		cliente.setNmCliente("Tefferson");
-		cliente.setNrCpf("019283asy");
-
+		IDAO<?> clientDAO = DAOFactory.createClienteDAO();
+		
 		try {
-			System.out.println(new ClienteDAO().listAll());
-//			new ClienteDAO().insert(cliente);
+			System.out.println(clientDAO.listAll());
+			
 		} catch (Exception e) {
+
 			System.out.println("Erro sql!!!");
 		}
 
