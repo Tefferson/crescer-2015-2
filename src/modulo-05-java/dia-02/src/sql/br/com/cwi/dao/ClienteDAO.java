@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import sql.br.com.cwi.dao.exception.NoRecordFoundException;
 import sql.br.com.cwi.jdbc.ConnectionFactory;
 import sql.br.com.cwi.model.Cliente;
 
@@ -119,7 +120,7 @@ public class ClienteDAO implements IDAO<Cliente> {
 				cliente.setNrCpf(resultSet.getString("nrCpf"));
 
 			} else {
-				throw new RuntimeException("Registro não encontrado");
+				throw new NoRecordFoundException();
 			}
 
 			return cliente;

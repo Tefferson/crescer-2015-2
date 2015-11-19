@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import sql.br.com.cwi.dao.exception.NoRecordFoundException;
 import sql.br.com.cwi.jdbc.ConnectionFactory;
 import sql.br.com.cwi.model.Pedido;
 
@@ -107,7 +108,7 @@ public class PedidoDAO implements IDAO<Pedido> {
 				pedido.setDsPedido(resultSet.getString("dspedido"));
 
 			} else {
-				throw new RuntimeException("Registro não encontrado");
+				throw new NoRecordFoundException();
 			}
 
 			return pedido;
@@ -120,8 +121,62 @@ public class PedidoDAO implements IDAO<Pedido> {
 	}
 
 	@Override
-	public List<Pedido> find(Pedido t) {
-		// TODO Auto-generated method stub
+	public List<Pedido> find(Pedido pedidoFiltro) {
+		
+		try (Connection connection = ConnectionFactory.getConnection()) {
+
+			StringBuilder qry = new StringBuilder();
+
+			qry.append("select idpedido, idcliente, dspedido from pedido where 1=1 ");
+
+			ArrayList<Object> parameters = new ArrayList<>();
+
+			Object idFiltro = pedidoFiltro.getId();
+			Object idClienteFiltro = pedidoFiltro.getIdCliente();
+			Object dsPedidoFiltro = pedidoFiltro.getDsPedido();
+
+			if (idFiltro != null) {
+				qry.append(" and idpedido = ?");
+				parameters.add(idFiltro);
+			}
+			
+			if (idClienteFiltro != null) {
+				qry.append(" and idcliente = ?");
+				parameters.add(idClienteFiltro);
+			}
+
+			if (dsPedidoFiltro != null) {
+				qry.append(" and dsservico = ?");
+				parameters.add(dsPedidoFiltro);
+			}
+
+			PreparedStatement statement = connection.prepareStatement(qry.toString());
+
+			for (int i = 0; i < parameters.size(); i++) {
+				statement.setObject(i + 1, parameters.get(i));
+			}
+
+			ResultSet resultSet = statement.executeQuery();
+
+			ArrayList<Pedido> pedidos = new ArrayList<>();
+
+			while (resultSet.next()) {
+
+				Pedido pedido = new Pedido();
+				pedido.setId(resultSet.getLong("idpedido"));
+				pedido.setIdCliente(resultSet.getLong("idcliente"));
+				pedido.setDsPedido(resultSet.getString("dspedido"));
+
+				pedidos.add(pedido);
+
+			}
+
+			return pedidos;
+
+		} catch (SQLException e) {
+			System.out.println("Erro sql!!!");
+		}
+
 		return null;
 	}
 		

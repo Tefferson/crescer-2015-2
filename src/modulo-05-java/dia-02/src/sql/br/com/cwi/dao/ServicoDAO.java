@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import sql.br.com.cwi.dao.exception.NoRecordFoundException;
 import sql.br.com.cwi.jdbc.ConnectionFactory;
 import sql.br.com.cwi.model.Servico;
 
@@ -89,9 +90,9 @@ public class ServicoDAO implements IDAO<Servico> {
 		} catch (SQLException e) {
 			System.out.println("Erro sql!!!");
 		}
-		
+
 		return 0;
-		
+
 	}
 
 	public Servico load(Long idServico) {
@@ -116,7 +117,7 @@ public class ServicoDAO implements IDAO<Servico> {
 				servico.setDsServico(resultSet.getString("dsServico"));
 
 			} else {
-				throw new RuntimeException("Registro não encontrado");
+				throw new NoRecordFoundException();
 			}
 
 			return servico;
