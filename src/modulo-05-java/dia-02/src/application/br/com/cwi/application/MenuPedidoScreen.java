@@ -1,14 +1,10 @@
 package application.br.com.cwi.application;
 
-import sql.br.com.cwi.dao.PedidoDAO;
-
 public class MenuPedidoScreen implements IScreen {
 
 	public final int INCLUIR_PEDIDO = 1;
-	public final int REMOVE_MENU = 2;
-	public final int LIST = 3;
-	public final int CHANGE_LIST = 4;
-	public final int WRITE_LIST = 5;
+	public final int LOAD_PEDIDO = 2;
+	public final int LIST_CLIENTE_PEDIDOS = 3;
 	public final int EXIT = 0;
 
 	private Application application;
@@ -32,18 +28,11 @@ public class MenuPedidoScreen implements IScreen {
 		case INCLUIR_PEDIDO:
 			new AddPedidoScreen(application).show();
 			break;
-		case REMOVE_MENU:
-			new RemoveScreen(application).show();
+		case LOAD_PEDIDO:
+			new LoadPedidoScreen(application).show();
 			break;
-		case LIST:
-			new ListPedidoScreen((PedidoDAO) application.getPedidoDAO()).show();
-			break;
-		case CHANGE_LIST:
-			application.changeList();
-			System.out.println("Lista trocada!!!");
-			break;
-		case WRITE_LIST:
-			new WriteScreen(application).show();
+		case LIST_CLIENTE_PEDIDOS:
+			new ListPedidoScreen(application).show();
 			break;
 		case EXIT:
 			System.out.println("Programa finalizado!");
@@ -60,15 +49,11 @@ public class MenuPedidoScreen implements IScreen {
 	public String options() {
 
 		StringBuilder sb = new StringBuilder();
-		String newLine = System.getProperty("line.separator");
-
-		String actualListType = application.getActualList().getClass().getSimpleName();
+		String newLine = System.lineSeparator();
 
 		sb.append(INCLUIR_PEDIDO + "-Incluir pedido" + newLine);
-		sb.append(REMOVE_MENU + "-Remover" + newLine);
-		sb.append(LIST + "-Listar" + newLine);
-		sb.append(CHANGE_LIST + "-Trocar lista(atual: " + actualListType + ")" + newLine);
-		sb.append(WRITE_LIST + "-Gravar lista" + newLine);
+		sb.append(LOAD_PEDIDO + "-Buscar pedido" + newLine);
+		sb.append(LIST_CLIENTE_PEDIDOS + "-Listar" + newLine);
 		sb.append(EXIT + "-Sair" + newLine);
 
 		return sb.toString();
