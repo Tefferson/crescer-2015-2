@@ -6,7 +6,6 @@ import java.util.Scanner;
 import list.br.com.cwi.list.linked.DoublyLinkedList;
 import list.br.com.cwi.list.linked.ILinkedList;
 import list.br.com.cwi.list.linked.LinkedList;
-import sql.br.com.cwi.dao.ClienteDAO;
 import sql.br.com.cwi.dao.DAOFactory;
 import sql.br.com.cwi.dao.IDAO;
 import sql.br.com.cwi.model.Cliente;
@@ -51,31 +50,35 @@ public class Application {
 	public IDAO<Pedido> getPedidoDAO() {
 		return pedidoDAO;
 	}
-	
+
 	public IDAO<Cliente> getClienteDAO() {
 		return clienteDAO;
 	}
 
 	public static void main(String[] args) throws IOException {
+		IDAO<Cliente> clienteDAO = DAOFactory.createClienteDAO();
+		IDAO<Servico> servicoDAO = DAOFactory.createServicoDAO();
+		IDAO<Pedido> pedidoDAO = DAOFactory.createPedidoDAO();
 
-		/*
-		 * IDAO<Cliente> clientDAO = DAOFactory.createClienteDAO();
-		 * 
-		 * IDAO<Servico> servicoDAO = DAOFactory.createServicoDAO();
-		 * 
-		 * IDAO<Pedido> pedidoDAO = DAOFactory.createPedidoDAO();
-		 * 
-		 * Cliente cliente = new Cliente(); cliente.setNmCliente("Tefferson");
-		 * cliente.setNrCpf("AAAAAAAAAA");
-		 * 
-		 * Servico servico = new Servico(); servico.setDsServico(
-		 * "Serviço de teste"); servicoDAO.insert(servico);
-		 * 
-		 * Pedido pedido = new Pedido(); pedido.setDsPedido("olaaaaaa");
-		 * pedido.setIdCliente(3L);
-		 * 
-		 * System.out.println(pedidoDAO.load(5L));
-		 */
+		Cliente cliente = new Cliente();
+		cliente.setNmCliente("Teff");
+		cliente.setNrCpf("BBBBB");
+
+		Servico servico = new Servico();
+		servico.setDsServico("Serviço bom!!!");
+		servicoDAO.insert(servico);
+
+		Pedido pedido = new Pedido();
+		pedido.setDsPedido("Pedidoo");
+		pedido.setIdCliente(2L);
+
+		// clienteDAO.insert(cliente);
+		// servicoDAO.insert(servico);
+		// pedidoDAO.insert(pedido);
+
+		// System.out.println(clienteDAO.listAll());
+		// System.out.println(servicoDAO.listAll());
+		// System.out.println(pedidoDAO.listAll());
 
 		try {
 			new Application().start();
