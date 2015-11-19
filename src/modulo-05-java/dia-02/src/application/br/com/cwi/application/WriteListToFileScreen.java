@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 import io.br.com.cwi.io.FileIO;
 
-public class WriteScreen implements IScreen {
+public class WriteListToFileScreen implements IScreen {
 
 	private List<String> list;
 	private Scanner scanner;
 
-	public WriteScreen(Application application) {
+	public WriteListToFileScreen(Application application) {
 		this.list = application.getActualList().list();
 		this.scanner = application.getScanner();
 	}

@@ -2,11 +2,11 @@ package application.br.com.cwi.application;
 
 import java.util.List;
 
-public class ListScreen implements IScreen {
+public class ListListElementsScreen implements IScreen {
 
 	private List<String> list;
 
-	public ListScreen(List<String> list) {
+	public ListListElementsScreen(List<String> list) {
 		this.list = list;
 	}
 

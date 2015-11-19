@@ -4,20 +4,19 @@ import java.util.Scanner;
 
 import list.br.com.cwi.list.linked.ILinkedList;
 
-public class AddScreen implements IScreen{
-	
-	public final int ADD = 1;
-	public final int ADD_FIRST = 2;
-	public final int ADD_LAST = 3;
+public class RemoveListItemScreen implements IScreen {
+
+	public final int REMOVE = 1;
+	public final int REMOVE_FIRST = 2;
 
 	private Scanner scanner;
 	private ILinkedList<String> actualList;
-	
-	public AddScreen(Application application){
+
+	public RemoveListItemScreen(Application application) {
 		this.scanner = application.getScanner();
 		this.actualList = application.getActualList();
 	}
-	
+
 	@Override
 	public void show() {
 		System.out.println(options());
@@ -26,37 +25,29 @@ public class AddScreen implements IScreen{
 
 	@Override
 	public void action() {
-		
+
 		int option = scanner.nextInt();
-		scanner.nextLine();
-		
-		System.out.println("Informe o valor:");
-		
-		String value = scanner.nextLine();
 
 		switch (option) {
-		case ADD:
+		case REMOVE:
 			System.out.println("Informe a posição:");
 			int index = scanner.nextInt();
-			actualList.add(index, value);
+			actualList.remove(index);
 			break;
-		case ADD_FIRST:
-			actualList.addFirst(value);
-			break;
-		case ADD_LAST:
-			actualList.addLast(value);
+		case REMOVE_FIRST:
+			actualList.removeFirst();
 			break;
 		}
 	}
 
 	@Override
 	public String options() {
+
 		StringBuilder sb = new StringBuilder();
 		String newLine = System.getProperty("line.separator");
 
-		sb.append(ADD + "-Adicionar" + newLine);
-		sb.append(ADD_FIRST + "-Adicionar primeiro" + newLine);
-		sb.append(ADD_LAST + "-Adicionar último" + newLine);
+		sb.append(REMOVE + "-Remover" + newLine);
+		sb.append(REMOVE_FIRST + "-Remover primeiro" + newLine);
 
 		return sb.toString();
 	}

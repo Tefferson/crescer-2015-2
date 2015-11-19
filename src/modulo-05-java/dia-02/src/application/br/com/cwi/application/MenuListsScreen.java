@@ -1,6 +1,6 @@
 package application.br.com.cwi.application;
 
-public class MenuScreen implements IScreen{
+public class MenuListsScreen implements IScreen{
 
 	public final int ADD_MENU = 1;
 	public final int REMOVE_MENU = 2;
@@ -11,7 +11,7 @@ public class MenuScreen implements IScreen{
 	
 	private Application application;
 
-	public MenuScreen(Application application) {
+	public MenuListsScreen(Application application) {
 		this.application = application;
 	}
 
@@ -28,20 +28,20 @@ public class MenuScreen implements IScreen{
 
 		switch (application.getScanner().nextInt()) {
 		case ADD_MENU:
-			new AddScreen(application).show();
+			new AddListItemScreen(application).show();
 			break;
 		case REMOVE_MENU:
-			new RemoveScreen(application).show();
+			new RemoveListItemScreen(application).show();
 			break;
 		case LIST:
-			new ListScreen(application.getActualList().list()).show();
+			new ListListElementsScreen(application.getActualList().list()).show();
 			break;
 		case CHANGE_LIST:
 			application.changeList();
 			System.out.println("Lista trocada!!!");
 			break;
 		case WRITE_LIST:
-			new WriteScreen(application).show();
+			new WriteListToFileScreen(application).show();
 			break;
 		case EXIT:
 			System.out.println("Programa finalizado!");
