@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @SequenceGenerator(name = Servico.SEQUENCE_NAME, sequenceName = Servico.SEQUENCE_NAME)
 public class Servico {
 
-	public static final String SEQUENCE_NAME = "servico_seq";
+	public static final String SEQUENCE_NAME = "seq_servico";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)

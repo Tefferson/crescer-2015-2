@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.Length;
 @SequenceGenerator(name = Cliente.SEQUENCE_NAME, sequenceName = Cliente.SEQUENCE_NAME)
 public class Cliente {
 
-	public static final String SEQUENCE_NAME = "cliente_seq";
+	public static final String SEQUENCE_NAME = "seq_cliente";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)

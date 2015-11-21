@@ -17,6 +17,6 @@ public class PessoaService {
 	}
 	
 	public String buscarNomeComLogicaComplexa(Long id){
-		return "";
+		return pessoaDAO.findById(id).getNome();
 	}
 }

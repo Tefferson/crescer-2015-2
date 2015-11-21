@@ -78,7 +78,7 @@ public class Item {
 		this.situacao = situacao;
 	}
 
-	public static final String SEQUENCE_NAME = "item_seq";
+	public static final String SEQUENCE_NAME = "seq_item";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)

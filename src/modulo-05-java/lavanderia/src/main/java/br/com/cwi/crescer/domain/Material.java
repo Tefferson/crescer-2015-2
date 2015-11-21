@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @SequenceGenerator(name = Material.SEQUENCE_NAME, sequenceName = Material.SEQUENCE_NAME)
 public class Material {
 
-	public static final String SEQUENCE_NAME = "material_seq";
+	public static final String SEQUENCE_NAME = "seq_material";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
