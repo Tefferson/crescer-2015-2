@@ -24,6 +24,7 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -50,6 +51,11 @@
 			<version>11.2.0.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.efsavage.jquery</groupId>
+			<artifactId>jquery-maven</artifactId>
+			<version>1.7.2</version>
+		</dependency>
 
 	</dependencies>
 
