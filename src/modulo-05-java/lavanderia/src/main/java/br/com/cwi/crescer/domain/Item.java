@@ -83,32 +83,32 @@ public class Item {
 	}
 
 	public static final String SEQUENCE_NAME = "seq_item";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
 	@Column(name = "IDItem")
 	private Long idItem;
-	
+
 	@Column(name = "IDPEDIDO")
 	@Basic(optional = false)
 	private Long idPedido;
-	
+
 	@Column(name = "IDPRODUTO")
 	@Basic(optional = false)
 	private Long idProduto;
-	
+
 	@Column(name = "PESO", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private BigDecimal peso;
-	
+
 	@Column(name = "VALORUNITARIO", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private BigDecimal valorUnitario;
-	
+
 	@Column(name = "VALORDESCONTO", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private BigDecimal valorDesconto;
-	
+
 	@Column(name = "VALORTOTAL", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private BigDecimal valorTotal;
@@ -116,9 +116,9 @@ public class Item {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "SITUACAO")
 	private SituacaoItem situacao;
-	
-	public static enum SituacaoItem{
-		ATIVO, INATIVO;
+
+	public static enum SituacaoItem {
+		PENDENTE, PROCESSANDO, PROCESSADO;
 	}
-	
+
 }

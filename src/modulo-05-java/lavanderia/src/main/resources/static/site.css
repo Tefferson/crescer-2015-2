@@ -3,7 +3,6 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-size: 100%;
 	background-color: white;
 }
 
@@ -42,12 +41,11 @@ body {
 
 body, .container-bg {
 	background-image:
-		url('http://photos3.zillowstatic.com/i_g/IS1nysjru1ze6q0000000000.jpg');
+		url('http://freedesignfile.com/upload/2013/02/Seamless-pattern-with-squares-vector-1.jpg');
 	background-attachment: fixed;
 }
 
 .container-bg {
-	background-size: 100%;
 	position: absolute;
 	left: -27%;
 	width: 150%;
@@ -81,5 +79,9 @@ body, .container-bg {
 
 .navbar h1:hover {
 	color: #ccc;
-	cursor: pointer;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
 }
