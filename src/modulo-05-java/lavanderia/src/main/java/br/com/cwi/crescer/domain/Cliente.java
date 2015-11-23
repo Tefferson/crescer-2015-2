@@ -20,7 +20,7 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IdCliente")
+	@Column(name = "IDCliente")
 	private Long idCliente;
 
 	@Column(name = "Nome", length = 70)
@@ -40,7 +40,7 @@ public class Cliente {
 	@Column(name = "Bairro", length = 50)
 	private String bairro;
 	
-	@Column(name = "IdCidade")
+	@Column(name = "IDCidade")
 	private Long IdCidade;
 	
 	@Column(name = "CEP")

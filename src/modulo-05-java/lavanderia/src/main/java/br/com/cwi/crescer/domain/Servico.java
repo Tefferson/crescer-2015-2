@@ -18,7 +18,7 @@ public class Servico {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IdServico")
+	@Column(name = "IDServico")
 	private Long idServico;
 
 	@Column(name = "Descricao", length = 30)

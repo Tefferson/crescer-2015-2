@@ -5,28 +5,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.cwi.crescer.service.PessoaService;
+import br.com.cwi.crescer.service.*;
 
 @Controller
 public class IndexController {
 
-	private PessoaService pessoaService;
+	private PedidoService service;
 
 	@Autowired
-	public IndexController(PessoaService pessoaService){
+	public IndexController(PedidoService service) {
 		super();
-		this.pessoaService = pessoaService;
+		this.service = service;
 	}
-	
+
 	@RequestMapping("/")
-	public String index(Model model){
-		
-		String mensagem = "Bem-vindo, Lavanderia Crescer!";
-		
+	public String index(Model model) {
+
+		String mensagem = "Bem-vindo, Lavanderia Crescer!" + service.findById(5L).getDataEntrega();
 		model.addAttribute("mensagem", mensagem);
-		
+
 		return "index";
-		
+
 	}
-	
+
 }

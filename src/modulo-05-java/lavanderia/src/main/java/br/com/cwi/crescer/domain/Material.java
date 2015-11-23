@@ -18,7 +18,7 @@ public class Material {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IdMaterial")
+	@Column(name = "IDMaterial")
 	private Long idMaterial;
 
 	@Column(name = "Descricao", length = 30)

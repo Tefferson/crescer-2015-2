@@ -82,34 +82,34 @@ public class Item {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IdItem")
+	@Column(name = "IDItem")
 	private Long idItem;
 	
-	@Column(name = "IdPedido")
+	@Column(name = "IDPEDIDO")
 	@Basic(optional = false)
 	private Long idPedido;
 	
-	@Column(name = "IdProduto")
+	@Column(name = "IDPRODUTO")
 	@Basic(optional = false)
 	private Long idProduto;
 	
-	@Column(name = "Peso", precision = 12, scale = 2)
+	@Column(name = "PESO", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private Double peso;
 	
-	@Column(name = "ValorUnitario", precision = 12, scale = 2)
+	@Column(name = "VALORUNITARIO", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private Double valorUnitario;
 	
-	@Column(name = "ValorDeconto", precision = 12, scale = 2)
+	@Column(name = "VALORDESCONTO", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private Double valorDesconto;
 	
-	@Column(name = "ValorTotal", precision = 12, scale = 2)
+	@Column(name = "VALORTOTAL", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private Double valorTotal;
 
-	@Column(name = "Situacao")
+	@Column(name = "SITUACAO")
 	private Character situacao;
 	
 }

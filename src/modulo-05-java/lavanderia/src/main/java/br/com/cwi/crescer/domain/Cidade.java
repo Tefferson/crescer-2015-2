@@ -18,7 +18,7 @@ public class Cidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IdCidade")
+	@Column(name = "IDCidade")
 	private Long idCidade;
 	
 	@Column(name = "Nome", length = 50)

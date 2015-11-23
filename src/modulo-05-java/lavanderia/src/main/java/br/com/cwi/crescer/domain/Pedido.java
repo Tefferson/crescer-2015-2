@@ -16,22 +16,22 @@ import javax.persistence.Table;
 @SequenceGenerator(name = Pedido.SEQUENCE_NAME, sequenceName = Pedido.SEQUENCE_NAME)
 public class Pedido {
 
-	public static final String SEQUENCE_NAME = "seq_pedido";
+	public static final String SEQUENCE_NAME = "pedido_seq";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IdPedido")
+	@Column(name = "IDPedido")
 	private Long idPedido;
 	
-	@Column(name = "IdCliente")
+	@Column(name = "IDCliente")
 	@Basic(optional = false)
 	private Long idCliente;
 	
-	@Column(name = "DataInclusao")
+	@Column(name = "DATAINCLUSAO")
 	@Basic(optional = false)
 	private Date dataInclusao;
 	
-	@Column(name = "DataEntrega")
+	@Column(name = "DATAENTREGA")
 	private Date dataEntrega;
 	
 	@Column(name = "Valor", precision = 12, scale = 2)

@@ -18,14 +18,14 @@ public class Pessoa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IdPessoa")
+	@Column(name = "IDPessoa")
 	private Long idPessoa;
 
 	@Column(name = "Nome", length = 50)
 	@Basic(optional = false)
 	private String nome;
 
-	@Column(name = "IdEndereco", length = 10)
+	@Column(name = "IDEndereco", length = 10)
 	private Long idEndereco;
 
 	public Long getIdPessoa() {
