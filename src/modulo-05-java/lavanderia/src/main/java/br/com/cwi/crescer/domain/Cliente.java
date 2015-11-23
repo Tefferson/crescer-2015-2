@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.domain;
 
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,7 +20,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "Cliente")
-@SequenceGenerator(name = Cliente.SEQUENCE_NAME, sequenceName = Cliente.SEQUENCE_NAME)
+@SequenceGenerator(name = Cliente.SEQUENCE_NAME, sequenceName = Cliente.SEQUENCE_NAME, allocationSize = 1)
 public class Cliente {
 
 	public static final String SEQUENCE_NAME = "seq_cliente";
@@ -28,32 +33,44 @@ public class Cliente {
 	@Column(name = "Nome", length = 70)
 	@Basic(optional = false)
 	private String nome;
-	
+
 	@Column(name = "CPF", length = 11)
 	@Basic(optional = false)
 	private String cpf;
-	
+
 	@Column(name = "Email", length = 100)
 	private String email;
 
 	@Column(name = "Endereco", length = 50)
 	private String endereco;
-	
+
 	@Column(name = "Bairro", length = 50)
 	private String bairro;
-	
-	@Column(name = "IDCidade")
-	private Long IdCidade;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "IDCidade")
+	private Cidade cidade;
+
 	@Column(name = "CEP")
-	@Length(min =0,max =99999999)
+	@Length(min = 0, max = 99999999)
 	private Integer cep;
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "Situacao", length = 1)
 	private SituacaoCliente situacao;
-	
-	public static enum SituacaoCliente{
+
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos;
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public static enum SituacaoCliente {
 		ATIVO, INATIVO;
 	}
 
@@ -105,12 +122,12 @@ public class Cliente {
 		this.bairro = bairro;
 	}
 
-	public Long getIdCidade() {
-		return IdCidade;
+	public Cidade getCidade() {
+		return cidade;
 	}
 
-	public void setIdCidade(Long idCidade) {
-		IdCidade = idCidade;
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 	public Integer getCep() {
@@ -128,5 +145,5 @@ public class Cliente {
 	public void setSituacao(SituacaoCliente situacao) {
 		this.situacao = situacao;
 	}
-	
+
 }
