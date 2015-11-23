@@ -1,8 +1,12 @@
 package br.com.cwi.crescer.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,43 +42,43 @@ public class Item {
 		this.idProduto = idProduto;
 	}
 
-	public Double getPeso() {
+	public BigDecimal getPeso() {
 		return peso;
 	}
 
-	public void setPeso(Double peso) {
+	public void setPeso(BigDecimal peso) {
 		this.peso = peso;
 	}
 
-	public Double getValorUnitario() {
+	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
 
-	public void setValorUnitario(Double valorUnitario) {
+	public void setValorUnitario(BigDecimal valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 
-	public Double getValorDesconto() {
+	public BigDecimal getValorDesconto() {
 		return valorDesconto;
 	}
 
-	public void setValorDesconto(Double valorDesconto) {
+	public void setValorDesconto(BigDecimal valorDesconto) {
 		this.valorDesconto = valorDesconto;
 	}
 
-	public Double getValorTotal() {
+	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(Double valorTotal) {
+	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 
-	public Character getSituacao() {
+	public SituacaoItem getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(Character situacao) {
+	public void setSituacao(SituacaoItem situacao) {
 		this.situacao = situacao;
 	}
 
@@ -95,21 +99,26 @@ public class Item {
 	
 	@Column(name = "PESO", precision = 12, scale = 2)
 	@Basic(optional = false)
-	private Double peso;
+	private BigDecimal peso;
 	
 	@Column(name = "VALORUNITARIO", precision = 12, scale = 2)
 	@Basic(optional = false)
-	private Double valorUnitario;
+	private BigDecimal valorUnitario;
 	
 	@Column(name = "VALORDESCONTO", precision = 12, scale = 2)
 	@Basic(optional = false)
-	private Double valorDesconto;
+	private BigDecimal valorDesconto;
 	
 	@Column(name = "VALORTOTAL", precision = 12, scale = 2)
 	@Basic(optional = false)
-	private Double valorTotal;
+	private BigDecimal valorTotal;
 
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "SITUACAO")
-	private Character situacao;
+	private SituacaoItem situacao;
+	
+	public static enum SituacaoItem{
+		ATIVO, INATIVO;
+	}
 	
 }

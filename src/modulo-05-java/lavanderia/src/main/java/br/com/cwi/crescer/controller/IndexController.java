@@ -18,10 +18,11 @@ public class IndexController {
 		this.service = service;
 	}
 
-	@RequestMapping("/")
+	@RequestMapping({ "/", "home", "index" })
 	public String index(Model model) {
 
-		String mensagem = "Bem-vindo, Lavanderia Crescer!" + service.findById(5L).getDataEntrega();
+		service.findById(1L).getDataEntrega();
+		String mensagem = "Bem-vindo, Lavanderia Crescer!";
 		model.addAttribute("mensagem", mensagem);
 
 		return "index";
