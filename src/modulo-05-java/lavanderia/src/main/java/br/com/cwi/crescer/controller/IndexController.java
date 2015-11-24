@@ -25,7 +25,7 @@ public class IndexController {
 		String mensagem = "Bem-vindo, Lavanderia Crescer!";
 		model.addAttribute("mensagem", mensagem);
 
-		return "index";
+		return "home/index";
 
 	}
 

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="DoublyLinkedListTest" project="projetoCrescer" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="br.com.cwi.test.DoublyLinkedListTest" time="0.0">
-    <testcase name="adicionaPrimeiro" classname="br.com.cwi.test.DoublyLinkedListTest" time="0.0"/>
-    <testcase name="retornaOPrimeiro" classname="br.com.cwi.test.DoublyLinkedListTest" time="0.0"/>
-  </testsuite>
-</testrun>

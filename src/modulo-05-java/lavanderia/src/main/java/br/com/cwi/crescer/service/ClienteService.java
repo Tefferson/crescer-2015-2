@@ -1,10 +1,17 @@
 package br.com.cwi.crescer.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.dao.ClienteDAO;
 import br.com.cwi.crescer.domain.Cliente;
+import br.com.cwi.crescer.domain.Cliente.SituacaoCliente;
+import br.com.cwi.crescer.lavanderia.dto.ClienteDTO;
+import br.com.cwi.crescer.lavanderia.dto.ClienteResumoDTO;
+import br.com.cwi.crescer.service.lavanderia.mapper.ClienteMapper;
 
 @Service
 public class ClienteService {
@@ -17,8 +24,39 @@ public class ClienteService {
 		this.clienteDAO = clienteDAO;
 	}
 
-	public Cliente findById(Long idCliente) {
-		return clienteDAO.findById(idCliente);
+	public ClienteDTO buscarClientePorId(Long idCliente) {
+		Cliente cliente = clienteDAO.findById(idCliente);
+		return ClienteMapper.toDTO(cliente);
+	}
+
+	public List<ClienteResumoDTO> listarClientesAtivos() {
+		List<Cliente> clientes = clienteDAO.findBySituacao(SituacaoCliente.ATIVO);
+
+		List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
+
+		for (Cliente cliente : clientes) {
+			dtos.add(new ClienteResumoDTO(cliente.getIdCliente(), cliente.getNome(), cliente.getCpf(),
+					cliente.getEmail()));
+		}
+
+		return dtos;
+
+	}
+
+	public void atualizar(ClienteDTO clienteDTO) {
+
+		Cliente cliente = clienteDAO.findById(clienteDTO.getId());
+
+		ClienteMapper.merge(clienteDTO, cliente);
+
+		clienteDAO.save(cliente);
+	}
+
+	public void incluir(Cliente cliente) {
+
+		cliente.setSituacao(SituacaoCliente.ATIVO);
+		
+		clienteDAO.save(cliente);
 	}
 
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../site.css" />
+</head>
+<body>
+	<div class="navbar">
+		<h1 class="logo">
+			<a href='#'>Lavanderia</a>
+		</h1>
+
+		<ul class="menu">
+			<li><a href='#'>Home</a></li>
+			<li><a href='#'>Serviços</a></li>
+			<li><a href='#'>Sobre</a></li>
+			<li><a href='#'>Contato</a></li>
+		</ul>
+	</div>
+	<div class="container">
+		<div class="container-bg"></div>
+		<h1 class="titulo">Clientes</h1>
+		
+		<div th:if="${not #lists.isEmpty(clientes)}">
+			<table>
+
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Email</th>
+				</tr>
+
+				<tr th:each="cliente : ${clientes}">
+					<td th:text="${cliente.id}"></td>
+					<td th:text="${cliente.nome}"></td>
+					<td th:text="${cliente.cpf}"></td>
+					<td th:text="${cliente.email}"></td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div>
+			<hr />
+			<h3 class="footer">&copy; 2015</h3>
+		</div>
+	</footer>
+</body>
+
+</html>

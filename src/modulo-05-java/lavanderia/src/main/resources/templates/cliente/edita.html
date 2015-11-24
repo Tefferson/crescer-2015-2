@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../../site.css" />
+</head>
+<body>
+	<div class="navbar">
+		<h1 class="logo">
+			<a href='#'>Lavanderia</a>
+		</h1>
+
+		<ul class="menu">
+			<li><a href='#'>Home</a></li>
+			<li><a href='#'>Serviços</a></li>
+			<li><a href='#'>Sobre</a></li>
+			<li><a href='#'>Contato</a></li>
+		</ul>
+	</div>
+	<div class="container">
+		<div class="container-bg"></div>
+		<h1 class="titulo">Cliente - editar</h1>
+
+		<form th:action="@{/clientes/editar}" th:object="${cliente}"
+			method="post">
+
+			<input th:field="*{id}" type="hidden" />
+
+			<p>
+				<label class="control-label">Nome:</label> <input th:field="*{nome}"
+					type="text" />
+			</p>
+
+			<p>
+				<label class="control-label">CPF:</label> <input th:field="*{cpf}"
+					type="text" />
+			</p>
+
+			<p>
+				<label class="control-label">E-mail:</label> <input
+					th:field="*{email}" type="text" />
+			</p>
+
+			<label class="control-label">Cidade: </label> <select
+				th:field="*{idCidade}">
+				<option th:each="c : ${cidades}" th:text="${c.nome}"
+					th:value="${c.idCidade}"></option>
+			</select>
+
+			<p>
+				<label class="control-label">Bairro:</label> <input
+					th:field="*{bairro}" type="text" />
+			</p>
+			
+			<p>
+				<label class="control-label">Endereco:</label> <input
+					th:field="*{endereco}" type="text" />
+			</p>
+			
+			<p>
+				<label class="control-label">CEP:</label> <input
+					th:field="*{cep}" type="text" />
+			</p>
+
+			<button type="submit">Salvar</button>
+
+		</form>
+
+	</div>
+
+	<footer class="footer">
+		<div>
+			<hr />
+			<h3 class="footer">&copy; 2015</h3>
+		</div>
+	</footer>
+</body>
+
+</html>
