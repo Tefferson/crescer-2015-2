@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.cwi.crescer.dao.PedidoDAO;
+import br.com.cwi.crescer.domain.Cliente;
+import br.com.cwi.crescer.domain.Item;
 import br.com.cwi.crescer.domain.Pedido;
 import br.com.cwi.crescer.domain.Pedido.SituacaoPedido;
 
@@ -31,5 +33,17 @@ public class PedidoDAOTest extends AbstractInfrastructureTest {
         for (Pedido pedido : pedidos) {
             Assert.assertEquals(SituacaoPedido.PENDENTE, pedido.getSituacao());
         }
+    }
+    
+    @Test
+    public void deveBuscarItens() throws Exception {
+        List<Item> itens = pedidoDAO.findById(1L).getItens();
+        Assert.assertNotNull(itens);
+    }
+    
+    @Test
+    public void deveBuscarCliente() throws Exception {
+        Cliente cliente = pedidoDAO.findById(1L).getCliente();
+        Assert.assertNotNull(cliente);
     }
 }
