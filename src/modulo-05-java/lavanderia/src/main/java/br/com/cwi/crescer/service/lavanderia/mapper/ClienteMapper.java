@@ -42,19 +42,21 @@ public class ClienteMapper {
 	}
 
 	public static Cliente getNewEntity(ClienteDTO clienteDTO) {
-		
+
 		Cliente cliente = new Cliente();
 		cliente.setNome(clienteDTO.getNome());
 		cliente.setCpf(clienteDTO.getCpf());
 		cliente.setEmail(clienteDTO.getEmail());
-		
-		Endereco endereco = cliente.getEndereco();
+
+		Endereco endereco = new Endereco();
 
 		endereco.setEndereco(clienteDTO.getEndereco());
 		endereco.setCep(clienteDTO.getCep());
 		endereco.setBairro(clienteDTO.getBairro());
 		endereco.setCidade(new Cidade());
 		endereco.getCidade().setIdCidade(clienteDTO.getIdCidade());
+
+		cliente.setEndereco(endereco);
 
 		return cliente;
 	}

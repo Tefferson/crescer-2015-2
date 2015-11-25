@@ -20,23 +20,40 @@
 	</div>
 	<div class="container">
 		<div class="container-bg"></div>
-		<h1 class="titulo">Clientes</h1>
 		
+		<div th:if="${mensagem != null}"><h1 th:text="${mensagem}"></h1></div>
+		
+		<h1 class="titulo">Clientes</h1>
+
 		<div th:if="${not #lists.isEmpty(clientes)}">
-			<table>
+			<table class="border-default col-offset-1 col-10">
 
 				<tr>
-					<th>Id</th>
-					<th>Nome</th>
-					<th>CPF</th>
-					<th>Email</th>
+					<th class="border-default col-3">Nome</th>
+					<th class="border-default col-2">CPF</th>
+					<th class="border-default col-4">Email</th>
+					<th class="border-default col-3">Ações</th>
 				</tr>
 
 				<tr th:each="cliente : ${clientes}">
-					<td th:text="${cliente.id}"></td>
-					<td th:text="${cliente.nome}"></td>
-					<td th:text="${cliente.cpf}"></td>
-					<td th:text="${cliente.email}"></td>
+					<td th:text="${cliente.nome}" class="border-default col-3"></td>
+					<td th:text="${cliente.cpf}" class="border-default col-2"></td>
+					<td th:text="${cliente.email}" class="border-default col-4"></td>
+					<td class="col-3">
+
+						<div class="border-default col-4 icon-link-container">
+							<a th:href="${'/clientes/' + cliente.id}"><img
+								src="http://www.honestmachines.com/images/icon_details.png" title="detalhes" /></a>
+						</div>
+						<div class="border-default col-4 icon-link-container">
+							<a th:href="${'/clientes/editar/' + cliente.id}"><img
+								src="http://iconizer.net/files/Gnome_icons/orig/gtk-edit.png" title="editar" /></a>
+						</div>
+						<div class="border-default col-4 icon-link-container">
+							<a th:href="${'/clientes/remover/' + cliente.id}"><img
+								src="http://findicons.com/files/icons/1033/retrofukation/24/edit_delete.png" title="remover" /></a>
+						</div>
+					</td>
 				</tr>
 
 			</table>
