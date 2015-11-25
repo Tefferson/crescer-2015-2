@@ -2,8 +2,11 @@ package br.com.cwi.crescer.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,8 +51,14 @@ public class ClienteController {
 	}
 
 	@RequestMapping(path = "/incluir", method = RequestMethod.POST)
-	public ModelAndView incluir(ClienteDTO clienteDTO) {
+	public ModelAndView incluir(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO,
+			BindingResult result,
+			final RedirectAttributes resirectAttributes) {
 
+		if(result.hasErrors()){
+			return new ModelAndView("clientes/incluir");
+		}
+		
 		clienteService.incluir(clienteDTO);
 
 		return new ModelAndView("redirect:/clientes");
@@ -72,7 +81,7 @@ public class ClienteController {
 	public ModelAndView remover(ClienteDTO clienteDTO, final RedirectAttributes redirectAttributes) {
 
 		try {
-			clienteService.remover(clienteDTO.getId());
+			clienteService.desativar(clienteDTO.getId());
 			redirectAttributes.addFlashAttribute("mensagem", "Operação realizada com sucesso");
 		} catch (Exception e) {
 			//TODO: Não foi possível remover porque é fk 

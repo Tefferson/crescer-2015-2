@@ -1,49 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="site.css" />
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
 </head>
 <body>
-	<div class="col-12 cabecalho">
 
-		<div class="col-offset-2 col-4">
-			<h1>Lavanderia</h1>
-		</div>
+	<div layout:fragment="content">
 
-	</div>
-	<nav class="col-offset-2 col-8">
-		<ul class="col-12">
-			<li><a th:href="${'/'}">Home</a></li>
-			<li><a href='#'>Serviços</a></li>
-			<li><a href='#'>Exibir</a>
-				<ul>
-					<li><a th:href="${'/clientes'}">Clientes</a></li>
-				</ul></li>
-			<li><a href='#'>Sobre</a></li>
-			<li><a href='#'>Contato</a></li>
-		</ul>
-	</nav>
-	<div class="col-offset-2 col-8 content">
-		<h1 class="titulo">Home</h1>
-		<h2 class="mensagem" th:text="${mensagem}"></h2>
-		<div class="col-offset-2 col-8">
-			<img
-				src="http://planejadosinbox.cia.tv/wp-content/uploads/2015/08/lavanderias-para-o-que-te-queremos-6.jpg" />
-		</div>
-		<div class="col-offset-2 col-8">
-			<img
-				src="http://planejadosinbox.cia.tv/wp-content/uploads/2015/08/lavanderias-para-o-que-te-queremos-6.jpg" />
+		<div class="col-offset-2 col-8 content">
+			<h1 class="titulo col-offset-1">Home</h1>
+			<h2 class="mensagem" th:text="${mensagem}"></h2>
+			<div class="col-offset-2 col-8">
+				<img
+					src="http://planejadosinbox.cia.tv/wp-content/uploads/2015/08/lavanderias-para-o-que-te-queremos-6.jpg" />
+			</div>
+			<div class="col-offset-2 col-8">
+				<img
+					src="http://planejadosinbox.cia.tv/wp-content/uploads/2015/08/lavanderias-para-o-que-te-queremos-6.jpg" />
+			</div>
 		</div>
 	</div>
-
-	<footer class="footer col-12">
-		<div>
-			<hr />
-			<h3 class="footer">&copy; 2015</h3>
-		</div>
-	</footer>
 </body>
 
 </html>

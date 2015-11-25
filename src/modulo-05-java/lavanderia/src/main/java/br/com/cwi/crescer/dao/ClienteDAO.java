@@ -1,6 +1,5 @@
 package br.com.cwi.crescer.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -34,13 +33,10 @@ public class ClienteDAO extends DAO {
 	}
 
 	@Transactional
-	public void remove(Long idCliente) {
-		try {
-			Cliente cliente = findById(idCliente);
-			em.remove(cliente);
-		} catch (Exception e) {
-			throw e;
-		}
+	public void inactive(Long idCliente) {
+		Cliente cliente = findById(idCliente);
+		cliente.setSituacao(SituacaoCliente.INATIVO);
+		em.merge(cliente);
 	}
 
 }

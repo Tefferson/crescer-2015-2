@@ -56,16 +56,17 @@ public class ClienteService {
 	public void incluir(ClienteDTO clienteDTO) {
 
 		Cliente cliente = ClienteMapper.getNewEntity(clienteDTO);
-		
+
 		cliente.setSituacao(SituacaoCliente.ATIVO);
-		
+
 		clienteDAO.save(cliente);
 	}
 
-	public void remover(Long idCliente) throws Exception{
-		
-		if(idCliente!=null)
-		clienteDAO.remove(idCliente);
+	public void desativar(Long idCliente) throws Exception {
+
+		if (idCliente != null) {
+			clienteDAO.inactive(idCliente);
+		}
 	}
 
 }

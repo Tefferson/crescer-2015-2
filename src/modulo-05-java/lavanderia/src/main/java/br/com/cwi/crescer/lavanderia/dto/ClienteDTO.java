@@ -1,16 +1,33 @@
 package br.com.cwi.crescer.lavanderia.dto;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class ClienteDTO {
 
 	private Long id;
+
+	@NotBlank
 	private String nome;
+
+	@NotBlank
+	@Length(min = 11, max = 11)
 	private String cpf;
+
+	@NotBlank
+	@Email
 	private String email;
+
+	@NotNull
 	private Long idCidade;
+	
 	private String bairro;
 	private String endereco;
 	private Integer cep;
-		
+
 	public String getBairro() {
 		return bairro;
 	}
@@ -52,7 +69,7 @@ public class ClienteDTO {
 	}
 
 	public void setId(Long idCliente) {
-		this.id = idCliente;		
+		this.id = idCliente;
 	}
 
 	public String getNome() {
@@ -78,5 +95,5 @@ public class ClienteDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

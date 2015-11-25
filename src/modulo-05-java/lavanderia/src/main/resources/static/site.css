@@ -7,6 +7,12 @@ body {
 	background-color: #f1f1f1;
 }
 
+form p label {
+	text-align: right;
+	display: inline-block;
+	padding-right: 10px;
+}
+
 .content {
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -16,16 +22,31 @@ body {
 	font-size: 40px;
 }
 
-.mensagem {
-	color: rgba(0, 0, 255, 0.5);
-	width: 400px;
-}
-
 .footer {
 	margin: 0;
 	font-weight: bold;
 	font-size: 12px;
 	margin-top: 15px;
+}
+
+.msg-suc {
+	top: 30px;
+	padding: 15px 0px;
+	padding-left: 15px;
+	padding-right: -15px;
+	float: left;
+	border: 1px solid #ccc;
+	border-left: 3px solid green;
+	background: #fff;
+	margin-left: 2%;
+	height: 5%;
+	width: 96%;
+	box-sizing: border-box;
+	
+	margin-top: 25px;
+	margin-bottom: 25px;
+	
+	font-size: 16px;
 }
 
 nav ul {
@@ -105,6 +126,20 @@ nav ul li:hover>ul {
 
 table {
 	table-layout: fixed;
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+
+table tr:nth-child(odd) {
+	background: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+	background: #fff;
+}
+
+table tr:nth-child(1) {
+	background: #cfcfcf;
 }
 
 th, td {
@@ -124,12 +159,16 @@ td div, td {
 	text-align: right;
 }
 
+.text-left {
+	text-align: left;
+}
+
 .text-center {
-	text-align: center;
+	text-align: center !important;
 }
 
 .border-default {
-	border: 1px solid black;
+	border: 1px solid #ccc;
 	box-sizing: border-box;
 }
 

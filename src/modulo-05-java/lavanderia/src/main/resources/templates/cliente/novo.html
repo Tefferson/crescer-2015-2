@@ -1,85 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../../site.css" />
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
 </head>
 <body>
-	<div class="col-12 cabecalho">
 
-		<div class="col-offset-2 col-4">
-			<h1>Lavanderia</h1>
+	<div layout:fragment="content">
+
+		<div class="col-offset-2 col-8 content">
+			<h1 class="titulo col-offset-1">Cliente - incluir</h1>
+
+			<form th:action="@{/clientes/incluir}" th:object="${cliente}"
+				method="post">
+
+
+				<p>
+					<label class="control-label col-2">Nome</label> <input
+						th:field="*{nome}" type="text" />
+				</p>
+
+				<p>
+					<label class="control-label col-2">CPF</label> <input
+						th:field="*{cpf}" type="text" />
+				</p>
+
+				<p>
+					<label class="control-label col-2">E-mail</label> <input
+						th:field="*{email}" type="text" />
+				</p>
+
+				<p>
+					<label class="control-label col-2">Cidade: </label> <select
+						th:field="*{idCidade}">
+						<option th:each="c : ${cidades}" th:text="${c.nome}"
+							th:value="${c.idCidade}"></option>
+					</select>
+				</p>
+				
+				<p>
+					<label class="control-label col-2">Bairro</label> <input
+						th:field="*{bairro}" type="text" />
+				</p>
+
+				<p>
+					<label class="control-label col-2">Endereço</label> <input
+						th:field="*{endereco}" type="text" />
+				</p>
+
+				<p>
+					<label class="control-label col-2">CEP</label> <input th:field="*{cep}"
+						type="text" />
+				</p>
+
+				<button type="submit">Salvar</button>
+
+			</form>
+
 		</div>
-
-	</div>
-	<nav class="col-offset-2 col-8">
-		<ul class="col-12">
-			<li><a th:href="${'/'}">Home</a></li>
-			<li><a href='#'>Serviços</a></li>
-			<li><a href='#'>Exibir</a>
-				<ul>
-					<li><a th:href="${'/clientes'}">Clientes</a></li>
-				</ul></li>
-			<li><a href='#'>Sobre</a></li>
-			<li><a href='#'>Contato</a></li>
-		</ul>
-	</nav>
-	<div class="col-offset-2 col-8 content">
-		<h1 class="titulo">Cliente - incluir</h1>
-
-		<form th:action="@{/clientes/incluir}" th:object="${cliente}"
-			method="post">
-
-
-			<p>
-				<label class="control-label">Nome:</label> <input th:field="*{nome}"
-					type="text" />
-			</p>
-
-			<p>
-				<label class="control-label">CPF:</label> <input th:field="*{cpf}"
-					type="text" />
-			</p>
-
-			<p>
-				<label class="control-label">E-mail:</label> <input
-					th:field="*{email}" type="text" />
-			</p>
-
-			<label class="control-label">Cidade: </label> <select
-				th:field="*{idCidade}">
-				<option th:each="c : ${cidades}" th:text="${c.nome}"
-					th:value="${c.idCidade}"></option>
-			</select>
-
-			<p>
-				<label class="control-label">Bairro:</label> <input
-					th:field="*{bairro}" type="text" />
-			</p>
-
-			<p>
-				<label class="control-label">Endereço:</label> <input
-					th:field="*{endereco}" type="text" />
-			</p>
-
-			<p>
-				<label class="control-label">CEP:</label> <input th:field="*{cep}"
-					type="text" />
-			</p>
-
-			<button type="submit">Salvar</button>
-
-		</form>
-
 	</div>
 
-	<footer class="footer col-12">
-		<div>
-			<hr />
-			<h3 class="footer">&copy; 2015</h3>
-		</div>
-	</footer>
 </body>
 
 </html>
