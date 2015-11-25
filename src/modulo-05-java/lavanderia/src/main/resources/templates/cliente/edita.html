@@ -6,20 +6,27 @@
 <link rel="stylesheet" type="text/css" href="../../site.css" />
 </head>
 <body>
-	<div class="navbar">
-		<h1 class="logo">
-			<a href='#'>Lavanderia</a>
-		</h1>
 
-		<ul class="menu">
-			<li><a href='#'>Home</a></li>
+	<div class="col-12 cabecalho">
+
+		<div class="col-offset-2 col-4">
+			<h1>Lavanderia</h1>
+		</div>
+
+	</div>
+	<nav class="col-offset-2 col-8">
+		<ul class="col-12">
+			<li><a th:href="${'/'}">Home</a></li>
 			<li><a href='#'>Serviços</a></li>
+			<li><a href='#'>Exibir</a>
+				<ul>
+					<li><a th:href="${'/clientes'}">Clientes</a></li>
+				</ul></li>
 			<li><a href='#'>Sobre</a></li>
 			<li><a href='#'>Contato</a></li>
 		</ul>
-	</div>
-	<div class="container">
-		<div class="container-bg"></div>
+	</nav>
+	<div class="col-offset-2 col-8 content">
 		<h1 class="titulo">Cliente - editar</h1>
 
 		<form th:action="@{/clientes/editar}" th:object="${cliente}"
@@ -52,15 +59,15 @@
 				<label class="control-label">Bairro:</label> <input
 					th:field="*{bairro}" type="text" />
 			</p>
-			
+
 			<p>
 				<label class="control-label">Endereço:</label> <input
 					th:field="*{endereco}" type="text" />
 			</p>
-			
+
 			<p>
-				<label class="control-label">CEP:</label> <input
-					th:field="*{cep}" type="text" />
+				<label class="control-label">CEP:</label> <input th:field="*{cep}"
+					type="text" />
 			</p>
 
 			<button type="submit">Salvar</button>
@@ -69,7 +76,7 @@
 
 	</div>
 
-	<footer class="footer">
+	<footer class="footer col-12">
 		<div>
 			<hr />
 			<h3 class="footer">&copy; 2015</h3>

@@ -6,23 +6,32 @@
 <link rel="stylesheet" type="text/css" href="../site.css" />
 </head>
 <body>
-	<div class="navbar">
-		<h1 class="logo">
-			<a href='#'>Lavanderia</a>
-		</h1>
+	<div class="col-12 cabecalho">
 
-		<ul class="menu">
-			<li><a href='#'>Home</a></li>
+		<div class="col-offset-2 col-4">
+			<h1>Lavanderia</h1>
+		</div>
+
+	</div>
+
+	<nav class="col-offset-2 col-8">
+		<ul class="col-12">
+			<li><a th:href="${'/'}">Home</a></li>
 			<li><a href='#'>Serviços</a></li>
+			<li><a href='#'>Exibir</a>
+				<ul>
+					<li><a th:href="${'/clientes'}">Clientes</a></li>
+				</ul></li>
 			<li><a href='#'>Sobre</a></li>
 			<li><a href='#'>Contato</a></li>
 		</ul>
-	</div>
-	<div class="container">
-		<div class="container-bg"></div>
-		
-		<div th:if="${mensagem != null}"><h1 th:text="${mensagem}"></h1></div>
-		
+	</nav>
+	<div class="col-offset-2 col-8 content">
+
+		<div th:if="${mensagem != null}">
+			<h1 th:text="${mensagem}"></h1>
+		</div>
+
 		<h1 class="titulo">Clientes</h1>
 
 		<div th:if="${not #lists.isEmpty(clientes)}">
@@ -43,15 +52,18 @@
 
 						<div class="border-default col-4 icon-link-container">
 							<a th:href="${'/clientes/' + cliente.id}"><img
-								src="http://www.honestmachines.com/images/icon_details.png" title="detalhes" /></a>
+								src="http://www.honestmachines.com/images/icon_details.png"
+								title="detalhes" /></a>
 						</div>
 						<div class="border-default col-4 icon-link-container">
 							<a th:href="${'/clientes/editar/' + cliente.id}"><img
-								src="http://iconizer.net/files/Gnome_icons/orig/gtk-edit.png" title="editar" /></a>
+								src="http://iconizer.net/files/Gnome_icons/orig/gtk-edit.png"
+								title="editar" /></a>
 						</div>
 						<div class="border-default col-4 icon-link-container">
 							<a th:href="${'/clientes/remover/' + cliente.id}"><img
-								src="http://findicons.com/files/icons/1033/retrofukation/24/edit_delete.png" title="remover" /></a>
+								src="http://findicons.com/files/icons/1033/retrofukation/24/edit_delete.png"
+								title="remover" /></a>
 						</div>
 					</td>
 				</tr>
@@ -60,7 +72,7 @@
 		</div>
 	</div>
 
-	<footer class="footer">
+	<footer class="footer col-12">
 		<div>
 			<hr />
 			<h3 class="footer">&copy; 2015</h3>
