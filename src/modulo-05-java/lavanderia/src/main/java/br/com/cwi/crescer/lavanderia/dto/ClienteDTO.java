@@ -5,16 +5,17 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 public class ClienteDTO {
 
 	private Long id;
 
 	@NotBlank
+	@Length(max = 70)
 	private String nome;
 
-	@NotBlank
-	@Length(min = 11, max = 11)
+	@CPF
 	private String cpf;
 
 	@NotBlank

@@ -51,14 +51,13 @@ public class ClienteController {
 	}
 
 	@RequestMapping(path = "/incluir", method = RequestMethod.POST)
-	public ModelAndView incluir(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO,
-			BindingResult result,
+	public ModelAndView incluir(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO, BindingResult result,
 			final RedirectAttributes resirectAttributes) {
 
-		if(result.hasErrors()){
-			return new ModelAndView("clientes/incluir");
+		if (result.hasErrors()) {
+			return new ModelAndView("cliente/novo");
 		}
-		
+
 		clienteService.incluir(clienteDTO);
 
 		return new ModelAndView("redirect:/clientes");
@@ -71,8 +70,13 @@ public class ClienteController {
 	}
 
 	@RequestMapping(path = "/editar", method = RequestMethod.POST)
-	public ModelAndView editar(ClienteDTO clienteDTO) {
+	public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO, BindingResult result,
+			final RedirectAttributes resirectAttributes) {
 
+		if (result.hasErrors()) {
+			return new ModelAndView("cliente/edita");
+		}
+		
 		clienteService.atualizar(clienteDTO);
 		return new ModelAndView("redirect:/clientes");
 	}
@@ -84,9 +88,9 @@ public class ClienteController {
 			clienteService.desativar(clienteDTO.getId());
 			redirectAttributes.addFlashAttribute("mensagem", "Operação realizada com sucesso");
 		} catch (Exception e) {
-			//TODO: Não foi possível remover porque é fk 
+			// TODO: Não foi possível remover porque é fk
 		}
-		
+
 		return new ModelAndView("redirect:/clientes");
 	}
 

@@ -19,18 +19,21 @@
 
 
 				<p>
-					<label class="control-label col-2">Nome</label> <input
+					<label class="control-label col-2" >Nome</label> <input th:classappend="${#fields.hasErrors('nome')} ? 'has-error'"
 						th:field="*{nome}" type="text" />
+						<span class="help-inline" th:errors="*{nome}"></span>
 				</p>
 
 				<p>
-					<label class="control-label col-2">CPF</label> <input
+					<label class="control-label col-2" >CPF</label> <input th:classappend="${#fields.hasErrors('cpf')} ? 'has-error'"
 						th:field="*{cpf}" type="text" />
+						<span class="help-inline" th:errors="*{cpf}"></span>
 				</p>
 
 				<p>
-					<label class="control-label col-2">E-mail</label> <input
+					<label class="control-label col-2" >E-mail</label> <input th:classappend="${#fields.hasErrors('email')} ? 'has-error'"
 						th:field="*{email}" type="text" />
+						<span class="help-inline" th:errors="*{email}"></span>
 				</p>
 
 				<p>
@@ -39,6 +42,7 @@
 						<option th:each="c : ${cidades}" th:text="${c.nome}"
 							th:value="${c.idCidade}"></option>
 					</select>
+					<span class="help-inline" th:errors="*{idCidade}"></span>
 				</p>
 				
 				<p>
