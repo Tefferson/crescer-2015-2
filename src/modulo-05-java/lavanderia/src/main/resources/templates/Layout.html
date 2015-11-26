@@ -13,6 +13,29 @@
 			<h1>Lavanderia</h1>
 		</div>
 
+		<div sec:authorize="isAuthenticated()">
+			<form th:action="@{/logout}" method="POST">
+
+				<button type="submit">Logout</button>
+
+			</form>
+			
+			<div>
+				Bem-vindo, <span sec:authentication="name"></span>
+			</div>
+			
+		</div>
+
+		<div sec:authorize="hasRole('ROLE_USER')">
+			<h3>Logado como USER.</h3>
+		</div>
+
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<h3>Logado como ADMIN.</h3>
+		</div>
+
+
+
 	</div>
 	<nav class="col-offset-2 col-8">
 		<ul class="col-12">

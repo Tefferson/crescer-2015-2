@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,6 +45,7 @@ public class ClienteController {
 		return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarClientePorId(id));
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)
 	public ModelAndView viewEdita(@PathVariable("id") Long id) {
 
@@ -69,6 +71,7 @@ public class ClienteController {
 		return new ModelAndView("cliente/novo", "cliente", new ClienteDTO());
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(path = "/editar", method = RequestMethod.POST)
 	public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO, BindingResult result,
 			final RedirectAttributes resirectAttributes) {

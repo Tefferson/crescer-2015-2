@@ -13,6 +13,15 @@ form p label {
 	padding-right: 10px;
 }
 
+form button {
+	margin-top: 15px;
+	margin-left: 100px;
+}
+
+form h2 {
+	margin-left: 100px;
+}
+
 .has-error {
 	box-shadow: 0 0 15px rgba(255,50,50,0.85);
 	border: 1px solid rgba(255,100,100,0.85);
@@ -30,6 +39,7 @@ form p label {
 .content {
 	background-color: #fff;
 	border: 1px solid #ccc;
+	padding-bottom: 30px;
 }
 
 .titulo {
@@ -141,7 +151,6 @@ nav ul li:hover>ul {
 table {
 	table-layout: fixed;
 	border-collapse: collapse;
-	margin-bottom: 30px;
 }
 
 table tr:nth-child(odd) {
