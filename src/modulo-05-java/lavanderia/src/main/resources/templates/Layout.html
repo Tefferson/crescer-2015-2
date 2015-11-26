@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Lavanderia</title>
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+</head>
+<body>
+	<div class="col-12 cabecalho">
+
+		<div class="col-offset-2 col-4">
+			<h1>Lavanderia</h1>
+		</div>
+
+	</div>
+	<nav class="col-offset-2 col-8">
+		<ul class="col-12">
+			<li><a th:href="${'/'}">Home</a></li>
+			<li><a href='#'>Serviços</a></li>
+			<li><a href='#'>Cadastrar</a>
+				<ul>
+					<li><a th:href="${'/clientes/incluir'}">Cliente</a></li>
+				</ul></li>
+			<li><a href='#'>Exibir</a>
+				<ul>
+					<li><a th:href="${'/clientes'}">Clientes</a></li>
+				</ul></li>
+			<li><a href='#'>Sobre</a></li>
+			<li><a href='#'>Contato</a></li>
+		</ul>
+	</nav>
+
+	<div layout:fragment="content"></div>
+
+	<footer class="footer col-12">
+		<p layout:fragment="custom-footer">
+		<div>
+			<hr />
+			<h3 class="footer">&copy; 2015</h3>
+		</div>
+		</p>
+
+	</footer>
+</body>
+
+</html>
