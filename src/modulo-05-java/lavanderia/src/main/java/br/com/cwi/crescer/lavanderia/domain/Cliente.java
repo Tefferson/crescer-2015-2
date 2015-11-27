@@ -100,7 +100,13 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
+	public void ativar(){
+		this.situacao = SituacaoCliente.ATIVO;
+	}
 	
+	public void desativar(){
+		this.situacao = SituacaoCliente.INATIVO;
+	}
 
 	public SituacaoCliente getSituacao() {
 		return situacao;

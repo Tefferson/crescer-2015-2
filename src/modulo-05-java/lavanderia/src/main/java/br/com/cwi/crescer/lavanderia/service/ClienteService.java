@@ -29,14 +29,14 @@ public class ClienteService {
 		return ClienteMapper.toDTO(cliente);
 	}
 
-	public List<ClienteResumoDTO> listarClientesAtivos() {
-		List<Cliente> clientes = clienteDAO.findBySituacao(SituacaoCliente.ATIVO);
+	public List<ClienteResumoDTO> listarClientes() {
+		List<Cliente> clientes = clienteDAO.list();
 
 		List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
 
 		for (Cliente cliente : clientes) {
 			dtos.add(new ClienteResumoDTO(cliente.getIdCliente(), cliente.getNome(), cliente.getCpf(),
-					cliente.getEmail()));
+					cliente.getSituacao()));
 		}
 
 		return dtos;
@@ -56,7 +56,7 @@ public class ClienteService {
 
 		Cliente cliente = ClienteMapper.getNewEntity(clienteDTO);
 
-		cliente.setSituacao(SituacaoCliente.ATIVO);
+		cliente.ativar();
 
 		clienteDAO.save(cliente);
 	}
@@ -66,6 +66,19 @@ public class ClienteService {
 		if (idCliente != null) {
 			clienteDAO.inactive(idCliente);
 		}
+	}
+
+	public List<ClienteDTO> buscarPorNomeParcial(String term) {
+		
+		List<Cliente> clientes = clienteDAO.findPartialName(term);
+		
+		List<ClienteDTO> dtos = new ArrayList<ClienteDTO>();
+
+		for (Cliente cliente : clientes) {
+			dtos.add(ClienteMapper.toDTO(cliente));
+		}
+		
+		return dtos;
 	}
 
 }

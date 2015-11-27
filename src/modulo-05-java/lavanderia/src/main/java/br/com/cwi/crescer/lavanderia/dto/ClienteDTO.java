@@ -7,6 +7,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
+
 public class ClienteDTO {
 
 	private Long id;
@@ -28,6 +30,15 @@ public class ClienteDTO {
 	private String bairro;
 	private String endereco;
 	private Integer cep;
+	private SituacaoCliente situacao;
+
+	public SituacaoCliente getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(SituacaoCliente situacao) {
+		this.situacao = situacao;
+	}
 
 	public String getBairro() {
 		return bairro;
@@ -59,10 +70,6 @@ public class ClienteDTO {
 
 	public void setIdCidade(Long idCidade) {
 		this.idCidade = idCidade;
-	}
-
-	public static enum SituacaoCliente {
-		ATIVO, INATIVO;
 	}
 
 	public Long getId() {

@@ -21,6 +21,7 @@ public class ClienteMapper {
 		dto.setBairro(endereco.getBairro());
 		dto.setCep(endereco.getCep());
 		dto.setEndereco(endereco.getEndereco());
+		dto.setSituacao(cliente.getSituacao());
 
 		return dto;
 
@@ -31,6 +32,7 @@ public class ClienteMapper {
 		cliente.setCpf(clienteDTO.getCpf());
 		cliente.setEmail(clienteDTO.getEmail());
 		cliente.setNome(clienteDTO.getNome());
+		cliente.setSituacao(clienteDTO.getSituacao());
 
 		Endereco endereco = cliente.getEndereco();
 
@@ -47,6 +49,7 @@ public class ClienteMapper {
 		cliente.setNome(clienteDTO.getNome());
 		cliente.setCpf(clienteDTO.getCpf());
 		cliente.setEmail(clienteDTO.getEmail());
+		cliente.setSituacao(clienteDTO.getSituacao());
 
 		Endereco endereco = new Endereco();
 

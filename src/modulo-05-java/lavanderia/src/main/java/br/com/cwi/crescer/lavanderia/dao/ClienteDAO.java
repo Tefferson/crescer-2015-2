@@ -21,6 +21,10 @@ public class ClienteDAO extends DAO {
 				.setParameter("situacao", situacao).getResultList();
 	}
 
+	public List<Cliente> list() {
+		return em.createQuery("FROM Cliente", Cliente.class).getResultList();
+	}
+
 	@Transactional
 	public Cliente save(Cliente cliente) {
 
@@ -35,8 +39,14 @@ public class ClienteDAO extends DAO {
 	@Transactional
 	public void inactive(Long idCliente) {
 		Cliente cliente = findById(idCliente);
-		cliente.setSituacao(SituacaoCliente.INATIVO);
+		cliente.desativar();
 		em.merge(cliente);
+	}
+
+	public List<Cliente> findPartialName(String term) {
+		
+		return em.createQuery("FROM Cliente where nome like :nome", Cliente.class).setParameter("nome", term + "%")
+				.getResultList();
 	}
 
 }

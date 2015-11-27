@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.lavanderia.domain.Cidade;
+import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 import br.com.cwi.crescer.lavanderia.dto.ClienteDTO;
 import br.com.cwi.crescer.lavanderia.service.CidadeService;
 import br.com.cwi.crescer.lavanderia.service.ClienteService;
@@ -36,13 +38,19 @@ public class ClienteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView listar() {
 
-		return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientesAtivos());
+		return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientes());
 	}
 
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
 	public ModelAndView exibir(@PathVariable("id") Long id) {
 
 		return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarClientePorId(id));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, params="term")
+	public ModelAndView exibirBusca(@RequestParam("term") String term) {
+
+		return new ModelAndView("cliente/lista", "clientes", clienteService.buscarPorNomeParcial(term));
 	}
 
 	@PreAuthorize("hasRole('ADMIN')")
@@ -79,7 +87,7 @@ public class ClienteController {
 		if (result.hasErrors()) {
 			return new ModelAndView("cliente/edita");
 		}
-		
+
 		clienteService.atualizar(clienteDTO);
 		return new ModelAndView("redirect:/clientes");
 	}
@@ -106,5 +114,10 @@ public class ClienteController {
 	@ModelAttribute("cidades")
 	public List<Cidade> comboCidades() {
 		return cidadeService.listar();
+	}
+
+	@ModelAttribute("situacoes")
+	public SituacaoCliente[] comboSituacoes() {
+		return SituacaoCliente.values();
 	}
 }
