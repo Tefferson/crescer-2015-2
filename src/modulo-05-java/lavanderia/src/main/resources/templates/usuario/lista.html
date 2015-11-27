@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<div class="col-offset-2 col-8 content">
+
+			<div th:if="${mensagem != null} ">
+				<h1 th:text="${mensagem}" class="msg-suc"></h1>
+			</div>
+
+			<h1 class="titulo col-offset-1">Usuários</h1>
+
+			<div th:if="${not #lists.isEmpty(usuarios)}">
+				<table class="border-default col-offset-1 col-10">
+
+					<tr>
+						<th class="border-default col-3 text-left">Username</th>
+						<th class="border-default col-2">Authority</th>
+						<th class="border-default col-3">Ações</th>
+					</tr>
+
+					<tr th:each="usuario : ${usuarios}">
+						<td th:text="${usuario.authoritiesId.user.username}" class="border-default col-3"></td>
+						<td th:text="${usuario.authoritiesId.authority}"
+							class="border-default col-2 text-center"></td>
+						<td class="col-3">
+
+<!-- 							<div class="border-default col-4 icon-link-container"> -->
+<!-- 								<a th:href="${'/clientes/' + cliente.id}"><img -->
+<!-- 									src="http://www.honestmachines.com/images/icon_details.png" -->
+<!-- 									title="detalhes" /></a> -->
+<!-- 							</div> -->
+<!-- 							<div class="border-default col-4 icon-link-container"> -->
+<!-- 								<a th:href="${'/clientes/editar/' + cliente.id}"><img -->
+<!-- 									src="http://iconizer.net/files/Gnome_icons/orig/gtk-edit.png" -->
+<!-- 									title="editar" /></a> -->
+<!-- 							</div> -->
+<!-- 							<div class="border-default col-4 icon-link-container"> -->
+<!-- 								<a th:href="${'/clientes/remover/' + cliente.id}"><img -->
+<!-- 									src="http://findicons.com/files/icons/1033/retrofukation/24/edit_delete.png" -->
+<!-- 									title="remover" /></a> -->
+<!-- 							</div> -->
+						</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
