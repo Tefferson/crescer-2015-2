@@ -4,8 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.cwi.crescer.dao.MaterialDAO;
-import br.com.cwi.crescer.domain.Material;
+import br.com.cwi.crescer.lavanderia.dao.MaterialDAO;
+import br.com.cwi.crescer.lavanderia.domain.Material;
 
 public class MaterialDAOTest extends AbstractInfrastructureTest {
 

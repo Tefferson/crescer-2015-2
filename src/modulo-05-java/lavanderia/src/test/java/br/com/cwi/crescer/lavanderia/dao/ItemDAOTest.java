@@ -6,11 +6,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.cwi.crescer.dao.ItemDAO;
-import br.com.cwi.crescer.domain.Item;
-import br.com.cwi.crescer.domain.Item.SituacaoItem;
-import br.com.cwi.crescer.domain.Pedido;
-import br.com.cwi.crescer.domain.Produto;
+import br.com.cwi.crescer.lavanderia.dao.ItemDAO;
+import br.com.cwi.crescer.lavanderia.domain.Item;
+import br.com.cwi.crescer.lavanderia.domain.Pedido;
+import br.com.cwi.crescer.lavanderia.domain.Produto;
+import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
 
 public class ItemDAOTest extends AbstractInfrastructureTest {
 

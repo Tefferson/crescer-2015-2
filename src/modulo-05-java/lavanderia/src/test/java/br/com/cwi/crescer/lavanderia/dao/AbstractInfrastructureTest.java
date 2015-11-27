@@ -5,7 +5,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import br.com.cwi.crescer.LavanderiaApplication;
+import br.com.cwi.crescer.lavanderia.LavanderiaApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(LavanderiaApplication.class)
