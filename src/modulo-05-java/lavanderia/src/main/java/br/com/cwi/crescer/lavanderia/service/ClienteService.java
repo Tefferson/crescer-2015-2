@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.lavanderia.dao.ClienteDAO;
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
-import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 import br.com.cwi.crescer.lavanderia.dto.ClienteDTO;
 import br.com.cwi.crescer.lavanderia.dto.ClienteResumoDTO;
 import br.com.cwi.crescer.lavanderia.mapper.ClienteMapper;

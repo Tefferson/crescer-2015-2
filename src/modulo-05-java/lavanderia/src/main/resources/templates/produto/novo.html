@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<div th:if="${mensagem != null} ">
+			<h1 th:text="${mensagem}" class="msg-err"></h1>
+		</div>
+
+		<h1 class="titulo col-offset-1">Produto - incluir</h1>
+
+		<form th:action="@{/produtos/incluir}" th:object="${produto}"
+			method="post">
+
+			<p>
+				<label class="control-label col-2">Serviço </label> <select
+					th:field="*{idServico}">
+					<option th:each="s : ${servicos}" th:text="${s.descricao}"
+						th:value="${s.idServico}"></option>
+				</select> <span class="help-inline" th:errors="*{idServico}"></span>
+			</p>
+
+			<p>
+				<label class="control-label col-2">Material </label> <select
+					th:field="*{idMaterial}">
+					<option th:each="m : ${materiais}" th:text="${m.descricao}"
+						th:value="${m.idMaterial}"></option>
+				</select> <span class="help-inline" th:errors="*{idMaterial}"></span>
+			</p>
+
+			<p>
+				<label class="control-label col-2">Valor</label> <input
+					th:field="*{valor}" type="text" />
+			</p>
+
+			<p>
+				<label class="control-label col-2">Prazo</label> <input
+					th:field="*{prazo}" type="text" />
+			</p>
+
+			<button type="submit">Salvar</button>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>

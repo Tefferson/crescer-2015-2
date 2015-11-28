@@ -11,62 +11,60 @@
 
 	<div layout:fragment="content">
 
-		<div class="col-offset-2 col-8 content">
-			<h1 class="titulo col-offset-1">Cliente - Remover</h1>
+		<h1 class="titulo col-offset-1">Cliente - Remover</h1>
 
-			<form th:action="@{/clientes/remover}" th:object="${cliente}"
-				method="post">
+		<form th:action="@{/clientes/remover}" th:object="${cliente}"
+			method="post">
 
-				<input th:field="*{id}" type="hidden" />
+			<input th:field="*{id}" type="hidden" />
 
-				<p>
-					<label class="control-label col-2">Nome</label> <input
-						th:field="*{nome}" type="text" disabled="true" />
-				</p>
+			<p>
+				<label class="control-label col-2">Nome</label> <input
+					th:field="*{nome}" type="text" disabled="true" />
+			</p>
 
-				<p>
-					<label class="control-label col-2">CPF</label> <input
-						th:field="*{cpf}" type="text" disabled="true" />
-				</p>
+			<p>
+				<label class="control-label col-2">CPF</label> <input
+					th:field="*{cpf}" type="text" disabled="true" />
+			</p>
 
-				<p>
-					<label class="control-label col-2">E-mail</label> <input
-						th:field="*{email}" type="text" disabled="true" />
-				</p>
+			<p>
+				<label class="control-label col-2">E-mail</label> <input
+					th:field="*{email}" type="text" disabled="true" />
+			</p>
 
-				<p>
-					<label class="control-label col-2">Cidade: </label> <select
-						th:field="*{idCidade}" disabled="true">
-						<option th:each="c : ${cidades}" th:text="${c.nome}"
-							th:value="${c.idCidade}"></option>
-					</select>
-				</p>
+			<p>
+				<label class="control-label col-2">Cidade: </label> <select
+					th:field="*{idCidade}" disabled="true">
+					<option th:each="c : ${cidades}" th:text="${c.nome}"
+						th:value="${c.idCidade}"></option>
+				</select>
+			</p>
 
-				<p>
-					<label class="control-label col-2">Bairro</label> <input
-						th:field="*{bairro}" type="text" disabled="true" />
-				</p>
+			<p>
+				<label class="control-label col-2">Bairro</label> <input
+					th:field="*{bairro}" type="text" disabled="true" />
+			</p>
 
-				<p>
-					<label class="control-label col-2">Endereco</label> <input
-						th:field="*{endereco}" type="text" disabled="true" />
-				</p>
+			<p>
+				<label class="control-label col-2">Endereco</label> <input
+					th:field="*{endereco}" type="text" disabled="true" />
+			</p>
 
-				<p>
-					<label class="control-label col-2">CEP</label> <input th:field="*{cep}"
-						type="text" disabled="true" />
-				</p>
+			<p>
+				<label class="control-label col-2">CEP</label> <input
+					th:field="*{cep}" type="text" disabled="true" />
+			</p>
 
-				<h2>A operação deve mesmo ser executada?</h2>
+			<h2>A operação deve mesmo ser executada?</h2>
 
-				<button type="submit">Remover</button>
-			</form>
+			<button type="submit">Remover</button>
+		</form>
 
-			<form th:action="@{/clientes}" method="GET">
-				<button>Cancelar</button>
-			</form>
+		<form th:action="@{/clientes}" method="GET">
+			<button>Cancelar</button>
+		</form>
 
-		</div>
 	</div>
 
 </body>

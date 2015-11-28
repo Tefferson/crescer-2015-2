@@ -38,6 +38,33 @@ public class Produto {
 	@Column(name = "Valor", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private BigDecimal valor;
+	
+	@Column(name = "Situacao")
+	private SituacaoProduto situacao;
+
+	@Column(name = "Prazo")
+	@Basic(optional=false)
+	private Integer prazo;
+	
+	public SituacaoProduto getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(SituacaoProduto situacao) {
+		this.situacao = situacao;
+	}
+
+	public Integer getPrazo() {
+		return prazo;
+	}
+
+	public void setPrazo(Integer prazo) {
+		this.prazo = prazo;
+	}
+
+	public enum SituacaoProduto {
+		ATIVO, INATIVO;
+	}
 
 	public Long getIdProduto() {
 		return idProduto;
@@ -69,6 +96,14 @@ public class Produto {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public void ativar() {
+		situacao = SituacaoProduto.ATIVO;
+	}
+	
+	public void desativar() {
+		situacao = SituacaoProduto.INATIVO;
 	}
 
 }

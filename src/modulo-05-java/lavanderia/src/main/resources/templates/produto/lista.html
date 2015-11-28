@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<div th:if="${mensagem != null} ">
+			<h1 th:text="${mensagem}" class="msg-suc"></h1>
+		</div>
+
+		<h1 class="titulo col-offset-1 col-11">Produtos</h1>
+
+		<div class="buscar col-12">
+			<form method="GET">
+
+				<p>
+					<label class="control-label col-2">Serviço </label> <select
+						th:name="idServico">
+						<option th:value="0">---</option>
+						<option th:each="s : ${servicos}" th:text="${s.descricao}"
+							th:value="${s.idServico}"></option>
+					</select>
+				</p>
+
+				<p>
+					<label class="control-label col-2">Material </label> <select
+						th:name="idMaterial">
+						<option th:value="0">---</option>
+						<option th:each="m : ${materiais}" th:text="${m.descricao}"
+							th:value="${m.idMaterial}"></option>
+					</select>
+				</p>
+
+				<button type="submit">Buscar</button>
+
+			</form>
+		</div>
+
+		<div th:if="${not #lists.isEmpty(produtos)}">
+			<table class="border-default col-offset-1 col-10">
+
+				<tr>
+					<th class="border-default col-2">Material</th>
+					<th class="border-default col-2">Servico</th>
+					<th class="border-default col-2">Valor(R$)</th>
+					<th class="border-default col-2">Prazo(dias)</th>
+					<th class="border-default col-2">Situação</th>
+					<th class="border-default col-2">Ações</th>
+				</tr>
+
+				<tr th:each="produto : ${produtos}">
+					<td th:text="${produto.material}"
+						class="border-default col-2 text-center"></td>
+					<td th:text="${produto.servico}"
+						class="border-default col-2 text-center"></td>
+					<td th:text="${produto.valor}"
+						class="border-default col-2 text-right"></td>
+					<td th:text="${produto.prazo}"
+						class="border-default col-2 text-right"></td>
+					<td th:text="${produto.situacao}"
+						class="border-default col-2 text-center text-center"></td>
+					<td class="col-2">
+
+						<div class="border-default col-6 icon-link-container">
+							<a th:href="${'/produtos/editar/' + produto.id}"><img
+								src="http://iconizer.net/files/Gnome_icons/orig/gtk-edit.png"
+								title="editar" /></a>
+						</div>
+						<div class="border-default col-6 icon-link-container">
+							<a th:href="${'/produtos/remover/' + produto.id}"><img
+								src="http://findicons.com/files/icons/1033/retrofukation/24/edit_delete.png"
+								title="remover" /></a>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+
+</body>
+
+</html>

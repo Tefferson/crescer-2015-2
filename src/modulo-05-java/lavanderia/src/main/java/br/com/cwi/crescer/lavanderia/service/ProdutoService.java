@@ -1,10 +1,17 @@
 package br.com.cwi.crescer.lavanderia.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.lavanderia.dao.ProdutoDAO;
 import br.com.cwi.crescer.lavanderia.domain.Produto;
+import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;
+import br.com.cwi.crescer.lavanderia.dto.ProdutoEditarDTO;
+import br.com.cwi.crescer.lavanderia.dto.ProdutoIncluirDTO;
+import br.com.cwi.crescer.lavanderia.mapper.ProdutoMapper;
 
 @Service
 public class ProdutoService {
@@ -17,8 +24,80 @@ public class ProdutoService {
 		this.produtoDAO = pessoaDAO;
 	}
 
-	public Produto findById(Long idProduto) {
-		return produtoDAO.findById(idProduto);
+	public boolean incluir(ProdutoIncluirDTO dto) {
+
+		if (novoProdutoEhUnico(dto)) {
+			Produto produto = ProdutoMapper.getNewEntity(dto);
+
+			produto.ativar();
+
+			produtoDAO.save(produto);
+
+			return true;
+		}
+
+		return false;
+
+	}
+
+	private boolean novoProdutoEhUnico(ProdutoIncluirDTO dto) {
+		return produtoDAO.findByServicoEMaterial(dto.getIdServico(), dto.getIdMaterial()) == null;
+	}
+
+	public List<ProdutoDTO> listarProdutosPorMaterialEServico(Long idMaterial, Long idServico) {
+
+		List<Produto> produtos = new ArrayList<>();
+		;
+
+		boolean findWithMaterial = idMaterial != null && idMaterial > 0;
+		boolean findWithServico = idServico != null && idServico > 0;
+
+		boolean findWithBoth = findWithMaterial && findWithServico;
+
+		if (findWithBoth) {
+			produtos = produtoDAO.listByMaterialEServico(idMaterial, idServico);
+		} else if (findWithMaterial) {
+			produtos = produtoDAO.listByMaterial(idMaterial);
+		} else if (findWithServico) {
+			produtos = produtoDAO.listByServico(idServico);
+		} else {
+			produtos = produtoDAO.list();
+		}
+
+		List<ProdutoDTO> dtos = new ArrayList<>();
+
+		for (Produto produto : produtos) {
+			dtos.add(ProdutoMapper.toDTO(produto));
+		}
+
+		return dtos;
+	}
+
+	public List<ProdutoDTO> listarProdutos() {
+
+		List<Produto> produtos = produtoDAO.list();
+
+		List<ProdutoDTO> dtos = new ArrayList<>();
+
+		for (Produto produto : produtos) {
+			dtos.add(ProdutoMapper.toDTO(produto));
+		}
+
+		return dtos;
+	}
+
+	public ProdutoDTO buscarProdutoPorId(Long idProduto) {
+		Produto produto = produtoDAO.findById(idProduto);
+		return ProdutoMapper.toDTO(produto);
+	}
+
+	public void atualizar(ProdutoEditarDTO produtoEditarDTO) {
+
+		Produto produto = produtoDAO.findById(produtoEditarDTO.getId());
+		ProdutoMapper.merge(produtoEditarDTO, produto);
+
+		produtoDAO.save(produto);
+
 	}
 
 }
