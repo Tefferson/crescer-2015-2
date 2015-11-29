@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
@@ -51,11 +52,11 @@ public class EditarPedidoController extends AbstractPedidoController {
 	public ModelAndView viewEdita(Model model, @PathVariable("id") Long id) {
 
 		Pedido pedido = pedidoService.buscarPedidoPorId(id);
-		
-		if(pedido.isProcessando()){
-			return new ModelAndView("redirect:/pedidos/processar/"+id);
+
+		if (pedido.isProcessando()) {
+			return new ModelAndView("redirect:/pedidos/processar/" + id);
 		}
-		
+
 		PedidoEditarDTO dto = PedidoMapper.toEditarDTO(pedido);
 
 		PedidoIncluirItemDTO itemDTO = new PedidoIncluirItemDTO();
@@ -64,15 +65,23 @@ public class EditarPedidoController extends AbstractPedidoController {
 		model.addAttribute("pedido", dto);
 		model.addAttribute("item", itemDTO);
 
-		return new ModelAndView("pedido/edita");
+		if (pedido.isPendente()) {
+			return new ModelAndView("pedido/edita");
+		} else if (pedido.isAguardandoRetirada()) {
+			return new ModelAndView("redirect:/pedidos/retirar/" + id);
+		} else if (pedido.isCancelado()) {
+			return new ModelAndView("pedido/editaBloqueado");
+		} else {
+			return new ModelAndView("pedido/exibe");
+		}
 	}
-	
+
 	@RequestMapping(path = "/{id}", method = RequestMethod.POST)
 	public ModelAndView processandoPedido(@PathVariable("id") Long id) {
 
 		pedidoService.trocarSituacaoParaProcessando(id);
-		
-		return new ModelAndView("redirect:/pedidos/processar/"+id);
+
+		return new ModelAndView("redirect:/pedidos/processar/" + id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -85,7 +94,8 @@ public class EditarPedidoController extends AbstractPedidoController {
 
 		ProdutoDTO produtoDTO = produtoService.buscarProdutoPorMaterialEServico(pedidoIncluirItemDTO.getIdMaterial(),
 				pedidoIncluirItemDTO.getIdServico());
-		itemService.adicionarItemAoPedido(pedidoIncluirItemDTO, produtoDTO);
+		Item item = itemService.adicionarItemAoPedido(pedidoIncluirItemDTO, produtoDTO);
+		pedidoService.atualizarValorBruto(item);
 
 		return new ModelAndView("redirect:/pedidos/editar/" + pedidoIncluirItemDTO.getIdPedido());
 	}

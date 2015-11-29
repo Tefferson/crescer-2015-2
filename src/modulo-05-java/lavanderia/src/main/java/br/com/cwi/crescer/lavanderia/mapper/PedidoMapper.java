@@ -39,7 +39,7 @@ public class PedidoMapper {
 		dto.setId(pedido.getIdPedido());
 		dto.setNomeCliente(pedido.getCliente().getNome());
 		dto.setSituacao(pedido.getSituacao());
-		dto.setValorTotal(pedido.getValorFinal());
+		dto.setValorTotal(pedido.getValorBruto());
 
 		return dto;
 	}

@@ -111,4 +111,8 @@ public class Item {
 	public static enum SituacaoItem {
 		PENDENTE, PROCESSADO;
 	}
+
+	public boolean isProcessado() {
+		return situacao == SituacaoItem.PROCESSADO;
+	}
 }

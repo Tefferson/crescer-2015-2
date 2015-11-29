@@ -27,7 +27,7 @@ public class ItemService {
 		return itemDAO.findById(idItem);
 	}
 
-	public void adicionarItemAoPedido(PedidoIncluirItemDTO pedidoIncluirItemDTO, ProdutoDTO produtoDTO) {
+	public Item adicionarItemAoPedido(PedidoIncluirItemDTO pedidoIncluirItemDTO, ProdutoDTO produtoDTO) {
 
 		Item item = new Item();
 		Produto produto = new Produto();
@@ -45,7 +45,7 @@ public class ItemService {
 		item.setValorUnitario(valorUnitario);
 		item.setValorTotal(valorTotal);
 		
-		itemDAO.save(item);
+		return itemDAO.save(item);
 		
 	}
 

@@ -1,5 +1,8 @@
 package br.com.cwi.crescer.lavanderia.controller.pedido;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.cwi.crescer.lavanderia.dto.ItemResumoDTO;
 import br.com.cwi.crescer.lavanderia.dto.PedidoEditarDTO;
 import br.com.cwi.crescer.lavanderia.dto.PedidoIncluirItemDTO;
-import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;
 import br.com.cwi.crescer.lavanderia.mapper.PedidoMapper;
 import br.com.cwi.crescer.lavanderia.service.ItemService;
 import br.com.cwi.crescer.lavanderia.service.PedidoService;
@@ -44,10 +47,26 @@ public class ProcessarPedidoController extends AbstractPedidoController {
 		PedidoIncluirItemDTO itemDTO = new PedidoIncluirItemDTO();
 		itemDTO.setIdPedido(id);
 
+		List<ItemResumoDTO> situacaoDosItens = pedidoService.listarSituacaoDosItens(id);
+
 		model.addAttribute("pedido", dto);
 		model.addAttribute("item", itemDTO);
+		model.addAttribute("situacaoDosItens", situacaoDosItens);
 
 		return new ModelAndView("pedido/processa");
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView atualizarItens(@Valid @ModelAttribute("situacaoDosItens") ArrayList<ItemResumoDTO> situacaoDosItens,
+			BindingResult result, final RedirectAttributes resirectAttributes) {
+
+		if (result.hasErrors()) {
+			return new ModelAndView("pedido/edita");
+		}
+		
+		List<ItemResumoDTO> a = situacaoDosItens;
+		
+		return new ModelAndView("redirect:/pedidos/");
 	}
 
 }

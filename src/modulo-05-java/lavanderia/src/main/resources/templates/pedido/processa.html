@@ -6,7 +6,6 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 
@@ -16,7 +15,7 @@
 		<h1 class="titulo col-offset-1">Pedido - processar itens</h1>
 
 		<div>
-			<table class="border-default col-offset-1 col-10">
+			<table class="border-default col-offset-1 col-9">
 
 				<tr>
 					<th class="border-default col-3">Produto</th>
@@ -34,9 +33,35 @@
 						class="border-default col-3 text-center"></td>
 				</tr>
 			</table>
-		</div>
 
+			<form method="POST" th:action="@{/pedidos/processar/ar}"
+				th:object="${situacaoDosItens}">
+
+				<table class="border-default col-1">
+
+					<tr>
+						<th class="border-default col-12">Pronto</th>
+					</tr>
+					<tr>
+						<td th:each="i, rowStat : ${situacaoDosItens}"
+							class="border-default col-12 text-center"><input
+							name="cbUnico" type="checkbox" class="cb" /></td>
+					</tr>
+				</table>
+
+				<button type="submit">Salvar</button>
+
+			</form>
+			
+			<form method="GET" th:action="@{'/pedidos/cancelar/'+${item.idPedido}}" >
+			
+				<button type="submit">Cancelar pedido</button>
+			
+			</form>
+			
+		</div>
 	</div>
+
 </body>
 
 </html>

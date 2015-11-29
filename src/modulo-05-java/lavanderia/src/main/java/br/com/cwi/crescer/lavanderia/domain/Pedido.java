@@ -143,4 +143,29 @@ public class Pedido {
 		return situacao == SituacaoPedido.PROCESSANDO;
 	}
 
+	public boolean isPendente() {
+		return situacao == SituacaoPedido.PENDENTE;
+	}
+
+	public void incrementarValorBruto(BigDecimal incremento) {
+		valorBruto = valorBruto.add(incremento);
+	}
+
+	public BigDecimal getPesoTotalDosItens() {
+		BigDecimal pesoTotal = BigDecimal.ZERO;
+
+		for (Item item : itens) {
+			pesoTotal = pesoTotal.add(item.getPeso());
+		}
+
+		return pesoTotal;
+	}
+
+	public boolean isAguardandoRetirada() {
+		return situacao == SituacaoPedido.PROCESSADO;
+	}
+
+	public boolean isCancelado() {
+		return situacao == SituacaoPedido.CANCELADO;
+	}
 }

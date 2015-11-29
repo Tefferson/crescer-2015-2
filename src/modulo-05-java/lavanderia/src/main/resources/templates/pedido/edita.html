@@ -6,7 +6,6 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 
@@ -74,7 +73,8 @@
 
 		<div>
 
-			<form class="inline-form" method="POST" th:action="${'/pedidos/editar/'+pedido.idPedido}" >
+			<form class="inline-form" method="POST"
+				th:action="${'/pedidos/editar/'+pedido.idPedido}">
 
 				<input th:field="${pedido.idPedido}" type="hidden" />
 
@@ -84,6 +84,13 @@
 
 			</form>
 		</div>
+
+		<form method="GET"
+			th:action="@{'/pedidos/cancelar/'+${item.idPedido}}">
+
+			<button type="submit">Cancelar pedido</button>
+
+		</form>
 
 	</div>
 </body>
