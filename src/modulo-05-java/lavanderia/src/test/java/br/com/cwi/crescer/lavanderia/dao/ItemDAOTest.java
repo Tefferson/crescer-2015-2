@@ -6,11 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.cwi.crescer.lavanderia.dao.ItemDAO;
 import br.com.cwi.crescer.lavanderia.domain.Item;
-import br.com.cwi.crescer.lavanderia.domain.Pedido;
-import br.com.cwi.crescer.lavanderia.domain.Produto;
 import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
+import br.com.cwi.crescer.lavanderia.domain.Produto;
 
 public class ItemDAOTest extends AbstractInfrastructureTest {
 
@@ -36,8 +34,8 @@ public class ItemDAOTest extends AbstractInfrastructureTest {
 
 	@Test
 	public void deveBuscarPedido() throws Exception {
-		Pedido pedido = itemDAO.findById(1L).getPedido();
-		Assert.assertNotNull(pedido);
+		Long idPedido = itemDAO.findById(1L).getIdPedido();
+		Assert.assertNotNull(idPedido);
 	}
 	
 	@Test

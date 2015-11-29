@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.cwi.crescer.lavanderia.controller.AbstractProdutoController;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoEditarDTO;
 import br.com.cwi.crescer.lavanderia.service.MaterialService;
 import br.com.cwi.crescer.lavanderia.service.ProdutoService;

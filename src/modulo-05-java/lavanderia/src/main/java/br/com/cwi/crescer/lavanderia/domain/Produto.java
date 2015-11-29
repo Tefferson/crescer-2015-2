@@ -38,14 +38,14 @@ public class Produto {
 	@Column(name = "Valor", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private BigDecimal valor;
-	
+
 	@Column(name = "Situacao")
 	private SituacaoProduto situacao;
 
 	@Column(name = "Prazo")
-	@Basic(optional=false)
+	@Basic(optional = false)
 	private Integer prazo;
-	
+
 	public SituacaoProduto getSituacao() {
 		return situacao;
 	}
@@ -101,9 +101,14 @@ public class Produto {
 	public void ativar() {
 		situacao = SituacaoProduto.ATIVO;
 	}
-	
+
 	public void desativar() {
 		situacao = SituacaoProduto.INATIVO;
+	}
+
+	@Override
+	public String toString() {
+		return servico.getDescricao() + " " + material.getDescricao();
 	}
 
 }

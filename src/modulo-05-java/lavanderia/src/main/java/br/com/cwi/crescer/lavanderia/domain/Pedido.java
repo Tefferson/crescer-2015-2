@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,48 +26,45 @@ import javax.persistence.TemporalType;
 @SequenceGenerator(name = Pedido.SEQUENCE_NAME, sequenceName = Pedido.SEQUENCE_NAME)
 public class Pedido {
 
-	public static final String SEQUENCE_NAME = "pedido_seq";
-	
+	public static final String SEQUENCE_NAME = "seq_pedido";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
 	@Column(name = "IDPedido")
 	private Long idPedido;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "IDCliente")
 	@Basic(optional = false)
 	private Cliente cliente;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DATAINCLUSAO")
 	@Basic(optional = false)
 	private Date dataInclusao;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATAENTREGA")
 	private Date dataEntrega;
-	
-	@Column(name = "Valor", precision = 12, scale = 2)
-	@Basic(optional = false)
-	private BigDecimal valor;
+
+	@Column(name = "Valorbruto", precision = 12, scale = 2)
+	private BigDecimal valorBruto;
+
+	@Column(name = "Valordesconto", precision = 12, scale = 2)
+	private BigDecimal valorDesconto;
+
+	@Column(name = "Valorfinal", precision = 12, scale = 2)
+	private BigDecimal valorFinal;
 
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "Situacao")
 	private SituacaoPedido situacao;
-	
-	public static enum SituacaoPedido{
+
+	@OneToMany(mappedBy = "idPedido", fetch = FetchType.EAGER)
+	private List<Item> itens;
+
+	public static enum SituacaoPedido {
 		PENDENTE, PROCESSANDO, PROCESSADO, ENCERRADO, CANCELADO;
-	}
-
-	@OneToMany(mappedBy = "pedido")
-	private List<Item> Itens;
-	
-	public List<Item> getItens() {
-		return Itens;
-	}
-
-	public void setItens(List<Item> itens) {
-		Itens = itens;
 	}
 
 	public Long getIdPedido() {
@@ -101,12 +99,28 @@ public class Pedido {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public BigDecimal getValor() {
-		return valor;
+	public BigDecimal getValorBruto() {
+		return valorBruto;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setValorBruto(BigDecimal valorBruto) {
+		this.valorBruto = valorBruto;
+	}
+
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public BigDecimal getValorFinal() {
+		return valorFinal;
+	}
+
+	public void setValorFinal(BigDecimal valorFinal) {
+		this.valorFinal = valorFinal;
 	}
 
 	public SituacaoPedido getSituacao() {
@@ -116,5 +130,17 @@ public class Pedido {
 	public void setSituacao(SituacaoPedido situacao) {
 		this.situacao = situacao;
 	}
-	
+
+	public List<Item> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
+	}
+
+	public boolean isProcessando() {
+		return situacao == SituacaoPedido.PROCESSANDO;
+	}
+
 }

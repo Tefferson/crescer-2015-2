@@ -1,7 +1,9 @@
 package br.com.cwi.crescer.lavanderia.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -98,6 +100,40 @@ public class ProdutoService {
 
 		produtoDAO.save(produto);
 
+	}
+
+	public Map<String, List<String>> listarProdutosComoMap() {
+
+		List<ProdutoDTO> dtos = listarProdutos();
+
+		Map<String, List<String>> map = new HashMap<>();
+
+		for (ProdutoDTO dto : dtos) {
+
+			String servico = dto.getServico().getDescricao();
+			String material = dto.getMaterial().getDescricao();
+
+			List<String> list = map.get(servico);
+
+			if (list == null) {
+				list = map.put(servico, new ArrayList<String>());
+			}
+
+			if (!list.contains(material)) {
+				list.add(material);
+			}
+
+		}
+		
+		return map;
+		
+	}
+
+	public ProdutoDTO buscarProdutoPorMaterialEServico(Long idMaterial, Long idServico) {
+		
+		Produto produto = produtoDAO.findByServicoEMaterial(idServico, idMaterial);
+		
+		return ProdutoMapper.toDTO(produto);
 	}
 
 }

@@ -49,4 +49,10 @@ public class ClienteDAO extends DAO {
 				.getResultList();
 	}
 
+	public List<Cliente> listarNomeEIdAtivos() {
+		return em.createQuery("FROM Cliente c where c.situacao = :situacao", Cliente.class)
+				.setParameter("situacao", SituacaoCliente.ATIVO)
+				.getResultList();
+	}
+
 }

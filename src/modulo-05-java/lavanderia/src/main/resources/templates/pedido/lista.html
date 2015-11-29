@@ -15,52 +15,40 @@
 			<h1 th:text="${mensagem}" class="msg-suc"></h1>
 		</div>
 
-		<h1 class="titulo col-offset-1 col-11">Clientes</h1>
+		<h1 class="titulo col-offset-1 col-11">Pedidos</h1>
 
-
-		<div class="buscar col-12">
-			<form method="GET">
-
-				<p>
-					<label class="control-label col-2">Nome</label> <input name="term"
-						type="text" placeholder="Digite sua busca" />
-				</p>
-
-				<button type="submit">Buscar</button>
-
-			</form>
-		</div>
-
-		<div th:if="${not #lists.isEmpty(clientes)}">
+		<div th:if="${not #lists.isEmpty(pedidos)}">
 			<table class="border-default col-offset-1 col-10">
 
 				<tr>
-					<th class="border-default col-4 text-left">Nome</th>
 					<th class="border-default col-2">CPF</th>
-					<th class="border-default col-3">Situação</th>
-					<th class="border-default col-3">Ações</th>
+					<th class="border-default col-2 text-left">Cliente</th>
+					<th class="border-default col-2">Data inclusão</th>
+					<th class="border-default col-2">Valor total(R$)</th>
+					<th class="border-default col-2">Situação</th>
+					<th class="border-default col-2">Ações</th>
 				</tr>
 
-				<tr th:each="cliente : ${clientes}">
-					<td th:text="${cliente.nome}" class="border-default col-4"></td>
-					<td th:text="${cliente.cpf}"
-						class="border-default col-2 text-center"></td>
-					<td th:text="${cliente.situacao}"
-						class="border-default col-3 text-center"></td>
-					<td class="col-3">
+				<tr th:each="pedido : ${pedidos}">
+					<td th:text="${pedido.cpf}" class="border-default col-2 text-center"></td>
+					<td th:text="${pedido.nomeCliente}" class="border-default col-2 text-left"></td>
+					<td th:text="${pedido.dataInclusao}" class="border-default col-2 text-center"></td>
+					<td th:text="${pedido.valorTotal}" class="border-default col-2 text-center"></td>
+					<td th:text="${pedido.situacao}" class="border-default col-2 text-center"></td>
 
+					<td class="col-2">
 						<div class="border-default col-4 icon-link-container">
-							<a th:href="${'/clientes/' + cliente.id}"><img
+							<a th:href="${'/pedidos/' + pedido.id}"><img
 								src="http://www.honestmachines.com/images/icon_details.png"
 								title="detalhes" /></a>
 						</div>
 						<div class="border-default col-4 icon-link-container">
-							<a th:href="${'/clientes/editar/' + cliente.id}"><img
+							<a th:href="${'/pedidos/editar/' + pedido.id}"><img
 								src="http://iconizer.net/files/Gnome_icons/orig/gtk-edit.png"
 								title="editar" /></a>
 						</div>
 						<div class="border-default col-4 icon-link-container">
-							<a th:href="${'/clientes/remover/' + cliente.id}"><img
+							<a th:href="${'/pedidos/remover/' + pedido.id}"><img
 								src="http://findicons.com/files/icons/1033/retrofukation/24/edit_delete.png"
 								title="remover" /></a>
 						</div>

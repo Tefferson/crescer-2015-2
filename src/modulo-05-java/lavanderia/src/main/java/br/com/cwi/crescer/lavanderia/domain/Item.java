@@ -28,20 +28,20 @@ public class Item {
 		this.idItem = idItem;
 	}
 
-	public Pedido getPedido() {
-		return pedido;
+	public Long getIdPedido() {
+		return idPedido;
 	}
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void setIdPedido(Long idPedido) {
+		this.idPedido = idPedido;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	public Produto getProduto() {
 		return produto;
-	}
-
-	public void setIdProduto(Produto produto) {
-		this.produto = produto;
 	}
 
 	public BigDecimal getPeso() {
@@ -58,14 +58,6 @@ public class Item {
 
 	public void setValorUnitario(BigDecimal valorUnitario) {
 		this.valorUnitario = valorUnitario;
-	}
-
-	public BigDecimal getValorDesconto() {
-		return valorDesconto;
-	}
-
-	public void setValorDesconto(BigDecimal valorDesconto) {
-		this.valorDesconto = valorDesconto;
 	}
 
 	public BigDecimal getValorTotal() {
@@ -91,10 +83,9 @@ public class Item {
 	@Column(name = "IDItem")
 	private Long idItem;
 
-	@ManyToOne
-	@JoinColumn(name = "IDPEDIDO")
+	@Column(name = "IDPEDIDO")
 	@Basic(optional = false)
-	private Pedido pedido;
+	private Long idPedido;
 
 	@ManyToOne
 	@JoinColumn(name = "IDPRODUTO")
@@ -109,10 +100,6 @@ public class Item {
 	@Basic(optional = false)
 	private BigDecimal valorUnitario;
 
-	@Column(name = "VALORDESCONTO", precision = 12, scale = 2)
-	@Basic(optional = false)
-	private BigDecimal valorDesconto;
-
 	@Column(name = "VALORTOTAL", precision = 12, scale = 2)
 	@Basic(optional = false)
 	private BigDecimal valorTotal;
@@ -122,7 +109,6 @@ public class Item {
 	private SituacaoItem situacao;
 
 	public static enum SituacaoItem {
-		PENDENTE, PROCESSANDO, PROCESSADO;
+		PENDENTE, PROCESSADO;
 	}
-
 }

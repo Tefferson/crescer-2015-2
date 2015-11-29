@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+
+	<div layout:fragment="content">
+
+		<h1 class="titulo col-offset-1">Pedido - itens</h1>
+
+		<div class="col-offset-1 col-10 content-section">
+
+			<form th:action="@{/pedidos/editar}" method="post"
+				th:object="${item}" class="inline-form">
+
+				<input th:field="*{idPedido}" type="hidden" />
+
+				<p>
+					<label class="control-label col-1">Serviço </label> <select
+						th:field="*{idServico}" class="control-label col-1">
+						<option th:each="s : ${servicos}" th:text="${s.descricao}"
+							th:value="${s.idServico}"></option>
+					</select>
+				</p>
+
+				<p>
+					<label class="control-label col-1">Material </label> <select
+						th:field="*{idMaterial}" class="control-label col-1">
+						<option th:each="m : ${materiais}" th:text="${m.descricao}"
+							th:value="${m.idMaterial}"></option>
+					</select>
+				</p>
+
+				<p>
+					<label class="control-label col-1">Peso</label> <input
+						th:field="*{peso}" type="text" class="control-label col-1" />
+				</p>
+
+				<p>
+					<button type="submit">Adicionar item</button>
+				</p>
+
+			</form>
+
+		</div>
+
+		<div>
+			<table class="border-default col-offset-1 col-10">
+
+				<tr>
+					<th class="border-default col-3">Produto</th>
+					<th class="border-default col-3">Peso(Kg)</th>
+					<th class="border-default col-3">Valor unitário(R$)</th>
+					<th class="border-default col-3">Valor total(R$)</th>
+				</tr>
+
+				<tr th:each="i : ${pedido.itens}">
+					<td th:text="${i.produto}" class="border-default col-3 text-center"></td>
+					<td th:text="${i.peso}" class="border-default col-3 text-center"></td>
+					<td th:text="${i.valorUnitario}"
+						class="border-default col-3 text-center"></td>
+					<td th:text="${i.valorTotal}"
+						class="border-default col-3 text-center"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div>
+
+			<form class="inline-form" method="POST" th:action="${'/pedidos/editar/'+pedido.idPedido}" >
+
+				<input th:field="${pedido.idPedido}" type="hidden" />
+
+				<p>
+					<button type="submit">Concluir inclusão</button>
+				</p>
+
+			</form>
+		</div>
+
+	</div>
+</body>
+
+</html>

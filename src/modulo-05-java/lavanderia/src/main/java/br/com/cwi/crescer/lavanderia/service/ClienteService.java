@@ -80,4 +80,8 @@ public class ClienteService {
 		return dtos;
 	}
 
+	public List<Cliente> listarNomesDosClientes() {
+		return clienteDAO.listarNomeEIdAtivos();
+	}
+
 }

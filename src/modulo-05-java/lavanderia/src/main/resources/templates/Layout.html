@@ -19,11 +19,11 @@
 				<button type="submit">Logout</button>
 
 			</form>
-			
+
 			<div>
 				Bem-vindo, <span sec:authentication="name"></span>
 			</div>
-			
+
 		</div>
 
 		<div sec:authorize="hasRole('ROLE_USER')">
@@ -65,6 +65,7 @@
 		</p>
 
 	</footer>
+
 </body>
 
 </html>

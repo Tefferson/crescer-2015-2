@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.lavanderia.controller;
+package br.com.cwi.crescer.lavanderia.controller.cliente;
 
 import java.util.List;
 

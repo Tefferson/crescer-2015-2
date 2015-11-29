@@ -4,7 +4,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: georgia;
-	background-color: #f1f1f1;
+	background-color: #fff;
 }
 
 form p label {
@@ -22,6 +22,28 @@ form h2 {
 	margin-left: 100px;
 }
 
+.inline-form, .inline-form p{
+	display: inline;
+}
+
+ .inline-form p button {
+ 	margin-top: 0;
+ }
+ 
+ .content-section {
+ 
+	margin-top: 30px;
+ 	margin-bottom: 30px;
+ 	
+ 	padding: 10px 5px;
+ 	
+ 	box-sizing: border-box;
+ 	border: 2px solid #ccc;
+ 	
+ 	background: #fefefe;
+ 
+ }
+
 .has-error {
 	box-shadow: 0 0 15px rgba(255,50,50,0.85);
 	border: 1px solid rgba(255,100,100,0.85);
@@ -37,7 +59,7 @@ form h2 {
 }
 
 .content {
-	background-color: #fff;
+	background-color: #f1f1f1;
 	border: 1px solid #ccc;
 	padding-bottom: 30px;
 }
