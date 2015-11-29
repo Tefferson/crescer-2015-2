@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+</head>
+<body>
+
+
+	<div layout:fragment="content">
+
+		<h1 class="titulo col-offset-1">Pedido - cancelar pedido</h1>
+
+		<div>
+			<table class="border-default col-offset-1 col-9">
+
+				<tr>
+					<th class="border-default col-3">Produto</th>
+					<th class="border-default col-3">Peso(Kg)</th>
+					<th class="border-default col-3">Valor unitário(R$)</th>
+					<th class="border-default col-3">Valor total(R$)</th>
+				</tr>
+
+				<tr th:each="i : ${pedido.itens}">
+					<td th:text="${i.produto}" class="border-default col-3 text-center"></td>
+					<td th:text="${i.peso}" class="border-default col-3 text-center"></td>
+					<td th:text="${i.valorUnitario}"
+						class="border-default col-3 text-center"></td>
+					<td th:text="${i.valorTotal}"
+						class="border-default col-3 text-center"></td>
+				</tr>
+			</table>
+
+			<div class="col-offset-1 col-10">
+				<form class="col-1" method="GET"
+					th:action="@{'/pedidos/editar/'+${pedido.idPedido}}">
+					<button type="submit" style="margin-left: 0;">Não</button>
+				</form>
+
+				<form class="col-1" method="POST"
+					th:action="@{'/pedidos/cancelar/'+${pedido.idPedido}}">
+					<button type="submit" style="margin-left: 0;">Sim</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+</head>
+<body>
+
+
+	<div layout:fragment="content">
+
+		<h1 class="titulo col-offset-1">Pedido - itens</h1>
+
+		<div class="col-offset-1 col-10">
+			<h1 class="msg-err">Pedido fechado para alterações</h1>
+		</div>
+
+		<div>
+			<table class="border-default col-offset-1 col-10">
+
+				<tr>
+					<th class="border-default col-3">Produto</th>
+					<th class="border-default col-3">Peso(Kg)</th>
+					<th class="border-default col-3">Valor unitário(R$)</th>
+					<th class="border-default col-3">Valor total(R$)</th>
+				</tr>
+
+				<tr th:each="i : ${pedido.itens}">
+					<td th:text="${i.produto}" class="border-default col-3 text-center"></td>
+					<td th:text="${i.peso}" class="border-default col-3 text-center"></td>
+					<td th:text="${i.valorUnitario}"
+						class="border-default col-3 text-center"></td>
+					<td th:text="${i.valorTotal}"
+						class="border-default col-3 text-center"></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</body>
+
+</html>
