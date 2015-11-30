@@ -17,6 +17,32 @@
 
 		<h1 class="titulo col-offset-1 col-11">Pedidos</h1>
 
+		<div class="col-offset-1 col-10 content-section">
+
+			<form class="col-6" th:action="@{/pedidos}">
+
+				<p>
+					<label>Situação</label> <select name="situacao">
+						<option th:each="s, rowStat : ${situacoes}" th:text="${s}"
+							th:value="${rowStat.index}"></option>
+					</select>
+					<button type="submit">Pesquisar</button>
+				</p>
+
+			</form>
+
+			<form class="col-6" th:action="@{/pedidos}">
+
+				<p>
+					<label>CPF</label><input placeholder="Digite sua pesquisa..."
+						type="text" name="cpf" />
+					<button type="submit">Pesquisar</button>
+				</p>
+
+			</form>
+
+		</div>
+
 		<div th:if="${not #lists.isEmpty(pedidos)}">
 			<table class="border-default col-offset-1 col-10">
 
@@ -30,11 +56,16 @@
 				</tr>
 
 				<tr th:each="pedido : ${pedidos}">
-					<td th:text="${pedido.cpf}" class="border-default col-2 text-center"></td>
-					<td th:text="${pedido.nomeCliente}" class="border-default col-2 text-left"></td>
-					<td th:text="${pedido.dataInclusao}" class="border-default col-2 text-center"></td>
-					<td th:text="${pedido.valorTotal}" class="border-default col-2 text-center"></td>
-					<td th:text="${pedido.situacao}" class="border-default col-2 text-center"></td>
+					<td th:text="${pedido.cpf}"
+						class="border-default col-2 text-center"></td>
+					<td th:text="${pedido.nomeCliente}"
+						class="border-default col-2 text-left"></td>
+					<td th:text="${pedido.dataInclusao}"
+						class="border-default col-2 text-center"></td>
+					<td th:text="${pedido.valorTotal}"
+						class="border-default col-2 text-center"></td>
+					<td th:text="${pedido.situacao}"
+						class="border-default col-2 text-center"></td>
 
 					<td class="col-2">
 						<div class="border-default col-4 icon-link-container">

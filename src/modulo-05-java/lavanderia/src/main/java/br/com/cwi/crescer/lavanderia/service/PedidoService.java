@@ -157,4 +157,14 @@ public class PedidoService {
 		pedidoDAO.updateSituacao(id, SituacaoPedido.ENCERRADO);
 	}
 
+	public List<PedidoResumoDTO> pesquisarPorSituacao(Integer situacao) {
+		List<Pedido> pedidos = pedidoDAO.findBySituacao(SituacaoPedido.values()[situacao]);
+		return PedidoMapper.toDTOList(pedidos);
+	}
+
+	public List<PedidoResumoDTO> pesquisarPorCpf(String cpf) {
+		List<Pedido> pedidos = pedidoDAO.findByCpfDoCliente(cpf);
+		return PedidoMapper.toDTOList(pedidos);
+	}
+
 }

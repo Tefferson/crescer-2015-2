@@ -44,9 +44,12 @@ public class PedidoDAO extends DAO {
 	@Transactional
 	public int updateSituacao(Long id, SituacaoPedido situacao) {
 		return em.createQuery("UPDATE Pedido set situacao=:situacao where idPedido=:idPedido")
-				.setParameter("situacao", situacao)
-				.setParameter("idPedido", id)
-				.executeUpdate();
+				.setParameter("situacao", situacao).setParameter("idPedido", id).executeUpdate();
+	}
+
+	public List<Pedido> findByCpfDoCliente(String cpf) {
+		return em.createQuery("SELECT p FROM Pedido p WHERE p.cliente.cpf=:cpf",
+				Pedido.class).setParameter("cpf", cpf).getResultList();
 	}
 
 }
