@@ -34,31 +34,38 @@
 				</tr>
 			</table>
 
-			<form method="POST" th:action="@{/pedidos/processar/ar}"
-				th:object="${situacaoDosItens}">
+			<table class="border-default col-1">
 
-				<table class="border-default col-1">
+				<tr>
+					<th class="border-default col-12">Situação</th>
+				</tr>
+				<tr>
+					<td th:each="i : ${situacaoDosItens}"
+						class="border-default col-12 text-center">
 
-					<tr>
-						<th class="border-default col-12">Pronto</th>
-					</tr>
-					<tr>
-						<td th:each="i, rowStat : ${situacaoDosItens}"
-							class="border-default col-12 text-center"><input
-							name="cbUnico" type="checkbox" class="cb" /></td>
-					</tr>
-				</table>
+						<form method="POST" th:action="@{'/pedidos/processar/' + ${i.id}}"
+							th:object="${situacaoDosItens}" th:if="${!i.processado}">
 
-				<button type="submit">Salvar</button>
+							<button type="submit" style="margin:auto;">Processar</button>
 
-			</form>
-			
-			<form method="GET" th:action="@{'/pedidos/cancelar/'+${item.idPedido}}" >
-			
+						</form> 
+						
+						<label th:if="${i.processado}">Processado</label>
+
+					</td>
+				</tr>
+			</table>
+
+			<button type="submit">Salvar</button>
+
+
+			<form method="GET"
+				th:action="@{'/pedidos/cancelar/'+${item.idPedido}}">
+
 				<button type="submit">Cancelar pedido</button>
-			
+
 			</form>
-			
+
 		</div>
 	</div>
 

@@ -167,4 +167,16 @@ public class PedidoService {
 		return PedidoMapper.toDTOList(pedidos);
 	}
 
+	public boolean todosItensProcessados(Long idPedido) {
+		Pedido pedido = pedidoDAO.findById(idPedido);
+
+		for (Item item : pedido.getItens()) {
+			if (!item.isProcessado()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 }

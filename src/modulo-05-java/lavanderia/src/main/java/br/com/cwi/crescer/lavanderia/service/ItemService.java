@@ -49,4 +49,8 @@ public class ItemService {
 		
 	}
 
+	public void processar(Long id) {
+		itemDAO.processar(id);
+	}
+
 }

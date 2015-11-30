@@ -12,43 +12,7 @@
 
 	<div layout:fragment="content">
 
-		<h1 class="titulo col-offset-1">Pedido - itens</h1>
-
-		<div class="col-offset-1 col-10 content-section">
-
-			<form th:action="@{/pedidos/editar}" method="post"
-				th:object="${item}" class="inline-form">
-
-				<input th:field="*{idPedido}" type="hidden" />
-
-				<p>
-					<label class="control-label col-1">Serviço </label> <select
-						th:field="*{idServico}" class="control-label col-1">
-						<option th:each="s : ${servicos}" th:text="${s.descricao}"
-							th:value="${s.idServico}"></option>
-					</select>
-				</p>
-
-				<p>
-					<label class="control-label col-1">Material </label> <select
-						th:field="*{idMaterial}" class="control-label col-1">
-						<option th:each="m : ${materiais}" th:text="${m.descricao}"
-							th:value="${m.idMaterial}"></option>
-					</select>
-				</p>
-
-				<p>
-					<label class="control-label col-1">Peso</label> <input
-						th:field="*{peso}" type="text" class="control-label col-1" />
-				</p>
-
-				<p>
-					<button type="submit">Adicionar item</button>
-				</p>
-
-			</form>
-
-		</div>
+		<h1 class="titulo col-offset-1">Pedido - retirar</h1>
 
 		<div>
 			<table class="border-default col-offset-1 col-10">
@@ -81,6 +45,15 @@
 				<p>
 					<button type="submit">Retirar pedido</button>
 				</p>
+
+			</form>
+		</div>
+
+		<div>
+			<form method="GET"
+				th:action="@{'/pedidos/cancelar/'+${item.idPedido}}">
+
+				<button type="submit">Cancelar pedido</button>
 
 			</form>
 		</div>

@@ -32,4 +32,10 @@ public class ItemDAO extends DAO {
 		return em.merge(item);
 	}
 
+	@Transactional
+	public void processar(Long id) {
+		em.createQuery("UPDATE Item i set i.situacao = :situacao WHERE idItem=:idItem")
+				.setParameter("situacao", SituacaoItem.PROCESSADO).setParameter("idItem", id).executeUpdate();
+	}
+
 }
