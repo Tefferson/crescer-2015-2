@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 public class PedidoIncluirItemDTO {
 
 	@NotNull
@@ -16,6 +19,7 @@ public class PedidoIncluirItemDTO {
 	private Long idMaterial;
 
 	@NotNull
+	@NumberFormat(style=Style.NUMBER, pattern = "####.###")
 	private BigDecimal peso;
 
 	public Long getIdPedido() {

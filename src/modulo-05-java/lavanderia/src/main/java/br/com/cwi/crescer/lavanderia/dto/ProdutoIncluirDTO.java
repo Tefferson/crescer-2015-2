@@ -4,12 +4,17 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 public class ProdutoIncluirDTO {
 
 	@NotNull
+	@NumberFormat(style=Style.CURRENCY)
 	private BigDecimal valor;
 
 	@NotNull
+	@NumberFormat(style=Style.NUMBER)
 	private Integer prazo;
 	
 	@NotNull

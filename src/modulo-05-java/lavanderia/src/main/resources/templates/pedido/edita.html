@@ -39,7 +39,9 @@
 
 				<p>
 					<label class="control-label col-1">Peso</label> <input
-						th:field="*{peso}" type="text" class="control-label col-1" />
+						th:classappend="${#fields.hasErrors('peso')} ? 'has-error'"
+						th:field="*{peso}" type="text" class="control-label col-1" /><span
+						class="help-inline" th:errors="*{peso}"></span>
 				</p>
 
 				<p>

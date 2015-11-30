@@ -14,9 +14,6 @@ public class IndexController {
 	@RequestMapping({ "/", "home", "index" })
 	public String index(Model model) {
 
-		String mensagem = "Bem-vindo, Lavanderia Crescer!";
-		model.addAttribute("mensagem", mensagem);
-
 		return "home/index";
 
 	}

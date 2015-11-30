@@ -34,12 +34,16 @@
 
 			<p>
 				<label class="control-label col-2">Valor</label> <input
-					th:field="*{valor}" type="text" />
+					th:classappend="${#fields.hasErrors('valor')} ? 'has-error'"
+					th:field="*{valor}" type="text" /><span class="help-inline"
+					th:errors="*{valor}"></span>
 			</p>
 
 			<p>
 				<label class="control-label col-2">Prazo</label> <input
-					th:field="*{prazo}" type="text" />
+					th:classappend="${#fields.hasErrors('prazo')} ? 'has-error'"
+					th:field="*{prazo}" type="text" /><span class="help-inline"
+					th:errors="*{prazo}"></span>
 			</p>
 
 			<button type="submit">Salvar</button>
