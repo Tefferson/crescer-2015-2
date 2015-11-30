@@ -6,6 +6,23 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+// 		$('#material optgroup').hide();
+// 		$('#servico').change(function() {
+// 			var text = $(this).val();
+// 			$('#material optgroup').hide();
+// 			$('#material')
+// 			$('#material').val('');
+// 			$('#material optgroup[label="' + text + '"]').css({
+// 				'display' : 'block'
+// 			});
+
+// 		});
+	});
+</script>
 </head>
 <body>
 
@@ -50,6 +67,27 @@
 
 			</form>
 
+			<div>
+				<select id="servico" name="idServico">
+					<optgroup label="serviço">
+						<option value="lavar">Lavar</option>
+						<option value="secar">Secar</option>
+					</optgroup>
+				</select> 
+				<select id="material">
+					<optgroup label="Lavar">
+						<option value="delicado">Delicado</option>
+						<option value="normal">Normal</option>
+						<option value="pesado">Pesado</option>
+					</optgroup>
+					<optgroup label="Secar">
+						<option value="delicado">Delicado</option>
+						<option value="normal">Normal</option>
+						<option value="pesado">Pesado</option>
+					</optgroup>
+				</select>
+			</div>
+
 		</div>
 
 		<div>
@@ -83,7 +121,8 @@
 					<input th:field="${pedido.idPedido}" type="hidden" />
 
 					<p>
-						<button class="little-margin" type="submit">Concluir inclusão</button>
+						<button class="little-margin" type="submit">Concluir
+							inclusão</button>
 					</p>
 
 				</form>

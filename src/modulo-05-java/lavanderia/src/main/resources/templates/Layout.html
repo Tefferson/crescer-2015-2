@@ -5,7 +5,8 @@
 <meta charset="UTF-8" />
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Lavanderia</title>
 <link rel="stylesheet" type="text/css" th:href="@{~/site.css}" />
-<link rel="icon" type="img/ico" href="http://www.rrmewl.com/media/catalog/category/cat_resized/WashingMachine.png" />
+<link rel="icon" type="img/ico"
+	href="http://www.rrmewl.com/media/catalog/category/cat_resized/WashingMachine.png" />
 </head>
 <body>
 	<div class="col-12 cabecalho">
@@ -37,8 +38,9 @@
 		</div>
 
 	</div>
-	
-	<div th:if="${mensagem != null} " class="col-offset-1 col-10" style="margin-top:0;margin-bottom:0;">
+
+	<div th:if="${mensagem != null} " class="col-offset-1 col-10"
+		style="margin-top: 0; margin-bottom: 0;">
 		<h1 th:text="${mensagem}" class="msg-suc"></h1>
 	</div>
 
@@ -81,6 +83,7 @@
 		</p>
 
 	</footer>
+	
 </body>
 
 </html>

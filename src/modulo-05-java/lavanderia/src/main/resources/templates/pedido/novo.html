@@ -25,7 +25,7 @@
 			</form>
 
 			<form th:each="c : ${clientes}" method="GET">
-
+			
 				<div class="content-section">
 					<label th:text="${c.nome}"></label> <input name="id"
 						th:value="${c.id}" type="hidden" />
