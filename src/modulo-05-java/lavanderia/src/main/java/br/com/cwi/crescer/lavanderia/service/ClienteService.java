@@ -68,20 +68,41 @@ public class ClienteService {
 	}
 
 	public List<ClienteDTO> buscarPorNomeParcial(String term) {
-		
+
 		List<Cliente> clientes = clienteDAO.findPartialName(term);
-		
+
 		List<ClienteDTO> dtos = new ArrayList<ClienteDTO>();
 
 		for (Cliente cliente : clientes) {
 			dtos.add(ClienteMapper.toDTO(cliente));
 		}
-		
+
 		return dtos;
 	}
 
-	public List<Cliente> listarNomesDosClientes() {
-		return clienteDAO.listarNomeEIdAtivos();
+	public List<ClienteDTO> listarNomesDosClientes() {
+
+		List<Cliente> clientes = clienteDAO.listarNomeEIdAtivos();
+		List<ClienteDTO> dtos = new ArrayList<>();
+
+		for (Cliente cliente : clientes) {
+			dtos.add(ClienteMapper.toDTO(cliente));
+		}
+
+		return dtos;
+	}
+
+	public List<ClienteDTO> buscarAtivosPorNomeParcial(String term) {
+		
+		List<Cliente> clientes = clienteDAO.findActiveAndPartialName(term);
+
+		List<ClienteDTO> dtos = new ArrayList<ClienteDTO>();
+
+		for (Cliente cliente : clientes) {
+			dtos.add(ClienteMapper.toDTO(cliente));
+		}
+
+		return dtos;
 	}
 
 }

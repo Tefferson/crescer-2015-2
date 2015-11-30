@@ -13,19 +13,27 @@
 		<h1 class="titulo col-offset-1">Pedido - incluir</h1>
 
 		<div class="buscar content-section col-5 col-offset-1">
+
 			<form method="GET">
 
 				<p>
-					<label class="control-label col-2">Cliente </label> <select
-						name="idCliente">
-						<option th:each="c : ${clientes}" th:text="${c.nome}"
-							th:value="${c.idCliente}"></option>
-					</select>
+					<label>Cliente</label><input placeholder="Digite sua pesquisa..."
+						type="text" name="nome" />
+					<button type="submit">Pesquisar nome</button>
 				</p>
 
-				<button type="submit">Cadastrar pedido</button>
+			</form>
+
+			<form th:each="c : ${clientes}" method="GET">
+
+				<div class="content-section">
+					<label th:text="${c.nome}"></label> <input name="id"
+						th:value="${c.id}" type="hidden" />
+					<button type="submit">Selecionar</button>
+				</div>
 
 			</form>
+
 		</div>
 
 	</div>

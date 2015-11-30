@@ -44,15 +44,19 @@ public class ClienteDAO extends DAO {
 	}
 
 	public List<Cliente> findPartialName(String term) {
-		
+
 		return em.createQuery("FROM Cliente where nome like :nome", Cliente.class).setParameter("nome", term + "%")
 				.getResultList();
 	}
 
 	public List<Cliente> listarNomeEIdAtivos() {
 		return em.createQuery("FROM Cliente c where c.situacao = :situacao", Cliente.class)
-				.setParameter("situacao", SituacaoCliente.ATIVO)
-				.getResultList();
+				.setParameter("situacao", SituacaoCliente.ATIVO).getResultList();
+	}
+
+	public List<Cliente> findActiveAndPartialName(String term) {
+		return em.createQuery("FROM Cliente where situacao=:situacao and nome like :nome", Cliente.class)
+				.setParameter("situacao", SituacaoCliente.ATIVO).setParameter("nome", term + "%").getResultList();
 	}
 
 }

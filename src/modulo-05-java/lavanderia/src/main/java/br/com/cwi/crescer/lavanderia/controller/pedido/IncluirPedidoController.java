@@ -23,9 +23,8 @@ public class IncluirPedidoController extends AbstractPedidoController {
 		this.clienteService = clienteService;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, params = "idCliente")
-	public ModelAndView incluir(@RequestParam("idCliente") Long idCliente,
-			final RedirectAttributes redirectAttributes) {
+	@RequestMapping(method = RequestMethod.GET, params = "id")
+	public ModelAndView incluir(@RequestParam("id") Long idCliente, final RedirectAttributes redirectAttributes) {
 
 		if (idCliente < 1) {
 			return new ModelAndView("pedido/novo");
@@ -37,10 +36,16 @@ public class IncluirPedidoController extends AbstractPedidoController {
 		return new ModelAndView("redirect:/pedidos/editar/" + idPedido);
 	}
 
+	@RequestMapping(method = RequestMethod.GET, params = "nome")
+	public ModelAndView pesquisarNome(@RequestParam("nome") String nome, final RedirectAttributes redirectAttributes) {
+
+		return new ModelAndView("pedido/novo", "clientes", clienteService.buscarAtivosPorNomeParcial(nome));
+	}
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView viewNovo() {
 
-		return new ModelAndView("pedido/novo", "clientes", clienteService.listarNomesDosClientes());
+		return new ModelAndView("pedido/novo");
 	}
 
 }
