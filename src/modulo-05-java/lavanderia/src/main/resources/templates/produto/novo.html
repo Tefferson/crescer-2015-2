@@ -11,10 +11,6 @@
 
 	<div layout:fragment="content">
 
-		<div th:if="${mensagem != null} ">
-			<h1 th:text="${mensagem}" class="msg-err"></h1>
-		</div>
-
 		<h1 class="titulo col-offset-1">Produto - incluir</h1>
 
 		<form th:action="@{/produtos/incluir}" th:object="${produto}"

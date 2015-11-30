@@ -26,7 +26,7 @@ public class IncluirClienteController extends AbstractClienteController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView incluir(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO, BindingResult result,
-			final RedirectAttributes resirectAttributes) {
+			final RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			return new ModelAndView("cliente/novo");
@@ -34,6 +34,7 @@ public class IncluirClienteController extends AbstractClienteController {
 
 		clienteService.incluir(clienteDTO);
 
+		redirectAttributes.addFlashAttribute("mensagem", "Cliente cadastrado com sucesso.");
 		return new ModelAndView("redirect:/clientes");
 	}
 

@@ -38,12 +38,13 @@ public class EditarProdutoController extends AbstractProdutoController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView editar(@Valid @ModelAttribute("produto") ProdutoEditarDTO produtoEditarDTO,
-			BindingResult result, final RedirectAttributes resirectAttributes) {
+			BindingResult result, final RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			return new ModelAndView("produto/edita");
 		}
-
+		
+		redirectAttributes.addFlashAttribute("mensagem", "Produto atualizado com sucesso.");
 		produtoService.atualizar(produtoEditarDTO);
 		return new ModelAndView("redirect:/produtos");
 	}

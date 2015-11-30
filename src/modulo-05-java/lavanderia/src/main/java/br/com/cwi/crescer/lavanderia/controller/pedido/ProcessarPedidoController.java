@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.dto.ItemResumoDTO;
@@ -53,13 +54,15 @@ public class ProcessarPedidoController extends AbstractPedidoController {
 	}
 
 	@RequestMapping(path = "{id}", method = RequestMethod.POST)
-	public ModelAndView atualizarItens(@PathVariable("id") Long id) {
+	public ModelAndView atualizarItens(@PathVariable("id") Long id,
+			final RedirectAttributes redirectAttributes) {
 
 		Item item = itemService.findById(id);
 		itemService.processar(id);
 
 		Long idPedido = item.getIdPedido();
 
+		redirectAttributes.addFlashAttribute("mensagem", "Operação efetuada com sucesso.");
 		return new ModelAndView("redirect:/pedidos/processar/" + idPedido);
 	}
 

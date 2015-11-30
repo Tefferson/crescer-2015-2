@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.dto.PedidoEditarDTO;
@@ -45,10 +46,11 @@ public class RetirarPedidoController extends AbstractPedidoController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processandoPedido(@PathVariable("id") Long id) {
+	public ModelAndView processandoPedido(@PathVariable("id") Long id, final RedirectAttributes redirectAttributes) {
 
 		pedidoService.retirar(id);
 
+		redirectAttributes.addFlashAttribute("mensagem", "Pedido retirado com sucesso.");
 		return new ModelAndView("redirect:/pedidos/");
 	}
 

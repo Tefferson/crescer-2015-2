@@ -13,7 +13,8 @@
 			<h1>Lavanderia</h1>
 		</div>
 
-		<div th:if="${#authorization.expression('isAuthenticated()')}" class="col-offset-4 col-2">
+		<div th:if="${#authorization.expression('isAuthenticated()')}"
+			class="col-offset-4 col-2">
 			<form th:action="@{/logout}" method="POST">
 
 				<button type="submit">
@@ -24,7 +25,8 @@
 
 		</div>
 
-		<div th:if="${not #authorization.expression('isAuthenticated()')}" class="col-offset-4 col-2">
+		<div th:if="${not #authorization.expression('isAuthenticated()')}"
+			class="col-offset-4 col-2">
 			<form th:action="@{/login}" method="POST">
 
 				<button type="submit">Login</button>
@@ -33,6 +35,10 @@
 
 		</div>
 
+	</div>
+	
+	<div th:if="${mensagem != null} " class="col-offset-1 col-10" style="margin-top:0;margin-bottom:0;">
+		<h1 th:text="${mensagem}" class="msg-suc"></h1>
 	</div>
 
 	<nav class="col-offset-1 col-10">

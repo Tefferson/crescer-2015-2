@@ -60,7 +60,7 @@ public class ClienteService {
 		clienteDAO.save(cliente);
 	}
 
-	public void desativar(Long idCliente) throws Exception {
+	public void desativar(Long idCliente) {
 
 		if (idCliente != null) {
 			clienteDAO.inactive(idCliente);

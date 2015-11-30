@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.lavanderia.service.ClienteService;
 import br.com.cwi.crescer.lavanderia.service.PedidoService;
@@ -23,7 +24,8 @@ public class IncluirPedidoController extends AbstractPedidoController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, params = "idCliente")
-	public ModelAndView incluir(@RequestParam("idCliente") Long idCliente) {
+	public ModelAndView incluir(@RequestParam("idCliente") Long idCliente,
+			final RedirectAttributes redirectAttributes) {
 
 		if (idCliente < 1) {
 			return new ModelAndView("pedido/novo");
@@ -31,6 +33,7 @@ public class IncluirPedidoController extends AbstractPedidoController {
 
 		Long idPedido = pedidoService.incluir(idCliente);
 
+		redirectAttributes.addFlashAttribute("mensagem", "Pedido cadastrado com sucesso.");
 		return new ModelAndView("redirect:/pedidos/editar/" + idPedido);
 	}
 

@@ -36,12 +36,13 @@ public class EditarClienteController extends AbstractClienteController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO, BindingResult result,
-			final RedirectAttributes resirectAttributes) {
+			final RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			return new ModelAndView("cliente/edita");
 		}
 
+		redirectAttributes.addFlashAttribute("mensagem", "Cliente alterado com atualizado.");
 		clienteService.atualizar(clienteDTO);
 		return new ModelAndView("redirect:/clientes");
 	}

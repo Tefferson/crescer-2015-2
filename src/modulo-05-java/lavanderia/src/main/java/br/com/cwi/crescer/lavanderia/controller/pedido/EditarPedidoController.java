@@ -86,7 +86,7 @@ public class EditarPedidoController extends AbstractPedidoController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView adicionarItem(@Valid @ModelAttribute("item") PedidoIncluirItemDTO pedidoIncluirItemDTO,
-			BindingResult result, final RedirectAttributes resirectAttributes) {
+			BindingResult result, final RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			return new ModelAndView("pedido/edita");
@@ -96,6 +96,8 @@ public class EditarPedidoController extends AbstractPedidoController {
 				pedidoIncluirItemDTO.getIdServico());
 		Item item = itemService.adicionarItemAoPedido(pedidoIncluirItemDTO, produtoDTO);
 		pedidoService.atualizarValorBruto(item);
+		
+		redirectAttributes.addFlashAttribute("mensagem", "Item adicionado com sucesso.");
 
 		return new ModelAndView("redirect:/pedidos/editar/" + pedidoIncluirItemDTO.getIdPedido());
 	}

@@ -62,6 +62,7 @@ form h2 {
 	background-color: #f1f1f1;
 	border: 1px solid #ccc;
 	padding-bottom: 30px;
+	box-sizing: border-box;
 }
 
 .titulo {
@@ -104,6 +105,7 @@ form h2 {
 }
 
 nav ul {
+	box-sizing: border-box;
 	background: #efefef;
 	background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);
 	background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%);

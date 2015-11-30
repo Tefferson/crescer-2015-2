@@ -24,12 +24,8 @@ public class RemoverClienteController extends AbstractClienteController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView remover(ClienteDTO clienteDTO, final RedirectAttributes redirectAttributes) {
 
-		try {
-			clienteService.desativar(clienteDTO.getId());
-			redirectAttributes.addFlashAttribute("mensagem", "Operação realizada com sucesso");
-		} catch (Exception e) {
-			// TODO: Não foi possível remover porque é fk
-		}
+		clienteService.desativar(clienteDTO.getId());
+		redirectAttributes.addFlashAttribute("mensagem", "Operação realizada com sucesso");
 
 		return new ModelAndView("redirect:/clientes");
 	}
