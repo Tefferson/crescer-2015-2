@@ -3,6 +3,9 @@ package br.com.cwi.crescer.lavanderia.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 import br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido;
 
 public class PedidoResumoDTO {
@@ -15,6 +18,7 @@ public class PedidoResumoDTO {
 
 	private Date dataInclusao;
 
+	@NumberFormat(style=Style.CURRENCY)
 	private BigDecimal valorTotal;
 
 	private SituacaoPedido situacao;

@@ -208,4 +208,14 @@ public class PedidoService {
 		return true;
 	}
 
+	public void processarTodosOsItens(Long idPedido, ItemService itemService) {
+
+		Pedido pedido = buscarPedidoPorId(idPedido);
+		
+		for(Item item: pedido.getItens()){
+			itemService.processar(item.getIdItem());
+		}
+		
+	}
+
 }

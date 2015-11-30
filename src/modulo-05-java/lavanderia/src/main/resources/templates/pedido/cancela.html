@@ -34,16 +34,19 @@
 				</tr>
 			</table>
 
-			<div class="col-offset-1 col-10">
-				<form class="col-1" method="GET"
-					th:action="@{'/pedidos/editar/'+${pedido.idPedido}}">
-					<button type="submit" style="margin-left: 0;">Não</button>
-				</form>
+			<div class="col-offset-1 col-5 content-section">
+				<div class="col-offset-1">
+					<h1 class="col-12">Cancelar pedido?</h1>
+					<form class="col-1" method="GET"
+						th:action="@{'/pedidos/editar/'+${pedido.idPedido}}">
+						<button type="submit" style="margin-left: 0;">Não</button>
+					</form>
 
-				<form class="col-1" method="POST"
-					th:action="@{'/pedidos/cancelar/'+${pedido.idPedido}}">
-					<button type="submit" style="margin-left: 0;">Sim</button>
-				</form>
+					<form class="col-offset-1 col-1" method="POST"
+						th:action="@{'/pedidos/cancelar/'+${pedido.idPedido}}">
+						<button type="submit" style="margin-left: 0;">Sim</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

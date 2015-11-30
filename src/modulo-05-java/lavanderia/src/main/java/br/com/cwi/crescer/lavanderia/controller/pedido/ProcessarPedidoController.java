@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,8 +64,19 @@ public class ProcessarPedidoController extends AbstractPedidoController {
 
 		Long idPedido = item.getIdPedido();
 
-		redirectAttributes.addFlashAttribute("mensagem", "Operação efetuada com sucesso.");
+		redirectAttributes.addFlashAttribute("mensagem", "Item processado com sucesso.");
 		return new ModelAndView("redirect:/pedidos/processar/" + idPedido);
 	}
 
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView processarPedido(Model model,
+			@ModelAttribute("idPedido") Long idPedido, BindingResult result,
+			final RedirectAttributes redirectAttributes) {
+
+		pedidoService.processarTodosOsItens(idPedido, itemService);
+
+		redirectAttributes.addFlashAttribute("mensagem", "Operação efetuada com sucesso.");
+		return new ModelAndView("redirect:/pedidos/editar/" + idPedido);
+	}
+	
 }

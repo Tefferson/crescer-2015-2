@@ -168,4 +168,8 @@ public class Pedido {
 	public boolean isCancelado() {
 		return situacao == SituacaoPedido.CANCELADO;
 	}
+
+	public boolean isEncerrado() {
+		return situacao == SituacaoPedido.ENCERRADO;
+	}
 }

@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Produto.SituacaoProduto;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
@@ -16,9 +19,11 @@ public class ProdutoDTO {
 	private SituacaoProduto situacao;
 
 	@NotNull
+	@NumberFormat(style=Style.CURRENCY)
 	private BigDecimal valor;
 
 	@NotNull
+	@NumberFormat(style=Style.NUMBER)
 	private Integer prazo;
 	
 	@NotNull

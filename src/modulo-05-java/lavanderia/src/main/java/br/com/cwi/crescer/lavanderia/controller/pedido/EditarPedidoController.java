@@ -69,7 +69,7 @@ public class EditarPedidoController extends AbstractPedidoController {
 			return new ModelAndView("pedido/edita");
 		} else if (pedido.isAguardandoRetirada()) {
 			return new ModelAndView("redirect:/pedidos/retirar/" + id);
-		} else if (pedido.isCancelado()) {
+		} else if (pedido.isCancelado() || pedido.isEncerrado()) {
 			return new ModelAndView("pedido/editaBloqueado");
 		} else {
 			return new ModelAndView("pedido/exibe");

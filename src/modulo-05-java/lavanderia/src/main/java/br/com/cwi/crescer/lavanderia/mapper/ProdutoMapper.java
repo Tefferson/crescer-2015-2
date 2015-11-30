@@ -18,7 +18,7 @@ public class ProdutoMapper {
 
 		Servico servico = new Servico();
 		servico.setIdServico(dto.getIdServico());
-		
+
 		produto.setPrazo(dto.getPrazo());
 		produto.setValor(dto.getValor());
 		produto.setMaterial(material);
@@ -35,6 +35,18 @@ public class ProdutoMapper {
 		dto.setMaterial(produto.getMaterial());
 		dto.setPrazo(produto.getPrazo());
 		dto.setServico(produto.getServico());
+		dto.setSituacao(produto.getSituacao());
+		dto.setValor(produto.getValor());
+
+		return dto;
+	}
+
+	public static ProdutoEditarDTO toEditarDTO(Produto produto) {
+
+		ProdutoEditarDTO dto = new ProdutoEditarDTO();
+
+		dto.setId(produto.getIdProduto());
+		dto.setPrazo(produto.getPrazo());
 		dto.setSituacao(produto.getSituacao());
 		dto.setValor(produto.getValor());
 

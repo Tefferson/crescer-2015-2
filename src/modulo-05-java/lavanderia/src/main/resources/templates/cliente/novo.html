@@ -12,58 +12,59 @@
 	<div layout:fragment="content">
 
 		<h1 class="titulo col-offset-1">Cliente - incluir</h1>
+		<div class="content-section col-5 col-offset-1">
+			<form th:action="@{/clientes/incluir}" th:object="${cliente}"
+				method="post">
 
-		<form th:action="@{/clientes/incluir}" th:object="${cliente}"
-			method="post">
 
+				<p>
+					<label class="control-label col-2">Nome</label> <input
+						th:classappend="${#fields.hasErrors('nome')} ? 'has-error'"
+						th:field="*{nome}" type="text" /> <span class="help-inline"
+						th:errors="*{nome}"></span>
+				</p>
 
-			<p>
-				<label class="control-label col-2">Nome</label> <input
-					th:classappend="${#fields.hasErrors('nome')} ? 'has-error'"
-					th:field="*{nome}" type="text" /> <span class="help-inline"
-					th:errors="*{nome}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">CPF</label> <input
+						th:classappend="${#fields.hasErrors('cpf')} ? 'has-error'"
+						th:field="*{cpf}" type="text" /> <span class="help-inline"
+						th:errors="*{cpf}"></span>
+				</p>
 
-			<p>
-				<label class="control-label col-2">CPF</label> <input
-					th:classappend="${#fields.hasErrors('cpf')} ? 'has-error'"
-					th:field="*{cpf}" type="text" /> <span class="help-inline"
-					th:errors="*{cpf}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">E-mail</label> <input
+						th:classappend="${#fields.hasErrors('email')} ? 'has-error'"
+						th:field="*{email}" type="text" /> <span class="help-inline"
+						th:errors="*{email}"></span>
+				</p>
 
-			<p>
-				<label class="control-label col-2">E-mail</label> <input
-					th:classappend="${#fields.hasErrors('email')} ? 'has-error'"
-					th:field="*{email}" type="text" /> <span class="help-inline"
-					th:errors="*{email}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">Cidade: </label> <select
+						th:field="*{idCidade}">
+						<option th:each="c : ${cidades}" th:text="${c.nome}"
+							th:value="${c.idCidade}"></option>
+					</select> <span class="help-inline" th:errors="*{idCidade}"></span>
+				</p>
 
-			<p>
-				<label class="control-label col-2">Cidade: </label> <select
-					th:field="*{idCidade}">
-					<option th:each="c : ${cidades}" th:text="${c.nome}"
-						th:value="${c.idCidade}"></option>
-				</select> <span class="help-inline" th:errors="*{idCidade}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">Bairro</label> <input
+						th:field="*{bairro}" type="text" />
+				</p>
 
-			<p>
-				<label class="control-label col-2">Bairro</label> <input
-					th:field="*{bairro}" type="text" />
-			</p>
+				<p>
+					<label class="control-label col-2">Endereço</label> <input
+						th:field="*{endereco}" type="text" />
+				</p>
 
-			<p>
-				<label class="control-label col-2">Endereço</label> <input
-					th:field="*{endereco}" type="text" />
-			</p>
+				<p>
+					<label class="control-label col-2">CEP</label> <input
+						th:field="*{cep}" type="text" />
+				</p>
 
-			<p>
-				<label class="control-label col-2">CEP</label> <input
-					th:field="*{cep}" type="text" />
-			</p>
+				<button type="submit">Salvar</button>
 
-			<button type="submit">Salvar</button>
-
-		</form>
+			</form>
+		</div>
 
 	</div>
 

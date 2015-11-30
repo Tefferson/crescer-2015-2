@@ -210,6 +210,10 @@ td div, td {
 	height: 25px;
 }
 
+.little-margin{
+	margin-left: 15px;
+}
+
 .text-right {
 	text-align: right !important;
 }

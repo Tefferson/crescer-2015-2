@@ -88,9 +88,9 @@ public class ProdutoService {
 		return dtos;
 	}
 
-	public ProdutoDTO buscarProdutoPorId(Long idProduto) {
+	public ProdutoEditarDTO buscarProdutoPorId(Long idProduto) {
 		Produto produto = produtoDAO.findById(idProduto);
-		return ProdutoMapper.toDTO(produto);
+		return ProdutoMapper.toEditarDTO(produto);
 	}
 
 	public void atualizar(ProdutoEditarDTO produtoEditarDTO) {

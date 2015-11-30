@@ -12,7 +12,7 @@
 
 	<div layout:fragment="content">
 
-		<h1 class="titulo col-offset-1">Pedido - retirar</h1>
+		<h1 class="titulo col-offset-1">Pedido - itens</h1>
 
 		<div>
 			<table class="border-default col-offset-1 col-10">
@@ -33,31 +33,6 @@
 						class="border-default col-3 text-center"></td>
 				</tr>
 			</table>
-		</div>
-
-
-		<div class="col-offset-1 col-2 content-section">
-			<div>
-				<form class="inline-form" method="POST"
-					th:action="${'/pedidos/retirar/'+pedido.idPedido}">
-
-					<input th:field="${pedido.idPedido}" type="hidden" />
-
-					<p>
-						<button class="little-margin" type="submit">Retirar pedido</button>
-					</p>
-
-				</form>
-			</div>
-
-			<div>
-				<form method="GET"
-					th:action="@{'/pedidos/cancelar/'+${item.idPedido}}">
-
-					<button class="little-margin" type="submit">Cancelar pedido</button>
-
-				</form>
-			</div>
 		</div>
 
 	</div>

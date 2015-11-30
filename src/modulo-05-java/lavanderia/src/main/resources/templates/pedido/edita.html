@@ -73,27 +73,29 @@
 			</table>
 		</div>
 
-		<div>
 
-			<form class="inline-form" method="POST"
-				th:action="${'/pedidos/editar/'+pedido.idPedido}">
+		<div class="col-offset-1 col-2 content-section">
+			<div>
 
-				<input th:field="${pedido.idPedido}" type="hidden" />
+				<form class="inline-form" method="POST"
+					th:action="${'/pedidos/editar/'+pedido.idPedido}">
 
-				<p>
-					<button type="submit">Concluir inclusão</button>
-				</p>
+					<input th:field="${pedido.idPedido}" type="hidden" />
+
+					<p>
+						<button class="little-margin" type="submit">Concluir inclusão</button>
+					</p>
+
+				</form>
+			</div>
+
+			<form method="GET"
+				th:action="@{'/pedidos/cancelar/'+${item.idPedido}}">
+
+				<button class="little-margin" type="submit">Cancelar pedido</button>
 
 			</form>
 		</div>
-
-		<form method="GET"
-			th:action="@{'/pedidos/cancelar/'+${item.idPedido}}">
-
-			<button type="submit">Cancelar pedido</button>
-
-		</form>
-
 	</div>
 </body>
 

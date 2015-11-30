@@ -12,10 +12,10 @@
 
 	<div layout:fragment="content">
 
-		<h1 class="titulo col-offset-1">Pedido - processar itens</h1>
+		<h1 class="titulo col-offset-1">Pedido - itens</h1>
 
 		<div>
-			<table class="border-default col-offset-1 col-9">
+			<table class="border-default col-offset-1 col-10">
 
 				<tr>
 					<th class="border-default col-3">Produto</th>
@@ -33,51 +33,18 @@
 						class="border-default col-3 text-center"></td>
 				</tr>
 			</table>
+		</div>
 
-			<table class="border-default col-1">
-
-				<tr>
-					<th class="border-default col-12">Situação</th>
-				</tr>
-				<tr>
-					<td th:each="i : ${situacaoDosItens}"
-						class="border-default col-12 text-center">
-
-						<form method="POST" th:action="@{'/pedidos/processar/' + ${i.id}}"
-							th:object="${situacaoDosItens}" th:if="${!i.processado}">
-
-							<button type="submit" style="margin:auto;">Processar</button>
-
-						</form> 
-						
-						<label th:if="${i.processado}">Processado</label>
-
-					</td>
-				</tr>
-			</table>
-
-			<button type="submit">Salvar</button>
-
-
+		<div>
 			<form method="GET"
 				th:action="@{'/pedidos/cancelar/'+${item.idPedido}}">
 
 				<button type="submit">Cancelar pedido</button>
 
 			</form>
-			
-			<form method="POST"
-				th:action="@{/pedidos/processar}">
-
-				<input name="idPedido" th:value="${pedido.idPedido}" type="hidden" />
-
-				<button type="submit">Processar itens</button>
-
-			</form>
-
 		</div>
-	</div>
 
+	</div>
 </body>
 
 </html>

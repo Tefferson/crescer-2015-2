@@ -13,42 +13,44 @@
 
 		<h1 class="titulo col-offset-1">Produto - incluir</h1>
 
-		<form th:action="@{/produtos/incluir}" th:object="${produto}"
-			method="post">
+		<div class="content-section col-5 col-offset-1">
+			<form th:action="@{/produtos/incluir}" th:object="${produto}"
+				method="post">
 
-			<p>
-				<label class="control-label col-2">Serviço </label> <select
-					th:field="*{idServico}">
-					<option th:each="s : ${servicos}" th:text="${s.descricao}"
-						th:value="${s.idServico}"></option>
-				</select> <span class="help-inline" th:errors="*{idServico}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">Serviço </label> <select
+						th:field="*{idServico}">
+						<option th:each="s : ${servicos}" th:text="${s.descricao}"
+							th:value="${s.idServico}"></option>
+					</select> <span class="help-inline" th:errors="*{idServico}"></span>
+				</p>
 
-			<p>
-				<label class="control-label col-2">Material </label> <select
-					th:field="*{idMaterial}">
-					<option th:each="m : ${materiais}" th:text="${m.descricao}"
-						th:value="${m.idMaterial}"></option>
-				</select> <span class="help-inline" th:errors="*{idMaterial}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">Material </label> <select
+						th:field="*{idMaterial}">
+						<option th:each="m : ${materiais}" th:text="${m.descricao}"
+							th:value="${m.idMaterial}"></option>
+					</select> <span class="help-inline" th:errors="*{idMaterial}"></span>
+				</p>
 
-			<p>
-				<label class="control-label col-2">Valor</label> <input
-					th:classappend="${#fields.hasErrors('valor')} ? 'has-error'"
-					th:field="*{valor}" type="text" /><span class="help-inline"
-					th:errors="*{valor}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">Valor</label> <input
+						th:classappend="${#fields.hasErrors('valor')} ? 'has-error'"
+						th:field="*{valor}" type="text" /><span class="help-inline"
+						th:errors="*{valor}"></span>
+				</p>
 
-			<p>
-				<label class="control-label col-2">Prazo</label> <input
-					th:classappend="${#fields.hasErrors('prazo')} ? 'has-error'"
-					th:field="*{prazo}" type="text" /><span class="help-inline"
-					th:errors="*{prazo}"></span>
-			</p>
+				<p>
+					<label class="control-label col-2">Prazo</label> <input
+						th:classappend="${#fields.hasErrors('prazo')} ? 'has-error'"
+						th:field="*{prazo}" type="text" /><span class="help-inline"
+						th:errors="*{prazo}"></span>
+				</p>
 
-			<button type="submit">Salvar</button>
+				<button type="submit">Salvar</button>
 
-		</form>
+			</form>
+		</div>
 
 	</div>
 

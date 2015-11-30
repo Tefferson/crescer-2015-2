@@ -12,19 +12,21 @@
 	<div layout:fragment="content">
 		<h1 class="titulo col-offset-1">Pedido - incluir</h1>
 
-		<form method="GET">
+		<div class="buscar content-section col-5 col-offset-1">
+			<form method="GET">
 
-			<p>
-				<label class="control-label col-2">Cliente </label> <select
-					name="idCliente">
-					<option th:each="c : ${clientes}" th:text="${c.nome}"
-						th:value="${c.idCliente}"></option>
-				</select> 
-			</p>
+				<p>
+					<label class="control-label col-2">Cliente </label> <select
+						name="idCliente">
+						<option th:each="c : ${clientes}" th:text="${c.nome}"
+							th:value="${c.idCliente}"></option>
+					</select>
+				</p>
 
-			<button type="submit">Cadastrar pedido</button>
+				<button type="submit">Cadastrar pedido</button>
 
-		</form>
+			</form>
+		</div>
 
 	</div>
 
