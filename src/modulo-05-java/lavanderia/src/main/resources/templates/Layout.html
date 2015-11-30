@@ -9,48 +9,57 @@
 <body>
 	<div class="col-12 cabecalho">
 
-		<div class="col-offset-2 col-4">
+		<div class="col-offset-1 col-5">
 			<h1>Lavanderia</h1>
 		</div>
 
-		<div sec:authorize="isAuthenticated()">
+		<div th:if="${#authorization.expression('isAuthenticated()')}" class="col-offset-4 col-2">
 			<form th:action="@{/logout}" method="POST">
 
-				<button type="submit">Logout</button>
+				<button type="submit">
+					Logout(<span sec:authentication="name"></span>)
+				</button>
 
 			</form>
 
-			<div>
-				Bem-vindo, <span sec:authentication="name"></span>
-			</div>
-
 		</div>
 
-		<div sec:authorize="hasRole('ROLE_USER')">
-			<h3>Logado como USER.</h3>
+		<div th:if="${not #authorization.expression('isAuthenticated()')}" class="col-offset-4 col-2">
+			<form th:action="@{/login}" method="POST">
+
+				<button type="submit">Login</button>
+
+			</form>
+
 		</div>
-
-		<div sec:authorize="hasRole('ROLE_ADMIN')">
-			<h3>Logado como ADMIN.</h3>
-		</div>
-
-
 
 	</div>
+
 	<nav class="col-offset-1 col-10">
 		<ul class="col-12">
 			<li><a th:href="${'/'}">Home</a></li>
-			<li><a href='#'>Serviços</a></li>
-			<li><a href='#'>Cadastrar</a>
+
+			<li><a th:href="${'/clientes'}">Clientes</a>
+
 				<ul>
-					<li><a th:href="${'/clientes/incluir'}">Cliente</a></li>
+					<li><a th:href="${'/clientes/incluir'}">Incluir</a></li>
+					<li><a th:href="${'/clientes'}">Listar</a></li>
 				</ul></li>
-			<li><a href='#'>Exibir</a>
+
+
+			<li><a th:href="${'/produtos'}">Produtos</a>
+
 				<ul>
-					<li><a th:href="${'/clientes'}">Clientes</a></li>
+					<li><a th:href="${'/produtos/incluir'}">Incluir</a></li>
+					<li><a th:href="${'/produtos'}">Listar</a></li>
 				</ul></li>
-			<li><a href='#'>Sobre</a></li>
-			<li><a href='#'>Contato</a></li>
+
+			<li><a th:href="${'/pedidos'}">Pedidos</a>
+
+				<ul>
+					<li><a th:href="${'/pedidos/incluir'}">Incluir</a></li>
+					<li><a th:href="${'/pedidos'}">Listar</a></li>
+				</ul></li>
 		</ul>
 	</nav>
 
@@ -65,10 +74,6 @@
 		</p>
 
 	</footer>
-
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script layout:fragment="scripts" th:src="@{~/script.js}"></script>
 </body>
 
 </html>

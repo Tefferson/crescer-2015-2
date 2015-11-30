@@ -63,7 +63,36 @@ public class PedidoService {
 	}
 
 	public void trocarSituacaoParaProcessando(Long id) {
-		pedidoDAO.updateSituacao(id, SituacaoPedido.PROCESSANDO);
+
+		Pedido pedido = buscarPedidoPorId(id);
+
+		pedido.setSituacao(SituacaoPedido.PROCESSANDO);
+
+		int maiorPrazo = buscarMaiorPrazo(pedido.getItens());
+		Date dataEntrega = pedido.getDataInclusao();
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dataEntrega);
+		calendar.add(Calendar.DATE, maiorPrazo);
+
+		dataEntrega = calendar.getTime();
+
+		pedido.setDataEntrega(dataEntrega);
+
+		pedidoDAO.save(pedido);
+	}
+
+	private int buscarMaiorPrazo(List<Item> itens) {
+		int maiorPrazo = 0;
+
+		for (Item item : itens) {
+			int prazoDoItem = item.getProduto().getPrazo();
+			if (prazoDoItem > maiorPrazo) {
+				maiorPrazo = prazoDoItem;
+			}
+		}
+
+		return maiorPrazo;
 	}
 
 	public List<PedidoResumoDTO> listarPedidosPendentes() {
