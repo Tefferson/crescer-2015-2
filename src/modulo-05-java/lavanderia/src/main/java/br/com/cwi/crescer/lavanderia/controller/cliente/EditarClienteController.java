@@ -26,14 +26,12 @@ public class EditarClienteController extends AbstractClienteController {
 		super(clienteService, cidadeService);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(path = "{id}", method = RequestMethod.GET)
 	public ModelAndView viewEdita(@PathVariable("id") Long id) {
 
 		return new ModelAndView("cliente/edita", "cliente", clienteService.buscarClientePorId(id));
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO, BindingResult result,
 			final RedirectAttributes redirectAttributes) {
