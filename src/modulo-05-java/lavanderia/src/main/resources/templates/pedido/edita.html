@@ -9,19 +9,67 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-// 		$('#material optgroup').hide();
-// 		$('#servico').change(function() {
-// 			var text = $(this).val();
-// 			$('#material optgroup').hide();
-// 			$('#material')
-// 			$('#material').val('');
-// 			$('#material optgroup[label="' + text + '"]').css({
-// 				'display' : 'block'
-// 			});
+	$(document).ready(
+			function() {
+				
+				var updateCombos = function() {
+					$.ajax({
+						type : 'GET',
+						url : '/materiais/json',
+						data : {
+							id : $servico.val()
+						},
+						dataType : 'json',
+						success : function(data) {
+							var novasOpcoes = '<optgroup label="'+$('#servico option:selected').text().toLowerCase()+'">'; 
+							data.forEach(function(opt) {
+								novasOpcoes += '<option value="';
+								novasOpcoes += opt.id;
+								novasOpcoes += '">';
+								novasOpcoes += opt.descricao;
+								novasOpcoes += '</option>';
+							});
+							
+							novasOpcoes+='</optgroup>';
 
-// 		});
-	});
+							$material.html(novasOpcoes);
+							
+						}
+					});
+				};
+				
+				var $servico = $('#servico');
+				var $material = $('#material');
+				
+				(function(){
+					$.ajax({
+						type : 'GET',
+						url : '/servicos/json',
+						dataType : 'json',
+						success : function(data) {
+							var novasOpcoes = '<optgroup label="serviços">'; 
+							data.forEach(function(opt) {
+								novasOpcoes += '<option value="';
+								novasOpcoes += opt.id;
+								novasOpcoes += '">';
+								novasOpcoes += opt.descricao;
+								novasOpcoes += '</option>';
+							});
+							
+							novasOpcoes+='</optgroup>';
+
+							$servico.html(novasOpcoes);
+							
+							updateCombos();
+							$servico.change(updateCombos);
+							
+						}
+					});
+					
+				})();
+			});
+	
+	
 </script>
 </head>
 <body>
@@ -39,18 +87,15 @@
 				<input th:field="*{idPedido}" type="hidden" />
 
 				<p>
-					<label class="control-label col-1">Serviço </label> <select
+					<label class="control-label col-1">Serviço </label> <select id="servico"
 						th:field="*{idServico}" class="control-label col-1">
-						<option th:each="s : ${servicos}" th:text="${s.descricao}"
-							th:value="${s.idServico}"></option>
 					</select>
 				</p>
 
 				<p>
-					<label class="control-label col-1">Material </label> <select
+					<label class="control-label col-1">Material </label> <select id="material"
 						th:field="*{idMaterial}" class="control-label col-1">
-						<option th:each="m : ${materiais}" th:text="${m.descricao}"
-							th:value="${m.idMaterial}"></option>
+					
 					</select>
 				</p>
 
@@ -66,27 +111,6 @@
 				</p>
 
 			</form>
-
-			<div>
-				<select id="servico" name="idServico">
-					<optgroup label="serviço">
-						<option value="lavar">Lavar</option>
-						<option value="secar">Secar</option>
-					</optgroup>
-				</select> 
-				<select id="material">
-					<optgroup label="Lavar">
-						<option value="delicado">Delicado</option>
-						<option value="normal">Normal</option>
-						<option value="pesado">Pesado</option>
-					</optgroup>
-					<optgroup label="Secar">
-						<option value="delicado">Delicado</option>
-						<option value="normal">Normal</option>
-						<option value="pesado">Pesado</option>
-					</optgroup>
-				</select>
-			</div>
 
 		</div>
 

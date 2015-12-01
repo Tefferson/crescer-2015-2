@@ -1,5 +1,8 @@
 package br.com.cwi.crescer.lavanderia.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Produto;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
@@ -59,6 +62,17 @@ public class ProdutoMapper {
 		produto.setSituacao(produtoEditarDTO.getSituacao());
 		produto.setValor(produto.getValor());
 
+	}
+
+	public static List<ProdutoDTO> toDTOList(List<Produto> produtos) {
+
+		List<ProdutoDTO> dtos = new ArrayList<>();
+
+		for (Produto produto : produtos) {
+			dtos.add(toDTO(produto));
+		}
+
+		return dtos;
 	}
 
 }

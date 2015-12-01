@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import br.com.cwi.crescer.lavanderia.domain.Produto;
+import br.com.cwi.crescer.lavanderia.domain.Produto.SituacaoProduto;
 
 @Repository
 public class ProdutoDAO extends DAO {
@@ -48,6 +49,11 @@ public class ProdutoDAO extends DAO {
 	public List<Produto> listByServico(Long idServico) {
 		return em.createQuery("FROM Produto where idservico = :idservico", Produto.class)
 				.setParameter("idservico", idServico).getResultList();
+	}
+
+	public List<Produto> findBySituacaoAndServico(SituacaoProduto situacao, Long idServico) {
+		return em.createQuery("FROM Produto WHERE situacao=:situacao and idServico=:idServico", Produto.class)
+				.setParameter("situacao", situacao).setParameter("idServico", idServico).getResultList();
 	}
 
 }

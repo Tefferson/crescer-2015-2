@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.lavanderia.dao.ProdutoDAO;
 import br.com.cwi.crescer.lavanderia.domain.Produto;
+import br.com.cwi.crescer.lavanderia.domain.Produto.SituacaoProduto;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoEditarDTO;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoIncluirDTO;
@@ -124,16 +125,23 @@ public class ProdutoService {
 			}
 
 		}
-		
+
 		return map;
-		
+
 	}
 
 	public ProdutoDTO buscarProdutoPorMaterialEServico(Long idMaterial, Long idServico) {
-		
+
 		Produto produto = produtoDAO.findByServicoEMaterial(idServico, idMaterial);
-		
+
 		return ProdutoMapper.toDTO(produto);
+	}
+
+	public List<ProdutoDTO> buscarProdutosAtivosPorServico(Long idServico) {
+
+		List<Produto> produtos = produtoDAO.findBySituacaoAndServico(SituacaoProduto.ATIVO, idServico);
+
+		return ProdutoMapper.toDTOList(produtos);
 	}
 
 }
