@@ -44,7 +44,7 @@ public class PedidoService {
 	public Long incluir(Long idCliente) {
 
 		Pedido pedido = PedidoMapper.getNewEntity(idCliente);
-
+		
 		return pedidoDAO.save(pedido).getIdPedido();
 
 	}
@@ -105,9 +105,9 @@ public class PedidoService {
 		return dtos;
 	}
 
-	public void cancelarPedido(Long id) {
+	public int cancelarPedido(Long id) {
 
-		pedidoDAO.updateSituacao(id, SituacaoPedido.CANCELADO);
+		 return pedidoDAO.updateSituacao(id, SituacaoPedido.CANCELADO);
 	}
 
 	public void atualizarValorBruto(Item item) {
@@ -149,11 +149,9 @@ public class PedidoService {
 		c.setTime(dataInclusao);
 		int diaDaSemana = c.get(Calendar.DAY_OF_WEEK);
 
-		boolean segundaAQuarta = diaDaSemana == Calendar.MONDAY || diaDaSemana == Calendar.TUESDAY
-				|| diaDaSemana == Calendar.WEDNESDAY;
+		boolean segundaAQuarta = diaDaSemana == Calendar.MONDAY || diaDaSemana == Calendar.TUESDAY || diaDaSemana == Calendar.WEDNESDAY;
 		boolean quintaASexta = diaDaSemana == Calendar.THURSDAY || diaDaSemana == Calendar.FRIDAY;
-		boolean pesoOuValorDaDesconto = peso.compareTo(new BigDecimal(15)) == 1
-				|| valorBruto.compareTo(new BigDecimal(90)) == 1;
+		boolean pesoOuValorDaDesconto = peso.compareTo(new BigDecimal(15)) == 1				|| valorBruto.compareTo(new BigDecimal(90)) == 1;
 
 		if (segundaAQuarta) {
 			porcentagemAtual = new BigDecimal(0.08);
@@ -166,8 +164,8 @@ public class PedidoService {
 		return porcentagemAtual;
 	}
 
-	public void retirar(Long id) {
-		pedidoDAO.updateSituacao(id, SituacaoPedido.ENCERRADO);
+	public int retirar(Long id) {
+		return pedidoDAO.updateSituacao(id, SituacaoPedido.ENCERRADO);
 	}
 
 	public List<PedidoResumoDTO> pesquisarPorSituacao(Integer situacao) {
