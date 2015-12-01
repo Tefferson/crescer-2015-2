@@ -56,7 +56,7 @@
 						class="border-default col-2 text-center"></td>
 					<td th:text="${pedido.nomeCliente}"
 						class="border-default col-2 text-left"></td>
-					<td th:text="${pedido.dataInclusao}"
+					<td th:text="${#dates.format(pedido.dataInclusao, 'dd/MM/yyyy')}"
 						class="border-default col-2 text-center"></td>
 					<td th:text="${pedido.valorTotal}"
 						class="border-default col-2 text-center"></td>
