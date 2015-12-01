@@ -44,7 +44,11 @@ public class ProdutoService {
 	}
 
 	private boolean novoProdutoEhUnico(ProdutoIncluirDTO dto) {
-		return produtoDAO.findByServicoEMaterial(dto.getIdServico(), dto.getIdMaterial()) == null;
+		try {
+			return produtoDAO.findByServicoEMaterial(dto.getIdServico(), dto.getIdMaterial()) == null;
+		} catch (Exception e) {
+			return true;
+		}
 	}
 
 	public List<ProdutoDTO> listarProdutosPorMaterialEServico(Long idMaterial, Long idServico) {

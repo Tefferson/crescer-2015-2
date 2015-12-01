@@ -17,4 +17,8 @@ public class ServicoDAO extends DAO {
 		return em.createQuery("FROM Servico", Servico.class).getResultList();
 	}
 
+	public List<Servico> listWhereHasProduct() {
+		return em.createQuery("FROM Servico", Servico.class).getResultList();
+	}
+
 }

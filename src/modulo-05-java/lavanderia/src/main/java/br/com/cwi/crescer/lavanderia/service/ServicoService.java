@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.lavanderia.dao.ServicoDAO;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
+import br.com.cwi.crescer.lavanderia.dto.ServicoDTO;
+import br.com.cwi.crescer.lavanderia.mapper.ServicoMapper;
 
 @Service
 public class ServicoService {
@@ -19,7 +21,16 @@ public class ServicoService {
 		this.servicoDAO = pessoaDAO;
 	}
 
+	public List<ServicoDTO> listarDTO() {
+		List<Servico> servicos = servicoDAO.listWhereHasProduct();
+		
+		List<ServicoDTO> dtos = ServicoMapper.toDTOList(servicos);
+		
+		return dtos;
+	}
+	
 	public List<Servico> listar() {
+		
 		return servicoDAO.list();
 	}
 
