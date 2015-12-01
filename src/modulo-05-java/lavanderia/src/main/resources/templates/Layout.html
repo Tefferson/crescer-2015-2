@@ -15,7 +15,7 @@
 			<h1>Lavanderia</h1>
 		</div>
 
-		<div th:if="${#authorization.expression('isAuthenticated()')}"
+		<div sec:authorize="isAuthenticated()"
 			class="col-offset-4 col-2">
 			<form th:action="@{/logout}" method="POST">
 
@@ -27,7 +27,7 @@
 
 		</div>
 
-		<div th:if="${not #authorization.expression('isAuthenticated()')}"
+		<div sec:authorize="isAuthenticated()"
 			class="col-offset-4 col-2">
 			<form th:action="@{/login}" method="POST">
 

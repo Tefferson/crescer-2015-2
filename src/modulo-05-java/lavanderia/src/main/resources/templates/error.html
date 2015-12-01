@@ -13,14 +13,10 @@
 		<div class="col-offset-2 col-8 content">
 			<h1 th:text="${timestamp}"></h1>
 
-			<h1 th:text="${status}"></h1>
+			<h1 th:if="${status}"></h1>
 
 			<h1 th:text="${error}"></h1>
 
-			<div
-				th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
-				<i th:text="${message}">message ...</i>
-			</div>
 		</div>
 	</div>
 
