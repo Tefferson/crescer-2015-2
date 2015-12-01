@@ -27,7 +27,7 @@
 
 		</div>
 
-		<div sec:authorize="isAuthenticated()"
+		<div sec:authorize="!isAuthenticated()"
 			class="col-offset-4 col-2">
 			<form th:action="@{/login}" method="POST">
 
