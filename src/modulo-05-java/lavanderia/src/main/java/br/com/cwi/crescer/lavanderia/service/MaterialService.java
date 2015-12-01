@@ -19,10 +19,6 @@ public class MaterialService {
 		this.materialDAO = materialDAO;
 	}
 
-	public Material findById(Long idMaterial) {
-		return materialDAO.findById(idMaterial);
-	}
-
 	public List<Material> listar() {
 		return materialDAO.list();
 	}

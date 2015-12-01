@@ -15,7 +15,6 @@ import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido;
 import br.com.cwi.crescer.lavanderia.dto.ItemResumoDTO;
-import br.com.cwi.crescer.lavanderia.dto.PedidoEditarDTO;
 import br.com.cwi.crescer.lavanderia.dto.PedidoResumoDTO;
 import br.com.cwi.crescer.lavanderia.mapper.PedidoMapper;
 
@@ -48,14 +47,6 @@ public class PedidoService {
 
 		return pedidoDAO.save(pedido).getIdPedido();
 
-	}
-
-	public void atualizar(PedidoEditarDTO pedidoEditarDTO) {
-
-	}
-
-	public Pedido buscarPedidoPendentePorId(Long id) {
-		return pedidoDAO.findByIdAndSituacao(id, SituacaoPedido.PENDENTE);
 	}
 
 	public Pedido buscarPedidoSituacaoProcessandoPorId(Long id) {
@@ -93,13 +84,6 @@ public class PedidoService {
 		}
 
 		return maiorPrazo;
-	}
-
-	public List<PedidoResumoDTO> listarPedidosPendentes() {
-
-		List<Pedido> pedidos = pedidoDAO.findBySituacao(SituacaoPedido.PENDENTE);
-
-		return PedidoMapper.toDTOList(pedidos);
 	}
 
 	public List<ItemResumoDTO> listarSituacaoDosItens(Long id) {
@@ -211,11 +195,11 @@ public class PedidoService {
 	public void processarTodosOsItens(Long idPedido, ItemService itemService) {
 
 		Pedido pedido = buscarPedidoPorId(idPedido);
-		
-		for(Item item: pedido.getItens()){
+
+		for (Item item : pedido.getItens()) {
 			itemService.processar(item.getIdItem());
 		}
-		
+
 	}
 
 }

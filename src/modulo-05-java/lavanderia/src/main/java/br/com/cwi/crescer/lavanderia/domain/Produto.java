@@ -102,10 +102,6 @@ public class Produto {
 		situacao = SituacaoProduto.ATIVO;
 	}
 
-	public void desativar() {
-		situacao = SituacaoProduto.INATIVO;
-	}
-
 	@Override
 	public String toString() {
 		return servico.getDescricao() + " " + material.getDescricao();

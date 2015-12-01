@@ -19,10 +19,6 @@ public class CidadeService {
 		this.cidadeDAO = cidadeDAO;
 	}
 
-	public Cidade findById(Long idCidade) {
-		return cidadeDAO.findById(idCidade);
-	}
-
 	public List<Cidade> listar() {
 		return cidadeDAO.list();
 	}

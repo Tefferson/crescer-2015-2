@@ -19,10 +19,6 @@ public class ServicoService {
 		this.servicoDAO = pessoaDAO;
 	}
 
-	public Servico findById(Long idServico) {
-		return servicoDAO.findById(idServico);
-	}
-
 	public List<Servico> listar() {
 		return servicoDAO.list();
 	}

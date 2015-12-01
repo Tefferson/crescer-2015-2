@@ -79,19 +79,7 @@ public class ClienteService {
 
 		return dtos;
 	}
-
-	public List<ClienteDTO> listarNomesDosClientes() {
-
-		List<Cliente> clientes = clienteDAO.listarNomeEIdAtivos();
-		List<ClienteDTO> dtos = new ArrayList<>();
-
-		for (Cliente cliente : clientes) {
-			dtos.add(ClienteMapper.toDTO(cliente));
-		}
-
-		return dtos;
-	}
-
+	
 	public List<ClienteDTO> buscarAtivosPorNomeParcial(String term) {
 		
 		List<Cliente> clientes = clienteDAO.findActiveAndPartialName(term);

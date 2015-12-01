@@ -6,12 +6,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.cwi.crescer.lavanderia.dao.ClienteDAO;
 import br.com.cwi.crescer.lavanderia.domain.Cidade;
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
 import br.com.cwi.crescer.lavanderia.domain.Endereco;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
-import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 
 public class ClienteDAOTest extends AbstractInfrastructureTest {
 
@@ -23,17 +21,6 @@ public class ClienteDAOTest extends AbstractInfrastructureTest {
 		Cliente cliente = clienteDAO.findById(1L);
 		Assert.assertNotNull(cliente);
 		Assert.assertNotNull(cliente.getEndereco().getCidade());
-	}
-
-	@Test
-	public void deveBuscarClientesAtivos() throws Exception {
-		List<Cliente> clientes = clienteDAO.findBySituacao(SituacaoCliente.ATIVO);
-		Assert.assertNotNull(clientes);
-		Assert.assertFalse(clientes.isEmpty());
-
-		for (Cliente cliente : clientes) {
-			Assert.assertEquals(SituacaoCliente.ATIVO, cliente.getSituacao());
-		}
 	}
 
 	@Test

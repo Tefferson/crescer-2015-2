@@ -8,10 +8,8 @@ import java.util.List;
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido;
-import br.com.cwi.crescer.lavanderia.domain.Produto;
 import br.com.cwi.crescer.lavanderia.dto.PedidoEditarDTO;
 import br.com.cwi.crescer.lavanderia.dto.PedidoResumoDTO;
-import br.com.cwi.crescer.lavanderia.dto.ProdutoEditarDTO;
 
 public class PedidoMapper {
 
@@ -30,7 +28,7 @@ public class PedidoMapper {
 		return pedido;
 	}
 
-	public static PedidoResumoDTO toDTO(Pedido pedido) {
+	private static PedidoResumoDTO toDTO(Pedido pedido) {
 
 		PedidoResumoDTO dto = new PedidoResumoDTO();
 
@@ -42,14 +40,6 @@ public class PedidoMapper {
 		dto.setValorTotal(pedido.getValorBruto());
 
 		return dto;
-	}
-
-	public static void merge(ProdutoEditarDTO produtoEditarDTO, Produto produto) {
-
-		produto.setPrazo(produtoEditarDTO.getPrazo());
-		produto.setSituacao(produtoEditarDTO.getSituacao());
-		produto.setValor(produto.getValor());
-
 	}
 
 	public static PedidoEditarDTO toEditarDTO(Pedido pedido) {
